@@ -90,16 +90,12 @@
 * Logger 解析（二）：相关源码探讨 - LogCat
 * Logger 解析（三）：相关源码探讨 - Disk
 * Logger 解析（四）：封装自己的日志库
-
-
 * Volley 指导：开始
 * Volley 指导：发起一个简单请求
 * Volley 指导：发起一个标准请求
 * Volley 指导：自定义请求
 * Volley 指导：设置请求队列
 * Volley 源码分析：执行流程
-
-
 * Picasso 框架 基本使用 API
 * Picasso 源码 with 方法：内存缓存 Lrucache 和线程池的调度
 * Picasso 源码 with：dispatcher 如何完成线程切换
@@ -110,8 +106,6 @@
 * Picasso 源码 into：线程开启如何执行图片加载请求？
 * Picasso 源码 into：OkHttp 和 UrlConnectionDownloader 下载图片
 * Picasso 源码 into 方法：完成加载
-
-
 * OkHttp 基础：快速开始
 * OkHttp 基础：Calls
 * OkHttp 基础：Connections
@@ -150,8 +144,6 @@
 * OkHttp 面试：文件上传 & OkHttp 如何处理文件上传
 * OkHttp 面试：如何解析Json类型数据
 * OkHttp 面试：Https／对称加密 & 不对称加密
-
-
 * Retrofit 流程分析
 * Retrofit 概述
 * Retrofit 官网例子解析
@@ -180,8 +172,6 @@
 * Retrofit 面试题：Android MVC 架构优势和缺点
 * Retrofit 面试题：MVP 优点和缺点
 * Retrofit 面试题：sp 跨进程 & apply 和 commit 方法
-
-
 * Glide 框架流程分析
 * Glide 框架介绍 - 1
 * Glide 框架介绍 - 2
@@ -196,8 +186,6 @@
 * Glide 图片加载流程和源码分析 - 9：into 方法（内存缓存的写入）
 * Glide 面试一：bitmap & oom & 优化 bitmap
 * Glide 面试二：三级缓存 * lrucache
-
-
 * EventBus 框架核心概念：事件传递／EventBus 的优点／传统 handler 通信的两种方式
 * EventBus 框架基本用法
 * EventBus 框架源码解析 - 1：EventBus 对象构建／如何进行线程调度
@@ -208,21 +196,15 @@
 * EventBus 框架源码解析 - 6：subscribe 方法完成订阅（上）
 * EventBus 框架源码解析 - 7：subscribe 方法完成订阅（下）
 * EventBus 框架源码解析 - 8：发送事件 post
-
-
 * ButterKnife 的引言和基本使用
 * ButterKnife 原理必备知识点 1：注解
 * ButterKnife 原理必备知识点 2：APT 工作原理
 * ButterKnife 原理必备知识点 3：反射 + 运行时注解举例
 * ButterKnife 原理分析 - 1：注解处理器如何处理注解和保存注解
 * ButterKnife 原理分析 - 2：如何生成 findviewById 代码
-
-
 * Android 常见内存泄漏分析 - 1：单例 VS 非静态内部类
 * Android 常见内存泄漏分析 - 2：handler & 解决办法
 * android 常见内存泄漏分析 - 3：线程 & WebView
-
-
 * LeakCanary 预备知识：Android 性能优化 & Gcroots
 * LeakCanary 内存框架：内存泄漏基础 & 为什么需要s
 * LeakCanary 原理分析 - 1：Leakcanary 原理概述和弱引用／引用队列
@@ -232,8 +214,6 @@
 * LeakCanary 面试题：Application & 内存
 * LeakCanary 面试题：性能数据上报：网络流量和冷启动
 * LeakCanary 面试题：性能数据上报：UI 卡顿和内存占用
-
-
 * BlockCanary 背景／UI 卡顿原理／UI 卡顿常见原因
 * BlockCanary 使用／阀值参数
 * BlockCanary 核心原理实现和流程图简述
@@ -246,8 +226,6 @@
 * BlockCanary 面试五：主线程 -- 子线程 (handlerThread-IntentService)
 * BlockCanary 面试六：多进程的 4 点好处与问题／voliate 关键字
 * BlockCanary 面试七：voliate 关键字和单例的写法
-
-
 * Dagger2 引言：依赖注入和使用场景
 * Dagger2 四种注入方式和依赖注入总结
 * Dagger2 的四种基本注解：`@inject` 注解
