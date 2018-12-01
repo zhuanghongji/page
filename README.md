@@ -2,7 +2,7 @@
 
 文章
 
-> 注：每一篇都尽可能地细致和完整。
+> 注：每一篇文章都尽可能细致和完整。
 
 ## Java
 
@@ -25,47 +25,47 @@
 
 [⇧ 返回顶部](#page)
 
-* [Kotlin Examples - Hello World](./src/2018-1129-2101/)
-* [Kotlin Examples - Functions](./src/2018-1129-2102/)
-* [Kotlin Examples - Variables](./src/2018-1129-2103/)
-* [Kotlin Examples - Null Safety](./src/2018-1129-2104/)
-* [Kotlin Examples - Classes](./src/2018-1129-2105/)
-* [Kotlin Examples - Generics](./src/2018-1129-2106/)
-* [Kotlin Examples - Inheritance](./src/2018-1129-2107/)
-* [Kotlin Examples - When](./src/2018-1129-2108/)
-* [Kotlin Examples - Loops](./src/2018-1129-2109/)
-* [Kotlin Examples - Ranges](./src/2018-1129-2110/)
-* [Kotlin Examples - Equality Checks](./src/2018-1129-2111/)
-* [Kotlin Examples - Conditional Expression](./src/2018-1129-2112/)
-* [Kotlin Examples - Data Classes](./src/2018-1129-2113/)
-* [Kotlin Examples - Enum Classes](./src/2018-1129-2114/)
-* [Kotlin Examples - Sealed Classes](./src/2018-1129-2115/)
-* [Kotlin Examples - Object keyword](./src/2018-1129-2116/)
-* [Kotlin Examples - Higher-Order Functions](./src/2018-1129-2117/)
-* [Kotlin Examples - Lambda Functions](./src/2018-1129-2118/)
-* [Kotlin Examples - Extension Functions and Properties](./src/2018-1129-2119/)
-* [Kotlin Examples - let](./src/2018-1129-2120/)
-* [Kotlin Examples - with](./src/2018-1129-2121/)
-* [Kotlin Examples - filter](./src/2018-1129-2122/)
-* [Kotlin Examples - map](./src/2018-1129-2123/)
-* [Kotlin Examples - any, all, none](./src/2018-1129-2124/)
-* [Kotlin Examples - find](./src/2018-1129-2125/)
-* [Kotlin Examples - first, last](./src/2018-1129-2126/)
-* [Kotlin Examples - count](./src/2018-1129-2127/)
-* [Kotlin Examples - partition](./src/2018-1129-2128/)
-* [Kotlin Examples - associateBy, groupBy](./src/2018-1129-2129/)
-* [Kotlin Examples - zip](./src/2018-1129-2130/)
-* [Kotlin Examples - flatMap](./src/2018-1129-2131/)
-* [Kotlin Examples - min, max](./src/2018-1129-2132/)
-* [Kotlin Examples - sorted](./src/2018-1129-2133/)
-* [Kotlin Examples - Map element access](./src/2018-1129-2134/)
-* [Kotlin Examples - getOrElse](./src/2018-1129-2135/)
-* [Kotlin Examples - Named Arguments](./src/2018-1129-2136/)
-* [Kotlin Examples - String Templates](./src/2018-1129-2137/)
-* [Kotlin Examples - Destructuring Declarations](./src/2018-1129-2138/)
-* [Kotlin Examples - Smart Casts](./src/2018-1129-2139/)
-* [Kotlin Examples - Delegation Pattern](./src/2018-1129-2140/)
-* [Kotlin Examples - Delegated Properties](./src/2018-1129-2141/)
+* [Kotlin Examples - Hello World](./src/201811/292101/)
+* [Kotlin Examples - Functions](./src/201811/292102/)
+* [Kotlin Examples - Variables](./src/201811/292103/)
+* [Kotlin Examples - Null Safety](./src/201811/292104/)
+* [Kotlin Examples - Classes](./src/201811/292105/)
+* [Kotlin Examples - Generics](./src/201811/292106/)
+* [Kotlin Examples - Inheritance](./src/201811/292107/)
+* [Kotlin Examples - When](./src/201811/292108/)
+* [Kotlin Examples - Loops](./src/201811/292109/)
+* [Kotlin Examples - Ranges](./src/201811/292110/)
+* [Kotlin Examples - Equality Checks](./src/201811/292111/)
+* [Kotlin Examples - Conditional Expression](./src/201811/292112/)
+* [Kotlin Examples - Data Classes](./src/201811/292113/)
+* [Kotlin Examples - Enum Classes](./src/201811/292114/)
+* [Kotlin Examples - Sealed Classes](./src/201811/292115/)
+* [Kotlin Examples - Object keyword](./src/201811/292116/)
+* [Kotlin Examples - Higher-Order Functions](./src/201811/292117/)
+* [Kotlin Examples - Lambda Functions](./src/201811/292118/)
+* [Kotlin Examples - Extension Functions and Properties](./src/201811/292119/)
+* [Kotlin Examples - let](./src/201811/292120/)
+* [Kotlin Examples - with](./src/201811/292121/)
+* [Kotlin Examples - filter](./src/201811/292122/)
+* [Kotlin Examples - map](./src/201811/292123/)
+* [Kotlin Examples - any, all, none](./src/201811/292124/)
+* [Kotlin Examples - find](./src/201811/292125/)
+* [Kotlin Examples - first, last](./src/201811/292126/)
+* [Kotlin Examples - count](./src/201811/292127/)
+* [Kotlin Examples - partition](./src/201811/292128/)
+* [Kotlin Examples - associateBy, groupBy](./src/201811/292129/)
+* [Kotlin Examples - zip](./src/201811/292130/)
+* [Kotlin Examples - flatMap](./src/201811/292131/)
+* [Kotlin Examples - min, max](./src/201811/292132/)
+* [Kotlin Examples - sorted](./src/201811/292133/)
+* [Kotlin Examples - Map element access](./src/201811/292134/)
+* [Kotlin Examples - getOrElse](./src/201811/292135/)
+* [Kotlin Examples - Named Arguments](./src/201811/292136/)
+* [Kotlin Examples - String Templates](./src/201811/292137/)
+* [Kotlin Examples - Destructuring Declarations](./src/201811/292138/)
+* [Kotlin Examples - Smart Casts](./src/201811/292139/)
+* [Kotlin Examples - Delegation Pattern](./src/201811/292140/)
+* [Kotlin Examples - Delegated Properties](./src/201811/292141/)
 
 ## Objective-C
 
@@ -91,7 +91,7 @@
 * Logger 解析（三）：相关源码探讨 - Disk
 * Logger 解析（四）：封装自己的日志库
 
-[⇧](#android)
+[]()
 
 * Volley 指导：开始
 * Volley 指导：发起一个简单请求
@@ -100,7 +100,7 @@
 * Volley 指导：设置请求队列
 * Volley 源码分析：执行流程
 
-[⇧](#android)
+[]()
 
 * Picasso 框架 基本使用 API
 * Picasso 源码 with 方法：内存缓存 Lrucache 和线程池的调度
@@ -113,7 +113,7 @@
 * Picasso 源码 into：OkHttp 和 UrlConnectionDownloader 下载图片
 * Picasso 源码 into 方法：完成加载
 
-[⇧](#android)
+[]()
 
 * OkHttp 基础：快速开始
 * OkHttp 基础：Calls
@@ -154,7 +154,7 @@
 * OkHttp 面试：如何解析Json类型数据
 * OkHttp 面试：Https／对称加密 & 不对称加密
 
-[⇧](#android)
+[]()
 
 * Retrofit 流程分析
 * Retrofit 概述
@@ -185,7 +185,7 @@
 * Retrofit 面试题：MVP 优点和缺点
 * Retrofit 面试题：sp 跨进程 & apply 和 commit 方法
 
-[⇧](#android)
+[]()
 
 * Glide 框架流程分析
 * Glide 框架介绍 - 1
@@ -202,7 +202,7 @@
 * Glide 面试一：bitmap & oom & 优化 bitmap
 * Glide 面试二：三级缓存 * lrucache
 
-[⇧](#android)
+[]()
 
 * EventBus 框架核心概念：事件传递／EventBus 的优点／传统 handler 通信的两种方式
 * EventBus 框架基本用法
@@ -215,7 +215,7 @@
 * EventBus 框架源码解析 - 7：subscribe 方法完成订阅（下）
 * EventBus 框架源码解析 - 8：发送事件 post
 
-[⇧](#android)
+[]()
 
 * ButterKnife 的引言和基本使用
 * ButterKnife 原理必备知识点 1：注解
@@ -224,7 +224,7 @@
 * ButterKnife 原理分析 - 1：注解处理器如何处理注解和保存注解
 * ButterKnife 原理分析 - 2：如何生成 findviewById 代码
 
-[⇧](#android)
+[]()
 
 * Android 常见内存泄漏分析 - 1：单例 VS 非静态内部类
 * Android 常见内存泄漏分析 - 2：handler & 解决办法
@@ -251,7 +251,7 @@
 * BlockCanary 面试六：多进程的 4 点好处与问题／voliate 关键字
 * BlockCanary 面试七：voliate 关键字和单例的写法
 
-[⇧](#android)
+[]()
 
 * Dagger2 引言：依赖注入和使用场景
 * Dagger2 四种注入方式和依赖注入总结
@@ -271,9 +271,9 @@
 
 [⇧ 返回顶部](#page)
 
-* [理解 React Native 中的 Props 和 State](./src/2018-1129-2238/)
-* [理解 React Native 中的 Style](./src/2018-1129-2255/)
-* [理解 React Native 中的 Height 和 Width](./src/2018-1129-2302/)
+* [理解 React Native 中的 Props 和 State](./src/201811/292238/)
+* [理解 React Native 中的 Style](./src/201811/292255/)
+* [理解 React Native 中的 Height 和 Width](./src/201811/292302/)
 
 
 ## ReactiveX
