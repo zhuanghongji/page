@@ -10,7 +10,7 @@
 
 应用程序的用户界面是由各种视图和控件组成的，来看一张官网的图片：
 
-![](./res/views-adn-controls.png)
+<img src="./res/views-adn-controls.png" width="480"/>
 
 视图之间是可以进行嵌套的，可以使用视图执行以下操作：
 * 响应触摸和其它事件。
@@ -19,7 +19,8 @@
 * 响应焦点变化。
 * 为视图的大小、位置和外观属性设置动画。
 
-[UIView](https://developer.apple.com/documentation/uikit/uiview?language=objc) 是所有视图的根类，并定义了它们的通用行为。[UIControl](https://developer.apple.com/documentation/uikit/uicontrol?language=objc) 定义了额外的行为，特定于为用户交互而设计的按钮、开关及其它视图。
+[UIView](https://developer.apple.com/documentation/uikit/uiview?language=objc) 是所有视图的根类，并定义了它们的通用行为。  
+[UIControl](https://developer.apple.com/documentation/uikit/uicontrol?language=objc) 定义了额外的行为，特定于为用户交互而设计的按钮、开关及其它视图。
 
 在官方文档中，大致是这样对视图和控件进行分类的：
 
