@@ -35,6 +35,10 @@
 
 [⇧ 返回顶部](#page)
 
+* [ ] [关于学习 Kotlin 的资源汇总](./src/201812/021029/)
+
+[]()
+
 * [ ] [Kotlin Examples - Hello World](./src/201811/292101/)
 * [ ] [Kotlin Examples - Functions](./src/201811/292102/)
 * [ ] [Kotlin Examples - Variables](./src/201811/292103/)
