@@ -133,6 +133,32 @@
 
 []()
 
+* [ ] Android 源码设计模式：单例
+* [ ] Android 源码设计模式：Builder 
+* [ ] Android 源码设计模式：原型
+* [ ] Android 源码设计模式：工厂方法
+* [ ] Android 源码设计模式：抽象工厂方法
+* [ ] Android 源码设计模式：策略
+* [ ] Android 源码设计模式：状态
+* [ ] Android 源码设计模式：责任链
+* [ ] Android 源码设计模式：解释器
+* [ ] Android 源码设计模式：命令
+* [ ] Android 源码设计模式：观察者
+* [ ] Android 源码设计模式：备忘录
+* [ ] Android 源码设计模式：迭代器
+* [ ] Android 源码设计模式：模板
+* [ ] Android 源码设计模式：访问者
+* [ ] Android 源码设计模式：中介者
+* [ ] Android 源码设计模式：代理
+* [ ] Android 源码设计模式：组合
+* [ ] Android 源码设计模式：适配器
+* [ ] Android 源码设计模式：装饰
+* [ ] Android 源码设计模式：享元
+* [ ] Android 源码设计模式：外观
+* [ ] Android 源码设计模式：桥接
+
+[]()
+
 * [ ] [Logger 解析（一）：基础用法](./src/201812/042252/)
 * [ ] [Logger 解析（二）：相关源码探讨 - LogCat](./src/201812/042253/)
 * [ ] Logger 解析（三）：相关源码探讨 - Disk
