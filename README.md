@@ -100,6 +100,7 @@
 [⇧ 返回顶部](#page)
 
 * [ ] [JavaScript 基础](./src/201812/022245/)
+* [ ] [进一步了解 JavaScript 中的 Number、Array、Date 和 Boolean](./src/201812/041948/)
 
 
 ## Android
