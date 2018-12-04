@@ -1,4 +1,4 @@
-# 理解 React Native 中的 Style
+# React Native - 样式
 
 在 RN 中，你不需要使用特殊的语言或语法来定义样式，仍然是使用 JavaScript 定义样式（传说中的 `All in js`)。所有的核心组件都接受名为 `style` 的属性，且样式名基本匹配了 web 上的 CSS 命名，只是按照了 js 的语法要求使用了驼峰命名法，比如 `background-color` 改为 `backgroundColor`。
 

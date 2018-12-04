@@ -350,9 +350,9 @@
 
 [⇧ 返回顶部](#page)
 
-* [ ] [理解 React Native 中的 Props 和 State](./src/201811/292238/)
-* [ ] [理解 React Native 中的 Style](./src/201811/292255/)
-* [ ] [理解 React Native 中的 Height 和 Width](./src/201811/292302/)
+* [ ] [React Native - 属性和状态](./src/201811/292238/)
+* [ ] [React Native - 样式](./src/201811/292255/)
+* [ ] [React Native - 高度和宽度](./src/201811/292302/)
 * [ ] [React Native - 使用 Flexbox 布局](./src/201812/042349/)
 * [ ] [React Native - 处理文本输入](./src/201812/042350/)
 * [ ] [React Native - 处理触摸事件](./src/201812/042351/)

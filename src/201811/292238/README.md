@@ -1,4 +1,4 @@
-# 理解 React Native 中的 Props 和 State
+# React Native - 属性和状态
 
 在 RN 中有两种类型的数据来控制一个组件：
 * `props`: 属性，由父组件指定，且一旦指定将不可再修改。

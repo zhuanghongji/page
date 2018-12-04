@@ -1,4 +1,4 @@
-# 理解 React Native 中的 Height 和 Width
+# React Native - 高度和宽度
 
 Height：高度。  
 Width：宽度。  
