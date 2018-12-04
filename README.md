@@ -103,6 +103,7 @@
 * [ ] [进一步了解 JavaScript 中的 Number、Array、Date 和 Boolean](./src/201812/041948/)
 * [ ] [ES6 对 ES5 原有对象的一些扩展](./src/201812/042153/)
 * [ ] [通过 Promise 解决回调地狱问题](./src/201812/042153/)
+* [ ] [通过 JSDoc 提高开发效率](./src/201812/042226/)
 
 ## Android
 
