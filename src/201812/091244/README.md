@@ -1,1 +1,951 @@
 # 使用 Swift 开发 iOS 应用：实现自定义控件
+
+实现自定义控件
+在本课程中，您将为FoodTracker应用程序实现自定义评级控件，并将其添加到场景中。
+
+![](/res/ICC_sim_finalUI_2x.png)
+学习目标
+在课程结束时，您将能够：
+
+创建自定义源代码文件并将其与故事板中的元素相关联
+
+定义自定义类
+
+在自定义类上实现初始化程序
+
+使用UIStackView 的容器
+
+了解如何以编程方式创建视图
+
+将辅助功能信息添加到自定义控件
+
+使用@IBInspectable和@IBDesignable在Interface Builder中显示和控制自定义视图
+
+创建自定义视图
+为了能够为用餐评分，用户需要一个控件，让他们选择他们想要分配给用餐的星星数量。有许多方法可以实现这一点，但本课程重点介绍一种直接的方法，即通过组合现有视图和控件来构建自定义控件。您将创建一个堆栈视图子类，用于管理代表星星的一行按钮。您将完全在代码中定义自定义控件，然后将其添加到故事板中。
+
+评级控件显示为一排星星。
+
+![](/res/ICC_ratingcontrol_2x.png)
+用户可以选择餐费评级。当用户点击一颗星时，该星和它前面的星星都会被填充。如果用户点击最右边的星号（与当前评级相关的星号），则清除评级并且所有星星都显示为空。
+
+要开始设计此控件的用户界面（UI），交互和行为，请首先创建自定义堆栈视图（UIStackView）子类。
+
+创建UIStackView的子类
+
+选择“文件”>“新建”>“文件”（或按Command-N）。
+
+在出现的对话框顶部，选择iOS。
+
+选择Cocoa Touch Class，然后单击Next。
+
+在“类”字段中，键入RatingControl。
+
+在“子类”字段中，选择UIStackView。
+
+确保语言选项设置为Swift。
+
+![](/res/ICC_newviewclass_2x.png)
+点击下一步。
+
+保存位置默认为项目目录。
+
+“组”选项默认为您的应用名称FoodTracker。
+
+在“目标”部分中，您的应用程序已被选中，并且您的应用程序的测试未被选中。
+
+保留这些默认值，然后单击“创建”。
+
+Xcode创建一个定义RatingControl类的文件：RatingControl.swift。RatingControl是自定义视图的子类UIView。
+
+如有必要，在项目导航器中，拖动RatingControl.swift文件，使其位于其他Swift文件下。
+
+![](/res/ICC_dragfile_2x.png)
+在RatingControl.swift，删除模板实现附带的注释，以便您可以开始使用空白平板。
+
+实现应如下所示：
+
+import UIKit
+ 
+class RatingControl: UIStackView {
+    
+}
+您通常以两种方式之一创建视图：通过以编程方式初始化视图，或允许视图由故事板加载。每种方法都有一个相应的初始化init(frame:)程序：用于以编程方式初始化视图和init?(coder:)从故事板加载视图。回想一下，初始化程序是一种准备要使用的类实例的方法，它涉及为每个属性设置初始值并执行任何其他设置。
+
+您需要在自定义控件中实现这两种方法。在设计应用程序时，Interface Builder在将视图添加到画布时以编程方式实例化视图。在运行时，您的应用程序会从故事板中加载视图。
+
+覆盖初始值设定项
+
+在RatingControl.swift该class行下，添加此评论。
+
+//MARK: Initialization
+在评论下方，开始输入init。代码完成叠加显示时停止输入。
+
+![](/res/ICC_init_codecompletion_2x.png)
+选择init(frame: CGRect)从列出的选项，然后按回车键。
+
+Xcode为您插入初始化器骨架。
+
+init(frame: CGRect) {
+    
+}
+错误和警告在代码旁边显示为黄色三角形图标（警告）和红色圆圈（错误）。目前，该init(frame:)方法有错误。单击错误图标以显示有关错误的更多信息。
+
+![](/res/ICC_init_fixit_2x.png)
+双击Fix-it以插入override关键字。
+
+override init(frame: CGRect) {
+    
+}
+Swift编译器知道init(frame:)必须将其标记为必需，并提供修复程序以在代码中进行此更改。修复 - 它由编译器提供，作为代码中错误的潜在解决方案。
+
+添加此行以调用超类的初始值设定项：
+
+super.init(frame: frame)
+在init(frame:)方法下面，init再次开始输入，并从代码完成选项中选择init（编码器：NSCoder）。按Return键。
+
+Xcode为您插入初始化器骨架。
+
+init(coder: NSCoder) {
+    
+}
+使用Fix-it插入required关键字。
+
+注意
+
+Swift处理初始化程序的方式与其他方法不同。如果您不提供任何初始值设定项，Swift类会自动继承其所有超类的指定初始值设定项。如果实现任何初始值设定项，则不再继承任何超类初始值设定项; 但是，超类可以将其一个或多个初始化程序标记为required。子类必须实现（或自动继承）所有必需的初始值设定项。此外，子类必须将其初始化器标记为required，表明它们的子类还必须实现初始化器。
+
+添加此行以调用超类的初始化程序。
+
+super.init(coder: coder)
+初始化器应如下所示：
+
+override init(frame: CGRect) {
+    super.init(frame: frame)
+}
+ 
+required init(coder: NSCoder) {
+    super.init(coder: coder)
+}
+现在，您的初始值设定项是占位符，只需调用超类的实现。您将在本课程后面添加其他配置步骤。
+
+显示自定义视图
+要显示自定义控件，需要在故事板中添加堆栈视图，并在堆栈视图和刚编写的代码之间建立连接。
+
+显示视图
+
+打开你的故事板。
+
+在故事板中，使用对象库查找“水平堆栈视图”对象，然后将其拖入故事板场景中，使其位于图像视图下方的堆栈视图中。
+
+![](/res/ICC_addhorizo​​ntalstack_2x.png)
+选择水平堆栈视图后，打开Identity检查器图片：../ Art /inspector_identity_2x.png)。
+
+回想一下，Identity检查器允许您编辑故事板中与该对象的标识相关的对象的属性，例如对象所属的类。
+
+![](/res/ICC_inspector_identity_2x.png)
+在Identity检查器中，找到标记为Class的字段并选择RatingControl。
+
+![](/res/ICC_identity_ratingcontrol_2x.png)
+向视图添加按钮
+此时，您已经掌握了自定义UIStackView子类的基础知识RatingControl。接下来，您需要在视图中添加按钮以允许用户选择评级。从简单的事情开始，比如在视图中显示一个红色按钮。
+
+在视图中创建按钮
+
+无论调用哪个初始值设定项，都要确保添加了该按钮。为此，请添加一个私有方法setupButtons()，并从两个初始化程序中调用该方法。
+
+在RatingControl.swift初始化方法中，添加此注释。
+
+//MARK: Private Methods
+使用此注释下方的空格private在func介绍人之前使用修饰符创建私有方法 - 方法。私有方法只能由声明类中的代码调用。这使您可以封装和保护方法，确保不会意外或意外地从外部调用它们。
+
+在评论下，添加以下方法：
+
+private func setupButtons() {
+    
+}
+在该setupButtons()方法中，添加以下代码行以创建红色按钮：
+
+// Create the button
+let button = UIButton()
+button.backgroundColor = UIColor.red
+在这里，您正在使用UIButton该类的一个便利初始化器。此初始化程序调用init(frame:)并传入零大小的矩形。从零大小的按钮开始很好，因为您正在使用自动布局。堆栈视图将自动定义按钮的位置，您将添加约束来定义按钮的大小。
+
+您正在使用，red因此很容易看到视图的位置。如果您愿意，请使用其他预定义UIColor值之一，例如blue或green。
+
+在最后一行下方，添加按钮的约束：
+
+// Add constraints
+button.translatesAutoresizingMaskIntoConstraints = false
+button.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+button.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
+第一行代码禁用按钮自动生成的约束。以编程方式实例化视图时，其translatesAutoresizingMaskIntoConstraints属性默认为true。这告诉布局引擎创建约束，根据视图frame和autoresizingmask属性定义视图的大小和位置。通常，在使用“自动布局”时，您希望用自己的约束替换这些自动生成的约束。要删除自动生成的约束，请将translatesAutoresizingMaskIntoConstraints属性设置为false。
+
+注意
+
+这条线不是绝对必要的。将视图添加到堆栈视图时，堆栈视图会自动将视图的translatesAutoresizingMaskIntoConstraints属性设置为false。但是，使用自动布局时，每当您以编程方式创建视图时，显式禁用自动生成的约束是一个好习惯。这样你就不会忘记在它真正重要的时候禁用它们。
+
+以＃开头button.heightAnchor并button.widthAnchor创建定义按钮高度和宽度的约束。每行执行以下步骤：
+
+按钮heightAnchor和widthAnchor属性可以访问布局锚点。您可以使用布局锚点来创建约束 - 在这种情况下，约束分别定义视图的高度和宽度。
+
+anchor的constraint(equalToConstant:)方法返回一个约束，该约束定义视图的恒定高度或宽度。
+
+约束的isActive属性激活或停用约束。将此属性设置为时true，系统会将约束添加到正确的视图，并激活它。
+
+这些线一起将按钮定义为布局中的固定大小对象（44点x 44点）。
+
+最后，将按钮添加到堆栈：
+
+// Add the button to the stack
+addArrangedSubview(button)
+该addArrangedSubview()方法将您创建的按钮添加到RatingControl堆栈视图管理的视图列表中。此操作将视图添加为子视图RatingControl，并指示RatingControl创建管理按钮在控件中的位置所需的约束。
+
+您的setupButtons()方法应如下所示：
+
+private func setupButtons() {
+    
+    // Create the button
+    let button = UIButton()
+    button.backgroundColor = UIColor.red
+    
+    // Add constraints
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+    button.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
+    
+    // Add the button to the stack
+    addArrangedSubview(button)
+}
+现在从两个初始化方法中调用此方法，如下所示：
+
+override init(frame: CGRect) {
+    super.init(frame: frame)
+    setupButtons()
+}
+ 
+required init(coder: NSCoder) {
+    super.init(coder: coder)
+    setupButtons()
+}
+检查点：运行您的应用程序。你应该能够看到里面有一个小红色方块的视图。红色方块是您在初始化程序中添加的按钮。
+
+![](/res/ICC_sim_1redbutton_2x.png)
+您需要为此按钮添加操作（以及稍后将添加的其他按钮）。最后，您将使用此按钮更改餐的评级; 但是，现在您只需检查操作是否正常。
+
+向按钮添加操作
+
+在RatingControl.swift该//MARK Initialization部分之后，添加以下内容：
+
+//MARK: Button Action
+在评论下，添加以下内容：
+
+func ratingButtonTapped(button: UIButton) {
+    print("Button pressed 👍")
+}
+使用该print()函数检查ratingButtonTapped(_:)操作是否按预期链接到按钮。此函数将消息输出到标准输出，在本例中为Xcode调试控制台。控制台是一个有用的调试机制，出现在编辑器区域的底部。
+
+您将在一段时间内用真正的实现替换此调试实现。
+
+找到setupButtons()方法：
+
+private func setupButtons() {
+    
+    // Create the button
+    let button = UIButton()
+    button.backgroundColor = UIColor.red
+    
+    // Add constraints
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+    button.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
+    
+    // Add the button to the stack
+    addArrangedSubview(button)
+}
+在// Add the button to the stack评论上方，添加以下代码：
+
+// Setup the button action
+button.addTarget(self, action: #selector(RatingControl.ratingButtonTapped(button:)), for: .touchUpInside)
+在上一课中，您使用目标操作模式将故事板中的元素链接到代码中的操作方法。该addTarget(_, action:, for:)方法在代码中执行相同的操作。您将ratingButtonTapped(_:)操作方法附加到button对象，只要.TouchDown事件发生，就会触发该方法。
+
+这段代码中有很多内容。这是一个细分：
+
+目标是self，它引用封闭类的当前实例。在这种情况下，它指的RatingControl是设置按钮的对象。
+
+该#selector表达式返回Selector用于所提供的方法的值。选择器是标识方法的不透明值。较旧的API使用选择器在运行时动态调用方法。虽然较新的API已经在很大程度上取代了带有块的选择器，但许多类似的方法performSelector(_:)和addTarget(_:action:forControlEvents:)-still都将选择器作为参数。在此示例中，#selector(RatingControl.ratingButtonTapped(_:))表达式返回ratingButtonTapped(_:)操作方法的选择器。这样，系统可以在点击按钮时调用您的操作方法。
+
+该UIControlEvents选项设置定义了一些控制可以响应事件。通常，按钮会响应.touchUpInside事件。当用户触摸按钮，然后在手指仍在按钮边界内时抬起手指时，会发生这种情况。此事件具有优势.touchDown，因为用户可以通过在提起之前将手指拖到按钮外来取消事件。
+
+请注意，因为您没有使用Interface Builder，所以您不需要使用该IBAction属性定义您的action方法; 您只需像任何其他方法一样定义操作。您可以使用不带参数的方法，该方法接受单个sender参数，或者同时接受sender和Event参数。
+
+func doSomething()
+func doSomething(sender: UIButton)
+func doSomething(sender: UIButton, forEvent event: UIEvent)
+您的setupButtons()方法现在应该如下所示：
+
+private func setupButtons() {
+    
+    // Create the button
+    let button = UIButton()
+    button.backgroundColor = UIColor.red
+    
+    // Add constraints
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+    button.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
+    
+    // Setup the button action
+    button.addTarget(self, action: #selector(RatingControl.ratingButtonTapped(button:)), for: .touchUpInside)
+    
+    // Add the button to the stack
+    addArrangedSubview(button)
+}
+检查点：运行您的应用程序。单击红色方块时，应在控制台中看到“按下按钮”消息。
+
+![](/res/ICC_console_buttonpressed_2x.png)
+现在是时候考虑一​​下RatingControl该类需要哪些信息来表示评级。您需要跟踪评级值，以及用户点击以设置该评级的按钮。您可以使用a表示评级值Int，将按钮表示为UIButton对象数组。
+
+添加评级属性
+
+在RatingControl.swift，找到类声明行：
+
+class RatingControl: UIView {
+在此行下方，添加以下代码：
+
+//MARK: Properties
+private var ratingButtons = [UIButton]()
+ 
+var rating = 0
+这会创建两个属性。第一个是包含按钮列表的属性。你不想让课外的任何东西RatingControl访问这些按钮; 因此，您将它们声明为私有。
+
+第二个属性包含控件的评级。您需要能够从此类外部读取和写入此值。通过将其保留为内部访问（默认），您可以从应用程序内的任何其他类访问它。
+
+现在，视图中有一个按钮，但总共需要五个按钮。要创建总共五个按钮，请使用for- in循环。A for- in循环遍历序列（例如数字范围）以多次执行一组代码。循环将创建五个，而不是创建一个按钮。
+
+共创建五个按钮
+
+在RatingControl.swift中，找到setupButtons()方法，并添加for- in环围绕法的内容，就像这样：
+
+for _ in 0..<5 {
+    // Create the button
+    let button = UIButton()
+    button.backgroundColor = UIColor.red
+    
+    // Add constraints
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+    button.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
+    
+    // Setup the button action
+    button.addTarget(self, action: #selector(RatingControl.ratingButtonTapped(button:)), for: .touchUpInside)
+    
+    // Add the button to the stack
+    addArrangedSubview(button)
+}
+通过选择所有行并按Control-I 确保for- in循环中的行正确缩进。
+
+所述半开区间运算符（..<）不包括在上数，所以此范围内从进入0到4对总共五个循环迭代，拉丝五个按钮而不是仅仅一个。下划线（_）表示一个通配符，当您不需要知道当前正在执行的循环迭代时，可以使用该通配符。
+
+在for-in循环的右大括号（}）上方添加以下内容。
+
+// Add the new button to the rating button array
+ratingButtons.append(button)
+在创建每个按钮时，将其添加到ratingButtons阵列以跟踪它。
+
+您的setupButtons()方法现在应该如下所示：
+
+private func setupButtons() {
+    
+    for _ in 0..<5 {
+        // Create the button
+        let button = UIButton()
+        button.backgroundColor = UIColor.red
+        
+        // Add constraints
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
+        
+        // Setup the button action
+        button.addTarget(self, action: #selector(RatingControl.ratingButtonTapped(button:)), for: .touchUpInside)
+        
+        // Add the button to the stack
+        addArrangedSubview(button)
+        
+        // Add the new button to the rating button array
+        ratingButtons.append(button)
+    }
+}
+检查点：运行您的应用程序。注意堆栈视图如何布置按钮。它们是水平排列的，但它们之间没有空间 - 使它们看起来像一块红色的块。
+
+![](/res/ICC_buttonswithoutspace_2x.png)
+要解决此问题，请打开Main.storyboard并选择RatingControl堆栈视图。打开“ 属性”检查器 图片：../ Art /inspector_attributes_2x.png)，并将“间距”属性设置为8。
+
+![](/res/ICC_setstackspacing_2x.png)
+检查点：再次运行您的应用程序。现在，按钮应按预期布局。请注意，此时单击任何按钮仍应调用该ratingButtonTapped(button:)方法并将消息记录到控制台。
+
+![](/res/ICC_sim_5redbuttons_2x.png)
+要折叠控制台，请使用“调试”区域进行切换。
+
+![](/res/debug_toggle_2x.png)
+添加对Interface Builder的支持
+如果您查看Interface Builder中的评级控件，您会注意到它显示为一个大的空矩形。更糟糕的是，如果选择评级控件，其边界框将变为红色，表示控件的布局存在问题。事实上，还有另外两个迹象表明某些事情可能是错误的。活动查看器右侧有一个黄色警告三角形。“大纲”视图中的“视图控制器场景”旁边还有一个红色错误图标。
+
+![](/res/ICC_errorsandwarnings_2x.png)
+如果单击这些图标，Xcode会显示有关错误和警告的其他信息。
+
+![](/res/ICC_ambiguouslayoutwarning_2x.png)
+![](/res/ICC_missingconstrainterror_2x.png)
+在这两种情况下，根本原因都是一样的。Interface Builder对您的评级控件的内容一无所知。要解决此问题，请将控件定义为@IBDesignable。这使Interface Builder可以直接在画布中实例化并绘制控件的副本。此外，现在Interface Builder具有控件的实时副本，其布局引擎可以正确定位和调整控件的大小。
+
+将控件声明为@IBDesignable
+
+在RatingControl.swift，找到类声明：
+
+class RatingControl: UIStackView {
+添加@IBDesignable到行的开头，如下所示：
+
+@IBDesignable class RatingControl: UIStackView {
+通过键入Command-B（或选择Product> Build）重建项目。
+
+打开Main.storyboard。构建完成后，故事板会显示您的评级控件的实时视图。
+
+![](/res/ICC_designableliveview_2x.png)
+请注意，画布现在可以正确调整大小并放置RatingControl视图。结果，警告和错误现在消失了。
+
+Interface Builder不仅可以显示自定义视图。您还可以指定可在“属性”检查器中设置的属性。将@IBInspectable属性添加到所需的属性。界面生成器支持基本类型的检查（和它们相应的自选），包括：布尔，数字，字符串，以及CGRect，CGSize，CGPoint，和UIColor。
+
+添加可检查的属性
+
+在RatingControl.swift，将以下属性添加到该//MARK: Properties部分的底部：
+
+@IBInspectable var starSize: CGSize = CGSize(width: 44.0, height: 44.0)
+@IBInspectable var starCount: Int = 5
+这些行定义了按钮的大小和控件中的按钮数。
+
+现在您需要使用这些值。找到该setupButtons()方法，并进行以下更改：
+
+在for- in声明中，更改5为starCount。
+
+在button.heightAnchor.constraint()方法调用中，更改44.0为starSize.height。
+
+在button.widthAnchor.constraint()方法调用中，更改44.0为starSize.width。
+
+该方法应如下所示：
+
+private func setupButtons() {
+    
+    for _ in 0..<starCount {
+        // Create the button
+        let button = UIButton()
+        button.backgroundColor = UIColor.red
+        
+        // Add constraints
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.heightAnchor.constraint(equalToConstant: starSize.height).isActive = true
+        button.widthAnchor.constraint(equalToConstant: starSize.width).isActive = true
+        
+        // Setup the button action
+        button.addTarget(self, action: #selector(RatingControl.ratingButtonTapped(button:)), for: .touchUpInside)
+        
+        // Add the button to the stack
+        addArrangedSubview(button)
+        
+        // Add the new button to the rating button array
+        ratingButtons.append(button)
+    }
+}
+如果切换到Main.storyboard并选择RatingControl，则会在“属性”检查器中看到“星形大小”和“星数”设置。短划线表示控件当前正在使用默认值（在本例中为44.0点和5星）。但是，更改这些值尚未更改控件。
+
+![](/res/ICC_inspectableattributes_2x.png)
+要更新控件，每次这些属性更改时都需要重置控件的按钮。为此，请向每个属性添加属性观察器。一个物业观察者观察和响应的属性值的变化。每次设置属性值时都会调用属性观察器，并且可以在值更改之前或之后立即执行工作。
+
+在RatingControl.swift，修改可检查属性，如下所示：
+
+@IBInspectable var starSize: CGSize = CGSize(width: 44.0, height: 44.0) {
+    didSet {
+        setupButtons()
+    }
+}
+ 
+@IBInspectable var starCount: Int = 5 {
+    didSet {
+        setupButtons()
+    }
+}
+在这里，您为starSize和starCount属性定义属性观察者。具体来说，在didSet设置属性值后立即调用属性观察器。然后，您的实现将调用该setupButtons()方法。此方法使用更新的大小和计数添加新按钮; 但是，当前的实现并没有摆脱旧的按钮。
+
+要清除旧按钮，请将以下代码添加到setupButtons()方法的开头。
+
+// clear any existing buttons
+for button in ratingButtons {
+    removeArrangedSubview(button)
+    button.removeFromSuperview()
+}
+ratingButtons.removeAll()
+此代码遍历所有评级控件的按钮。首先，它从堆栈视图管理的视图列表中删除按钮。这告诉堆栈视图它不应再计算按钮的大小和位置 - 但按钮仍然是堆栈视图的子视图。接下来，代码完全从堆栈视图中删除按钮。最后，一旦删除了所有按钮，它就会清除ratingButtons阵列。
+
+该setupButtons()方法现在应如下所示：
+
+private func setupButtons() {
+    
+    // clear any existing buttons
+    for button in ratingButtons {
+        removeArrangedSubview(button)
+        button.removeFromSuperview()
+    }
+    ratingButtons.removeAll()
+    
+    for _ in 0..<starCount {
+        // Create the button
+        let button = UIButton()
+        button.backgroundColor = UIColor.red
+        
+        // Add constraints
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.heightAnchor.constraint(equalToConstant: starSize.height).isActive = true
+        button.widthAnchor.constraint(equalToConstant: starSize.width).isActive = true
+        
+        // Setup the button action
+        button.addTarget(self, action: #selector(RatingControl.ratingButtonTapped(button:)), for: .touchUpInside)
+        
+        // Add the button to the stack
+        addArrangedSubview(button)
+        
+        // Add the new button to the rating button array
+        ratingButtons.append(button)
+    }
+}
+注意
+
+从性能角度来看，翻录和更换所有按钮不一定是最好的主意。但是，didSet观察者只能在设计时由Interface Builder调用。当应用程序运行时，setupButtons()只有在从故事板首次加载控件时才调用该方法一次。因此，无需创建更复杂的解决方案来更新现有按钮。
+
+检查点：打开Main.storyboard并选择RatingControl对象。尝试更改星号和星号属性。画布中的控件应更改为与新设置匹配。运行应用程序，您应该在模拟器中看到更改。
+
+![](/res/ICC_modifyinginspectableproperties_2x.png)
+完成测试后，请务必将这些设置重置为默认值。
+
+进一步探索
+
+有关使用自定义视图的更多信息，请参阅布局用户界面>添加对象和媒体>在Xcode帮助中渲染自定义视图。
+
+将星形图像添加到按钮
+接下来，您将向按钮添加空的，填充的和突出显示的星形图像。
+
+![](/res/ICC_emptyStar_2x.png)
+![](/res/ICC_filledStar_2x.png)
+![](/res/ICC_highlightedStar_2x.png)
+您可以在本课程Images/结尾处的完整项目文件的文件夹中找到本课程中使用的星形图像，或使用您自己的图像。（确保您使用的图像名称稍后与代码中的图像名称匹配。）
+
+将图像添加到项目中
+
+在项目导航器中，选择Assets.xcassets查看资产目录。
+
+回想一下，资产目录是存储和组织应用程序的图像资源的地方。
+
+在左下角，单击加号（+）按钮，然后从弹出菜单中选择“新建文件夹”。
+
+![](/res/ICC_assetcatalog_addfolder_2x.png)
+双击文件夹名称并重命名Rating Images。
+
+选择文件夹后，在左下角单击加号（+）按钮，然后从弹出菜单中选择“新建图像集”。
+
+图像集表示单个图像资源，但可以包含不同版本的图像以在不同的屏幕分辨率下显示。
+
+双击图像集名称并重命名emptyStar。
+
+在计算机上，选择要添加的空星图像。
+
+将图像拖放到2x图像集的插槽中。
+
+![](/res/ICC_emptystar_drag_2x.png)
+2x 是您在这些课程中使用的iPhone 7 Simulator的显示分辨率，因此图像在此分辨率下看起来最佳。
+
+在左下角，单击加号（+）按钮，然后从弹出菜单中选择“新建图像集”。
+
+双击图像集名称并重命名filledStar。
+
+在计算机上，选择要添加的已填充星形图像。
+
+将图像拖放到2x图像集的插槽中。
+
+![](/res/ICC_filledstar_drag_2x.png)
+在左下角，单击加号（+）按钮，然后从弹出菜单中选择“新建图像集”。
+
+双击图像集名称并重命名highlightedStar。
+
+在计算机上，选择要添加的已填充星形图像。
+
+将图像拖放到2x图像集的插槽中。
+
+![](/res/ICC_highlightedstar_drag_2x.png)
+您的评级图片文件夹现在应包含所有三个星图像。
+
+![](/res/ICC_assetcatalog_final_2x.png)
+接下来，编写代码以在适当的时间为按钮设置适当的图像。
+
+为按钮设置星形图像
+
+在RatingControl.swift，导航到setupButtons()方法，并添加正上方的这个代码for- in环创建的按钮：
+
+// Load Button Images
+let bundle = Bundle(for: type(of: self))
+let filledStar = UIImage(named: "filledStar", in: bundle, compatibleWith: self.traitCollection)
+let emptyStar = UIImage(named:"emptyStar", in: bundle, compatibleWith: self.traitCollection)
+let highlightedStar = UIImage(named:"highlightedStar", in: bundle, compatibleWith: self.traitCollection)
+这些行从资产目录中加载星形图像。请注意，资产目录位于应用程序的主包中。这意味着应用程序可以使用较短的UIImage(named:)方法加载图像。但是，因为控件是@IBDesignable，所以设置代码也需要在Interface Builder中运行。要在Interface Builder中正确加载图像，必须显式指定目录的包。这可确保系统可以查找并加载图像。
+
+找到设置背景颜色（button.backgroundColor = UIColor.redColor()）的行并将其替换为以下内容：
+
+// Set the button images
+button.setImage(emptyStar, for: .normal)
+button.setImage(filledStar, for: .selected)
+button.setImage(highlightedStar, for: .highlighted)
+button.setImage(highlightedStar, for: [.highlighted, .selected])
+按钮有五种不同的状态：正常，突出显示，聚焦，选择和禁用。默认情况下，该按钮会根据其状态修改其外观，例如，禁用的按钮显示为灰色。按钮可以同时处于多个状态，例如禁用和突出显示按钮时。
+
+按钮始终以正常状态开始（未突出显示，选中，聚焦或禁用）。只要用户触摸按钮，该按钮就会突出显示。您还可以以编程方式设置要选择或禁用的按钮。聚焦状态由基于焦点的界面使用，如Apple TV。
+
+在上面的代码中，您告诉按钮将空星形图像用于正常状态。这是按钮的默认图像。只要状态或状态组合没有自己的图像，系统就会使用此图像（可能具有附加效果）。
+
+接下来，上面的代码设置所选状态的填充图像。如果以编程方式将按钮设置为选中，则它将从空星更改为填充星。
+
+最后，为突出显示的状态以及选定和突出显示的状态设置突出显示的图像。当用户触摸按钮时，无论是否选择该按钮，系统都将显示突出显示的按钮图像。
+
+您的setupButtons()方法应如下所示：
+
+private func setupButtons() {
+    
+    // Clear any existing buttons
+    for button in ratingButtons {
+        removeArrangedSubview(button)
+        button.removeFromSuperview()
+    }
+    ratingButtons.removeAll()
+    
+    // Load Button Images
+    let bundle = Bundle(for: type(of: self))
+    let filledStar = UIImage(named: "filledStar", in: bundle, compatibleWith: self.traitCollection)
+    let emptyStar = UIImage(named:"emptyStar", in: bundle, compatibleWith: self.traitCollection)
+    let highlightedStar = UIImage(named:"highlightedStar", in: bundle, compatibleWith: self.traitCollection)
+    
+    for _ in 0..<starCount {
+        // Create the button
+        let button = UIButton()
+        
+        // Set the button images
+        button.setImage(emptyStar, for: .normal)
+        button.setImage(filledStar, for: .selected)
+        button.setImage(highlightedStar, for: .highlighted)
+        button.setImage(highlightedStar, for: [.highlighted, .selected])
+        
+        // Add constraints
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.heightAnchor.constraint(equalToConstant: starSize.height).isActive = true
+        button.widthAnchor.constraint(equalToConstant: starSize.width).isActive = true
+        
+        // Setup the button action
+        button.addTarget(self, action: #selector(RatingControl.ratingButtonTapped(button:)), for: .touchUpInside)
+        
+        // Add the button to the stack
+        addArrangedSubview(button)
+        
+        // Add the new button to the rating button array
+        ratingButtons.append(button)
+    }
+}
+检查点：运行您的应用程序。你应该看到星星而不是红色按钮。此时点击任何按钮仍应调用ratingButtonTapped(_:)并将消息记录到控制台。当您触摸按钮时，您甚至会看到蓝色突出显示的星形，但您的按钮尚未更改为已填充的图像。你接下来会解决这个问题。
+
+![](/res/ICC_sim_emptystars_2x.png)
+实现Button Action
+用户需要能够通过点击星号来选择评级，因此您将使用该ratingButtonTapped(_:)方法的实际实现替换调试实现。
+
+实施评级行动
+
+在RatingControl.swift，找到ratingButtonTapped(button:)方法：
+
+func ratingButtonTapped(button: UIButton) {
+    print("Button pressed 👍")
+}
+print用这段代码 替换语句：
+
+func ratingButtonTapped(button: UIButton) {
+    guard let index = ratingButtons.index(of: button) else {
+        fatalError("The button, \(button), is not in the ratingButtons array: \(ratingButtons)")
+    }
+    
+    // Calculate the rating of the selected button
+    let selectedRating = index + 1
+    
+    if selectedRating == rating {
+        // If the selected star represents the current rating, reset the rating to 0.
+        rating = 0
+    } else {
+        // Otherwise set the rating to the selected star
+        rating = selectedRating
+    }
+}
+在上面的代码中，该indexOf(_:)方法尝试在按钮数组中找到所选按钮并返回找到它的索引。此方法返回一个可选项，Int因为您要搜索的实例可能不存在于您正在搜索的集合中。但是，因为触发此操作的唯一按钮是您创建并添加到数组的indexOf(_:)按钮，如果该方法找不到匹配的按钮，则代码中存在严重错误。在此处抛出致命错误会终止应用程序并向控制台输出有用的错误消息，帮助您在设计和测试应用程序时查找并修复任何问题。
+
+获得按钮的索引（在本例中为0到4之间的值）后，将1添加到索引以计算所选的评级（给出1到5之间的值）。如果用户点击了与当前评级相对应的星号，则将控件的rating属性重置为0.否则，您将设置rating为所选的评级。
+
+设置评级后，您需要一些方法来更新按钮的外观。在RatingControl.swift最后一个花括号（}）之前，添加以下方法：
+
+private func updateButtonSelectionStates() {
+}
+这是一个帮助方法，您将使用它来更新按钮的选择状态。
+
+在该updateButtonSelectionStates()方法中，添加以下for- in循环：
+
+private func updateButtonSelectionStates() {
+    for (index, button) in ratingButtons.enumerated() {
+        // If the index of a button is less than the rating, that button should be selected.
+        button.isSelected = index < rating
+    }
+}
+此代码遍历按钮并根据其位置和评级设置每个选定状态。如前所述，所选状态会影响按钮的外观。如果按钮的索引小于评级，则isSelected属性设置为true，并且按钮显示填充的星形图像。否则，该isSelected属性设置为false，按钮显示空星形图像。
+
+向属性添加属性观察者rating，并updateButtonSelectionStates()在评级更改时让它调用方法。
+
+var rating = 0 {
+    didSet {
+        updateButtonSelectionStates()
+    }
+}
+每当按钮添加到控件时，您还需要更新按钮的选择状态。在该setupButtons()方法中，updateButtonSelectionStates()在方法的右大括号（}）上方添加对方法的调用。该setupButtons()方法现在应如下所示：
+
+private func setupButtons() {
+    
+    // Clear any existing buttons
+    for button in ratingButtons {
+        removeArrangedSubview(button)
+        button.removeFromSuperview()
+    }
+    ratingButtons.removeAll()
+    
+    // Load Button Images
+    let bundle = Bundle(for: type(of: self))
+    let filledStar = UIImage(named: "filledStar", in: bundle, compatibleWith: self.traitCollection)
+    let emptyStar = UIImage(named:"emptyStar", in: bundle, compatibleWith: self.traitCollection)
+    let highlightedStar = UIImage(named:"highlightedStar", in: bundle, compatibleWith: self.traitCollection)
+    
+    for index in 0..<starCount {
+        // Create the button
+        let button = UIButton()
+        
+        // Set the button images
+        button.setImage(emptyStar, for: .normal)
+        button.setImage(filledStar, for: .selected)
+        button.setImage(highlightedStar, for: .highlighted)
+        button.setImage(highlightedStar, for: [.highlighted, .selected])
+        
+        // Add constraints
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.heightAnchor.constraint(equalToConstant: starSize.height).isActive = true
+        button.widthAnchor.constraint(equalToConstant: starSize.width).isActive = true
+        
+        // Setup the button action
+        button.addTarget(self, action: #selector(RatingControl.ratingButtonTapped(button:)), for: .touchUpInside)
+        
+        // Add the button to the stack
+        addArrangedSubview(button)
+        
+        // Add the new button to the rating button array
+        ratingButtons.append(button)
+    }
+    
+    updateButtonSelectionStates()
+}
+检查点：运行您的应用程序。您应该看到五颗星并且能够单击一个以更改评级。例如，单击第三个星可将评级更改为3。再次点击同一颗星。该控件应重置为零星级。
+
+![](/res/ICC_sim_filledstars_2x.png)
+添加辅助功能信息
+借助iOS内置的辅助功能，您可以为每位客户（包括有特殊需求的客户）提供出色的移动体验。这些功能包括VoiceOver，开关控制，隐藏式字幕或音频描述视频的播放，引导式访问，文本到语音等。
+
+在大多数情况下，用户可以从这些功能中受益，而无需您做任何额外的工作。然而，VoiceOver通常需要一点关注。VoiceOver是一款革命性的屏幕阅读器，适用于盲人和低视力用户。VoiceOver会向用户读取您的用户界面。虽然内置控件的默认描述提供了一个很好的起点，但您可能需要优化用户界面的显示，尤其是自定义视图和控件。
+
+对于评级控件，您需要为每个按钮提供三条额外的信息，
+
+辅助功能标签。简洁的本地化单词或短语，简洁地描述控件或视图，但不识别元素的类型。例如“添加”或“播放”。
+
+可访问性值。当值未由标签表示时元素的当前值。例如，滑块的标签可能是“速度”，但其当前值可能是“50％”。
+
+辅助功能提示。一个简短的本地化短语，用于描述元素上的操作结果。例如“添加标题”或“打开购物清单”。
+
+在评级控件中，每个按钮的辅助功能标签都描述了按钮设置的值。例如，第一个按钮的标签显示“设置1星级。”可访问性值包含控件的当前评级。例如，如果您有4星评级，则该值显示“4星设置。”最后，您为当前选定的星指定一个提示，即“点击将评级重置为零。”所有其他星星都有一个nil-valued暗示，因为他们的影响已经充分地通过其标签说明。
+
+添加辅助功能标签，值和提示
+
+在RatingControl.swift，导航到该setupButtons()方法。找到for- in声明。_用index如下所示替换占位符循环变量（）：
+
+for index in 0..<starCount {
+在for- in循环中，在约束之后，添加以下代码：
+
+// Set the accessibility label
+button.accessibilityLabel = "Set \(index + 1) star rating"
+此代码使用按钮的索引计算标签字符串，然后将其分配给按钮的accessibilityLabel属性。
+
+该setupButtons()方法现在应如下所示：
+
+private func setupButtons() {
+    
+    // Clear any existing buttons
+    for button in ratingButtons {
+        removeArrangedSubview(button)
+        button.removeFromSuperview()
+    }
+    ratingButtons.removeAll()
+    
+    // Load Button Images
+    let bundle = Bundle(for: type(of: self))
+    let filledStar = UIImage(named: "filledStar", in: bundle, compatibleWith: self.traitCollection)
+    let emptyStar = UIImage(named:"emptyStar", in: bundle, compatibleWith: self.traitCollection)
+    let highlightedStar = UIImage(named:"highlightedStar", in: bundle, compatibleWith: self.traitCollection)
+    
+    for index in 0..<starCount {
+        // Create the button
+        let button = UIButton()
+        
+        // Set the button images
+        button.setImage(emptyStar, for: .normal)
+        button.setImage(filledStar, for: .selected)
+        button.setImage(highlightedStar, for: .highlighted)
+        button.setImage(highlightedStar, for: [.highlighted, .selected])
+        
+        // Add constraints
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.heightAnchor.constraint(equalToConstant: starSize.height).isActive = true
+        button.widthAnchor.constraint(equalToConstant: starSize.width).isActive = true
+        
+        // Set the accessibility label
+        button.accessibilityLabel = "Set \(index + 1) star rating"
+        
+        // Setup the button action
+        button.addTarget(self, action: #selector(RatingControl.ratingButtonTapped(button:)), for: .touchUpInside)
+        
+        // Add the button to the stack
+        addArrangedSubview(button)
+        
+        // Add the new button to the rating button array
+        ratingButtons.append(button)
+    }
+    
+    updateButtonSelectionStates()
+}
+导航到updateButtonSelectionStates（）方法。在for- in循环中，在设置按钮isSelected属性的行之后添加以下代码。
+
+// Set the hint string for the currently selected star
+let hintString: String?
+if rating == index + 1 {
+    hintString = "Tap to reset the rating to zero."
+} else {
+    hintString = nil
+}
+ 
+// Calculate the value string
+let valueString: String
+switch (rating) {
+case 0:
+    valueString = "No rating set."
+case 1:
+    valueString = "1 star set."
+default:
+    valueString = "\(rating) stars set."
+}
+ 
+// Assign the hint string and value string
+button.accessibilityHint = hintString
+button.accessibilityValue = valueString
+在这里，您首先检查按钮是否是当前选定的按钮。如果是，则指定提示。如果没有，则将按钮的hintString属性设置为nil。
+
+接下来，您将根据控件的评级计算该值。switch如果rating是0或，则使用语句分配自定义字符串1。如果评级大于1，则使用字符串插值计算提示。
+
+最后，将这些值分配给accessibilityHint和accessibilityValue属性。
+
+当用户在启用VoiceOver的情况下运行您的应用程序时，当他们触摸其中一个按钮时，VoiceOver会读取按钮的标签，然后是单词按钮。然后它读取可访问性值。最后，它读取可访问性提示（如果有）。这使用户可以知道控件的当前值和点击当前所选按钮的结果。
+
+进一步探索
+
+有关辅助功能的更多信息，请参阅iOS上的辅助功能。
+
+此外，为了本课程的目的，您为可访问性属性分配了简单的字符串; 但是，生产应用程序应使用本地化字符串。有关国际化和本地化的更多信息，请参阅构建面向全球的应用程序。
+
+将额定值控制连接到视图控制器
+设置评级控件需要做的最后一件事是为ViewController类提供引用。
+
+将评级控制插座连接到ViewController.swift
+
+打开你的故事板。
+
+单击Xco​​de工具栏中的“助手”按钮以打开助理编辑器。
+
+图片：../ Art /assistant_editor_toggle_2x.png)
+如果需要更多空间，可以通过单击Xco​​de工具栏中的“导航器和实用程序”按钮来折叠项目导航器和实用程序区域。
+
+![](/res/navigator_utilities_toggle_on_2x.png)
+您也可以折叠大纲视图。
+
+选择评级控件。
+
+ViewController.swift显示在右侧的编辑器中。（如果没有，请在编辑器选择器栏中选择“自动”>“ViewController.swift”。）
+
+控制 - 从画布上的评级控件拖动到右侧编辑器中的代码显示，停止在photoImageView属性下方的行拖动ViewController.swift。
+
+![](/res/ICC_ratingcontrol_dragoutlet_2x.png)
+在出现的对话框中，键入名称ratingControl。保留其余选项。
+
+![](/res/ICC_ratingcontrol_addoutlet_2x.png)
+单击连接。
+
+在ViewController类现在有在故事板的等级控制提供参考。
+
+清理项目
+您即将完成用餐界面的用户界面，但首先需要进行一些清理。现在，FoodTracker应用程序正在实现比以前的课程更高级的行为和不同的用户界面，您将需要删除不需要的部分。您还可以将堆栈视图中的元素居中，以平衡用户界面。
+
+清理UI
+
+单击“标准”按钮返回标准编辑器。
+
+![](/res/standard_toggle_2x.png)
+单击Xco​​de工具栏中的“导航器和实用程序”按钮，展开项目导航器和实用程序区域。
+
+打开你的故事板。
+
+选择“设置默认标签文本”按钮，然后按Delete键将其删除。
+
+堆栈视图重新排列用户界面元素以填充按钮离开的间隙。
+
+![](/res/ICC_deletebutton_2x.png)
+如有必要，请打开大纲视图。选择“堆栈视图”对象。
+
+![](/res/ICC_outlineview_2x.png)
+打开“ 属性”检查器 图片：../ Art /inspector_attributes_2x.png)。
+
+在“属性”检查器中，找到“对齐”字段并选择“中心”。
+
+![](/res/ICC_centerstack_2x.png)
+现在，删除与您删除的按钮对应的操作方法。
+
+清理代码
+
+打开ViewController.swift。
+
+在ViewController.swift，删除setDefaultLabelText(_:)操作方法。
+
+@IBAction func setDefaultLabelText(sender: UIButton) {
+    mealNameLabel.text = "Default Text"
+}
+这就是你现在需要删除的全部内容。您将mealNameLabel在后面的课程中更改标签插座（）。
+
+检查点：运行您的应用程序。一切都应该像以前一样工作，但是设置默认标签文本按钮消失了，元素水平居中。按钮应该是并排的。此时单击任何按钮仍应调用ratingButtonTapped(_:)并适当更改按钮图像。
+
+重要
+
+如果您遇到构建问题，请尝试按Command-Shift-K来清理项目。
+
+![](/res/ICC_sim_finalUI_2x.png)
+包起来
+在本课程中，您学习了如何构建可在Interface Builder中显示的自定义控件。该控件还公开可在“属性”检查器中修改的属性。最后，您添加了辅助功能信息，确保控件与Voice Over配合良好。
+
+接下来，您将设计并连接应用程序的数据模型。
