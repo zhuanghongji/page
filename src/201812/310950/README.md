@@ -1,4 +1,4 @@
-# HenCoder 学习笔记：自定义 View 之绘制基础
+# HenCoder 笔记 - 自定义 View：绘制基础
 
 ## 一、概述
 

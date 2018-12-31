@@ -1,4 +1,4 @@
-# HenCoder 学习笔记：自定义 View 之 Paint 详解
+# HenCoder 笔记 - 自定义 View：Paint 详解
 
 ## 一、Shader
 
