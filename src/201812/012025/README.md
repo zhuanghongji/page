@@ -91,8 +91,135 @@ System.out.println(percentFormat.format(0.3052222));   // 30.522%
 
 在日常开发中，我们可能会经常遇到格式化金额字符串的情况，那么可以封装一个工具类来统一处理这种情况。
 
-FormatUtils.java 
+DecimalUtils.java :
 
 ```java
-// TODO 封装一个工具类格式化金额，并写一个测试类
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
+public class DecimalUtils {
+
+    private static final String DEFAULT_RESULT = "";
+
+    private DecimalUtils() {}
+
+    private static String formatMoneyHalfUpOrNot(Double money, boolean isHalfUp) {
+        if (money == null) {
+            return DEFAULT_RESULT;
+        }
+        DecimalFormat formatter = new DecimalFormat("###,###.00");
+        formatter.setRoundingMode(
+                isHalfUp ? RoundingMode.HALF_UP : RoundingMode.DOWN);
+        return formatter.format(money);
+    }
+
+    /**
+     * 格式化金额字符串（非四舍五入）
+     * @param money 金额字符串
+     * @return 格式化后的字符串
+     */
+    public static String formatMoney(String money) {
+        try {
+            double moneyD = Double.valueOf(money);
+            return formatMoneyHalfUpOrNot(moneyD, false);
+        } catch (NumberFormatException e) {
+            return DEFAULT_RESULT;
+        }
+    }
+
+    /**
+     * 格式化金额数字（非四舍五入）
+     * @param money 金额数字
+     * @return 格式化后的字符串
+     */
+    public static String formatMoney(Double money) {
+        if (money == null) {
+            return DEFAULT_RESULT;
+        }
+        return formatMoneyHalfUpOrNot(money, false);
+    }
+
+    /**
+     * 格式化金额字符串（会四舍五入）
+     * @param money 金额字符串
+     * @return 格式化后的字符串
+     */
+    public static String formatMoneyHalfUp(String money) {
+        try {
+            double moneyD = Double.valueOf(money);
+            return formatMoneyHalfUpOrNot(moneyD, true);
+        } catch (NumberFormatException e) {
+            return DEFAULT_RESULT;
+        }
+    }
+
+    /**
+     * 格式化金额数字（会四舍五入）
+     * @param money 金额数字
+     * @return 格式化后的字符串
+     */
+    public static String formatMoneyHalfUp(Double money) {
+        if (money == null) {
+            return DEFAULT_RESULT;
+        }
+        return formatMoneyHalfUpOrNot(money, true);
+    }
+}
+```
+
+DecimalUtilsTest.java :
+
+```java
+import org.junit.Assert;
+import org.junit.Test;
+
+/** 
+* DecimalUtils Tester. 
+* 
+* @author zhuanghongji
+* @since <pre>Jan 1, 2019</pre> 
+* @version 1.0 
+*/ 
+public class DecimalUtilsTest {
+
+    @Test
+    public void testFormatMoney1() throws Exception {
+        String result = DecimalUtils.formatMoney("12.34567");
+        Assert.assertEquals("12.34", result);
+    }
+
+    @Test
+    public void testFormatMoney2() throws Exception {
+        String result = DecimalUtils.formatMoney(12345678.905);
+        Assert.assertEquals("12,345,678.90", result);
+    }
+
+    @Test
+    public void testFormatMoney3() throws Exception {
+        // 格式化非数字字符串，预期返回空串
+        String result = DecimalUtils.formatMoney("ABC.23");
+        Assert.assertEquals("", result);
+    }
+
+    @Test
+    public void testFormatMoney4() throws Exception {
+        // 格式化字符串，补齐零
+        String result = DecimalUtils.formatMoney("123");
+        Assert.assertEquals("123.00", result);
+    }
+
+    @Test
+    public void testFormatMoneyHalfUp1() throws Exception {
+        // 格式化数字字符串，四舍五入
+        String result = DecimalUtils.formatMoneyHalfUp("123.456");
+        Assert.assertEquals("123.46", result);
+    }
+
+    @Test
+    public void testFormatMoneyHalfUp2() throws Exception {
+        // 格式化 double，四舍五入
+        String result = DecimalUtils.formatMoneyHalfUp(1234.567);
+        Assert.assertEquals("1,234.57", result);
+    }
+} 
 ```

@@ -12,7 +12,7 @@
 
 [⇧ 返回顶部](#page)
 
-* [ ] [使用 DecimalFormat 格式化数字字符串](./src/201812/012025/)
+* [x] [使用 DecimalFormat 格式化数字字符串](./src/201812/012025/)
 * [x] [理解 Java 中的内部类](./src/201812/012215/)
 * [ ] [Java 注解的基本原理和运用](./src/201812/020743)
 
@@ -301,9 +301,12 @@
 
 * [ ] Android 常见内存泄漏分析 - 1：单例 VS 非静态内部类
 * [ ] Android 常见内存泄漏分析 - 2：handler & 解决办法
-* [ ] android 常见内存泄漏分析 - 3：线程 & WebView
+* [ ] Android 常见内存泄漏分析 - 3：线程 & WebView
+
+[]()
+
 * [ ] LeakCanary 预备知识：Android 性能优化 & Gcroots
-* [ ] LeakCanary 内存框架：内存泄漏基础 & 为什么需要s
+* [ ] LeakCanary 内存框架：内存泄漏基础 & 为什么需要
 * [ ] LeakCanary 原理分析 - 1：Leakcanary 原理概述和弱引用／引用队列
 * [ ] LeakCanary 原理分析 - 2：ActivityRefWatcher 如何监视 Activity
 * [ ] LeakCanary 原理分析 - 3：.hprof 转换 snapshot
@@ -311,6 +314,9 @@
 * [ ] LeakCanary 面试题：Application & 内存
 * [ ] LeakCanary 面试题：性能数据上报：网络流量和冷启动
 * [ ] LeakCanary 面试题：性能数据上报：UI 卡顿和内存占用
+
+[]()
+
 * [ ] BlockCanary 背景／UI 卡顿原理／UI 卡顿常见原因
 * [ ] BlockCanary 使用／阀值参数
 * [ ] BlockCanary 核心原理实现和流程图简述
