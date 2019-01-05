@@ -2,16 +2,16 @@
 
 在 RN 中，我们可以通过两种数据来控制一个组件：
 
-* `props`: 属性，在组件创建时指定，指定后不可修改。
-* `state`: 状态，在组件内部定义，可用于需要改变的数据。
+* `props` (属性): 在组件创建时指定，指定后不可修改。
+* `state` (状态): 在组件内部定义，可用于需要改变的数据。
 
 ## 基础知识
 
 ### Props
 
-大多数组件在创建时就可以通过不同的参数进行定制，这个定制参数就称为 `props`（属性）。
+大多数组件在创建时就可以通过不同的参数进行定制，这个定制参数就称为 `props`。
 
-比如说：RN 中有一个名为 `Image` 的基本组件，你可以通过它的 `source` 属性来控制要显示的图片内容。
+比如说，在 RN 中有一个名为 `Image` 的基本组件，你可以通过它的 `source` 属性来控制要显示的图片内容。
 
 ```js
 import React, {Component} from 'react';
@@ -36,7 +36,7 @@ export default class App extends Component<Props> {
 
 ![](./res/1.png)
 
-请注意 `{pic}` 有一层花括号，我们需要通过这层括号来把 `pic` 变量嵌入到 JSX 中。花括号的意思是，内部是一个 js 变量或表达式，需要执行后取值。
+请注意，`{pic}` 有一层花括号，我们需要通过这层括号来把 `pic` 变量嵌入到 JSX 中。花括号的意思是，内部是一个 js 变量或表达式，需要执行后取值。
 
 > 注：在 iOS 上使用 http 链接的图片地址可能不会显示，见 [解决办法](https://segmentfault.com/a/1190000002933776)
 
@@ -326,6 +326,88 @@ export class Person extends Component {
 }
 ```
 
+### setState() 
+
+```js
+setState(updater, callback)
+```
+
+`setState()` 将组件状态的变化放入队列中，并告诉 React 该组件和它的子组件需要根据更新后的状态进行重新绘制。它是用于更新用户界面以响应事件处理或服务器返回结果的主要方法。
+
+在 `setState()` 时 React 其实并不保证应用状态会立即刷新，React 可能会延迟然后再进行更新或批量更新。你可以将 `setState()` 理解为一个请求请求更新的命令，并不总是立即更新组件，所以如果你在 `setState()` 之后立即读取 `this.state` 时可能会遇到潜在陷阱。代替地，我们可以在 `componentDidUpdate()` 生命周期回调方法或 `setState(update, callback) ` 中的 `callbakc` 方法中读取 `this.state`，这样能保证读取到的始终是更新后的值。
+
+> 上面提到的 `callback` 是一个可选回调函数，其将会在 `setState()` 执行完成且组件被重新渲染之后调用。但是对于这类场景，通常推荐使用 `componentDidUpdate` 。
+
+如果想要基于之前的状态来设置下一次的状态，可以参考下面的代码：
+
+```js
+// 带签名的 updater 函数
+// 保证接收到的 prevState 和 props 是最新的
+(prevState, props) => stateChange
+
+this.setState((prevState, props) => {
+  return {counter: prevState.counter + props.step};
+});
+```
+
+注意：`prevState` 是之前状态的引用，不应该直接修改它的值，而是应该通过 `prevState` 和 `props` 构建一个新的对象来表示。
+
+在调用 `setState()` 方法之后，除非 `shouldComponentUpdate()` 方法返回 `false`，否则都会触发 `render()` 方法重新渲染该组件。
+
+
+### forceUpdate()
+
+```js
+component.forceUpdate(callback)
+```
+
+默认情况下，当组件的 state 或 props 发生变化时，你的组件都会重新进行渲染。如果你的组件依赖其它数据触发 `render()` 进行重新绘制的话，可以调用 `forceUpdate()` 方法来告诉 React 组件需要重新渲染。 
+
+来看一个示例：
+
+```js
+export default class App extends Component {
+
+  state = {
+    text: 'default'
+  }
+
+  shouldComponentUpdate() {
+    console.log('shouldComponentUpdate')
+    return false
+  }
+
+  render() {
+    console.log('App render..')
+    const { text } = this.state 
+    return (
+      <View style={styles.container}>
+        <Text>{text}</Text>
+        <Button 
+            title="setState" 
+            onPress={() => this.setState({ text: 'newText' })}
+          />
+        <Button 
+          title="forceUpdate" 
+          onPress={() => this.forceUpdate()}
+        />
+      </View>
+    );
+  }
+}
+```
+
+![](./res/force_update.gif)
+
+在我们点击 `setState` 按钮时，因为 `shouldComponentUpdate` 返回为 `false` 所以并没有触发组件的渲染。
+
+而当我们点击 `forceUpdate` 按钮时，发现组件重新渲染了并且 `Text` 子组件的值被重新渲染成新的 `newText` 了。这是因为在调用 `setState()` 时，虽然组件没有重新渲染，但是 `state` 确确实实是发生了变化的。然后在我们调用 `forceUpdate` 重新渲染组件时，不会调用该组件的 `shouldComponentUpdate` 方法询问是否需要更新组件，而是直接使用最新的 `state` 进行渲染的。
+
+通常，你应该尝试避免所有 `forceUpdate()` 的用法，并仅在 `render()` 函数里读取 `this.props` 和 `this.state` 的数据。
+
+> 注意：`forceUpdate()` 会忽略当前组件的 `shouldComponentUpdate()` 方法，但其子组件的 `shouldComponentUpdate()` 是会被调用的，且如果子组件的 `shouldComponentUpdate()` 方法返回 `false` 的话，子组件是不会重新渲染的。
+
+
 ### 较佳实践 
 
 #### 将 state 写为 class 组件的实例变量
@@ -596,10 +678,148 @@ export default class App extends Component {
 从上面的效果图中，可以发现：
 
 * 点击 `Change Props` 和 `Alert Props` 之后，属性 `firstName` 的值还是 `zhang`，说明我们在内部是不可以修改属性值的。
-* 点击 `Change FirstName` 时页面没发生变化，当在点击 `hange LastName` 之后 `firstName` 和 `lastName` 都发生了变化，说明父组件是可以修改传递给子组件的属性的值的，只是当子组件属性值在父组件中是以状态变量形式存在时，通过 `setState()` 修改该状态变量才会马上触发子组件刷新显示内容。
+* 点击 `Change FirstName` 时页面没发生变化，当在点击 `change LastName` 之后 `firstName` 和 `lastName` 都发生了变化，说明父组件是可以修改传递给子组件的属性的值的，只是当子组件属性值在父组件中是以状态变量形式存在时，通过 `setState()` 修改该状态变量才会马上触发子组件刷新显示内容。
 
 
 **2. 多次通过 `setState()` 改变组件状态，会触发几次 `render()` 方法？** 
 
+答：一次或多次。
 
-**3. 如果每次 `setState()` 的数据相同，也会触发 `render()` 方法吗？**
+* 如果多次调用 `setState()` 都是短时间内完成的话，就只会触发一次 `render()` 方法。
+* 如果多次调用 `setState()` 的时间不确定的话，则会多次触发 `render()` 方法。 
+
+下面我们来看两个对应的示例代码验证下：
+
+```js
+export default class App extends Component {
+
+  state = {
+    setStateTimes: 0,
+  }
+
+  performSetState() {
+    for(let i = 0; i < 9; i++) {
+      this.setState(prevState => {
+        const newTimes = prevState.setStateTimes + 1
+        return {
+          setStateTimes: newTimes,
+        }
+      })
+    }
+  }
+
+  render() {
+    console.log('App render..')
+
+    const { setStateTimes } = this.state 
+    return (
+      <View style={styles.container}>
+        <Text>{`setStateTimes = ${setStateTimes}`}</Text>
+        <Button 
+          title="performSetState" 
+          onPress={() => this.performSetState()}
+        />
+      </View>
+    );
+  }
+}
+``` 
+
+
+
+在启用 Debug JS Remotely 并 reload 后，可以看到 Chrome 的 Console 中输出了一个 `App render..` 日志，页面显示如下左图。在点击 `perfromSetState` 之后，页面显示如下右图，可以看到我们触发了 9 次 `App` 组件的 `setState()` 方法，但查看 Console 时发现只是多了一行 `App render..` 日志。
+
+| 点击按钮前 | 点击按钮后
+| -- | --
+| ![](./res/4.png) | ![](./res/5.png)
+
+上面是短时间内多次触发 `setState()` 的验证示例，下面我们基于上述实例改造出一个不定时触发 `setState` 的验证示例：
+
+```js 
+// 通过 setTimeout 在不同时间触发 setState 方法
+performSetState() {
+    this.perform()
+
+    setTimeout(() => {
+      this.perform()
+    }, 100)
+
+    setTimeout(() => {
+      this.perform()
+    }, 200)
+
+    setTimeout(() => {
+      this.perform()
+    }, 300)
+  }
+
+  perform() {
+    this.setState(prevState => {
+      const newTimes = prevState.setStateTimes + 1
+      return {
+        setStateTimes: newTimes,
+      }
+    })
+  }
+```
+
+上面的示例中通过延迟 `100` `200` `300` 构成一定的时间差来执行 `setState()` 方法，在点击 `performSetState` 按钮后查看 Console，发现共触发了 `4` 次 `render()` 方法。 
+
+那如果通过延迟 `10` `20` `30` 毫秒构成时间差会触发几次 `render` ？运行后发现还是 `4` 次。再让时间差小一点，延迟 `1` `2` `3` 毫秒，结果运行后发现还是 `4` 次，哈哈哈。
+
+**3. 如果每次 `setState()` 的数据相同，也会触发 `render()` 方法吗？** 
+
+是的，也会触发，除非你在 `shouldComponentUpdate` 返回 `false`。
+
+不信的话，我们来看下面的验证代码：
+
+```js
+export default class App extends Component {
+
+  state = {
+    text: 'default'
+  }
+
+  setState1() {
+    this.setState({
+      text: 'default',
+    })
+  }
+
+  setState2() {
+    this.setState((prevState) => {
+      return prevState;
+    })
+  }
+
+  // 先注释掉下面的方法
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return nextState.text !== this.state.text
+  // }
+
+  render() {
+    console.log('App render..')
+    const { text } = this.state 
+    return (
+      <View style={styles.container}>
+        <Text>{text}</Text>
+        <Button 
+          title="setState1" 
+          onPress={() => this.setState1()}
+        />
+        <Button 
+          title="setState2" 
+          onPress={() => this.setState2()}
+        />
+      </View>
+    );
+  }
+}
+```
+
+运行后你会发现，在注释掉 `shouldComponentUpdate()` 方法时，不管你是点击 `setState1` 按钮还是 `setState2` 按钮，都会触发该组件的刷新。
+
+
+## 总结
+
+在这边文章中，主要是写了 `props` 和 `state` 在 React Native 的基本使用和区别，然后在扩展了下这两者的相关知识，比如 `prop-types` 的使用、`setState()` 方法详解和较加实践等，最后我们还自问自答了几个问题，加深了对组件属性和状态的理解。

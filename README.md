@@ -423,7 +423,7 @@
 
 [⇧ 返回顶部](#page)
 
-* [ ] [React Native - 属性和状态](./src/201811/292238/)
+* [x] [React Native - 属性和状态](./src/201811/292238/)
 * [ ] [React Native - 样式](./src/201811/292255/)
 * [ ] [React Native - 高度和宽度](./src/201811/292302/)
 * [ ] [React Native - 使用 Flexbox 布局](./src/201812/042349/)
