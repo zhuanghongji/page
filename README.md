@@ -426,7 +426,7 @@
 * [x] [React Native - 属性和状态](./src/201811/292238/)
 * [x] [React Native - 样式、高度和宽度](./src/201811/292255/)
 * [x] [React Native - 详解 Flexbox 和 Layout Props](./src/201812/042349/)
-* [ ] [React Native - 处理文本输入](./src/201812/042350/)
+* [x] [React Native - 通过 TextInput 处理文本输入](./src/201812/042350/)
 * [ ] [React Native - 处理触摸事件](./src/201812/042351/)
 * [ ] [React Native - 使用 ScrollView](./src/201812/042352/)
 * [ ] [React Native - 特定于平台的代码](./src/201812/042353/)
