@@ -6,7 +6,7 @@
 * [ ] [待完善](#page)
 * [x] [已完成](#page) 
 
-> 注：每一篇文章都尽可能细致和完整。
+> 注：每一篇文章都应尽可能细致和完整。
 
 ## Java
 
@@ -81,7 +81,7 @@
 * [ ] [Kotlin Examples - Delegation Pattern](./src/201811/292140/)
 * [ ] [Kotlin Examples - Delegated Properties](./src/201811/292141/)
 
-## Objective-C
+## OC
 
 [⇧ 返回顶部](#page)
 
@@ -95,7 +95,7 @@
 * [x] [Swift 编码之旅](./src/201812/021352/)
 
 
-## JavaScript
+## JS
 
 [⇧ 返回顶部](#page)
 
@@ -104,6 +104,13 @@
 * [ ] [ES6 对 ES5 原有对象的一些扩展](./src/201812/042153/)
 * [ ] [通过 Promise 解决回调地狱问题](./src/201812/042217/)
 * [ ] [通过 JSDoc 提高开发效率](./src/201812/042226/)
+
+## TypeScript
+
+[⇧ 返回顶部](#page)
+
+* [ ] TypeScript 基础
+
 
 ## Android
 
@@ -130,6 +137,11 @@
 * [ ] [TabLayout 基本使用](./src/201812/042312/)
 * [ ] TabLayout 源码分析
 * [ ] [Toolbar 使用总结](./src/201812/042313/)
+
+[]() 
+
+* [ ] [一篇文章了解 Kotlin 在 Android 中的基本使用 ](./src/201902/010848/)
+
 
 []()
 
@@ -344,6 +356,7 @@
 
 * [ ] [HenCoder 笔记 - 自定义 View：绘制基础](./src/201812/310950/)
 * [ ] [HenCoder 笔记 - 自定义 View：Paint 详解](./src/201812/310951/)
+
 
 ## iOS
 
