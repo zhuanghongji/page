@@ -1,4 +1,4 @@
-# React 实战进阶：11 Redux(2) 深入理解 Store，action，reducer
+# React 实战进阶 - Redux(2) 深入理解 Store，action，reducer
 
 
 ## Redux 的基本概念

@@ -1,4 +1,4 @@
-# React 实战进阶：12 Redux(3) 在 React 中使用 Redux
+# React 实战进阶 - Redux(3) 在 React 中使用 Redux
 
 ![](./res/connect.png)
 

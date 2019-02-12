@@ -1,4 +1,4 @@
-# React 实战进阶：40 React 中施放的实现
+# React 实战进阶 - React 中施放的实现
 
 ## 使用 React 实现拖放的技术要点
 

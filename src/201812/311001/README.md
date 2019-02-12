@@ -1,4 +1,4 @@
-# React 实战进阶：08 使用脚手架工具创建 React 项目：Create React App，Rekit，Codesandbox
+# React 实战进阶 - 使用脚手架工具创建 React 项目：Create React App，Rekit，Codesandbox
 
 ## 为什么需要脚手架工具
 

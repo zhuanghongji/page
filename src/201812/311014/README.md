@@ -1,4 +1,4 @@
-# React 实战进阶：21 常用开发调试工具：ESLint，Prettier，React DevTool，Redux DevTool
+# React 实战进阶 - 常用开发调试工具：ESLint，Prettier，React DevTool，Redux DevTool
 
 ## ESLint
 

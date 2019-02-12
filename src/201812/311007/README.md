@@ -1,4 +1,4 @@
-# React 实战进阶：14 Redux(5) 如何组织 action 和 reducer
+# React 实战进阶 - Redux(5) 如何组织 action 和 reducer
 
 ## 标准形式 Redux Action 的问题
 

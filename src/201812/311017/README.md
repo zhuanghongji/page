@@ -1,4 +1,4 @@
-# React 实战进阶：24 拆分复杂度(2) 如何组织 component，action 和 reducer
+# React 实战进阶 - 拆分复杂度(2) 如何组织 component，action 和 reducer
 
 
 ## 文件夹结构

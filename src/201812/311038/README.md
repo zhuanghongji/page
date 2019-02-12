@@ -1,4 +1,4 @@
-# React 实战进阶：45 使用 Chrome DevTool 进行性能调优
+# React 实战进阶 - 使用 Chrome DevTool 进行性能调优
 
 ## 借助工具发现性能问题
 

@@ -1,4 +1,5 @@
-# React 实战进阶：19 使用 Next.js 创建服务器渲染的 React 应用
+# React 实战进阶 - 
+使用 Next.js 创建服务器渲染的 React 应用
 
 
 ## 同构应用的概念

@@ -1,4 +1,4 @@
-# React 实战进阶：05 理解 Virtual DOM 的工作原理，理解 key 属性的作用
+# React 实战进阶 - 理解 Virtual DOM 的工作原理，理解 key 属性的作用
 
 ## JSX 的运行基础：Virtual DOM
 

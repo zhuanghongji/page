@@ -1,4 +1,4 @@
-# React 实战进阶：09 打包和部署：静态服务器，CDN 或 Github Pages
+# React 实战进阶 - 打包和部署：静态服务器，CDN 或 Github Pages
 
 ## 为什么需要打包
 

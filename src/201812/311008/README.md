@@ -1,4 +1,4 @@
-# React 实战进阶：15 Redux(6) 理解 Redux 运行的基础：不可变数据 (Immutability)
+# React 实战进阶 - Redux(6) 理解 Redux 运行的基础：不可变数据 (Immutability)
 
 ## 不可变数据 (immutable data)
 

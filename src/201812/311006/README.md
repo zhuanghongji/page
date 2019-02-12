@@ -1,4 +1,4 @@
-# React 实战进阶：13 Redux(4) 理解异步 action，Redux 中间件
+# React 实战进阶 - Redux(4) 理解异步 action，Redux 中间件
 
 ## Redux 异步请求
 

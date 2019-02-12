@@ -1,4 +1,4 @@
-# React 实战进阶：20 使用 Jest，Enzyme 等工具进行单元测试
+# React 实战进阶 - 使用 Jest，Enzyme 等工具进行单元测试
 
 
 ## React 让单元测试变得更容易

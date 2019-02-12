@@ -1,4 +1,4 @@
-# React 实战进阶：10 Redux(1) 前端为何需要状态管理库
+# React 实战进阶 - Redux(1) 前端为何需要状态管理库
 
 <img src="./res/react-redux.png" width="720" />
 

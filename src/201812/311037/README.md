@@ -1,4 +1,4 @@
-# React 实战进阶：44 下一代 React：异步渲染
+# React 实战进阶 - 下一代 React：异步渲染
 
 时间分片(Time Slicing)：
 * DOM 操作的优先级低于浏览器原生行qf例如键盘和鼠标输入f从而保证操作的流畅。
