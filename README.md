@@ -471,7 +471,7 @@
 ## Flutter
 
 * [ ] Flutter 入门三部曲：学习 Dart 语法
-* [ ] Flutter 入门三部曲：看尽 Widget 繁华
+* [ ] [Flutter 入门三部曲：看尽 Widget 繁华](./src/201903/251941/)
 * [ ] Flutter 入门三部曲：构建一个相对完整的应用
 
 ## React Navigation
