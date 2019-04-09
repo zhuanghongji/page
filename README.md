@@ -352,10 +352,12 @@
 * [ ] [MPAndroidChart 笔记：设置数据，设置颜色](./src/201904/082244/)
 * [ ] [MPAndroidChart 笔记：数据格式器](./src/201904/082245/)
 * [ ] [MPAndroidChart 笔记：图表的具体设置](./src/201904/082246/)
-* [ ] [MPAndroidChart 笔记：动态和实时数据](./src/201904/082247/)
-* [ ] [MPAndroidChart 笔记：修改视窗](./src/201904/082248/)
-* [ ] [MPAndroidChart 笔记：MarkerView](./src/201904/082249/)
-* [ ] [MPAndroidChart 笔记：ChartData & DataSet](./src/201904/082250/)
+* [ ] [MPAndroidChart 笔记：图例](./src/201904/082247/)
+* [ ] [MPAndroidChart 笔记：动态和实时数据](./src/201904/082248/)
+* [ ] [MPAndroidChart 笔记：修改视窗](./src/201904/082249/)
+* [ ] [MPAndroidChart 笔记：动画](./src/201904/082250/)
+* [ ] [MPAndroidChart 笔记：MarkerView](./src/201904/082251/)
+* [ ] [MPAndroidChart 笔记：ChartData & DataSet](./src/201904/082252/)
 
 []()
 

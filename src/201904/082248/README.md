@@ -1,1 +1,1 @@
-# MPAndroidChart 笔记：修改视窗
+# MPAndroidChart 笔记：动态和实时数据
