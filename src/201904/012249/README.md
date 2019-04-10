@@ -74,4 +74,8 @@
 * 能看懂，能记住。
 * 图文并茂，生动有趣。
 
+你可以在我的另外一个仓库中找到这十几篇文章的完整示例代码：
+* [https://github.com/zhuanghongji/java-design-pattern-examples](https://github.com/zhuanghongji/java-design-pattern-examples)
+
 <img src="./res/004.gif" width="160">
+
