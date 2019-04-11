@@ -31,7 +31,7 @@ fun main(args: Array<String>) {
 Hello, World!
 ```
 
-## 拓展
+## 扩展
 
 Kotlin 是一种在 Java 虚拟机上运行的静态类型编程语言，由 JetBrains 设计开发并开源，第一个官方稳定版本 V1.0 于 2016 年 02 月 15 日发布。在 Google I/O 2017 中，Goolge 宣布 Kotlin 成为 Android 开发一级语言。
 
