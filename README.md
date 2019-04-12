@@ -45,7 +45,7 @@
 
 * [x] [Kotlin Examples - Hello World](./src/201811/292101/)
 * [x] [Kotlin Examples - Variables](./src/201811/292103/)
-* [ ] [Kotlin Examples - Functions](./src/201811/292102/)
+* [x] [Kotlin Examples - Functions](./src/201811/292102/)
 * [ ] [Kotlin Examples - Null Safety](./src/201811/292104/)
 * [ ] [Kotlin Examples - Classes](./src/201811/292105/)
 * [ ] [Kotlin Examples - Generics](./src/201811/292106/)
@@ -60,7 +60,6 @@
 * [ ] [Kotlin Examples - Sealed Classes](./src/201811/292115/)
 * [ ] [Kotlin Examples - Object keyword](./src/201811/292116/)
 * [ ] [Kotlin Examples - Higher-Order Functions](./src/201811/292117/)
-* [ ] [Kotlin Examples - Lambda Functions](./src/201811/292118/)
 * [ ] [Kotlin Examples - Extension Functions and Properties](./src/201811/292119/)
 * [ ] [Kotlin Examples - let](./src/201811/292120/)
 * [ ] [Kotlin Examples - with](./src/201811/292121/)
