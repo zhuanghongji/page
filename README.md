@@ -46,7 +46,6 @@
 * [x] [Kotlin Examples - Hello World](./src/201811/292101/)
 * [x] [Kotlin Examples - Variables](./src/201811/292103/)
 * [x] [Kotlin Examples - Functions](./src/201811/292102/)
-* [ ] [Kotlin Examples - Null Safety](./src/201811/292104/)
 * [ ] [Kotlin Examples - Classes](./src/201811/292105/)
 * [ ] [Kotlin Examples - Generics](./src/201811/292106/)
 * [ ] [Kotlin Examples - Inheritance](./src/201811/292107/)
