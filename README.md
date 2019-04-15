@@ -47,7 +47,7 @@
 * [x] [Kotlin Examples - Variables](./src/201811/292103/)
 * [x] [Kotlin Examples - Functions](./src/201811/292102/)
 * [x] [Kotlin Examples - Classes](./src/201811/292105/)
-* [ ] [Kotlin Examples - Generics](./src/201811/292106/)
+* [x] [Kotlin Examples - Generics](./src/201811/292106/)
 * [ ] [Kotlin Examples - When](./src/201811/292108/)
 * [ ] [Kotlin Examples - Loops](./src/201811/292109/)
 * [ ] [Kotlin Examples - Ranges](./src/201811/292110/)
