@@ -50,7 +50,7 @@
 * [x] [Kotlin Examples - Generics](./src/201811/292106/)
 * [x] [Kotlin Examples - When, Loops, Ranges, Conditional Expression](./src/201811/292108/)
 * [x] [Kotlin Examples - Object keyword](./src/201811/292116/)
-* [ ] [Kotlin Examples - Extension Functions and Properties](./src/201811/292119/)
+* [x] [Kotlin Examples - Extension Functions and Properties](./src/201811/292119/)
 * [ ] [Kotlin Examples - let](./src/201811/292120/)
 * [ ] [Kotlin Examples - with](./src/201811/292121/)
 * [ ] [Kotlin Examples - filter](./src/201811/292122/)
