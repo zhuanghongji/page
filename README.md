@@ -52,13 +52,9 @@
 * [x] [Kotlin Examples - Object keyword](./src/201811/292116/)
 * [x] [Kotlin Examples - Extension Functions and Properties](./src/201811/292119/)
 * [x] [Kotlin Examples - let, with, run, also, apply](./src/201811/292120/)
-* [ ] [Kotlin Examples - Collections](./src/201811/292122/)
-* [ ] [Kotlin Examples - Named Arguments](./src/201811/292136/)
-* [ ] [Kotlin Examples - String Templates](./src/201811/292137/)
-* [ ] [Kotlin Examples - Destructuring Declarations](./src/201811/292138/)
-* [ ] [Kotlin Examples - Smart Casts](./src/201811/292139/)
-* [ ] [Kotlin Examples - Delegation Pattern](./src/201811/292140/)
-* [ ] [Kotlin Examples - Delegated Properties](./src/201811/292141/)
+* [x] [Kotlin Examples - Collections](./src/201811/292122/)
+* [ ] [Kotlin Examples - Delegate](./src/201811/292140/)
+* [ ] [Kotlin Examples - Else](./src/201811/292142/)
 
 []()
 
