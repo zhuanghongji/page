@@ -24,7 +24,15 @@
 
 ### List
 
-一个列表是项目的有序集合。在 Kotlin 中，列表可以是 mutable (MutableList) 或只读 (List) 。对于列表创建，请将标准库函数 `listOf()` 用于只读列表和 `mutableListOf()` 可变列表。要防止不必要的修改，请通过将可变列表强制转换为只读视图 `List`。
+`List`是 items 的有序集合。在 Kotlin 中，List 分为两种：
+* `List`: 只读的。
+* `MutableList`: 可变的。
+
+对于 List 的创建，标准库中也提供了相应函数：
+* `listOf()`: 用于只读列表
+* `mutableListOf()`: 用于可变列表。
+
+> 如果想防止不必要的修改，可以将 `MutableList` 强制转换为 `List`。
 
 ```kt
 val systemUsers: MutableList<Int> = mutableListOf(1, 2, 3)        // 1
@@ -47,20 +55,27 @@ fun main() {
     // getSysSudoers().add(5) <- Error!                           // 8
 }
 ```
+```kt
+Tot sudoers: 4
+Some useful info on user 1
+Some useful info on user 2
+Some useful info on user 3
+Some useful info on user 4
+```
 
 1. 创建一个 `MutableList`。
-2. 创建列表的只读视图。
-3. 添加一个新项目 `MutableList`。
-4. 一个返回不可变的函数 `List`。
-5. 更新 `MutableList`。所有相关的只读视图也会更新，因为它们指向同一个对象。
-6. 检索只读列表的大小。
-7. 迭代列表并打印其元素。
-8. 尝试写入只读视图会导致编译错误。
+2. 通过 `MutableList` 实例来创建一个 `List`。
+3. 添加一个新 item 到 `MutableList` 中。
+4. 一个返回不可变 `List` 的函数 。
+5. 更新 `MutableList`，所有相关的只读 items 也会更新，因为它们指向同一个对象。
+6. 检索只读 List 的大小。
+7. 迭代 List 并打印其元素。
+8. 尝试写入只读 item 会导致编译错误。
 
 
 ### Set
 
-一组是一个无序的集合，它不支持重复。对于创建集，有功能 `setOf()` 和 `mutableSetOf()`。可以通过将其转换为可变集来获得只读视图 `Set`。
+`Set` 是一个无序的集合，且不支持放置重复的元素。对于创建 `Set` 结合也有着对应的标准函数 `setOf()` 和 `mutableSetOf()`。可以通过将其转换为可变集来获得只读视图 `Set`。
 
 ```kt
 val openIssues: MutableSet<String> = mutableSetOf("uniqueDescr1", "uniqueDescr2", "uniqueDescr3") // 1
@@ -81,17 +96,21 @@ fun main() {
     println("Issue $anIssueAlreadyIn ${getStatusLog(addIssue(anIssueAlreadyIn))}")                // 5 
 }
 ```
+```kt
+Issue uniqueDescr4 registered correctly.
+Issue uniqueDescr2 marked as duplicate and rejected.
+```
 
-1. 添加元素到 `Set`。
-2. 返回一个布尔值，显示元素是否实际添加。
+1. 通过 `mutableSetOf()` 函数创建一个可变的 Set 实例。
+2. 返回一个布尔值，表示元素实际添加是否成功。
 3. 返回基于函数输入参数的字符串。
 4. 打印成功消息：将新元素添加到 `Set`。
-5. 打印失败消息：无法添加元素，因为它复制了现有元素。
+5. 打印失败消息：无法添加元素，因为它与其中一个现有元素相同。
 
 
 ### Map
 
-甲地图是键/值对，其中每个密钥都是唯一的并用于检索相应的值的集合。对于创建地图，有功能 `mapOf()` 和 `mutableMapOf()`。可以通过将其转换为可变映射获得只读视图 `Map`。
+`Map` 是一系列键值对的集合，其中每个 key 都是唯一的并且可用于检索相应的 value。对于创建 `Map`，也是有对应的标准函数 `mapOf()` 和 `mutableMapOf()`。
 
 ```kt
 const val POINTS_X_PASS: Int = 15
@@ -122,13 +141,26 @@ fun main() {
     accountsReport()                                                                    // 9
 }
 ```
+```kt
+EZ-Pass report:
+ID 1: credit 100
+ID 2: credit 100
+ID 3: credit 100
+Updating 1...
+Updating 1...
+Error: Trying to update a non-existing account (id: 5)
+EZ-Pass report:
+ID 1: credit 130
+ID 2: credit 100
+ID 3: credit 100
+```
 
-1. 创建一个可变的Map。
-2. 创建一个只读的视图Map。
-3. 检查是否Map存在密钥。
-4. 读取相应的值并使用常量值递增。
-5. 迭代不可变Map并打印键/值对。
-6. 在更新之前读取帐户点余额。
+1. 通过 `mutableMapOf()` 函数创建一个可变的 `Map`。
+2. 通过可变的 `Map` 创建一个只读的 `Map`。
+3. 检查 `Map` 中是否存在给定的 key。
+4. 读取 key 对应的值并使用常量值进行递增。
+5. 迭代不可变 `Map` 并打印出键值对的描述。
+6. 在更新之前读取帐户点余额 (accounts report)。
 7. 两次更新现有帐户。
 8. 尝试更新不存在的帐户：输出错误消息。
 9. 更新后读取帐户点余额。
@@ -136,11 +168,10 @@ fun main() {
 
 ### filter
 
-filter 是标准库中定义的函数，可用于集合的过滤，它接收的断言 (predicate) 作为 lambda 参数。
+`filter` 是标准库中定义的函数，可用于集合的过滤，它接收的 lambda 参数会作为一个过滤断言 (predicate)。
 
 ```kt
 fun main() {
-
 //sampleStart
     val numbers = listOf(1, -2, 3, -4, 5, -6)      // 1
 
@@ -154,19 +185,23 @@ fun main() {
     println("Negative Numbers: $negatives")
 }
 ```
+```kt
+Numbers: [1, -2, 3, -4, 5, -6]
+Positive Numbers: [1, 3, 5]
+Negative Numbers: [-2, -4, -6]
+```
 
 1. 定义一个数字集合。
-2. 过滤负数.
-3. 或者使用更短的方式来过滤整数。
+2. 过滤正数。
+3. 或者使用更短的方式来过滤出正数。
 
 
 ### map
 
-map 是在标准库中定义的扩展函数，可用于转将集合转好成另一个集合。它需要一个 transformer 作为 lambda 参数。
+`map` 是在标准库中定义的扩展函数，可将一个集合转换为另一个集合。它需要一个 lambda 参数作为转换器 (transformer)。
 
 ```kt
 fun main() {
-
 //sampleStart
     val numbers = listOf(1, -2, 3, -4, 5, -6)     // 1
 
@@ -180,15 +215,20 @@ fun main() {
     println("Tripled Numbers: $tripled")
 }
 ```
+```kt
+Numbers: [1, -2, 3, -4, 5, -6]
+Doubled Numbers: [2, -4, 6, -8, 10, -12]
+Tripled Numbers: [3, -6, 9, -12, 15, -18]
+```
 
-1. 定义数字集合。
+1. 定义一个数字集合。
 2. 将数字双倍化。
 3. 或者使用更短的方式将数字三倍化。
 
 
 ### any, all, none
 
-这三扩展函数基于给定断言 (predicate) 回答了关于集合中存有元素的问题。
+这三扩展函数基于给定断言 (predicate) 来解决集合中存有元素的问题。
 
 **`any` 函数**
 
@@ -196,7 +236,6 @@ fun main() {
 
 ```kt
 fun main() {
-
 //sampleStart
     val numbers = listOf(1, -2, 3, -4, 5, -6)            // 1
 
@@ -210,8 +249,13 @@ fun main() {
     println("Is there any number greater than 6: $anyGT6")
 }
 ```
+```kt
+Numbers: [1, -2, 3, -4, 5, -6]
+Is there any number less than 0: true
+Is there any number greater than 6: false
+```
 
-1. 定义数字集合。
+1. 定义一个数字集合。
 2. 集合中是否存在小于 0 的元素。
 3. 集合中是否存在大于 6 的元素。
 
@@ -222,7 +266,6 @@ fun main() {
 
 ```kt
 fun main() {
-
 //sampleStart
     val numbers = listOf(1, -2, 3, -4, 5, -6)            // 1
 
@@ -236,8 +279,13 @@ fun main() {
     println("All numbers are less than 6: $allLess6")
 }
 ```
+```kt
+Numbers: [1, -2, 3, -4, 5, -6]
+All numbers are even: false
+All numbers are less than 6: true
+```
 
-1. 定义数字集合。
+1. 定义一个数字集合。
 2. 集合中所有元素是否都是偶数。
 3. 集合中所有元素是否都小于 6。
 
@@ -248,7 +296,6 @@ fun main() {
 
 ```kt
 fun main() {
-
 //sampleStart
     val numbers = listOf(1, -2, 3, -4, 5, -6)            // 1
 
@@ -262,8 +309,13 @@ fun main() {
     println("No element greater than 6: $allLess6")
 }
 ```
+```kt
+Numbers: [1, -2, 3, -4, 5, -6]
+All numbers are even: false
+No element greater than 6: true
+```
 
-1. 定义数字集合。
+1. 定义一个数字集合。
 2. 集合中是否没有单数，即集合中所有的元素都是偶数。
 3. 集合中是否没有元素大于 6。
 
@@ -274,7 +326,6 @@ fun main() {
 
 ```kt
 fun main() {
-
 //sampleStart
     val words = listOf("Lets", "find", "something", "in", "collection", "somehow")  // 1
 
@@ -288,6 +339,11 @@ fun main() {
     println("The last word starting with \"some\" is \"$last\"")
     println("The first word containing \"nothing\" is ${nothing?.let { "\"$it\"" } ?: "null"}")
 }
+```
+```kt
+The first word starting with "some" is "something"
+The last word starting with "some" is "somehow"
+The first word containing "nothing" is null
 ```
 
 1. 定义有着不同单词元素的集合。
@@ -304,7 +360,6 @@ fun main() {
 
 ```kt
 fun main() {
-
 //sampleStart
     val numbers = listOf(1, -2, 3, -4, 5, -6)            // 1
 
@@ -318,6 +373,10 @@ fun main() {
     println("Numbers: $numbers")
     println("First $first, last $last, first even $firstEven, last odd $lastOdd")
 }
+```
+```kt
+Numbers: [1, -2, 3, -4, 5, -6]
+First 1, last -6, first even -2, last odd 5
 ```
 
 1. 定义数字集合。
@@ -333,7 +392,6 @@ fun main() {
 
 ```kt
 fun main() {
-
 //sampleStart
     val numbers = listOf(1, -2, 3, -4, 5, -6)            // 1
 
@@ -344,6 +402,10 @@ fun main() {
     println("Total number of elements: $totalCount")
     println("Number of even elements: $evenCount")
 }
+```
+```kt
+Total number of elements: 6
+Number of even elements: 3
 ```
 
 1. 定义数字集合。
@@ -359,12 +421,9 @@ fun main() {
 
 返回的 map 保留着元素集合 entry 的迭代顺序。
 
-
 ```kt
 fun main() {
-
 //sampleStart
-
     data class Person(val name: String, val city: String, val phone: String) // 1
 
     val people = listOf(                                                     // 2
@@ -376,7 +435,6 @@ fun main() {
     val phoneBook = people.associateBy { it.phone }                          // 3
     val cityBook = people.associateBy(Person::phone, Person::city)           // 4
     val peopleCities = people.groupBy(Person::city, Person::name)            // 5
-
 //sampleEnd
 
     println("People: $people")
@@ -388,8 +446,7 @@ fun main() {
     println("People living in each city: $peopleCities")
 }
 ```
-
-```
+```kt
 People: [Person(name=John, city=Boston, phone=+1-888-123456), Person(name=Sarah, city=Munich, phone=+49-777-789123), Person(name=Svyatoslav, city=Saint-Petersburg, phone=+7-999-456789), Person(name=Vasilisa, city=Saint-Petersburg, phone=+7-999-123456)]
 
 Phone book: {+1-888-123456=Person(name=John, city=Boston, phone=+1-888-123456), +49-777-789123=Person(name=Sarah, city=Munich, phone=+49-777-789123), +7-999-456789=Person(name=Svyatoslav, city=Saint-Petersburg, phone=+7-999-456789), +7-999-123456=Person(name=Vasilisa, city=Saint-Petersburg, phone=+7-999-123456)}
@@ -398,7 +455,6 @@ City book: {+1-888-123456=Boston, +49-777-789123=Munich, +7-999-456789=Saint-Pet
 
 People living in each city: {Boston=[John], Munich=[Sarah], Saint-Petersburg=[Svyatoslav, Vasilisa]}
 ```
-
 
 1. 定义数据类来描述一个 Person。
 2. 定义已知 Person 的集合。
@@ -413,7 +469,6 @@ People living in each city: {Boston=[John], Munich=[Sarah], Saint-Petersburg=[Sv
 
 ```kt
 fun main() {
-
 //sampleStart
     val numbers = listOf(1, -2, 3, -4, 5, -6)                // 1
 
@@ -424,6 +479,11 @@ fun main() {
     println("Positive numbers: $postives")
     println("Negative numbers: $negatives")
 }
+```
+```kt
+Numbers: [1, -2, 3, -4, 5, -6]
+Positive numbers: [1, 3, 5]
+Negative numbers: [-2, -4, -6]
 ```
 
 1. 定义数字集合。
@@ -437,21 +497,19 @@ fun main() {
 
 ```kt
 fun main() {
-
-    //sampleStart
+//sampleStart
     val numbers = listOf(1, 2, 3)                        // 1
 
     val tripled1 = numbers.flatMap { listOf(it, it, it) } // 2
     val tripled2 = numbers.flatMap { listOf(it * 4, it, it) } // 2
-    //sampleEnd
+//sampleEnd
 
     println("Numbers: $numbers")
     println("Transformed1: $tripled1")
     println("Transformed2: $tripled2")
 }
 ```
-
-```
+```kt
 Numbers: [1, 2, 3]
 Transformed1: [1, 1, 1, 2, 2, 2, 3, 3, 3]
 Transformed2: [4, 1, 1, 8, 2, 2, 12, 3, 3]
@@ -467,7 +525,6 @@ Transformed2: [4, 1, 1, 8, 2, 2, 12, 3, 3]
 
 ```kt
 fun main() {
-
     val numbers = listOf(1, 2, 3)
     val empty = emptyList<Int>()
 
@@ -475,8 +532,7 @@ fun main() {
     println("Empty: $empty, min = ${empty.min()}, max = ${empty.max()}")        // 2
 }
 ```
-
-```
+```kt
 Numbers: [1, 2, 3], min = 1 max = 3
 Empty: [], min = null, max = null
 ```
@@ -493,7 +549,6 @@ Empty: [], min = null, max = null
 
 ```kt
 fun main() {
-
 //sampleStart
     val shuffled = listOf(5, 4, 2, 1, 3)     // 1
     val natural = shuffled.sorted()          // 2
@@ -505,8 +560,7 @@ fun main() {
     println("Inverted natural order: $inverted")
 }
 ```
-
-```
+```kt
 Shuffled: [5, 4, 2, 1, 3]
 Natural order: [1, 2, 3, 4, 5]
 Inverted natural order: [5, 4, 3, 2, 1]
@@ -527,7 +581,6 @@ Inverted natural order: [5, 4, 3, 2, 1]
 
 ```kt
 fun main(args: Array<String>) {
-
 //sampleStart
     val map = mapOf("key" to 42)
 
@@ -545,7 +598,6 @@ fun main(args: Array<String>) {
     catch (e: NoSuchElementException) {
         println("Message: $e")
     }
-
 //sampleEnd
 
     println("value1 is $value1")
@@ -554,8 +606,7 @@ fun main(args: Array<String>) {
     println("value4 is $value4")
 }
 ```
-
-```
+```kt
 Message: java.util.NoSuchElementException: Key anotherKey is missing in the map.
 value1 is 42
 value2 is null
@@ -577,7 +628,6 @@ value4 is 4
 
 ```kt
 fun main() {
-
 //sampleStart
     val A = listOf("a", "b", "c")                  // 1
     val B = listOf(1, 2, 3, 4)                     // 1
@@ -590,8 +640,7 @@ fun main() {
     println("\$A\$B: $resultReduce")
 }
 ```
-
-```
+```kt
 A to B: [(a, 1), (b, 2), (c, 3)]
 $A$B: [a1, b2, c3]
 ```
@@ -608,7 +657,6 @@ $A$B: [a1, b2, c3]
 
 ```
 fun main() {
-
 //sampleStart
     val list = listOf(0, 10, 20)
     println(list.getOrElse(1) { 42 })    // 1
@@ -616,8 +664,7 @@ fun main() {
 //sampleEnd
 }
 ```
-
-```
+```kt
 10
 42
 ```
@@ -630,7 +677,6 @@ fun main() {
 
 ```kt
 fun main() {
-
 //sampleStart
     val map = mutableMapOf<String, Int?>()
     println(map.getOrElse("x") { 1 })       // 1
@@ -643,8 +689,7 @@ fun main() {
 //sampleEnd
 }
 ```
-
-```
+```kt
 1
 3
 1
@@ -652,3 +697,30 @@ fun main() {
 
 1. 打印出默认值，因为键 `"X"` 是缺失的。
 2. 打印出键 `"X"` 对应的值 `3`。
+
+
+## 扩展
+
+前面我们一个一个地讲解了集合相关的操作函数，但感觉有点混乱。所以下面我们来进行一个分类：
+
+![](./res/001.jpg)
+
+这些操作函数是可以链式调用的，比如：
+
+```kt
+fun main() {
+    val numbers = listOf(-3, -2, -1, 0, 1, 2, 3)
+    numbers.filter { it > 0 }
+            .sortedBy { -it }
+            .forEach { println(it) }
+}
+```
+```kt
+3
+2
+1
+```
+
+## 总结
+
+这篇文章主要是介绍了 Kotlin 中的集合及其相关的操作函数。
