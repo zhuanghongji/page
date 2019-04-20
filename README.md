@@ -54,7 +54,7 @@
 * [x] [Kotlin Examples - let, with, run, also, apply](./src/201811/292120/)
 * [x] [Kotlin Examples - Collections](./src/201811/292122/)
 * [ ] [Kotlin Examples - Delegate](./src/201811/292140/)
-* [ ] [Kotlin Examples - Else](./src/201811/292142/)
+* [x] [Kotlin Examples - Else](./src/201811/292142/)
 
 []()
 
