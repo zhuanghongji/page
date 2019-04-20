@@ -54,27 +54,27 @@
 * [x] [Kotlin Examples - let, with, run, also, apply](./src/201811/292120/)
 * [x] [Kotlin Examples - Collections](./src/201811/292122/)
 * [ ] [Kotlin Examples - Delegate](./src/201811/292140/)
-* [x] [Kotlin Examples - Else](./src/201811/292142/)
+* [ ] [Kotlin Examples - Else](./src/201811/292142/)
 
 []()
 
 * [ ] [一篇文章了解 Kotlin 在 Android 中的基本使用](./src/201902/010848/)
 
 
-## JS
+## JS - ES - TS
 
 [⇧ 返回顶部](#page)
 
 * [x] [JavaScript 基础](./src/201812/022245/)
 * [ ] [进一步了解 JavaScript 中的 Number、Array、Date 和 Boolean](./src/201812/041948/)
+
+[]() 
+
 * [ ] [ES6 对 ES5 原有对象的一些扩展](./src/201812/042153/)
 * [ ] [通过 Promise 解决回调地狱问题](./src/201812/042217/)
 * [ ] [通过 JSDoc 提高开发效率](./src/201812/042226/)
 
-
-## TypeScript
-
-[⇧ 返回顶部](#page)
+[]()
 
 * [ ] TypeScript 基础
 
