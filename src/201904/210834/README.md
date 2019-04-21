@@ -1,20 +1,22 @@
 # 深入理解 Handler
 
-在 Android 开发过程中，我们经常会通过 Handler 从子线程切换到主线程进行 UI 更新的操作，当然也可以进行一些其它操作。总的来说：
-* Handler 是 Android SDK 提供给开发者方便进行异步消息处理的类。
-* 我们平时使用的 `AsyncTask` 和 `Retrofit`，其内部都使用到了 Handler 机制并进行一些巧妙的封装。
+在 Android 开发过程中，我们经常会通过 Handler 从子线程切换到主线程以进行 UI 更新的操作，或是进行一些其它操作。总的来说：
+* `Handler` 是 Android SDK 提供的、方便开发者进行异步消息处理的类。
+* 我们平时使用的 `AsyncTask` 和 `Retrofit`，其内部都使用了 Handler 消息机制，并进行了一定程度的巧妙封装。
 
-在这篇文章中，我们会从「基础知识」和「源码分析」这两个维度去深入理解 Handler 的基本使用和实现原理，以便能够在开发过程能够写出更高质量的代码。
+在这篇文章中，我们会从「基础知识」和「源码分析」这两个维度去深入理解 Handler，以便日后能够在开发过程能够写出更高质量的代码。
 
 ## 基础知识
 
 ### 介绍
 
-`Handler` 允许你发送和处理 `Message` 和 `Runnable` 对象 (跟线程的 `MessageQueue` 相关联)。每个 Handler 实例都与一个线程以及该线程的消息队列相关联。当你创建一个新的 Handler 时，它会被绑定到正在创建它的线程的 "线程/消息队列"。从那时起，它就会传递 messages 和 runnables 到消息队列中，然后在它们出队列时指向对应逻辑。
+> 这段介绍主要翻译自官方文档：[Handler](https://developer.android.com/reference/android/os/Handler)
+
+`Handler` 允许你发送并处理 `Message` 和 `Runnable` 对象 (这些对象会存储在跟线程相关联的 `MessageQueue` 中)。每个 Handler 实例都与「一个线程」以及「该线程的消息队列」相关联。当你创建一个新的 Handler 时，它会被绑定到正在创建它的线程的 "线程/消息队列"。从此以后，我们就可以通过 Handler 实例来传递 messages 和 runnables 到消息队列中，然后在它们出队列时执行相关逻辑。
 
 `Handler` 主要有两个用途：
 1. 调度 messages 和 runnables 在将来的某个时刻执行。
-2. 将「在不同于自己线程上执行的操作」压入队列中。
+2. 将在「不同线程上执行的操作」加入到消息队列中。
 
 已实现的消息调度方法有：
 * `post(Runnable)`
@@ -25,11 +27,13 @@
 * `sendMessageAtTime(Message, long)` 
 * `sendMessageDelayed(Message, long)`
 
-Handler 提供的 `post(Runnable)` 方法允许你将 `Runnable` 对象放到消息队列中，并在它们被消息队列接收时进行调用。另外提供的 `handleMessage(Message)` 方法允许你将一个包含 bundle 数据的 `Message` 对象放到消息队列中，并在该 Handler 子类实现的 `handleMessage(Message)` 方法中进行处理。
+Handler 提供的 `post(Runnable)` 方法允许你将 `Runnable` 对象放到消息队列中，并在它们被消息队列接收后马上进行处理 (即执行 Runnable 对象的 `run` 方法)。另外提供的 `sendMessage(Message)` 方法允许你将一个包含 bundle 数据的 `Message` 对象加入到消息队列中，并在合适的时机将该消息对象作为参数传递给 "该 Handler 子类覆写的 `handleMessage(Message)` 方法" 中进行处理。
 
-不管是 post Runnable 还是 send Message，你都可以指定其是在消息队列准备好后马上 (或延迟一段时间后、或在某个具体时间) 进行处理。后两者允许你实现超时 (timeouts)、嘀嗒 (ticks) 等基于时间的一些行为，在下文中的示例代码会演示如何实现。
+不管是 postRunnable 还是 sendMessage，你都可以指定其是在消息队列准备好后马上 (或延迟一段时间后、或在 Android `SystemClock` 的某个具体时间) 进行处理。后两者允许你实现超时 (timeouts)、嘀嗒 (ticks) 等一些基于时间的行为 (在下文中会通过示例演示如何编写相关代码)。
 
-在为应用程序创建进程时，其主线程专门用于运行某个消息队列，这个队列负责管理顶级 (top-level) 的应用程序对象 (比如 Activity，BroadcastReceiver) 及其创建的任何窗口 (Window)。你可以创建自己的线程，并通过 Handler 的 post 或 sendMessage 方法与主线程进行通信，给定的 Runnable 或 Message 会在一个适当的时机被消息队列进行调度和处理。
+在为应用程序创建进程时，其主线程专门用于运行 (run) 对应的消息队列，这个队列负责管理顶级 (top-level) 的应用程序对象 (比如 Activity，BroadcastReceiver) 及其创建的任何窗口 (Window)。
+
+你也可以创建自己的线程，并通过 Handler 的 post 或 sendMessage 方法与主线程进行通信，给定的 Runnable 或 Message 对象会在一个适当的时机被消息队列调度和处理。
 
 ### 使用示例
 
@@ -37,7 +41,7 @@ Handler 提供的 `post(Runnable)` 方法允许你将 `Runnable` 对象放到消
 
 ```java
 // 创建一个 Handler 实例并覆写它的 handleMessage 方法
-// 触发按钮事件后，在子线程中发送一个空消息到消息队列
+// 在触发按钮事件后，在子线程中发送一个空消息到消息队列
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
@@ -115,7 +119,7 @@ private Handler mHandler = new Handler(new Handler.Callback() {
 
 > 注意：不管是上述哪种写法，其实都没有真正解决 Handler 可能带来的内存泄漏问题。
 
-在前面的介绍中，我们提到可以利用 Handler 实现超时、滴答等基于时间的行为，下面我们分别通过代码来演示下。
+在前面的介绍中，我们提到可以利用 Handler 来实现超时、滴答等基于时间的行为，下面是要演示的代码和分析。
 
 **超时示例：**
 
@@ -176,7 +180,7 @@ btnStop.setOnClickListener(new View.OnClickListener() {
 });
 ```
 
-会每隔一秒输出 `滴..` 日志，直到你点击了 `btnStop` 按钮。
+执行这段代码后，会每隔一秒输出一行 `滴..` 日志，直到你点击了 `btnStop` 按钮。
 
 ```java
 2019-03-12 17:26:03.702 I/MainActivity: 滴..
@@ -187,33 +191,39 @@ btnStop.setOnClickListener(new View.OnClickListener() {
 
 ### Handler 的四大组件和运作机制
 
-Handler 的四大组件分别是 `Handler`、`Looper`、`Message`、`MessageQueue`，四者相辅相成。
+Handler 的消息机制主要有以下四个部分组成：
+* `Handler`
+* `Looper` 
+* `Message` 
+* `MessageQueue`
 
 先来看一个示意图：
 
 <img src="./res/001.png" width="480">
 
-* `Handler`: 用来发送和处理消息。
-* `Looper`: 读取消息队列中的消息并交由对应的 Handler 进行处理。
-* `Message`: 消息，由 Handler 发送并处理。
-* `MessageQueue`: 管理 Message 的队列，即消息队列。
+* `Handler`: 可用来发送和处理消息对象。
+* `Looper`: 读取消息队列中的消息并交由对应的 Handler 对象进行分发和处理。
+* `Message`: 消息，消息对象由 Handler 发送和处理。
+* `MessageQueue`: 管理 Message 的队列，即我们所说的消息队列。
 
 
 再来看一个示意图：
 
 <img src="./res/002.png" width="600">
 
-* Looper 由线程持有，且每个线程只有一个 Lopper。
-* MessageQueue 由 Looper 创建并管理，原则是先进先出。
-* Message 会持有发送它的 Handler 的引用，在 Looper 将其从消息队列中取出时会调用 `target.handleMessage()` 进行处理。
-* 一个 Looper 可对应多个 Handler。
+* Looper 由线程持有，一个线程最多只有一个 Lopper 对象。
+* MessageQueue 由 Looper 进行创建和管理，其中的消息对象有着严格的时间顺序，先进不一定先出。
+* Message 会持有发送它的 Handler 对象的引用，在 Looper 将其从消息队列中取出时会调用 `msg.target.dispatchMessage(msg);` 进行分发和处理。
+* 一个 Looper 可对应多个 Handler 实例。
+* 如果希望 Handler 能够正常创建，那创建 Handler 对象的线程必须有一个 Looper 对象。
 
-怎么理解「一个 Looper 可对应多个 Handler」？
-* 比如说，你在不同的 Activity 中创建了多个 Handler。如果都是在主线程中进行创建的，那么它们都对应于主线程持有的同一个 Looper。
+怎么理解 **一个 Looper 可对应多个 Handler 实例** 这句话？
+* 比如说，如果你在 Activity 的 `onCreate()` 方法中创建了多个 Handler 对象。因为 `onCreate()` 方法是在主线程中执行的，所以这些创建的 Handler 对象内部持有的 Looper 对象其实是同一个。
 
-另外，如果希望 Handler 正常工作，在当前线程就必须由一个 Looper 对象。
+怎么理解 **创建 Handler 对象的线程必须有一个 Looper 对象** 这句话？
+* 因为 Handler 的构造函数中会先从当前线程中获取 `Looper` 对象，如果该对象为 `null` 就会直接抛出异常。
 
-我们来演示一下当前线程没有 Looper 的情况：
+我们来演示一下当前线程没有 Looper 对象的情况：
 
 ```java
 new Thread(new Runnable() {
@@ -236,7 +246,11 @@ new Thread(new Runnable() {
         at java.lang.Thread.run(Thread.java:764)
 ```
 
-根据报错日志可以看出：我们是不能在没有 `Looper.prepare()` 的线程中创建 Handler 的。那像上面的报错代码，我们应该如何在新的线程中创建 Handler 呢？修改代码后的正确姿势如下：
+报错日志上说：不能在没有调用 `Looper.prepare()` 的线程中创建 Handler 对象。
+
+那如果我们想在子线程中创建 Handler 对象，应该怎么做呢？
+
+修改上面会报错的代码，得到正确姿势如下：
 
 ```java
 // 正确姿势1
@@ -279,7 +293,7 @@ new Thread(new Runnable() {
 }).start();
 ```
 
-执行上面代码片段后，输出日志如下：
+执行正确姿势的代码片段后，日志输出如下：
 
 ```java
 2019-03-13 01:22:10.073 I/MainActivity: main thread id = 2
@@ -288,50 +302,55 @@ new Thread(new Runnable() {
 2019-03-13 01:22:10.127 I/MainActivity: 姿势2：current thread id = 2
 ```
 
-注意，没有输出 `这行代码不会执行` 这个日志噢。因为 `Looper.loop()` 方法内部是一个 `for (;;) { ... }` 死循环，会阻塞当前线程的运行，除非你显示调用了 `handler.getLooper().quit()` 方法来结束这个循环。
+注意看，上面的日志输出中并没有 `这行代码不会执行` 噢。因为 `Looper.loop()` 方法内部有一个 `for (;;) { ... }` 死循环，该死循环会阻塞当前线程的运行。除非你显式调用了 `handler.getLooper().quit()` 来结束这个循环，否者 `looper()` 之后的代码不会被执行。
 
-另外从日志打印出来的线程 id 可以看出，姿势 1 中创建的 Handler 不管是 sendMessage 还是 post 的最后处理逻辑都是在子线程中运行的。也就是说，对应的 `handleMessage` 和 `run` 方法并不都是在主线程中执行，得看主线程的 Looper 对应哪一个线程。
-
-<!-- ### 小结
-
-* Handler 在创建的时候会获取 -->
+另外从日志输出的线程 id 可以看出，"正确姿势1" 中创建的 Handler 不管是 sendMessage 还是 postRunnable，最后处理逻辑都是在子线程中执行的。也就是说，Handler 对应的 `handleMessage` 和 `run` 方法并不都是在主线程中执行。决定在哪个线程执行实际上是由 `Handler` 中 `Looper` 对象决定的，`Looper` 在是在哪个线程创建的，就在哪个线程执行相关逻辑。
 
 
 ## 源码分析
 
-### 创建 Handler
+源码分析主要分为以下几个部分：
+* 创建 `Handler`
+* `handler.sendMessage(Message)` 和 `handler.post(Runnable)`
+* 创建 `Looper`
+* 创建 `MessageQueue`
+* `messageQueue.next()`
 
-<!-- 在前面的基础知识部分，我们知道 Handler 机制中有四大组件，下面我们来逐个分析对应的源码。
+### 创建 `Handler`
 
-**Handler** -->
-
-`Handler` 隐式继承自 `Object`，先来看它的一个主要的构造方法源码：
+`Handler` 隐式继承自 `Object`，它的一个主要构造方法源代码如下：
 
 ```java
 public class Handler {
 
-  public Handler(Callback callback, boolean async) {
-      if (FIND_POTENTIAL_LEAKS) {
-          final Class<? extends Handler> klass = getClass();
-          if ((klass.isAnonymousClass() || klass.isMemberClass() || klass.isLocalClass()) &&
-                  (klass.getModifiers() & Modifier.STATIC) == 0) {
-              Log.w(TAG, "The following Handler class should be static or leaks might occur: " +
-                  klass.getCanonicalName());
-          }
-      }
+    final Callback mCallback;
 
-      mLooper = Looper.myLooper();                // 1
-      if (mLooper == null) {
-          throw new RuntimeException(
-              "Can't create handler inside thread " + Thread.currentThread()
-                      + " that has not called Looper.prepare()");
-      }
-      mQueue = mLooper.mQueue;
-      mCallback = callback;
-      mAsynchronous = async;
-  }
+    public Handler(Callback callback, boolean async) {
+        if (FIND_POTENTIAL_LEAKS) {
+            final Class<? extends Handler> klass = getClass();
+            if ((klass.isAnonymousClass() || klass.isMemberClass() || klass.isLocalClass()) &&
+                    (klass.getModifiers() & Modifier.STATIC) == 0) {
+                Log.w(TAG, "The following Handler class should be static or leaks might occur: " +
+                    klass.getCanonicalName());
+            }
+        }
 
-  // ...
+        mLooper = Looper.myLooper();                // 1
+        if (mLooper == null) {
+            throw new RuntimeException(
+                "Can't create handler inside thread " + Thread.currentThread()
+                        + " that has not called Looper.prepare()");
+        }
+        mQueue = mLooper.mQueue;                    // 2
+        mCallback = callback;                       // 3
+        mAsynchronous = async;
+    }
+
+    public interface Callback {
+        public boolean handleMessage(Message msg);
+    }
+
+    // ...
 }
 ```
 
@@ -341,7 +360,7 @@ public final class Looper {
     static final ThreadLocal<Looper> sThreadLocal = new ThreadLocal<Looper>();
     private static Looper sMainLooper;  // guarded by Looper.class
 
-    public static @Nullable Looper myLooper() {   // 2
+    public static @Nullable Looper myLooper() {     // 4
         return sThreadLocal.get();
     }
 
@@ -349,17 +368,26 @@ public final class Looper {
 }
 ```
 
-结合 `1` 和 `2` 两处可以看出，Handler 在创建的时候会通过 `ThreadLocal` 获取到当前线程的 `Looper` 对象，如果该对象为 `null` 就会抛出 `not called Looper.prepare()` 异常。那 Looper 应该怎样去 `prepare()` 呢？
+* 结合 `1` 和 `4` 两处代码可以看出，在创建 Handler 对象的时候会先通过 `ThreadLocal` 获取到存储在当前线程中的 `Looper` 对象。如果该对象为 `null`，则抛出 `... not called Looper.prepare()` 异常。
+* 在 `2` 代码处，存储 Looper 对象中的消息队列的引用。
+* 在 `3` 代码处，存储创建 Handler 对象时传入的 `Handler.Callback` 实例，如果其不为 `null` 的话，最终从消息队列中取出来的没有 Runnable 的消息对象就由实例进行处理了。
 
-我们来看 Looper 类里面其中一个用于 prepare 的静态方法：
+那 `Looper` 应该怎样去 prepare 呢？
+
+Looper 类中暴露了两个用于 prepare Looper 对象的静态方法，其中一个源代码如下：
 
 ```java
 public final class Looper {
 
+    // sThreadLocal.get() will return null unless you've called prepare().
+    static final ThreadLocal<Looper> sThreadLocal = new ThreadLocal<Looper>();
+
+    // 公开的
     public static void prepare() {
         prepare(true);
     }
 
+    // 私有的
     private static void prepare(boolean quitAllowed) {  
         if (sThreadLocal.get() != null) {
             throw new RuntimeException("Only one Looper may be created per thread");
@@ -367,30 +395,22 @@ public final class Looper {
         sThreadLocal.set(new Looper(quitAllowed));
     }
 
-    public static void prepareMainLooper() {
-        prepare(false);
-        synchronized (Looper.class) {
-            if (sMainLooper != null) {
-                throw new IllegalStateException("The main Looper has already been prepared.");
-            }
-            sMainLooper = myLooper();
-        }
-    }
-
     // ...
 }
 ```
 
-在 `prepare(boolean quitAllowed)` 方法中，会先从 `sThreadLocal` 中获取 `Looper` 对象，如果不为 `null` 的话就会抛出异常，因为一个线程中只能有一个 Looper 对象。也就是说，在同一个线程中，我们只能调用 `Looper.prepare()` 一次。
+在 `prepare(boolean quitAllowed)` 方法中，会先从 `sThreadLocal` 中获取 `Looper` 对象。如果该对象不为 `null` 则抛出异常，因为一个线程中只能有一个 `Looper` 对象。也就是说，在同一个线程中，我们只能调用 `Looper.prepare()` 一次。
 
-看到这里可能你会想，我们平时在 Activity 中创建 Handler 时并不需要显式调用 `Looper.prepare()` 方法呀，其中是有什么黑科技么？没什么黑科技，这只是因为有人提前调用了 "另一个用于 prepare 的静态方法" 来帮你准备好主线程的 Looper 对象而已。不信你看下面的代码片段：
+看到这里可能你会想，我们平时在 `Activity` 中创建 `Handler` 时并不需要显式调用 `Looper.prepare()` 方法呀，这是为什么呢？这只是因为在 `Activity` 创建之前就有人在主线程中提前帮你调用了 "另一个用于 prepare Looper 对象的静态方法"，该静态方法会创建 Looper 对象并保存到主线程中：
 
 ```java
 public final class Looper {
     // 主线程的 Looper 实例
     private static Looper sMainLooper;  // guarded by Looper.class
 
-    // 另一个用于 prepare 的静态方法
+    // 另一个用于 prepare Looper 对象的静态方法
+    // 其中调用 prepare(false) 方法的 false 参数表示
+    // 在创建 Looper 对象的消息队列时，该消息队列不能被终止
     public static void prepareMainLooper() {
         prepare(false);
         synchronized (Looper.class) {
@@ -402,6 +422,8 @@ public final class Looper {
     }
 
     // 获取主线程 Looper 实例的静态方法
+    // 如果想在主线程中创建 Handler 对象，可以先通过这个方法来获取主线程的 Looper 对象，比如
+    // Handler mainHandler = new Handler(Looper.getMainLooper()) 
     public static Looper getMainLooper() {
         synchronized (Looper.class) {
             return sMainLooper;
@@ -412,11 +434,11 @@ public final class Looper {
 }
 ```
 
-那 `prepareMainLooper()` 这个静态方法是什么时候被调用的呢？`Command + Mouse Left` 弹出菜单：
+既然说有人提前调用了 `prepareMainLooper()` 静态方法，那具体是什么时候调用的呢？`Command + Mouse Left` 点击该方法，弹出菜单如下：
 
 <img src="./res/003.png" width="600">
 
-来看下 `ActivityThread` 中第 6624 行代码：
+来看下 `ActivityThread` 类中的第 6624 行代码：
 
 ```java
 
@@ -438,22 +460,29 @@ public final class ActivityThread extends ClientTransactionHandler {
   // ...
 
   public static void main(String[] args) {
+        // ...
+
         Process.setArgV0("<pre-initialized>");
 
-        Looper.prepareMainLooper();             // Line 6624
+        Looper.prepareMainLooper();                 // Line 6624
 
         // ...
   }
 }
 ```
 
-`Looper.prepareMainLooper();` 是在 `ActivityThread` 的静态 `main` 方法中进行调用的。`ActivityThread` 是整个应用程序的核心类之一，它的 `main` 方法是整个应用进程的入口。也就是说，在应用启动时系统会在其主线程中 prepared 好对应的 Looper 实例，这样我们在主线程中就可以直接创建 Handler 了。
+由上面的代码片段可知，在 `ActivityThread` 的静态 `main` 方法中会通过调用 `Looper.prepareMainLooper();` 来创建主线程的 Looper 对象，这样我们在主线程中创建 Handler 时就不用 (也不能) 再调用 `Looper.prepare()` 方法了。
 
-### Handler.sendMessage(Message) 和 Handler.post(Runnable)
+`ActivityThread` 是应用程序的核心类之一，它的 `main` 方法是整个应用进程的入口。
+
+> 注意：`ActivityThread` 并非继承自 `java.lang.Thread` 类，而是继承自抽象类 `ClientTransactionHandler`。 
+
+
+### `handler.sendMessage(Message)` 和 `handler.post(Runnable)`
 
 **Message**
 
-在分析 Handler 的 `sendMessage()` 和 `post(Runnable)` 方法之前，我们先来看一下 `Message` 是什么先。
+在分析 Handler 的 `sendMessage()` 和 `post(Runnable)` 方法之前，我们先来看一下 `Message` 类的定义。
 
 ```java
 public final class Message implements Parcelable {
@@ -519,14 +548,14 @@ public final class Message implements Parcelable {
 
 贴的代码有点长，没关系我们慢慢看。
 
-由上面的代码可以看出，`Message` 其实是一个 Parcelable 的包装类，其内部包装了：
-* 公开的、用户定义的消息标识 `what`。
-* 传递 Bundle 数据的 `data` 。
-* 发送该消息的 Handler 的引用 `target`。
+由上面的代码可以看出，`Message` 实际上是一个 Parcelable 包装类，其内部包装了：
+* 公开的、由用户定义的消息标识 `what`。
+* 用于传递 Bundle 数据的 `data` 。
+* 发送该消息对象的 Handler 对象的引用 `target`。
 * 可执行的 Runnable 对象 `callback`。
 * 下一条消息的引用 `next`。
 
-同时，`Message` 对象也暴露出了一个静态的 `obtain()` 方法来让我们创建新的 `Message` 对象，或直接从缓存中复用回收的 `Message` 对象 (以便在一些场景下避免重新分配新的对象)。
+与此同时，`Message` 也暴露出了一系列 `obtain()` 静态方法来辅助我们创建新的 `Message` 对象，或是从消息队列中复用旧的 `Message` 对象 (可有效避免频繁的分配新消息对象)。
 
 **Handler.sendMessage(Message)**
 
@@ -566,16 +595,18 @@ public class Handler {
 }
 ```
 
-由上面剪切出来的代码可以看出，发送消息的方法其中最终调用的都是 `enqueueMessage()` 方法，在 `enqueueMessage()` 方法中，先是把消息对象中的 `target` 引用指向当前发送该消息的 Handle，然后在通过消息队列的 `enqueueMessage(Message msg, long when)` 方法将该消息压入栈中。
+由上面节选出来的代码片段可以看出，所有与发送消息相关的方法最终都会调用到 `enqueueMessage()` 方法。在 `enqueueMessage()` 方法内部，先是把消息对象中的 `target` 引用指向发送该消息的 Handler 对象，然后再通过消息队列的 `enqueueMessage(Message msg, long when)` 方法将该消息对象加入队列中。
 
-> `sendEmptyMessage(int what)` 最终也是通过调用 `sendMessageAtTime()` 来讲消息对象压入消息队列中的，只不过中间是多了一个通过调用 `Message.obtain()` 获取消息对象并设置对应的 `what` 属性值的过程。
+> `sendEmptyMessage(int what)` 也是通过间接调用 `sendMessageAtTime()` 方法来将消息对象加入到队列中，只不过是中间是多了一个调用 `Message.obtain()` 创建消息对象并设置对应 `what` 属性值的过程。
+
 
 **Handler.post(Runnable)**
 
-前面我们讲到，`Message` 内部有一个 `Runnable callback` 引用，难道我们 `post` 出去的 Runnable 最终的行为也是将一个 Message 对象压入到消息队列中？是的，想象力丰富的你猜想也是对的，相关源代码如下：
+前面我们讲到，`Message` 内部有一个 `Runnable callback` 引用。咦？难道我们 `post` 出去的 Runnable 对象最终是包装为 Message 对象，然后再加入到消息队列中的？没有，确实是酱紫的，相关源代码如下：
 
 ```java
 public class Handler {
+
     public final boolean post(Runnable r) {
        return sendMessageDelayed(getPostMessage(r), 0);
     }
@@ -594,16 +625,16 @@ public class Handler {
 }
 ```
 
-由上面的代码片段可看出，`post(Runnable r)` 通过调用 `sendMessageDelayed()` 方法来最终调用 `enqueueMessage()` 方法来将消息对象压入队列中。只不过是中间多了一个调用 `getPostMessage()` 方法来将 `Runnable` 包装成 `Message` 的过程。
+由上面的代码片段可看出，在 `post(Runnable r)` 方法中，先是通过 `getPostMessage(r)` 方法来获取包装了 Runnable 的消息对象，然后再调用 `sendMessageDelayed()` 方法发送该消息对象，以达到最终调用 `enqueueMessage()` 方法来将该消息对象加入到队列中。
 
 
 ### 创建 Looper
 
-`Looper` 类有两个关键的静态方法：
+`Looper` 类中有两个关键的静态方法：
 * `Looper.prepare()` 
 * `Looper.loop()` 
 
-前面我们讲到，在子线程中我们可以通过调用静态的 `Looper.prepare()` 方法来为当前线程创建对应的 `Looper` 对象。现在我们来分析一下相关源代码：
+前面我们讲到，在子线程中可以通过调用 `Looper.prepare()` 静态方法来为当前线程创建对应的 `Looper` 对象。下面我们来分析一下相关源代码：
 
 ```java
 public final class Looper {
@@ -632,19 +663,19 @@ public final class Looper {
 }
 ```
 
-构造方法很简单，创建一个消息队列对象 `mQueue` 并将实例变量 `mThread` 指向当前创建 `Looper` 对象的线程。创建好的 `Looper` 对象会通过 `sThreadLocal` 的 `set()` 方法作为副本保存到当前线程本地。
+在我们调用 `Looper.prepare()` 时，会创建一个 `Looper` 对象并通过 `sThreadLocal` 的 `set()` 方法作为该对象作为副本保存到当前线程的本地中。
 
-> ThreadLocal 提供了线程本地的实例，与普通变量的区别在于：
+`Looper` 的构造方法很简单，先是创建一个消息队列的实例并将其引用赋值给 `mQueue` 变量，然后再将实例变量 `mThread` 指向当前创建 `Looper` 对象的线程。
+
+> `ThreadLocal` 提供了线程本地的实例，它与普通变量的区别在于：
 > * 每个使用该变量的线程都会初始化一个完全独立的实例副本。
 >
-> ThreadLocal 变量通常被 `private static` 修饰，当一个线程结束时，它所使用的所有 ThreadLocal 相对的实例副本都可被回收。
+> `ThreadLocal` 变量通常使用 `private static` 进行修饰。当一个线程结束时，它所对应的所有 `ThreadLocal` 实例副本都会被回收。
 
 
-在之前的 “正确姿势 1” 中看到，我们在调用 `Looper.prepare()` 方法之后还需要调用 `Looper.loop()` 方法才能处理 Handler 发送的消息。
+在之前的 “正确姿势1” 中可以看到，在调用 `Looper.prepare()` 方法并创建好 Handler 之后，我们还调用了 `Looper.loop()` 方法，因为不调用的话是不会执行处理消息对象相关逻辑的。
 
-**Looper.prepare()**
-
-那这个 `Looper.loop()` 到底做了什么呢？先看下其相关的源代码：
+那这个 `Looper.loop()` 到底做了什么呢？来看下相关源代码：
 
 ```java
 public final class Looper {
@@ -689,12 +720,12 @@ public final class Looper {
 ```
 
 由上面这段代码可知，`Looper.loop()` 方法：
-1. 首先从当前线程中拿到 `Looper` 对象，
-2. 如果该 `Looper` 对象不为 `null` 的话再从该对象中拿到其内部的 `MessageQueue` 对象 (消息队列)，
-3. 紧接着就是通过 `for(;;)` 开始一个死循环，不断通过 `queue.next()` 方法从拿到的消息队列对象中获取 `Message` 对象 (消息)。
-4. 拿到消息对象后，通过 `msg.target` 拿到发送该消息的 Handler 并调用其 `dispatchMessage(msg)` 方法分发该消息对象。
+1. 首先会从当前线程中拿到 `Looper` 对象，
+2. 如果该 `Looper` 对象不为 `null` ，则从该对象中拿到其内部的 `MessageQueue` 对象 (消息队列)，
+3. 紧接着会通过 `for(;;)` 执行一个死循环，不断通过调用 `queue.next()` 来从消息队列中获取消息对象。
+4. 拿到消息对象后，会通过 `msg.target` 拿到发送该消息的 Handler 实例并调用其 `dispatchMessage(msg)` 方法来分发这个消息对象。
 
-在 Handler 中分发消息对象时做了什么呢？我们来看下面这段代码：
+在 Handler 中分发消息对象之后会做什么呢？继续往下看：
 
 ```java
 public class Handler {
@@ -723,18 +754,22 @@ public class Handler {
 
 可以看出，在 `dispatchMessage(Message msg)` 方法中：
 * 场景1：如果 `msg.callback` (类型是 Runnable) 不为 `null`，则直接调用其 `run` 方法。
-* 场景2：如果 `msg.callback` (类型是 Runnable) 为 `null`，则调用该 Handler 对象的 `handleMessage(Message msg)` 方法。 
+* 场景2：如果 `msg.callback` (类型是 Runnable) 为 `null`，再判断 Handler 的 `mCallback` 是否为 `null`，以确定是调用 `mCallback` 的 `handleMessage(Message msg)` 方法还是调用该 Handler 对象的 `handleMessage(Message msg)` 方法来处理消息对象。 
 
-综合前面的代码分析可以，上述 "场景1" 会在我们调用 `handler.post(Runnable)` 之后发生，"场景2" 会在我们调用 `handler.sendMessage(Message)` 之后发生。
+综合前面的代码分析可以知道：
+* "场景1" 会在我们直接调用 `handler.post(Runnable)` 之后发生。
+* "场景2" 会在我们直接调用 `handler.sendMessage(Message)` 之后发生。
 
-> Handler 的 `handleMessage(Message msg)` 方法是个空实现，所以如果要处理发送的消息，就必须在创建 Handler 实例时覆写该方法。
+> Handler 的 `handleMessage(Message msg)` 方法默认是个空实现，所以如果需要自行处理分发后的消息对象，就必须在创建 Handler 实例时覆写该 `handleMessage` 方法。
 
-> 埋个坑后面再填：`Looper.loop()` 方法的 `queue.next()` 的 `Message msg = queue.next(); // might block` 这行后面有个注释，意思是或可能会阻塞，这是为什么？
+埋个坑后面再填：`Looper.loop()` 方法的 `Message msg = queue.next(); // might block` 这行后面有个注释，说这行代码可能会发生阻塞，这是为什么？
 
 
-### 创建 MessageQueue
+### 创建 `MessageQueue`
 
-前面讲到，在创建 `Looper` 对象的同时会创建 `MessageQueue` 对象，那创建  `MessageQueue` 这个消息队列对象时，源码都做了哪些操作？继续往下看：
+前面讲到，在创建 `Looper` 对象的同时会创建 `MessageQueue` 对象。在创建  `MessageQueue` 这个消息队列对象时，背后都做了哪些操作？再接着往下看：
+
+**`MessageQueue(boolean quitAllowed)`：**
 
 ```java
 public final class MessageQueue {
@@ -753,6 +788,31 @@ public final class MessageQueue {
         mQuitAllowed = quitAllowed;
         mPtr = nativeInit();
     }
+
+    boolean hasMessages(Handler h, int what, Object object) { /* ... */ }
+    boolean hasMessages(Handler h, Runnable r, Object object) { /* ... */ }
+    void removeMessages(Handler h, int what, Object object) { /* ... */ }
+    void removeMessages(Handler h, Runnable r, Object object) { /* ... */ }
+    void removeCallbacksAndMessages(Handler h, Object object) { /* ... */ }
+
+    // ...
+}
+```
+
+从上面的代码片段可以看出，创建 `MessageQueue` 时只是做了一些普通操作：
+* 其构造函数接收一个 "是否可以停止消息队列" 的标识，该表示会作为消息队列的成员变量。
+* 在构造函数内部会调用 native 方法进行相关初始化操作。
+
+**`enqueueMessage(Message msg, long when)`：**
+
+```java
+public final class MessageQueue {
+
+    Message mMessages;
+    private boolean mQuitting;
+
+    // Indicates whether next() is blocked waiting in pollOnce() with a non-zero timeout.
+    private boolean mBlocked;
 
     boolean enqueueMessage(Message msg, long when) {
         if (msg.target == null) {
@@ -804,6 +864,39 @@ public final class MessageQueue {
         return true;
     }
 
+    // ...
+}
+```
+
+* 在调用 `enqueueMessage` 方法将消息对象加入队列时，消息对象的 `target`(Handler) 是不能为 `null` 的。
+* 在加锁的代码块中将消息对象加入队列时，有三行关键代码 
+  * `msg.when = when;`
+  * `Message p = mMessages;` 
+  * `msg.next = p;`。
+* 前面讲过，`next` 指向的是下一个消息对象，并且每一个消息对象在队列中的位置严格按照 **时间顺序**的，所以在加锁代码块中需要通过 `if(p == null || when == 0 || when < p.when) { ... } else { for (;;) { ... } }` 这个逻辑来确定新加入队列的消息对象是 "直接放在队列头部第一个位置" 还是 "从头部第一个位置往后遍历以来找到对应 `when` 的位置"。
+
+代码分析到这里，应该要特意提醒一下：
+* 在 `MessageQueue` 中是没有 `List<Message>` 这样的代码结构的，
+* 其内部是通过一个 `mMessages` 变量引用了 "消息队列" 中头部第一个位置的消息对象，然后该消息对象会通过其内部的 `next` 变量引用其下一个消息对象，这样通过 `next` 形成的链式引用就形成了队列。
+
+附张图，文字太抽象了：
+
+<img src="./res/004.png" width="640">
+ 
+看到这里你有木有想过，为什么在将消息对象加入到队列中时要加锁？
+* 因为我们可能会写出在多个线程中同时调用同一个 Handler 的 `post(Runnable)` 或 `sendMessage(Message)` 方法的代码呀，如果不加锁的话消息队列就乱套了。
+
+
+**quit(boolean safe)：**
+
+```java
+public final class MessageQueue {
+    // True if the message queue can be quit.
+    private final boolean mQuitAllowed;
+
+    Message mMessages;
+    private boolean mQuitting;
+
     void quit(boolean safe) {
         if (!mQuitAllowed) {
             throw new IllegalStateException("Main thread not allowed to quit.");
@@ -836,47 +929,22 @@ public final class MessageQueue {
         mMessages = null;
     }
 
-    boolean hasMessages(Handler h, int what, Object object) { /* ... */ }
-    boolean hasMessages(Handler h, Runnable r, Object object) { /* ... */ }
-    void removeMessages(Handler h, int what, Object object) { /* ... */ }
-    void removeMessages(Handler h, Runnable r, Object object) { /* ... */ }
-    void removeCallbacksAndMessages(Handler h, Object object) { /* ... */ }
-
     // ...
 }
 ```
 
-从上面的代码片段可以看出，创建 `MessageQueue` 时只是做了一些普通操作：
-* 其构造函数接收一个 "是否可以停止消息队列" 的标识，该表示会作为消息队列的成员变量。
-* 在构造函数内部会调用 native 方法进行相关初始化操作。
-
-大概描述下上面代码片段的 `enqueueMessage(Message msg, long when)` 和 `quit(boolean safe)` 方法。
-
-**`enqueueMessage(Message msg, long when)`：**
-* 在调用 `enqueueMessage` 方法将消息对象加入队列时，消息对象的 `target`(Handler) 是不能为 `null` 的。换个角度想，没有 Handler 的话这个消息怎么发出来？即使发出来了，没有 Handler 处理也是难搞呀。所以直接抛出异常时再好不过了。哈哈
-* 在加锁的代码块中处理消息，这里有三行关键代码 `msg.when = when;`、`Message p = mMessages;` 和 `msg.next = p;`。前面讲过，`next` 指向的是下一个消息对象，每一条消息对象在出队列时都是有严格的 **时间顺序**的，所以在这里需要通过 `if(p == null || when == 0 || when < p.when) { ... } else { for (;;) { ... } }` 这个逻辑进行判断，以确定新加入队列的消息对象是直接放在队列头部位置还是从头部位置往后遍历以放在合适的 (符合 `when` 的) 位置。
-
-代码分析到这里，应该要特意提醒一下：在 `MessageQueue` 中是没有 `List<Message>` 这样的代码结构的，其内部是通过一个 `Message mMessages;` 变量引用了 "消息队列" 中头部第一个位置的消息对象，然后该消息对象会 `next` 引用其上一个消息对象，这样通过 `next` 的链式引用就形成了队列。
-
-顺便也附张图吧，毕竟文字太抽象了：
-
-<img src="./res/004.png" width="640">
- 
-看到这里你有木有想过，为什么在将消息对象加入到队列中时要加锁？
-* 因为我们可能会中多个线程中同时调用同一个 Handler 的 `post(Runnable)` 或 `sendMessage(Message)` 方法呀。
+* 当我们需要想要结束某个消息队列时，可以调用 Looper 实例的 `quit()` 方法以间接调用 `MessageQueue` 的 `quit(boolean safe)` 方法。
+* 如果 Looper 实例对应的消息队列是不允许结束的话，强行调用 `queue.quick(boolean safe)` 方法会抛出异常。
+  * 比如说，主线程的消息队列就是不可以结束的，因为主线程在创建消息队列的时候入参 `quitAllowed` 为 `false`。
+  * 而我们在子线程中调用 `Looper.prepare()` 创建的消息队列是可以结束的。
+* 消息队列在结束时需要在代码锁中执行相关逻辑 (以避免在多个线程中同时调用 `quit` 方法时导致逻辑异常)。
+* 在将 `mQuitting` 置为 `true` 之后，即使调用了 `enqueueMessage()` 方法，也不会将新的消息对象加入队列中。
+* 最后，通过 `mMessages` 引用遍历消息队列以进行回收操作并将 `mMessages` 置为 `null`。
 
 
-**quit(boolean safe)**：
+### `messageQueue.next()`
 
-* 当我们需要想要结束某个消息队列时，可以调用 Looper 实例的 `quit()` 方法来间接调用 `MessageQueue` 的 `quit(boolean safe)` 方法。
-* 如果对应的消息队列是不允许结束的话，就会抛出异常。比如说主线程的消息队列就是不可以借宿的，因为主线程在创建消息队列的时候入参 `quitAllowed` 为 `false`。
-* 结束时逻辑需要在锁中执行 (总不能在多个线程中同时调用 `quit` 方法时导致逻辑异常吧)，当将 `mQuitting` 置为 `true` 之后，再调用 `enqueueMessage()` 方法的话就不会再将新的消息加入队列中了。
-* 最后通过 `mMessages` 引用遍历消息队列以回收所有消息对象，然后再讲 `mMessages` 置为 `null`。
-
-
-### MessageQueue.next()
-
-还记不记得前面我们埋下了一个说 `queue.next()` 可能会导致线程阻塞的坑？是时候来填了：
+还记不记得前面，我们埋了一个说 `queue.next()` 可能会导致线程阻塞的坑？是时候来填了：
 
 ```java
 public final class MessageQueue {
@@ -953,21 +1021,13 @@ public final class MessageQueue {
 }
 ```
 
-从上面的代码片段可以清晰的看出，消息队列对象的 `next()` 方法里面也有一个 `for(;;)` 死循环。死循环加锁的代码块中，如果队列的第一个 `Message` 对象不为 `null` 的话，会判断其 `when` 属性，看看是否到时间了，如果到时间了就将该消息对象作为返回值返回到 `Looper.loop()` 方法中 (同时会将消息队列的 `mMessages` 指向 "该消息对象的 `next` 指向的对象")，然后再由 Handler 进行分发和处理。 
+从上面的代码片段可以看出：
+* 消息队列对象的 `next()` 方法里面也有一个 `for(;;)` 死循环。
+* 在该死循环的加锁代码块中，如果消息队列的第一个 `Message` 对象不为 `null` ，就会判断其 `when` 属性来确定其是否到时间出队列了。
+  * 如果到时间了就将该消息对象作为返回值返回到 `Looper.loop()` 方法中 (同时将消息队列的 `mMessages` 指向 "该消息对象的 `next` 引用指向的对象")，然后再由 Handler 进行分发和处理。 
+  * 否则，等待下一次的 `when` 判断。
 
-### 小结
-
-源码分析这部分有点长，我们通过自问自答来小结一下：
-
-**Looper、Handler、消息队列如何捆绑？**
-
-// TBD
-
-
-**Looper 如何管理 MessageQueue ？**
-
-// TBD
 
 ## 总结
 
-在这篇文章中，我们学习了如何使用 Handler，同时也通过源码分析了解了其内部的实现机制。
+在这篇文章中，我们学习了如何使用 Handler，同时也通过源码分析了 Handler 内部的消息机制是如何实现的。
