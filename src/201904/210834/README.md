@@ -315,6 +315,8 @@ new Thread(new Runnable() {
 * 创建 `Looper`
 * 创建 `MessageQueue`
 * `messageQueue.next()`
+* `messageQueue.enqueueMessage(Message msg, long when)`
+* `messageQueue.quit(boolean safe)`
 
 ### 创建 `Handler`
 
@@ -803,7 +805,7 @@ public final class MessageQueue {
 * 其构造函数接收一个 "是否可以停止消息队列" 的标识，该表示会作为消息队列的成员变量。
 * 在构造函数内部会调用 native 方法进行相关初始化操作。
 
-**`enqueueMessage(Message msg, long when)`：**
+### `messageQueue.enqueueMessage(Message msg, long when)`
 
 ```java
 public final class MessageQueue {
@@ -887,7 +889,7 @@ public final class MessageQueue {
 * 因为我们可能会写出在多个线程中同时调用同一个 Handler 的 `post(Runnable)` 或 `sendMessage(Message)` 方法的代码呀，如果不加锁的话消息队列就乱套了。
 
 
-**quit(boolean safe)：**
+### `messageQueue.quit(boolean safe)`
 
 ```java
 public final class MessageQueue {
