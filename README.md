@@ -478,13 +478,9 @@
 ## Git
 
 * [ ] [谈谈软件配置管理](./src/201904/272100/)
-* [ ] Git 快速学习
-* [ ] Git 工作流程
+* [ ] [Git 快速学习](./src/201904/280232/)
+* [ ] [Git 工作流程](./src/201904/281314/)
 * [ ] [Git 常用命令总结](./src/201904/271322/)
-
-[]()
-
-* [ ] Git 版《倚天屠龙记》：开始
 
 
 
@@ -541,6 +537,14 @@
 * [ ] RxJs 基础知识：工具操作符
 * [ ] RxJs 基础知识：条件和布尔操作符
 * [ ] RxJs 基础知识：数学和聚合操作符
+
+
+## Epilog
+
+* There is no any license of any article in this repo, you can copy or reship to anywhere as you want.
+* If you find something wrong in the any article, it is awesome to submit an issue or pull a request to this repo.
+* If this repo is helpful for you, give it a little star so i can konw thar.
+* Anyway, thanks so much for your time.
 
 
 
