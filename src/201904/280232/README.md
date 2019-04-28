@@ -4,7 +4,7 @@
 
 Git 是一个开源的分布式版本控制系统，可以有效地、高效地处理从很小到非常大的项目版本管理。在 Linus 设计 Git 时，就有着以下几个目标：
 
-<img src="./res/001.png" width="360">
+<img src="./res/001.png" width="240">
 
 之前我们应该都有用过 SVN 吧，SVN 作为一种集中式版本控制系统，它与 Git 的主要区别是什么？先来看一张图：
 
@@ -88,7 +88,9 @@ Git 是一个开源的分布式版本控制系统，可以有效地、高效地�
 * 分支管理
 * 功能开发
 * 图形界面
+* 版本回退
 * 撤销修改
+* 删除文件
 * 远程分支
 
 在这几个部分的内容中，会穿插这一些示例和命名说明。
@@ -1108,4 +1110,316 @@ Switched to branch 'develop'
 从 reload 之后的 gitk 窗口中，我们可以在提交记录中看到我们刚才在 `Git Gui` 中做的提交操作的记录。也可以看到在这次提交操作中，我们是对哪个文件、做了哪些变更的信息。
 
 
+### 版本回退
+
+在上一小结 "图形界面" 中，我们为测试 Git Gui 对 `index.js` 文件做了变更并进行了提交，现在我们想回退到这个 "变更提交" 的上一个版本。
+
+现在看下当前的提交记录：
+
+```shell
+zhuanghongji-mbp:Caculator zhuanghongji$ git log
+commit 30bfa945b4dba081132b0d1f5192d5a98a4ced5b (HEAD -> develop)
+Author: zhuanghongji <zhuanghongji.com@gmail.com>
+Date:   Sun Apr 28 23:44:01 2019 +0800
+
+    Modified index.js for test git gui.
+
+commit 3bc4c15ba32c9b1d10674fc4cdf964a6a5bf89fa (tag: V1.0, master)
+Merge: 0b99c57 2aa9197
+Author: zhuanghongji <zhuanghongji.com@gmail.com>
+Date:   Sun Apr 28 22:42:25 2019 +0800
+
+    Merge branch 'feature_sum' into develop
+
+commit 2aa9197b1acc118bedcaa7eba6fb5dfa11a5fbdd
+Author: zhuanghongji <zhuanghongji.com@gmail.com>
+Date:   Sun Apr 28 22:41:37 2019 +0800
+
+    Add index.js and sum operation finished
+
+commit 0b99c570ea25fdc454a3c4c62ac7550f66053989
+Author: zhuanghongji <zhuanghongji.com@gmail.com>
+Date:   Sun Apr 28 21:44:23 2019 +0800
+
+    Add README.md
+```
+
+通过这段提交记录，我们来补充几个知识点：
+* 跟在 `commit` 后面的字符串称为 `commit id`，也可以理解为版本号，是一个通过 SHA1 计算出来的十六进制表示的非常大的数字。
+* 在 Git 中，用 `HEAD` 来表示当前版本，用 `HEAD^` 来表示上一个版本，用 `HEAD^^` 来表示上上一个版本，以此类推。当然，也可以用数字来表示 "上哪个版本"，比如 `HEAD~100` 表示上一百个版本。
+
+现在，我们想要回退到上一个版本 (`3bc4c15ba32c9b1...`)，使用 `git reset` 命令就可以做到，比如：
+
+```shell
+zhuanghongji-mbp:Caculator zhuanghongji$ git reset --hard HEAD^
+HEAD is now at 3bc4c15 Merge branch 'feature_sum' into develop
+```
+
+在上面的操作中，我们通过执行 `git reset --hard HEAD^` 命令来将代码成功回退到了上一个版本。此时 `index.js` 文件中的内容恢复成如下状态：
+
+```js
+// This is index.js
+
+function sum(a, b) {
+  return a + b;
+}
+```
+
+如果你现在执行 `git log` 命令的话，会发现已经没有了 `Modified index.js for test git gui.` 这条记录：
+
+```shell
+zhuanghongji-mbp:Caculator zhuanghongji$ git log
+commit 3bc4c15ba32c9b1d10674fc4cdf964a6a5bf89fa (HEAD -> develop, tag: V1.0, master)
+Merge: 0b99c57 2aa9197
+Author: zhuanghongji <zhuanghongji.com@gmail.com>
+Date:   Sun Apr 28 22:42:25 2019 +0800
+
+    Merge branch 'feature_sum' into develop
+
+commit 2aa9197b1acc118bedcaa7eba6fb5dfa11a5fbdd
+Author: zhuanghongji <zhuanghongji.com@gmail.com>
+Date:   Sun Apr 28 22:41:37 2019 +0800
+
+    Add index.js and sum operation finished
+
+commit 0b99c570ea25fdc454a3c4c62ac7550f66053989
+Author: zhuanghongji <zhuanghongji.com@gmail.com>
+Date:   Sun Apr 28 21:44:23 2019 +0800
+
+    Add README.md
+```
+
+这是因为，`git log` 命令查看的是最后一次版本之前的提交记录。如果想查看回退之前的版本记录，可以使用 `git reflog` 命令：
+
+<img src="./res/014.png" width="720">
+
+由上图可以看出，`git reflog` 不仅可以看到提交记录，还可以看到一些其它操作记录。最左边的十六进制就是我们前面提到的 `commit id`，在 Git 中，如果通过其前面有限几位数字就可以完成记录索引操作时，就使用这几位数字作为版本号即可。
+
+刚才我们做了一次回退操作，如果现在我们想撤销这个回退操作怎么做？从上面的 `git reflog` 日志可以看出，我们撤销回退操作的本质其实是回退到 `30bfa94` 这个版本号的版本，那我们在执行 `reset` 命令时指定这个 id 就好了：
+
+<img src="./res/015.png" width="720">
+
+此时，如果你打开了 `index.js` 文件，你会发现它的内容又变回酱紫了：
+
+```js
+// This is index.js
+
+function sum(a, b) {
+  return a + b;
+}
+
+// test git gui
+```
+
 ### 撤销修改
+
+撤销修改分为三种情况：
+1. 仅仅修改了工作区的内容，还未添加到暂存区。
+2. 修改了工作区内容并且添加到了暂存区，但未提交修改。
+3. 修改并添加到了暂存区，然后完成了提交。
+
+对应的撤销操作：
+* 情况一：`git checkout <file>`
+* 情况二：`git reset HEAD <file>` & `git checkout <file>`
+* 情况三：`git reset --hard HEAD^`
+
+这里就不再做示例演示了，但需要说明两个关键点：
+* 对应情况二，`git reset HEAD <file>` 仅仅是将该文件从暂存区中移出来，文件内容的修改还没撤销。所以，这之后还需要执行跟情况一一样的命令来讲文件内容的修改撤销掉。
+* 对应情况三，这种情况其实相当于我们前面提到的版本回退。
+
+
+### 删除文件
+
+注意，在 Git 中「删除」也属于修改操作。
+
+假设我们现在在 `Caculator` 仓库中增加了一个 `TEST.md` 文件并已提交到仓库中。此时，我们不小心手动删除了这个文件。这个不同担心，Git 是可以发现的文件被删掉了的，不信你可以执行下 `git status` 命令：
+
+```shell
+zhuanghongji-mbp:Caculator zhuanghongji$ git status
+On branch develop
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        deleted:    TEST.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+上面的输出的状态信息告诉我们：
+* 有未添加到暂存区的变更，这个变更是三处了 TEST.md 文件。
+
+那如果我们是有意要删除这个文件呢？好，我们来演示下。
+
+首先，将不小心手动删除的 TEST.md 文件恢复到暂存区先：
+
+```shell
+zhuanghongji-mbp:Caculator zhuanghongji$ git checkout TEST.md
+```
+
+然后，执行 `git rm` 命令来删除 TEST.md 这个文件：
+
+```shell
+zhuanghongji-mbp:Caculator zhuanghongji$ git rm TEST.md 
+rm 'TEST.md'
+```
+
+如果你现在查看状态信息的话，你会发现我们刚才这个删除操作其实也包含了暂存操作，不信我们来看一下：
+
+```shell
+zhuanghongji-mbp:Caculator zhuanghongji$ git status
+On branch develop
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        deleted:    TEST.md
+```
+
+此时我们可以直接执行 `git commit` 命令来提交这个变更：
+
+```shell
+zhuanghongji-mbp:Caculator zhuanghongji$ git commit -m "Delete TEST.md"
+[develop 1e946da] Delete TEST.md
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 TEST.md
+```
+
+### 远程仓库
+
+呃.. 写文章真是件费时 (qian) 的事儿，终于写到了远程仓库这个内容了。
+
+前面讲到 Git 是一种分布式的版本控制系统，同一个 Git 仓库可以分布到不同的机器上。但是，在创建仓库的最开始阶段肯定是只有一台机器有这个 Git 仓库的，此后别的机器才可以从将这个拥有原始版本的机器上将仓库 clone 出来。
+
+在实际开发中，往往需要有一台电脑或服务器主要节点，每天 24 小时开机，其它每个开发人员都可以从这台机器上克隆仓库、推送自己提交的代码或拉取别人提交的代码。
+
+这里我们就不找一台机器了，直接利用 GitHub 也可以完成这个演示。但在与 GitHub 对接之前，我们需要使用 RSA 方式加上时间参数来生成 SSH 秘钥 ，比如：
+
+```shell
+zhuanghongji-mbp:Caculator zhuanghongji$ ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/Users/zhuanghongji/.ssh/id_rsa): 
+/Users/zhuanghongji/.ssh/id_rsa already exists.
+Overwrite (y/n)? y
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /Users/zhuanghongji/.ssh/id_rsa.
+Your public key has been saved in /Users/zhuanghongji/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:zCHJoTxALOh7Oy/Tc/Z8X179b3+c/RwdN+ozO5+9eYw zhuanghongji@zhuanghongji-mbp.local
+The key's randomart image is:
++---[RSA 2048]----+
+|.oo   .          |
+|o .o o o         |
+|..  + + .        |
+| .   . + .       |
+|  .     S      o.|
+| . .          . *|
+|  . o        . **|
+|   = o o.  ..+Eo#|
+|    =.+ .o. .+*B#|
++----[SHA256]-----+
+```
+
+此时，我们在 `/Users/zhuanghongji/.ssh/` 目录下生成了 `id_rsa` 和 `id_rsa.pub` 这两个文件。其中：
+* `id_rsa` 是私钥，不能泄露。
+* `id_rsa.pub` 是公钥，大致格式如下图，可任意传播。
+
+<img src="./res/016.png" width="480">
+
+
+现在，我们复制好上面 `id_rsa.pub` 公钥的内容，粘贴到 GitHub 设置里面对应的配置项上：
+
+<img src="./res/017.png" width="640"> 
+
+粘贴后，我们点击 `Add SSH key` 并根据提示输入 GitHub 密码进行保存。然后在 GitHub 上创建一个空的仓库，并复制其 SSH 地址，比如 `git@github.com:zhuanghongji/Caculator.git`。
+
+接着，回到我们的 `Caculator` 项目的命令行窗口，为这个本地项目增加远程分支：
+
+```shell
+zhuanghongji-mbp:Caculator zhuanghongji$ git remote add origin git@github.com:zhuanghongji/Caculator.git
+```
+
+增加了远程分支之后，就可以将本地仓库中的所有内容推送到远程仓库中了：
+
+```shell
+zhuanghongji-mbp:Caculator zhuanghongji$ git push -u origin master
+Enter passphrase for key '/Users/zhuanghongji/.ssh/id_rsa': 
+Counting objects: 7, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (7/7), 689 bytes | 344.00 KiB/s, done.
+Total 7 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), done.
+To github.com:zhuanghongji/Caculator.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+```
+
+> 由于远程库是空的，我们第一次推送 master 分支时，加上了 `-u` 参数，Git 不但会把本地的 `master` 分支内容推送的远程新的 `master` 分支，还会把本地的 `master` 分支和远程的 `master` 分支关联起来，在以后的推送或者拉取时就可以简化命令。
+
+此时，刷新 GitHub 上的 `Caculator` 仓库页面，你就可以看到：
+
+完整的代码：
+
+<img src="./res/018.png" width="480"> 
+
+完整的提交记录：
+
+<img src="./res/019.png" width="480"> 
+
+从现在起，只要本地作了提交，就可以通过命令：
+
+```shell
+# 把本地 master 分支的最新修改推送至 GitHub
+$ git push origin master
+```
+
+
+假设我们现在在 GitHub 网页端对 README.md 文件做了一些变更提交，比如下图，增加了一行文本：
+
+<img src="./res/020.png" width="240"> 
+
+此时，我们在本地执行 `git pull` 相关命令就可以将 GitHub 上的变更拉取下来。
+
+```shell
+zhuanghongji-mbp:Caculator zhuanghongji$ git pull origin master
+Enter passphrase for key '/Users/zhuanghongji/.ssh/id_rsa': 
+From github.com:zhuanghongji/Caculator
+ * branch            master     -> FETCH_HEAD
+Merge made by the 'recursive' strategy.
+ README.md | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+```
+
+拉取后，我们在本地通过 `git log` 查看下记录：
+
+```shell
+zhuanghongji-mbp:Caculator zhuanghongji$ git log
+commit f667b3b22c107cfd7262d40159c8c620bd638914 (HEAD -> develop)
+Merge: 1e946da d0bcce1
+Author: zhuanghongji <zhuanghongji.com@gmail.com>
+Date:   Mon Apr 29 01:45:11 2019 +0800
+
+    Merge branch 'master' of github.com:zhuanghongji/Caculator into develop
+
+commit d0bcce1dbbc2ebf7767dab21da00b1698f7dc668 (origin/master)
+Author: 庄宏基 <zhuanghongji.com@gmail.com>
+Date:   Mon Apr 29 01:41:48 2019 +0800
+
+    Add Text to README.md
+
+# ...
+````
+
+可以看到，GitHub 端的提交日志 `"Add Text to README.md"` 我们也拉取下来了。
+
+
+
+## 总结
+
+这篇 Git 快速学习文章就写到这里吧，该睡觉觉了。
+
+另外，如果你刚兴趣的话，可以搜索下 `Git 解决冲突` 和 `git rebase` 来了解下这两个知识点。
+
+
+Good night ..zZ
