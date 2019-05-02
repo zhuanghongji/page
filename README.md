@@ -148,7 +148,7 @@
 
 []()
 
-* [ ] Picasso 框架 基本使用 API
+* [x] [Picasso 基本使用](./res/201805/021133/)
 * [ ] Picasso 源码 with 方法：内存缓存 Lrucache 和线程池的调度
 * [ ] Picasso 源码 with：dispatcher 如何完成线程切换
 * [ ] Picasso 源码 with：NetworkRequestHandler 处理图片请求和回调
