@@ -1,6 +1,19 @@
 # Git 工作流程
 
-我们经常听到 `git flow`，但很多人可能并不知道它具体是什么，今天我们就通过这篇文章来了解这个概念。`git flow` 完整表达应该是 `git workflows`。下面我们通过 Git 默认提供的一个命令 `git help workflows` 来看下官方是怎样描述它的：
+我们经常会听到 `git flow`，但可能有些人不知道它具体是什么，所以我们今天就写篇文章来了解这个概念。
+
+Git 作为一个分布式的版本管理系统，不可避免涉及到多人协作。为了让大家在协作过程中做到高效、井井有条，就必须有一个规范的工作流程。
+
+本文的主要内容分为两个部分：
+
+* Git flow
+* GitHub flow
+
+## Git flow
+
+### 官方表述
+
+`git flow` 的完整表达是 `git workflows`，Git 默认提供的一个命令 `git help workflows` 是这样描述它的：
 
 ```
 GITWORKFLOWS(7)                     Git Manual                    GITWORKFLOWS(7)
@@ -395,4 +408,16 @@ GIT
 Git 2.15.0                          10/30/2017                    GITWORKFLOWS(7)
 ```
 
-有点长，没耐心看的话也没关系，因为我们接下来会通过中文进行表述，还有配图。
+这段英文描述有点长，没耐心看的话也没关系。因为我们接下来的内容会很通俗，也会配有相关的图示。
+
+
+### 通俗讲解
+
+<img src="./res/001.png" width="720" />
+
+TBD..
+
+## GitHub flow
+
+TBD..
+
