@@ -148,9 +148,12 @@
 
 []()
 
-* [x] [Picasso 基本使用](./res/201805/021133/)
-* [x] [Picasso 源码解析：概述](./res/201805/022343/)
-* [ ] Picasso 源码 with 方法：内存缓存 Lrucache 和线程池的调度
+* [x] [Picasso 基本使用](./res/201905/021133/)
+* [x] [Picasso 源码解析：概述](./res/201905/022343/)
+* [x] [Picasso 源码解析：内存缓存设计和请求分发器逻辑](./res/201905/041148/)
+* [] [Picasso 源码解析：线程池设计和完成图片加载](./res/201905/042316/)
+  
+<!-- * [ ] Picasso 源码 with 方法：内存缓存 Lrucache 和线程池的调度
 * [ ] Picasso 源码 with：dispatcher 如何完成线程切换
 * [ ] Picasso 源码 with：NetworkRequestHandler 处理图片请求和回调
 * [ ] Picasso 源码 load 方法
@@ -158,7 +161,7 @@
 * [ ] Picasso 源码 into 方法：线程池 & PicassoFutureTask
 * [ ] Picasso 源码 into：线程开启如何执行图片加载请求？
 * [ ] Picasso 源码 into：OkHttp 和 UrlConnectionDownloader 下载图片
-* [ ] Picasso 源码 into 方法：完成加载
+* [ ] Picasso 源码 into 方法：完成加载 -->
 
 []()
 
