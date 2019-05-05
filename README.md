@@ -186,6 +186,8 @@
 * [ ] OkHttp 连接池：put, get 方法
 * [ ] OkHttp 连接池：connection 回收
 * [ ] OkHttp 拦截器之 CallServerInterceptor 解析
+
+<!-- 
 * [ ] OkHttp 面试: Socket - 1
 * [ ] OkHttp 面试: Socket - 2
 * [ ] OkHttp 面试: HttpClient & HttpUrlConnection
@@ -196,10 +198,11 @@
 * [ ] OkHttp 面试：多线程下载
 * [ ] OkHttp 面试：文件上传 & OkHttp 如何处理文件上传
 * [ ] OkHttp 面试：如何解析Json类型数据
-* [ ] OkHttp 面试：Https／对称加密 & 不对称加密
+* [ ] OkHttp 面试：Https／对称加密 & 不对称加密 -->
 
 []()
 
+* [ ] [Retrofit 基本使用](./src/201905/051435/)
 * [ ] Retrofit 流程分析
 * [ ] Retrofit 概述
 * [ ] Retrofit 官网例子解析
@@ -222,12 +225,14 @@
 * [ ] Retrofit 设计模式解析 - 4：策略模式
 * [ ] Retrofit 设计模式解析 - 5：适配器模式
 * [ ] Retrofit 设计模式解析 - 6：动态代理模式／观察者
+  
+<!-- 
 * [ ] Retrofit 面试题：retfrofit 线程切换（异步机制 Looper)
 * [ ] Retrofit 面试题：rxjava 和 Retrofit 如何结合进行网络请求
 * [ ] Retrofit 面试题：Hook 与动态代理
 * [ ] Retrofit 面试题：Android MVC 架构优势和缺点
 * [ ] Retrofit 面试题：MVP 优点和缺点
-* [ ] Retrofit 面试题：sp 跨进程 & apply 和 commit 方法
+* [ ] Retrofit 面试题：sp 跨进程 & apply 和 commit 方法 -->
 
 []()
 
