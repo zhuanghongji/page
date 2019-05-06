@@ -167,25 +167,18 @@
 
 * [ ] [OkHttp 基本使用](./src/201812/042302/)
 * [ ] OkHttp 框架流程分析
-* [ ] OkHttp 同步请求方法
-* [ ] OkHttp 异步请求方法
 * [ ] OkHttp 同步请求流程和源码分析
-* [ ] OkHttp 异步请求流程和源码分析 - 1
-* [ ] OkHttp 异步请求流程和源码分析 - 2
-* [ ] OkHttp 任务调度核心类 dispatcher 解析 - 1
-* [ ] OkHttp 任务调度核心类 dispatcher 解析 - 2
-* [ ] OkHttp 拦截器流程
-* [ ] OkHttp 拦截器链介绍
+* [ ] OkHttp 异步请求流程和源码分析
+* [ ] OkHttp 任务调度核心类 dispatcher 解析
+* [ ] OkHttp 拦截器流程和拦截器链介绍
 * [ ] OkHttp 之 RetryAndFollowUpInterceptor 解析
 * [ ] OkHttp 之 BridgeInterceptor 解析
-* [ ] OkHttp 缓存策略源码分析：put 方法
-* [ ] OkHttp 缓存策略源码分析：get 方法
+* [ ] OkHttp 缓存策略源码分析：put 和 get 
 * [ ] OkHttp 拦截器之 CacheInterceptor 解析
-* [ ] OkHttp 拦截器之 ConnectInterceptor 解析-1
-* [ ] OkHttp 拦截器之 ConnectInterceptor 解析-2
+* [ ] OkHttp 拦截器之 ConnectInterceptor 解析
+* [ ] OkHttp 拦截器之 CallServerInterceptor 解析
 * [ ] OkHttp 连接池：put, get 方法
 * [ ] OkHttp 连接池：connection 回收
-* [ ] OkHttp 拦截器之 CallServerInterceptor 解析
 
 <!-- 
 * [ ] OkHttp 面试: Socket - 1
@@ -203,22 +196,14 @@
 []()
 
 * [ ] [Retrofit 基本使用](./src/201905/051435/)
-* [ ] Retrofit 流程分析
-* [ ] Retrofit 概述
-* [ ] Retrofit 官网例子解析
-* [ ] Retrofit 请求过程 7 步骤详解
-* [ ] Retrofit 静态代理模式讲解
-* [ ] Retrofit 动态代理模式讲解
-* [ ] Retrofit 网络通信流程 8 步骤 & 7 个关键成员变量解析
-* [ ] Retrofit 中 builder 构建者模式 & builder 内部类解析
-* [ ] Retrofit 中 baseurl／converter／calladapter 解析
-* [ ] Retrofit 中 build 方法完成 Retrofit 对象创建流程解析
-* [ ] Retrofit 中 RxjavaCallAdapterFactory 内部构造与工作原理解析
-* [ ] Retrofit 中网络请求接口实例解析
-* [ ] Retrofit 中 serviceMethod 对象解析
-* [ ] Retrofit 中 okHttpCall 对象和 adapt 返回对象解析
-* [ ] Retrofit 中同步请求 & 重要参数解析
-* [ ] Retrofit 中异步请求解析
+* [ ] Retrofit 源码解析：请求过程和步骤详解
+* [ ] Retrofit 源码解析：静态和静态代理模式讲解
+* [ ] Retrofit 源码解析：网络通信流程和关键成员变量
+* [ ] Retrofit 源码解析：Retrofit 对象创建
+* [ ] Retrofit 源码解析：OkHttp Call 对象和 Adapt 返回对象
+* [ ] Retrofit 源码解析：Rxjava2CallAdapterFactory 内部构造与工作原理
+* [ ] Retrofit 源码解析：网络请求接口实例解析
+* [ ] Retrofit 源码解析：同步请求及其重要参数 & 异步请求
 * [ ] Retrofit 设计模式解析 - 1：构建者模式
 * [ ] Retrofit 设计模式解析 - 2：工厂模式
 * [ ] Retrofit 设计模式解析 - 3：外观模式
@@ -236,83 +221,71 @@
 
 []()
 
+* [ ] Glide 基本使用
 * [ ] Glide 框架流程分析
-* [ ] Glide 框架介绍 - 1
-* [ ] Glide 框架介绍 - 2
-* [ ] Glide 图片加载流程和源码分析 - 1：with 方法（requestManager 获取)
-* [ ] Glide 图片加载流程和源码分析 - 2：with 方法（requestManagerRetriever 的 get 方法)
-* [ ] Glide 图片加载流程和源码分析 - 3：load 方法
-* [ ] Glide 图片加载流程和源码分析 - 4：into 方法（buildTarget）
-* [ ] Glide 图片加载流程和源码分析 - 5：into 方法（request 建立和 begin 方法）
-* [ ] Glide 图片加载流程和源码分析 - 6：into 方法（Loadprovider）
-* [ ] Glide 图片加载流程和源码分析 - 7：into 方法（硬盘缓存／内存缓存)
-* [ ] Glide 图片加载流程和源码分析 - 8：into 方法（内存缓存的读取）
-* [ ] Glide 图片加载流程和源码分析 - 9：into 方法（内存缓存的写入）
-* [ ] Glide 面试一：bitmap & oom & 优化 bitmap
-* [ ] Glide 面试二：三级缓存 * [ ] lrucache
+* [ ] Glide 图片加载流程和源码分析：with 方法
+* [ ] Glide 图片加载流程和源码分析：load 方法
+* [ ] Glide 图片加载流程和源码分析：into 方法
+
+<!-- * [ ] Glide 面试一：bitmap & oom & 优化 bitmap
+* [ ] Glide 面试二：三级缓存 * [ ] lrucache -->
 
 []()
 
-* [ ] EventBus 框架核心概念：事件传递／EventBus 的优点／传统 handler 通信的两种方式
-* [ ] EventBus 框架基本用法
-* [ ] EventBus 框架源码解析 - 1：EventBus 对象构建／如何进行线程调度
-* [ ] EventBus 框架源码解析 - 2：subscribe 注解／threadMode
-* [ ] EventBus 框架源码解析 - 3：register 订阅（上）
-* [ ] EventBus 框架源码解析 - 4：register 订阅（中）
-* [ ] EventBus 框架源码解析 - 5：register 订阅（下）
-* [ ] EventBus 框架源码解析 - 6：subscribe 方法完成订阅（上）
-* [ ] EventBus 框架源码解析 - 7：subscribe 方法完成订阅（下）
-* [ ] EventBus 框架源码解析 - 8：发送事件 post
+* [ ] EventBus 基本使用
+* [ ] EventBus 源码解析：EventBus 对象构建／如何进行线程调度
+* [ ] EventBus 源码解析：subscribe 注解／threadMode
+* [ ] EventBus 源码解析：register 订阅
+* [ ] EventBus 源码解析：subscribe 方法完成订阅
+* [ ] EventBus 源码解析：发送事件 post
 
 []()
 
-* [ ] ButterKnife 的引言和基本使用
-* [ ] ButterKnife 原理必备知识点 1：注解
-* [ ] ButterKnife 原理必备知识点 2：APT 工作原理
-* [ ] ButterKnife 原理必备知识点 3：反射 + 运行时注解举例
-* [ ] ButterKnife 原理分析 - 1：注解处理器如何处理注解和保存注解
-* [ ] ButterKnife 原理分析 - 2：如何生成 findviewById 代码
+* [ ] ButterKnife 基本使用
+* [ ] ButterKnife 必备知识点：注解
+* [ ] ButterKnife 必备知识点：APT 工作原理
+* [ ] ButterKnife 必备知识点：反射 + 运行时注解举例
+* [ ] ButterKnife 原理分析：注解处理器时如何处理注解和保存注解
+* [ ] ButterKnife 原理分析：如何生成 findviewById 代码
 
 []()
 
-* [ ] Android 常见内存泄漏分析 - 1：单例 VS 非静态内部类
-* [ ] Android 常见内存泄漏分析 - 2：handler & 解决办法
-* [ ] Android 常见内存泄漏分析 - 3：线程 & WebView
+* [ ] Android 常见内存泄漏分析：单例 VS 非静态内部类
+* [ ] Android 常见内存泄漏分析：handler & 解决办法
+* [ ] Android 常见内存泄漏分析：线程 & WebView
 
 []()
 
-* [ ] LeakCanary 预备知识：Android 性能优化 & Gcroots
-* [ ] LeakCanary 内存框架：内存泄漏基础 & 为什么需要
-* [ ] LeakCanary 原理分析 - 1：Leakcanary 原理概述和弱引用／引用队列
-* [ ] LeakCanary 原理分析 - 2：ActivityRefWatcher 如何监视 Activity
-* [ ] LeakCanary 原理分析 - 3：.hprof 转换 snapshot
-* [ ] LeakCanary 原理分析 - 4：查找内存泄漏引用和最短泄漏路径
-* [ ] LeakCanary 面试题：Application & 内存
+* [ ] LeakCanary 基本使用：
+* [ ] LeakCanary 原理分析：Leakcanary 原理概述和弱引用／引用队列
+* [ ] LeakCanary 原理分析：ActivityRefWatcher 如何监视 Activity
+* [ ] LeakCanary 原理分析：.hprof 转换 snapshot
+* [ ] LeakCanary 原理分析：查找内存泄漏引用和最短泄漏路径
+  
+<!-- * [ ] LeakCanary 面试题：Application & 内存
 * [ ] LeakCanary 面试题：性能数据上报：网络流量和冷启动
-* [ ] LeakCanary 面试题：性能数据上报：UI 卡顿和内存占用
+* [ ] LeakCanary 面试题：性能数据上报：UI 卡顿和内存占用 -->
 
 []()
 
-* [ ] BlockCanary 背景／UI 卡顿原理／UI 卡顿常见原因
-* [ ] BlockCanary 使用／阀值参数
+* [ ] BlockCanary 基本使用
 * [ ] BlockCanary 核心原理实现和流程图简述
-* [ ] BlockCanary 源码解析 - 1：框架初始化
-* [ ] BlockCanary 源码解析 - 2：stacksampler／cpusampler／start 方法
+* [ ] BlockCanary 源码解析：框架初始化
+* [ ] BlockCanary 源码解析：stacksampler／cpusampler／start 方法
+<!--   
 * [ ] BlockCanary 面试一：anr场景／原因／解决
 * [ ] BlockCanary 面试二：watchdog-anr 如何检测 anr
 * [ ] BlockCanary 面试三：new Thread 开启线程的 4 点弊端
 * [ ] BlockCanary 面试四：线程间通信：子线程 -- UI 线程
 * [ ] BlockCanary 面试五：主线程 -- 子线程 (handlerThread-IntentService)
 * [ ] BlockCanary 面试六：多进程的 4 点好处与问题／voliate 关键字
-* [ ] BlockCanary 面试七：voliate 关键字和单例的写法
+* [ ] BlockCanary 面试七：voliate 关键字和单例的写法 -->
 
 []()
 
-* [ ] Dagger2 引言：依赖注入和使用场景
-* [ ] Dagger2 四种注入方式和依赖注入总结
-* [ ] Dagger2 的四种基本注解：`@inject` 注解
-* [ ] Dagger2 的四种基本注解：`@component` 注解
-* [ ] Dagger2 的 inject 和 component 注解实例和源码分析
+* [ ] Dagger2 基本使用
+* [ ] Dagger2 的 `@inject` 和 `@component` 注解
+* [ ] Dagger2 的 `@inject` 和 `@component` 注解实例和源码分析
 * [ ] Dagger2 的 `@Module` 和 `@Provides` 注解
 * [ ] Dagger2 的 `@Module` 和 `@Provides` 注解实例和代码分析
 
