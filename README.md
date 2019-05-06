@@ -204,12 +204,12 @@
 * [ ] Retrofit 源码解析：Rxjava2CallAdapterFactory 内部构造与工作原理
 * [ ] Retrofit 源码解析：网络请求接口实例解析
 * [ ] Retrofit 源码解析：同步请求及其重要参数 & 异步请求
-* [ ] Retrofit 设计模式解析 - 1：构建者模式
-* [ ] Retrofit 设计模式解析 - 2：工厂模式
-* [ ] Retrofit 设计模式解析 - 3：外观模式
-* [ ] Retrofit 设计模式解析 - 4：策略模式
-* [ ] Retrofit 设计模式解析 - 5：适配器模式
-* [ ] Retrofit 设计模式解析 - 6：动态代理模式／观察者
+* [ ] Retrofit 设计模式解析：构建者模式
+* [ ] Retrofit 设计模式解析：工厂模式
+* [ ] Retrofit 设计模式解析：外观模式
+* [ ] Retrofit 设计模式解析：策略模式
+* [ ] Retrofit 设计模式解析：适配器模式
+* [ ] Retrofit 设计模式解析：动态代理模式／观察者
   
 <!-- 
 * [ ] Retrofit 面试题：retfrofit 线程切换（异步机制 Looper)
@@ -442,7 +442,7 @@
 
 * [ ] Flutter 入门三部曲：学习 Dart 语法
 * [ ] [Flutter 入门三部曲：看尽 Widget 繁华](./src/201903/251941/)
-* [ ] Flutter 入门三部曲：站在大一点的视角来管理整个项目
+* [ ] Flutter 入门三部曲：站在宏观视角看项目
 
 
 ## Spring Boot
