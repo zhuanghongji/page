@@ -519,10 +519,10 @@
 
 ## Epilog
 
-* There is no any license of any article in this repo, you can copy or reship to anywhere as you want.
-* If you find something wrong in the any article, it is awesome to submit an issue or pull a request to this repo.
-* If this repo is helpful for you, give it a little star so i can konw thar.
-* Anyway, thanks so much for your time.
+* 这个仓库中的所有文章都没有任何许可证，你可以随意进行复制或转载。
+* 如果你发现文章有错漏之处，可以在 issues 中指明或通过 pull request 进行合并。 
+* 如果你觉得文章对你有所帮助，可以通过 start 让我知道。
+* 不管怎样，谢谢你花时间阅读这篇文档。
 
 
 
