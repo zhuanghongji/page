@@ -1,27 +1,256 @@
 # RxJava 基础知识：Observable
 
-`Observable`，即「被观察者」，注释中是这样描述的：
+`Observable`，即被观察者，在源码注释中是这样描述的：
 
 > The Observable class is the non-backpressured, optionally multi-valued base reactive class that offers factory methods, intermediate operators and the ability to consume synchronous and/or asynchronous reactive dataflows.  
 
-> Observable 类是非背压的、可选的多值响应基类，提供了「工厂方法」、「中间操作符」以及「处理同步异步的响应数据流的能力」。
+翻译过来就是：
+
+`Observable` 类是非背压的、可选的多值响应基类，它提供了工厂方法、中间操作符以及处理同步异步的响应数据流的能力。
 
 
-在 ReactiveX 中，一个 `Observer (观察者)` 可以 `Subscribe (订阅)` 一个 `Observable (被观察者)`。然后，`Observer` 会对 `Observable` 发出的任何事件序列作出响应。这种模式十分有利于并发操作，因为它在等待 `Observable` 发送事件时不需要阻塞，而是以哨兵的形式创建一个 `Observer`，随时准备在将来 `Observable` 发送事件序列的任何时间作出适当的响应。
+## 概述
 
+在 ReactiveX 中，一个 `Observer` 可以 `subscribe` 一个 `Observable `，然后 `Observer` 会对 `Observable` 发出的任何事件序列作出响应。这种模式十分有利于并发操作，因为它在等待 `Observable` 发送事件时不会发生阻塞，而是以哨兵的形式创建一个 `Observer`，随时准备在将来 `Observable` 发送事件序列的任何时间作出适当的响应。
 
-下面的示意图，描述了「可观测物」和「观测物的变换」过程：
+下面是官网的一张示意图，描述了「可观测物」和「观测物」的变换过程：
 
-![](./res/legend-marked.jpg)
+<img src="./res/legend-marked.jpg" width="800"/>
 
-1. `Observable` 的时间轴，时间从左流向右。
+1. `Observable` 的时间轴，时间从左到右。
 2. 被 `Observable` 发射的序列。
 3. 该 `竖线` 表示事件序列成功完成发射。
-4. 这些 `虚线` 和这个 `方框` 表示序列在发射到 `Observer` 之前的变换，其中的文本描述了这个变换过程的类型。
-5. 如果出入某些原因 `Observable` 异常终止序列发射，`竖线` 就会被替换成 `交叉`。
-6. `Observable` 发射的序列通过变换得到的最终结果。
+4. 这些 `虚线` 和这个 `方框` 表示序列在发射到 `Observer` 之前所做的一些变换，其中的文本描述了这个变换过程的类型。
+5. 如果出于某些异常原因导致 `Observable` 终止序列发射，`竖线` 就会被替换成 `交叉`，表示发生异常。
+6. `Observable` 发射的序列通过变换得到的最终结果，即观察者接收到的序列。
 
-> 学会看这个示意图，对后面分析各种操作符的变换过程十分有帮助。
+> 注：要学会看这个示意图，因为后面分析各种操作符的变换过程时也会附带类似的图解。
+
+
+## Observable 的分类
+
+在 RxJava 中，`Observable` 有 Hot 和 Cold 之分。
+
+**Hot Observable :**
+* 无论有没有观察者进行订阅，事件都会发生。
+* 当有多个订阅者时，是一对多的关系，可以与多个订阅者共享信息。
+  
+**Cold Observable :**
+* 只有观察者订阅了，才开始执行发射事件的代码。
+* 当有多个订阅者时，是一对一的关系，每个订阅者都能接收到完整的事件，即订阅者之间的事件是独立的、互不影响的。
+
+**你可以这样子来理解两者的不同之处：**
+
+* Hot Observable 像是一个广播电台，某一时刻所有听众会听到的都是同一首歌。
+* 而 Cold Observable 像是一张音乐唱片，人们可以独立购买并且能听到里面所有的歌。
+
+### Cold Observable
+
+相对来说 Cold Observable 用的比较多一点。`Observable` 的 `just`、`create`、`range`、`fromXxx` 等操作符都能生成 Cold Observable。
+
+示例代码如下：
+
+<img src="./res/001.png" width="120">
+
+```java
+Consumer<Long> subscriber1 = aLong -> {
+    System.out.println("subscriber1, aLong = " + aLong);
+};
+Consumer<Long> subscriber2 = aLong -> {
+    System.out.println("...subscriber2, aLong = " + aLong);
+};
+
+// 创建一个被观察者
+Observable<Long> observable = Observable.create(
+        (ObservableOnSubscribe<Long>) emitter -> {
+            Observable.interval(18, TimeUnit.MILLISECONDS,
+                    Schedulers.computation())
+                    .take(Integer.MAX_VALUE)
+                    .subscribe(emitter::onNext);
+        }).observeOn(Schedulers.newThread());
+
+observable.subscribe(subscriber1);
+observable.subscribe(subscriber2);
+
+try {
+    Thread.sleep(100L);
+} catch (InterruptedException e) {
+    e.printStackTrace();
+}
+```
+
+第一次执行打印日志：
+
+```java
+subscriber1, aLong = 0
+...subscriber2, aLong = 0
+subscriber1, aLong = 1
+...subscriber2, aLong = 1
+subscriber1, aLong = 2
+...subscriber2, aLong = 2
+...subscriber2, aLong = 3
+subscriber1, aLong = 3
+subscriber1, aLong = 4
+...subscriber2, aLong = 4
+```
+
+第二次执行打印日志：
+
+```
+...subscriber2, aLong = 0
+subscriber1, aLong = 0
+subscriber1, aLong = 1
+...subscriber2, aLong = 1
+...subscriber2, aLong = 2
+subscriber1, aLong = 2
+subscriber1, aLong = 3
+...subscriber2, aLong = 3
+...subscriber2, aLong = 4
+subscriber1, aLong = 4
+```
+
+第二次执行打印日志：
+
+```
+...
+```
+
+多执行上面的代码片段几次你会发现日志输出并不是完全一样的，也就是说 `subscriber1` 和 `subscriber2` 的日志打印顺序并不是固定的。可以这样理解，`subscriber1` 和 `subscriber2` 的接收到的序列是独立的，而且也是完整的。
+
+
+### Cold Observable 如何转换成 Hot Observable
+
+**使用 `publish` 操作符**
+
+通过 `publish` 操作符可以使得 Cold Observable 转换为 Hot Observable (即将原先的 `Observable` 转换为 `ConnectableObservable`)。
+
+示例代码：
+
+```java
+Consumer<Long> subscriber1 = aLong -> {
+    System.out.println("subscriber1, aLong = " + aLong);
+};
+Consumer<Long> subscriber2 = aLong -> {
+    System.out.println("...subscriber2, aLong = " + aLong);
+};
+Consumer<Long> subscriber3 = aLong -> {
+    System.out.println("......subscriber3, aLong = " + aLong);
+};
+
+ConnectableObservable<Long> observable = Observable.create(
+        (ObservableOnSubscribe<Long>) emitter -> {
+            Observable.interval(18, TimeUnit.MILLISECONDS,
+                    Schedulers.computation())
+                    .take(Integer.MAX_VALUE)
+                    .subscribe(emitter::onNext);
+        }).observeOn(Schedulers.newThread())
+        .publish();   // 这里增加使用了 publish 操作符
+
+observable.connect(); // 需要调用 connect() 才能真正执行
+
+observable.subscribe(subscriber1);
+observable.subscribe(subscriber2);
+
+// subscriber3 一段时间后再订阅
+try {
+    Thread.sleep(48L);
+} catch (InterruptedException e) {
+    e.printStackTrace();
+}
+observable.subscribe(subscriber3);
+
+try {
+    Thread.sleep(100L);
+} catch (InterruptedException e) {
+    e.printStackTrace();
+}
+```
+
+日志输出如下：
+
+```java
+subscriber1, aLong = 0
+...subscriber2, aLong = 0
+subscriber1, aLong = 1
+...subscriber2, aLong = 1
+subscriber1, aLong = 2
+...subscriber2, aLong = 2
+......subscriber3, aLong = 2     // 开始有 subscriber3，且值并不是从零开始..
+subscriber1, aLong = 3
+...subscriber2, aLong = 3
+......subscriber3, aLong = 3
+subscriber1, aLong = 4
+...subscriber2, aLong = 4
+......subscriber3, aLong = 4
+subscriber1, aLong = 5
+...subscriber2, aLong = 5
+......subscriber3, aLong = 5
+subscriber1, aLong = 6
+...subscriber2, aLong = 6
+......subscriber3, aLong = 6
+subscriber1, aLong = 7
+...subscriber2, aLong = 7
+......subscriber3, aLong = 7
+```
+
+可以看到，多个订阅的 `subscriber` (订阅者) 共享同一事件。在这里，`ConnectableObservable` 是线程安全的。
+
+
+**使用 `Subject` / `Processor`**
+
+这两者的作用相似，不同点在于：
+* `Processor` 是在 RxJava 2.x 新增的类，继承自 `Flowable`，支持背压控制 (Back Pressure)。
+* 而 `Subject` 不支持背压控制。
+
+`Subject` 示例代码：
+
+```java
+// 沿用上面 subscriber 1 2 及 Thread.sleep 的代码
+Observable<Long> observable = Observable.create(
+        (ObservableOnSubscribe<Long>) emitter -> {
+            Observable.interval(18, TimeUnit.MILLISECONDS,
+                    Schedulers.computation())
+                    .take(Integer.MAX_VALUE)
+                    .subscribe(emitter::onNext);
+        }).observeOn(Schedulers.newThread());
+
+
+// 先使用 Subject 订阅 Observable
+PublishSubject<Long> subject = PublishSubject.create();
+observable.subscribe(subject);
+// 再使用 subscriber 订阅 Subject
+subject.subscribe(subscriber1);
+subject.subscribe(subscriber2);
+
+// Thread.sleep(48L);
+
+subject.subscribe(subscriber3);
+
+// Thread.sleep(100L);
+```
+
+执行上面代码片段后会发现，日志输出与使用 `publish` 方式的日志输出是相同的。
+
+`Subject` 既是 `Observable` 又是 `Observer / Subscriber`，这一点从 `Subject` 源码的继承关系可以看出来：
+
+```java
+public final class PublishSubject<T> extends Subject<T> { ... }
+
+public abstract class Subject<T> extends Observable<T>
+    implements Observer<T> { ... }
+```
+
+`Subject` 作为
+
+### Hot Observable 如何转换成 Cold Observable
+
+
+// TODO ...
+
+> **Cold Observable 和 Hot Observable 各有各的应用场景：**
+> 
+> 对于某些事件不确定何时发生或不确定 `Observable` 发射的序列数量的情况下（比如 `UI 交互的事件`、`网络环境的变化`、`地理位置的变化` 或 `服务器推送消息的到达`等 ），还需使用 Hot Observable。
+
 
 ## Subscribe
 
@@ -144,205 +373,3 @@ public interface Observer<T> {
 ```
 
 结合上面的重载方法源码可以看出，`Observer` 可以看做一个包含了上述 4 个方法参数的接口，以简化 `观察者` 的实现。
-
-
-## Observable 的分类
-
-在 RxJava 中，`Observable` 有 Hot 和 Cold 之分。
-
-* Hot Observable
-  * 无论有没有观察者进行订阅，事件都会发生。
-  * 当有多个订阅者时，是一对多的关系，可以与多个订阅者共享信息。
-* Cold Observable
-  * 只有观察者订阅了，才开始执行发射事件的代码。
-  * 当有多个订阅者时，是一对一的关系，每个订阅者都能接收到完整的事件，即订阅者之间的事件是独立的、互不影响的。
-
-形象点的话可以这样描述两者的不同：
-* Hot Observable 像是一个广播电台，此刻所有听众都会听到同一首歌。
-* Cold Observable 像是一张音乐唱片，人们可以独立购买并能听到里面所有的歌。
-
-下面直接分析 Cold Observable，然后再分析 Hot 和 Cold 这两者如何相互转换。
-
-### Cold Observable
-
-`Observable` 的 `just` `create` `range` `fromXxx` 等操作符都能生成 Cold Observable。先来看个栗子？
-
-```java
-Consumer<Long> subscriber1 = aLong -> {
-    System.out.println("subscriber1, aLong = " + aLong);
-};
-
-Consumer<Long> subscriber2 = aLong -> {
-    System.out.println("...subscriber2, aLong = " + aLong);
-};
-
-Observable<Long> observable = Observable.create(
-        (ObservableOnSubscribe<Long>) emitter -> {
-            Observable.interval(18, TimeUnit.MILLISECONDS,
-                    Schedulers.computation())
-                    .take(Integer.MAX_VALUE)
-                    .subscribe(emitter::onNext);
-        }).observeOn(Schedulers.newThread());
-
-observable.subscribe(subscriber1);
-observable.subscribe(subscriber2);
-
-try {
-    Thread.sleep(100L);
-} catch (InterruptedException e) {
-    e.printStackTrace();
-}
-```
-
-打印日志：
-```java
-subscriber1, aLong = 0
-...subscriber2, aLong = 0
-subscriber1, aLong = 1
-...subscriber2, aLong = 1
-subscriber1, aLong = 2
-...subscriber2, aLong = 2
-...subscriber2, aLong = 3
-subscriber1, aLong = 3
-subscriber1, aLong = 4
-...subscriber2, aLong = 4
-```
-
-可以看出，虽然 `subscriber1` 和 `subscriber2` 的打印顺序虽然不是固定的，但最终两个 `subscriber` 的接收到的序列都已完整的。
-
-Cold Observable 和 Hot Observable 各有各的应用场景。
-
-对于某些事件不确定何时发生或不确定 `Observable` 发射的序列数量的情况下（比如 `UI 交互的事件`、`网络环境的变化`、`地理位置的变化` 或 `服务器推送消息的到达`等 ），还需使用 Hot Observable。
-
-
-### Cold Observable 如何转换成 Hot Observable
-
-#### 使用 `publish` 生成 `ConnectableObservable`
-
-通过使用 `publish` 操作符，可以让 Cold Observable 转换为 Hot Observable (将原先的 `Observable` 转换为 `ConnectableObservable`)。
-
-示例代码：
-
-```java
-Consumer<Long> subscriber1 = aLong -> {
-    System.out.println("subscriber1, aLong = " + aLong);
-};
-
-Consumer<Long> subscriber2 = aLong -> {
-    System.out.println("...subscriber2, aLong = " + aLong);
-};
-
-Consumer<Long> subscriber3 = aLong -> {
-    System.out.println("......subscriber3, aLong = " + aLong);
-};
-
-ConnectableObservable<Long> observable = Observable.create(
-        (ObservableOnSubscribe<Long>) emitter -> {
-            Observable.interval(18, TimeUnit.MILLISECONDS,
-                    Schedulers.computation())
-                    .take(Integer.MAX_VALUE)
-                    .subscribe(emitter::onNext);
-        }).observeOn(Schedulers.newThread())
-        .publish();   // 这里增加使用了 publish 操作符
-
-observable.connect(); // 需要调用 connect() 才能真正执行
-
-observable.subscribe(subscriber1);
-observable.subscribe(subscriber2);
-
-// subscriber3 一段时间后再订阅
-try {
-    Thread.sleep(48L);
-} catch (InterruptedException e) {
-    e.printStackTrace();
-}
-observable.subscribe(subscriber3);
-
-try {
-    Thread.sleep(100L);
-} catch (InterruptedException e) {
-    e.printStackTrace();
-}
-```
-
-打印日志：
-
-```java
-subscriber1, aLong = 0
-...subscriber2, aLong = 0
-subscriber1, aLong = 1
-...subscriber2, aLong = 1
-subscriber1, aLong = 2
-...subscriber2, aLong = 2
-......subscriber3, aLong = 2
-subscriber1, aLong = 3
-...subscriber2, aLong = 3
-......subscriber3, aLong = 3
-subscriber1, aLong = 4
-...subscriber2, aLong = 4
-......subscriber3, aLong = 4
-subscriber1, aLong = 5
-...subscriber2, aLong = 5
-......subscriber3, aLong = 5
-subscriber1, aLong = 6
-...subscriber2, aLong = 6
-......subscriber3, aLong = 6
-subscriber1, aLong = 7
-...subscriber2, aLong = 7
-......subscriber3, aLong = 7
-```
-
-可以看到，多个订阅的 `subscriber (订阅者)` 共享同一事件。在这里，`ConnectableObservable` 是线程安全的。
-
-
-#### 使用 `Subject` / `Processor`
-
-这两者的作用相似，不同点在于：
-* `Processor` 是 RxJava 2.x 新增的类，继承自 `Flowable`，支持背压控制。
-* `Subject` 则不支持背压控制 (Back Pressure)。
-
-`Subject` 示例代码：
-
-```java
-// 沿用上面 subscriber 1 2  及 Thread.sleep 的代码
-
-Observable<Long> observable = Observable.create(
-        (ObservableOnSubscribe<Long>) emitter -> {
-            Observable.interval(18, TimeUnit.MILLISECONDS,
-                    Schedulers.computation())
-                    .take(Integer.MAX_VALUE)
-                    .subscribe(emitter::onNext);
-        }).observeOn(Schedulers.newThread());
-
-
-// 先使用 Subject 订阅 Observable
-PublishSubject<Long> subject = PublishSubject.create();
-observable.subscribe(subject);
-// 再使用 subscriber 定于 Subject
-subject.subscribe(subscriber1);
-subject.subscribe(subscriber2);
-
-// Thread.sleep(48L);
-
-subject.subscribe(subscriber3);
-
-// Thread.sleep(100L);
-```
-
-打印结果和使用 `publish` 方式的相同。
-
-`Subject` 既是 `Observable` 又是 `Observer / Subscriber`，这一点从 `Subject` 源码的继承关系可以看出来：
-
-```java
-public final class PublishSubject<T> extends Subject<T> { ... }
-
-public abstract class Subject<T> extends Observable<T>
-    implements Observer<T> { ... }
-```
-
-`Subject` 作为
-
-### Hot Observable 如何转换成 Cold Observable
-
-
-// TODO ...
