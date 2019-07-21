@@ -1264,7 +1264,7 @@ message TS6071: Successfully created a tsconfig.json file.
 
 类似 `npm init` 命令会生成一个 `package.json` 文件，`tsc --init` 命令也会生成一个 json 文件，该文件名为 `tsconfig.json` 且内容如下：
 
-```json
+```js
 {
   "compilerOptions": {
     /* Basic Options */
@@ -1344,7 +1344,7 @@ $ tsc ./src/index.ts
 
 此时，你在 `index.ts` 的同级目录中可以看到一个新生成的文件 `index.js`：
 
-<img src="./res/007.png" width="400"/>
+<img src="./res/007.png" width="480"/>
 
 仔细看会发现，`index.js` 中已经没有了 TS 中的 `: string` 类型声明语法。同时，变量 `hello` 的声明修饰符由 `const` 变成了 `var`，这是因为我们在 `tsconfig.json` 中配置了 `target` 是 `es5`，如果 `target` 是 `es6` 的话，修饰符会继续保留为 `const`。
 
