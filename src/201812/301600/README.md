@@ -606,7 +606,152 @@ import { lightRed } from './colors';
 
 [⇧ 返回目录](#目录)
 
-// TODO
+
+### 普通类型
+
+声明对象时禁止使用 `Number`、`String`、`Boolean` 和 `Object`，因为这些类型指的是非原始的装盒对象。  
+应该使用 `number`、`string`、`boolean` 和 `object`。
+
+```ts
+// bad
+function reverse(s: String): String;
+
+// good
+function reverse(s: string): string;
+```
+
+### 回调函数类型
+
+不要为返回值被忽略的回调函数设置一个 `any` 类型的返回值类型。  
+返回值被忽略的回调函数的返回值类型应设置为 `void`。
+
+```ts
+// bad
+function fn(x: () => any) {
+  x();
+}
+
+// good
+function fn(x: () => void) {
+  x();
+}
+```
+
+为什么使用 `void` 相对安全？
+
+```ts
+// 使用 void 能防止你不小心使用 x 的返回值
+function fn(x: () => void) {
+  var k = x();     // 哎哟，好像你对返回值 k 有想法
+  k.doSomething(); // 报错，哥们你不能对 void 类型进行操作 (但如果 `x()` 返回值类型为 any 的话是可以操作的)
+}
+```
+
+### 回调函数里的可选参数
+
+不要在回调函数中使用可选参数。
+
+```ts
+// bad
+interface Fetcher {
+  getObject(done: (data: any, elapsedTime?: number) => void): void;
+}
+
+// good
+interface Fetcher {
+  getObject(done: (data: any, elapsedTime: number) => void): void;
+}
+```
+
+### 重载与回调函数
+
+不要因为回调函数参数个数不同而写不同的重载，应该只使用最大参数个数写一个重载。
+
+```ts
+// bad
+declare function beforeAll(action: () => void, timeout?: number): void;
+declare function beforeAll(action: (done: DoneFn) => void, timeout?: number): void;
+
+// good
+declare function beforeAll(action: (done: DoneFn) => void, timeout?: number): void;
+```
+
+> 原因：回调函数总是可以忽略某个参数的，因此没必要为参数少的情况写重载。参数少的回调函数首先允许错误类型的函数被传入，因为它们匹配第一个重载。
+
+
+### 函数重载
+
+**顺序**
+
+不要把一般的重载放在精确的重载前面，排序重载 "精确的" 应该排在 "一般的" 之前。
+
+```ts
+// bad
+declare function fn(x: any): any;
+declare function fn(x: HTMLElement): number;
+declare function fn(x: HTMLDivElement): string;
+
+var myElem: HTMLDivElement;
+var x = fn(myElem); // x: any, wat?
+
+
+// good
+declare function fn(x: HTMLDivElement): string;
+declare function fn(x: HTMLElement): number;
+declare function fn(x: any): any;
+
+var myElem: HTMLDivElement;
+var x = fn(myElem); // x: string, :)
+```
+
+> 原因：TypeScript 在调用的时候会选择第一个匹配到的重载当解析函数。当前面的重载比后面的 "普通"，那么后面的会被隐藏，不会被调用。
+
+
+**使用可选参数**
+
+不要为仅在末尾参数不同时写不同的重载，应该尽可能使用可选参数。
+
+```ts
+// bad
+interface Example {
+  diff(one: string): number;
+  diff(one: string, two: string): number;
+  diff(one: string, two: string, three: boolean): number;
+}
+
+// good
+interface Example {
+  diff(one: string, two?: string, three?: boolean): number;
+}
+```
+
+> 原因：
+> 1. TypeScript 解析签名兼容性时会查看是否存在能够使用源参数调用的某个目标签名，且允许外来参数。
+> 2. 当启用了 TypeScript 的 "严格 `null` 检查" 特性时。因为没有指定的参数在 JavaScript 里表示为 `undefined`，通常显式地为可选参数传入一个 `undefined`。
+
+
+**使用联合类型**
+
+不要仅因为某个位置上的参数类型不同而定义重载，应尽可能地使用联合类型。
+
+```ts
+// bad
+interface Moment {
+  utcOffset(): number;
+  utcOffset(b: number): Moment;
+  utcOffset(b: string): Moment;
+}
+
+// good
+interface Moment {
+  utcOffset(): number;
+  utcOffset(b: number|string): Moment;
+}
+```
+
+> 注：没有让 `b` 成为可选的，是因为签名的返回值类型不同。
+
+
 
 ## React / JSX 代码规范
 
