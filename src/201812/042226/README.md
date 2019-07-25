@@ -1,18 +1,16 @@
-# 通过 JSDoc 提高开发效率
+# 如何编写 JSDoc 
 
-1. 概述
-2. 示例
-3. 块标签
+## 概述
 
-## 1. 概述
+**JSDoc 是什么？**
 
-### JSDoc 是什么
+JSDoc 是一个可以根据 JavaScript 代码文件中的注释信息生成对应 API 文档的工具。同时，现在的编辑器或 IDE 大多都可以通过 JSDoc 生成智能提示。开发者在开发过程中可以根据提示快速了解某个类、属性或方法的用法和逻辑，从而提高开发效率、降低维护成本。
 
-JSDoc 是一个根据 JavaScript 代码文件中的注释信息，生成对应 API 文档的工具。同时，现在很多编辑器或 IDE 会通过 JSDoc 生成智能提示。使得开发者可以快速了解整个类及其属性、方法，从而提高开发效率、降低维护成本。
+**JSDoc 注释形式？**
 
-### JSDoc 注释形式
+JSDoc 注释一般放置在方法或函数声明之前，以 `/** */` 形式呈现。
 
-JSDoc 注释一般放置在方法或函数声明之前，以 `/** */` 形式呈现。比如：
+举个栗子：
 
 ```js
 /**
@@ -28,13 +26,14 @@ function Book(title, author) {
 }
 
 Book.prototype={
+
   /**
    * 获取书本的标题
    *
    * @returns {string|*}
    */
   getTitle:function(){
-      return this.title;
+    return this.title;
   },
 
   /**
@@ -43,26 +42,25 @@ Book.prototype={
    * @param pageNum {number} 页数
    */
   setPageNum:function(pageNum){
-      this.pageNum=pageNum;
+    this.pageNum=pageNum;
   }
 };
 ```
 
-如果你使用的 IDE 是 VSCode，当你把鼠标移动到对应方法名上面时，你将看到对应注释信息的提示：
+如果你现在正在使用 VSCode，当把鼠标移到上述栗子的类或方法名上时，你就可以看到对应注释的弹窗提示：
 
 | Book | getTitle | setPageNum
 | -- | -- | --
 | ![](./res/book.png) | ![](./res/get-title.png) | ![](./res/set-page-number.png)
 
-> 类似 `@constructor` `@param` `returns` 这样的标识被称为「块标签 」(Block Tags)。
+注：类似 `@constructor`、`@param`、`@returns` 这样的标识，我们称之为 "Block Tags"，可译为 "块标签"。
 
-## 2. 示例
 
-### ES 2015 Classes
+## 示例
 
-#### 简单的类
+**一个简单的类**
 
-下面的示例演示了如何通过一个构造函数、两个实例方法和一个静态方法文档化一个简单的类：
+下面的示例演示了如何文档化一个简单的类 (含一个构造函数、两个实例方法和一个静态方法)：
 
 ```js
 /** Class representing a point. */
@@ -75,7 +73,7 @@ class Point {
    * @return {Point} A Point object.
    */
   static fromString(str) {
-    // ...
+    ...
   }
 
   /**
@@ -85,7 +83,7 @@ class Point {
    * @param {number} y - The y value.
    */
   constructor(x, y) {
-    // ...
+    ...
   }
 
   /**
@@ -94,7 +92,7 @@ class Point {
    * @return {number} The x value.
    */
   getX() {
-    // ...
+    ...
   }
 
   /**
@@ -103,7 +101,7 @@ class Point {
    * @return {number} The y value.
    */
   getY() {
-    // ...
+    ...
   }
 }
 ```
@@ -113,11 +111,12 @@ class Point {
 ```js
 /** Class representing a point. */
 const Point = class {
-    // and so on
+  ...
 }
 ```
 
-#### 扩展类
+
+**扩展类**
 
 可以通过 `@extends` 来注释当前类是扩展自哪个类的：
 
@@ -127,34 +126,33 @@ const Point = class {
  * @extends Point
  */
 class Dot extends Point {
-    /**
-     * Create a dot.
-     *
-     * @param {number} x - The x value.
-     * @param {number} y - The y value.
-     * @param {number} width - The width of the dot, in pixels.
-     */
-    constructor(x, y, width) {
-        // ...
-    }
 
-    /**
-     * Get the dot's width.
-     *
-     * @return {number} The dot's width, in pixels.
-     */
-    getWidth() {
-        // ...
-    }
+  /**
+    * Create a dot.
+    *
+    * @param {number} x - The x value.
+    * @param {number} y - The y value.
+    * @param {number} width - The width of the dot, in pixels.
+    */
+  constructor(x, y, width) {
+    ...
+  }
+
+  /**
+    * Get the dot's width.
+    *
+    * @return {number} The dot's width, in pixels.
+    */
+  getWidth() {
+    ...
+  }
 }
 ```
 
-
-### ES 2015 Modules
-
-#### 导出值
+**导出值**
 
 Color.js:
+
 ```js
 /** 模块名称 */
 export const name = 'mixer';
@@ -186,6 +184,7 @@ export {
 ```
 
 Test.js:
+
 ```js
 import {
   name,
@@ -208,12 +207,11 @@ import {
 
 
 
-## 3. 块标签
+## 块标签介绍
 
-### `@author`
+**`@author`**
 
-指定作者。另外，在名字后面可添加 “用尖括号括起来的邮箱地址”
-
+用于指定作者，在名字后面可添加 “用尖括号括起来的邮箱地址”。
 
 示例：
 
@@ -226,7 +224,7 @@ function MyClass() {}
 
 
 
-### `@const`
+**`@const`**
 
 记录一个对象作为一个常量。
 
@@ -247,7 +245,7 @@ var ONE = 1;
 ```
 
 
-### `@deprecated`
+**`@deprecated`**
 
 说明该方法或该类已不再是首选方法，已废弃。
 
@@ -260,12 +258,12 @@ var ONE = 1;
  * @deprecated since version 2.0
  */
 function old() {
-  // ...
+  ...
 }
 ```
 
 
-### `@description`
+**`@description`**
 
 允许你提供一段描述说明，该说明可能包括 HTML 标签。
 
@@ -279,15 +277,13 @@ function old() {
  * @description Add two numbers.
  */
 function add(a, b) {
-    return a + b;
+  return a + b;
 }
 ```
 
+**`@example`**
 
-
-### `@example`
-
-提供一个如何使用描述项的例子，跟随此标签的文字将显示为高亮代码。
+提供一个描述如何使用的例子，跟随此标签的文字将显示为高亮代码。
 
 > 注意，可以同时使用多个 `@example` 标签。
 
@@ -315,11 +311,11 @@ globalNS.method1 = function (a, b) {
 <img src="./res/method1.png" width="320"/>
 
 
-### `@param`
+**`@param`**
 
 对某个函数的参数的各项说明，包括参数名、参数数据类型、描述等。
 
-> 可在变量说明前加个连字符，使之更加容易阅读。
+> 可在变量说明前加个 "连字符"，使之更加容易阅读。
 
 示例：
 
@@ -371,7 +367,7 @@ function sayHello(somebody) {
  * @param {string} employee.department - The employee's department.
  */
 function assign(employee) {
-  // ...
+  ...
 }
 ```
 
@@ -382,10 +378,10 @@ function assign(employee) {
  * @param {string} [somebody] - Somebody's name.
  */
 function sayHello(somebody) {
-    if (!somebody) {
-        somebody = 'John Doe';
-    }
-    alert('Hello ' + somebody);
+  if (!somebody) {
+    somebody = 'John Doe';
+  }
+  alert('Hello ' + somebody);
 }
 ```
 
@@ -395,7 +391,7 @@ function sayHello(somebody) {
 
 
 
-### `@returns`
+**`@returns`**
 
 描述一个函数的返回值。
 
@@ -415,7 +411,7 @@ function sum(a, b) {
 ```
 
 
-### `@see`
+**`@see`**
 
 表示可以参考另一个标识符的说明文档，或者一个外部资源。
 
@@ -438,9 +434,9 @@ function bar() {}
 ```
 
 
-### `@since`
+**`@since`**
 
-标明一个类，方法，或其它标识符是在哪个特定版本开始添加进来的。
+标明一个类、方法，或其它标识符是在哪个特定版本开始添加进来的。
 
 示例：
 
@@ -454,7 +450,7 @@ function UserRecord() {}
 ```
 
 
-### `@summary`
+**`@summary`**
 
 完整描述的一个简写版本。
 
@@ -472,7 +468,7 @@ function bloviate() {}
 ```
 
 
-### `@todo`
+**`@todo`**
 
 记录一个将要完成的任务。
 
@@ -486,12 +482,12 @@ function bloviate() {}
  * @todo Implement this function.
  */
 function foo() {
-    // write me
+  // write me
 }
 ```
 
 
-### `@type`
+**`@type`**
 
 标识一个标识符可能包含的值的类型，或由函数返回值的类型。
 
@@ -519,7 +515,7 @@ var FOO = 1;
 ```
 
 
-### `@version`
+**`@version`**
 
 描述版本信息。
 
@@ -536,3 +532,8 @@ function solver(a, b) {
   return b / a;
 }
 ```
+
+
+## 总结
+
+这篇文章是以前写 ES6 比较多时写的，现在基本都是在写 TypeScript。回头看这篇文章，发现其实类似 "参数类型"、"返回值类型" 这样的注释是完全不需要写的，写了反而会影响代码阅读。但总的来说，这篇文章的一些内容相对有意义的。
