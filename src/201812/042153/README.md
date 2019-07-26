@@ -1,19 +1,19 @@
 # ES6 对 ES5 原有对象的一些扩展
 
-文章主要内容：
-1. 字符串的扩展
-2. 数值的扩展
-3. 函数的扩展
-4. 数组的扩展
-5. 对象的扩展
+本文主要分为以下几个部分：
+* 字符串的扩展
+* 数值的扩展
+* 函数的扩展
+* 数组的扩展
+* 对象的扩展
 
-## 1. 字符串的扩展
+## 字符串的扩展
 
 ES6 加强了对 Unicode 的支持，并且扩展了字符串对象。
 
 下面节选列举了一些常见的知识点。
 
-### 字符串的遍历接口
+**字符串的遍历接口**
 
 ES6 为字符串添加了遍历器接口，使得字符串可以被 `for...of` 循环遍历：
 
@@ -26,7 +26,10 @@ for (let c of '123') {
 // 3
 ```
 
-### `startsWith()` `endsWith()` `includes()`
+.
+
+
+**`startsWith()`、`endsWith()` 和 `includes()`**
 
 传统的 JavaScript 只有 `indexOf()` 方法可用来确定一个字符串是否包含在另一个字符串中。
 
@@ -57,8 +60,9 @@ console.log(s.includes('Hello', 5))     // false
 * `endsWith()` 针对的是 **前 `n` 个字符**。
 * 而 `startsWith()` 和 `includes()` 针对的是 **从第 `n` 个位置知道字符串结束**。
 
+.
 
-### `repeat()`
+**`repeat()`**
 
 `repeat()` 方法返回一个新字符串，表示将原字符串重复 `n` 次。
 
@@ -92,8 +96,9 @@ console.log('hi'.repeat('na'))        //
 console.log('hi'.repeat('3'))         // hihihi
 ```
 
+.
 
-### `padStart()` `padEnd()`
+**`padStart()` 和 `padEnd()`**
 
 ES6 引入了字符串不全长度的功能：
 
@@ -124,7 +129,6 @@ ES6 引入了字符串不全长度的功能：
 'abc'.padStart(10, '0123456789')    // '0123456abc'
 ```
 
-
 这两个方法常用来「为数值补全指定位数」或「提示字符串格式」：
 
 ```js
@@ -136,12 +140,16 @@ ES6 引入了字符串不全长度的功能：
 '09-12'.padStart(10, 'YYYY-MM-DD')    // "YYYY-09-12"
 ```
 
-### `matchAll()`
+.
+
+**`matchAll()`**
 
 `matchAll()` 方法返回一个正则表达式在当前字符串的所有匹配。
 
 
-### 模板字符串
+.
+
+**模板字符串**
 
 模板字符串是增强型的字符串，用反引号标识。
 * 可以当做普通字符串使用。
@@ -161,7 +169,6 @@ not legal.`
 console.log(b)
 // In JavaScript this is
 // not legal.
-
 
 let name = "Bob", time = "today";
 let c = `Hello ${name}, how are you ${time}?`
@@ -192,9 +199,10 @@ function foo() {
 console.log(`hi ${foo()}`)              // hi John
 ```
 
-## 2. 数值的扩展
 
-### `Number.isFinite()`
+## 数值的扩展
+
+**`Number.isFinite()`**
 
 用来检查一个数值是否为有限的 (finite)，即非 `Infinity`。
 
@@ -213,7 +221,9 @@ Number.isFinite('15');      // false
 Number.isFinite(true);      // false
 ```
 
-### `Number.isNaN()`
+.
+
+**`Number.isNaN()`**
 
 用来检查一个值是佛为 `NaN`。
 
@@ -230,8 +240,9 @@ Number.isNaN('15')    // false
 Number.isNaN(true)    // false
 ```
 
+.
 
-### `Number.isInteger()`
+**`Number.isInteger()`**
 
 用来判断一个数值是否是整数。
 
@@ -262,7 +273,9 @@ Number.isInteger(25.0)  // true
 Number.isInteger(3.0000000000000002)  // true
 ```
 
-### Number.EPSILON
+.
+
+**Number.EPSILON**
 
 我们知道在 JavaScript 中浮点数计算是不精确的，比如：
 
@@ -292,7 +305,9 @@ withinErrorMargin(0.1 + 0.2, 0.3) // true
 withinErrorMargin(1.1 + 1.3, 2.4) // true
 ```
 
-### `Math.trunc()`
+.
+
+**`Math.trunc()`**
 
 去除一个数的小数部分，返回整数部分。
 * 对于非数值，`Math.trunc` 内部使用 `Number` 方法将其先转为数值。
@@ -316,9 +331,9 @@ Math.trunc();           // NaN
 Math.trunc(undefined)   // NaN
 ```
 
-## 3. 函数的扩展
+## 函数的扩展
 
-### 函数参数的默认值
+**函数参数的默认值**
 
 ES6 允许为函数的参数设置默认值 (直接写在参数定义的后面即可)。
 
@@ -364,7 +379,9 @@ x = 100
 foo()     // 101
 ```
 
-### rest 参数
+.
+
+**rest 参数**
 
 ES6 引入 rest 参数，形式如 `...变量名`。
 * 可用于获取函数的多余参数，这样就不需要使用 `arguments` 对象了。
@@ -389,8 +406,9 @@ console.log(sum(1, 2, 3)) // 6
 * rest 参数之后不能再有其他参数（即只能是最后一个参数），否则会报错。
 * 函数的 `length` 属性，不包括 rest 参数。
 
+.
 
-### 箭头函数
+**箭头函数**
 
 ES6 允许使用 `=>` 定义函数。
 
@@ -461,13 +479,11 @@ foo.call({a: 2})
 // a: 2
 ```
 
-## 4. 数组的扩展
+## 数组的扩展
 
-### 扩展运算符
-
-// TBD
+见 [ECMAScript 6 入门 - 数组的扩展](http://es6.ruanyifeng.com/#docs/array) 部分.
 
 
-## 5. 对象的扩展
+## 对象的扩展
 
-// TBD
+见 [ECMAScript 6 入门 - 对象的扩展](http://es6.ruanyifeng.com/#docs/object) 部分.

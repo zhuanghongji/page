@@ -104,7 +104,7 @@ console.log(x.toString(8))    // 400.075341217270244
 console.log(x.toString(16))   // 100.1eb851eb852
 ```
 
----
+.
 
 **`toFixed()`**
 
@@ -143,7 +143,7 @@ console.log(j.toFixed(1))   // 12.4 (可以理解为 "大于一半" 就进)
 console.log(k.toFixed(1))   // 12.4
 ```
 
----
+.
 
 **`toExponential()`**
 
@@ -178,7 +178,7 @@ console.log(x.toExponential(5))    // 1.23450e+4
 console.log(x.toExponential(6))    // 1.234500e+4
 ```
 
----
+.
 
 **`toPrecision()`**
 
@@ -335,7 +335,7 @@ console.log(b.concat(c, d))       // [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' ]
 console.log(b.concat(c, d, 123))  // [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 123 ]
 ```
 
----
+.
 
 **`join()`**
 
@@ -368,7 +368,7 @@ var c = ['D', 'E', 'F', 123]
 console.log(c.join('-'))      // D-E-F-123
 ```
 
----
+.
 
 **`pop()`**
 
@@ -398,7 +398,7 @@ console.log(b.pop())      // undefined
 console.log(b)            // []
 ```
 
----
+.
 
 **`push()`**
 
@@ -431,7 +431,7 @@ console.log(a.push('E', 'F'))   // 6
 console.log(a)                  // [ 'A', 'B', 'C', 'D', 'E', 'F' ]
 ```
 
----
+.
 
 **`reverse()`**
 
@@ -453,7 +453,7 @@ console.log(a.reverse())  // [ 'C', 'B', 'A' ]
 console.log(a)            // [ 'C', 'B', 'A' ]
 ```
 
----
+.
 
 
 **`shift()`**
@@ -478,7 +478,7 @@ console.log(a.shift())  // A
 console.log(a)          // [ 'B', 'C' ]
 ```
 
----
+.
 
 **`slice()`**
 
@@ -519,7 +519,7 @@ console.log(a.slice(-4, 3))    // [ 'B', 'C' ]
 console.log(a.slice(-4, -2))   // [ 'B', 'C' ]
 ```
 
----
+.
 
 **`sort()`**
 
@@ -564,7 +564,7 @@ console.log(a.sort(compareString))    // [ 'E', 'D', 'C', 'B', 'A' ]
 console.log(b.sort(compareNumber))    // [ 4, 3, 2, 1, 0 ]
 ```
 
----
+.
 
 **`splice()`**
 
@@ -624,7 +624,7 @@ console.log(result)  // [ 'C', 'D', 'E' ]
 console.log(arr)     // [ 'A', 'B', 'F', 'G' ]
 ```
 
----
+.
 
 **`toString()`**
 
@@ -650,7 +650,7 @@ console.log(arr.toString())        // 123,ABC,朋友你好
 
 > 当数组用于字符串环境时，JavaScript 会调用这一方法将数组自动转换成字符串。但是在某些情况下，需要显式地调用该方法。
 
----
+.
 
 **`unshift()`**
 
