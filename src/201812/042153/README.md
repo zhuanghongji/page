@@ -1,12 +1,5 @@
 # ES6 对 ES5 原有对象的一些扩展
 
-本文主要分为以下几个部分：
-* 字符串的扩展
-* 数值的扩展
-* 函数的扩展
-* 数组的扩展
-* 对象的扩展
-
 ## 字符串的扩展
 
 ES6 加强了对 Unicode 的支持，并且扩展了字符串对象。
@@ -479,11 +472,8 @@ foo.call({a: 2})
 // a: 2
 ```
 
-## 数组的扩展
+## 其它
 
-见 [ECMAScript 6 入门 - 数组的扩展](http://es6.ruanyifeng.com/#docs/array) 部分.
-
-
-## 对象的扩展
-
-见 [ECMAScript 6 入门 - 对象的扩展](http://es6.ruanyifeng.com/#docs/object) 部分.
+可参考：
+* [ECMAScript 6 入门 - 数组的扩展](http://es6.ruanyifeng.com/#docs/array) 
+* [ECMAScript 6 入门 - 对象的扩展](http://es6.ruanyifeng.com/#docs/object)
