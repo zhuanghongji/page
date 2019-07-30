@@ -1,19 +1,19 @@
 # 一个刚初始化好的 React Native 项目是怎样的
 
 本文主要分为 4 个部分：
-* [初始化并运行项目](#初始化并运行项目)
-* [React Native 相关代码](#react-native-相关代码)
-* [iOS 相关代码](#ios-相关代码)
-* [Android 相关代码](#android-相关代码)
+* 初始化并运行项目
+* React Native 相关代码
+* iOS 相关代码
+* Android 相关代码
 
 ## 初始化并运行项目
 
 通过下面的命令行初始化一个 RN 项目：
-```
-react-native init AwesomeProject
+```shell
+$ react-native init AwesomeProject
 ```
 
-命令行窗口会输出以下提示信息（省略了 `warning` `success` `dependencies` `Done` `...`）：
+执行该命令后，命令行窗口会输出以下提示信息：
 ```
 This will walk you through creating a new React Native project in /Users/zhuanghongji/.../ReactNative/AwesomeProject
 Using yarn v1.3.2
@@ -62,19 +62,21 @@ To run your app on Android:
    react-native run-android
 ```
 
-由上述提示信息可知，我们可以通过不同的命令使得 RN 项目运行在不同的平台上：
-* `react-native run-ios` 运行在 iOS 平台上
-* `react-native run-android` 运行在 Android 平台上
+从上述提示信息可知，我们可以通过不同的命令使得 RN 项目运行在不同的平台上：
+* `$ react-native run-ios`：运行在 iOS 平台上。
+* `$ react-native run-android`：运行在 Android 平台上。
 
-接下来，通过 `cd AwesomeProject` 进入项目目录，然后执行 `npm install` 安装相关依赖：
-```
+接下来，通过 `cd AwesomeProject` 进入项目目录，然后执行 `npm install` 安装相关依赖，部分输出日志如下：
+
+```shell
 npm WARN rm not removing ..
 npm WARN rm not removing ..
 ...
 added 163 packages, removed 122 packages and updated 826 packages in 39.559s
 ```
 
-开发模式下，不管你是想运行在 iOS 平台还是 Android 平台，执行运行命令后，都会先启动启动一个 JS 服务器：  
+在开发模式下，不管你是想运行在 iOS 平台还是 Android 平台，执行运行命令后，都会先启动启动一个 JS 服务器：  
+
 ![](./res/js-server-2.png)
 
 启动对应模拟器后，在两个平台上的运行效果分别如下：
@@ -83,37 +85,42 @@ added 163 packages, removed 122 packages and updated 826 packages in 39.559s
 | -- | --
 | ![](./res/run-ios.png) | ![](./res/run-android.png)
 
-由截图可看出，两个平台显示效果大致相同，但针对不同平台作了不同的内容提示：
+由截图可看出，两个平台显示效果大致相同，但中部的内容提示有所不同：
 * 在 iOS 中，修改 `App.js` 文件后，通过 `Cmd + R` 快捷键重新加载内容，通过 `Cmd + D` 快捷键或摇晃手机打开「开发菜单」。
 * 在 Android 中，修改 `App.js` 文件后，通过双击 `R` 键重新加载内容，通过摇晃手机或点击 `menu` 按钮就打开「开发菜单」。
 
 > 在 Android 官方模拟器中，我们可以 `Cmd + M` 快捷键执行点击 `menu` 按钮操作。
 
+注：如果你现在的 RN 版本是 0.60+，启动后看到的页面可能是下图酱紫的 (由 React-Native-Community 自主设计的新启动页，点击相关项可自动在电脑浏览器上打开对应文档网页或推特网页)：
+
+<img src="./res/001.png" width="180"/>
+
+
 ## React Native 相关代码
-通过 VSCode 导入整个 ReactNative 项目后，可以看到代码结构是这样的：  
-<image src="./res/rn-project.png" width='210px'></image>
-<br>
 
-因为本项目是同时支持 iOS 和 Android 两个平台的，所以整个 ReactNative 项目中会包含有 iOS 和 Android 的完整子项目。
+通过 VSCode 打开该 React Native 项目后，可以看到代码结构是这样的：  
 
-* `iOS` : 完整的 iOS 项目，可用 Xcode 直接打开。
-* `Android` : 完整的 Android 项目，可用 Android Studio 直接打开。
+<img src="./res/rn-project.png" width='240'/>
+
+因为该项目是同时支持 iOS 和 Android 两个平台的，所以 React Native 项目中会同时包含有 iOS 和 Android 的完整子项目。
+
+* `iOS` : 完整的 iOS 子项目，可用 Xcode 直接打开。
+* `Android` : 完整的 Android 子项目，可用 Android Studio 直接打开。
 * `node_modules` : 存放 `npm install` 安装的模块（依赖代码）。
-* `.babelrc` : babel 的配置文件，ReactNative 默认使用 babel 编译 JavaScript 代码。
+* `.babelrc` : babel 的配置文件，React Native 默认使用 babel 编译 JavaScript 代码。
 * `App.js` : App 根组件，可以在这里导入整个项目的路由
-* `app.json` : 项目说明文件（主要给原生 app 打包用，比如项目名称、手机桌面展示名称等）。
-* `index.js` : iOS 和 Android 平台的入口文件，通常用来注册 ReactNative App 根组件。
+* `app.json` : 项目说明文件（主要给原生 app 打包用，比如项目名称、应用名称等）。
+* `index.js` : iOS 和 Android 平台的入口文件，通常用来注册 React Native App 根组件。
 * `package-lock.json` : 记录了当前状态下，实际安装的各个 npm package 的具体来源和版本号。
 * `package.json` : npm 的包管理文件。
 
 
-> package.json 和 package-lock.json 的区别？
-> * `package.json` 定义了依赖的版本范围，具体安装的是什么版本是在执行 `npm install` 之后才能确定的。
-> * `package-lock.json` 记录了实际上的具体安装版本。
->
-> 这样区分开来的好处是，当你在持续集成上重复 build 是，得到的 artifact 是一样的，因为依赖的版本都被锁住了。
+扩展：`package.json` 和 `package-lock.json` 的区别？
+* `package.json` 定义了依赖的版本范围，具体安装的是什么版本是在执行 `npm install` 之后才能确定的。
+* `package-lock.json` 记录了实际上的具体安装版本。
+* 这样区分开来的好处是，当你在持续集成上重复 build 是，得到的 artifact 是一样的，因为依赖的版本都被锁住了。
 
-具体 js 代码如下：
+项目中具体的 js 代码分别如下：
 
 app.js :
 ```json
@@ -214,11 +221,13 @@ const styles = StyleSheet.create({
 ```
 
 ## iOS 相关代码
-通过 Xcode 打开 `ios` 目录下的 Android 项目后，可以看到代码结构是这样的：  
-<image src="./res/ios-project.png" width='210px'></image>
-<br>
 
-AppDelegate.h :
+通过 Xcode 打开 `ios` 目录下的 Android 项目后，可以看到代码结构是这样的：  
+
+<img src="./res/ios-project.png" width="210"/>
+
+AppDelegate.h:
+
 ```objc
 #import <UIKit/UIKit.h>
 
@@ -277,10 +286,11 @@ int main(int argc, char * argv[]) {
 ## Android 相关代码
 
 通过 Android Studio 打开 `android` 目录下的 Android 项目后，可以看到代码结构是这样的：  
-<image src="./res/android-project.png" width='210px'></image>
-<br>
 
-MainApplication.java :
+<img src="./res/android-project.png" width="210"/>
+
+MainApplication.java:
+
 ```java
 public class MainApplication extends Application implements ReactApplication {
 
@@ -316,7 +326,8 @@ public class MainApplication extends Application implements ReactApplication {
 }
 ```
 
-MainActivity.java :
+MainActivity.java:
+
 ```java
 public class MainActivity extends ReactActivity {
 
@@ -332,6 +343,7 @@ public class MainActivity extends ReactActivity {
 ```
 
 app/build.gradle :
+
 ```js
 apply plugin: "com.android.application"
 
@@ -415,7 +427,8 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 ```
 
-project/build.gradle :
+project/build.gradle:
+
 ```js
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
@@ -442,3 +455,23 @@ allprojects {
     }
 }
 ```
+
+
+对于 iOS 和 Android 的原生代码，我们来做下分析：
+* 每个 App 都需要一个 "东西" 来全局管理整个应用，比如监听应用的创建和销毁、应用前后台的切换事件等 (这个 "东西" 在 iOS 中称为 `AppDelegate`，而在 Android 中称为 `Application`)。在应用创建的时候，RN 会进行一些初始化操作。
+* 一个 App 中是有很多个页面的，一个页面在 iOS 中可视为是一个 `UIViewController`，而在 Android 中可视为是一个 `Activity`。
+* 一个页面一般是由多个视图组成的，视图在 iOS 和 Android 中都称为 `View`。我们知道 RN 中的组件 ( `Component` ) 在渲染时实际上是原生的视图，那么我们在原生上就需要提供一个 "视图容器" 来管理 RN 渲染时的视图，这个容器视图就是原生代码中的 `rootView` 了。
+
+文字有点抽象？那上张图：
+
+<img src="./res/002.png" width="280"/>
+
+简单来说：
+* 一个 AppDelgate 或 Application
+* 含 N 个 UIViewController 或 Activity (N >= 1)
+* 含 N * ( X | Y | Z ) 个 React Component (不同页面组件个数可能不一样)
+
+
+## 总结
+
+在这边文章中，我们知道了怎么初始化并运行一个 React Native 项目，同时也知道了刚初始化好的 React Native 项目的大体结构。至于原生是怎样去初始化一个 RootView 的、两个平台又怎样传默认参数等问题实际上需要比较大的篇幅去描述，这里就不展开了，读者可以自己阅读原生代码或搜索相关文章进行了解。

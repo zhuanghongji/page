@@ -1023,10 +1023,8 @@ Link.defaultProps = defaultProps;
 export default Link;
 ```
 
-## React Native 项目结构规范
 
-[⇧ 返回目录](#目录)
+## 总结
 
-// TODO
-
+这篇文章主要是列举了 ES6、TypeScript 和 React 中一些的 **good/bad**。
 
