@@ -2,9 +2,9 @@
 
 原文地址：[https://medium.freecodecamp.org/...](https://medium.freecodecamp.org/how-to-structure-your-project-and-manage-static-resources-in-react-native-6f4cfc947d92)
 
-React 和 React Native 都只是框架，并没有规定我们应该如何去构建项目。这一切都取决你的个人品味和你正在进行的项目。
+React 和 React Native 都只是框架，并没有规定我们应该如何去构建项目，一切都取决你的个人品味和你正在进行的项目。
 
-在这篇文章中，我们将介绍如何构建项目和管理本地资源。这当然不是一成不变的，你可以自由地采纳适合你的那部分。希望这对你有所帮助。
+在这篇文章中，我将介绍如何构建项目和管理本地资源。当然这并不是一成不变的，你可以自由地采纳适合你的那部分，希望对你有所帮助。
 
 对于一个使用 `react-native init` 引导初始化的项目，我们只得到了一个基本结构。`ios` 目录用于 Xcode 项目，`android` 目录用于 Android 项目，另外 `index.js` 和 `App.js` 作为 React Native 的起点。
 
@@ -15,7 +15,7 @@ index.js
 App.js
 ```
 
-作为一个在 Windows Phone，iOS 和 Android 三个平台开发过原生项目的人，我发现构建一个项目都可归结为按 **类型** 或 **功能** 分离文件。
+作为一个在 Windows Phone，iOS 和 Android 三个平台开发过原生项目的人，我发现构建一个项目都可归结为 **按类型** 或 **按功能** 分离文件。
 
 
 ## 类型 vs 功能
@@ -41,7 +41,7 @@ view
   css
 ```
 
-在这种方式下，我们可以看到每个文件的类型，而且可以轻松地对某个文件类型运行脚本。这对所有的项目来说都是通用的，但这没有回答以下问题：
+在这种方式下，我们可以看到每个文件的类型，而且可以轻松地对某个文件类型运行脚本。这对所有的项目来说都是通用的，但这样做并不能回答以下问题：
 * 这个项目是做什么的？
 * 这是一个新闻应用吗？
 * 这是关于营养检测的？
@@ -141,7 +141,7 @@ babel ./src --out-dir ./dist --copy-files
 
 React 是基于组件的，有 [容器型的和表示型的组件](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)。我们可以通过组合一些简单组件来构建更复杂组件，通常它们最终是以全屏的形式来展现。这在 Windows Phone 中称为 `Page`，在 iOS 中称为 `ViewController`，在 Android 中称为 `Activity`。而在整个 React Native 指导文档中经常提到的是 [screen](https://facebook.github.io/react-native/docs/navigation) 关键字：
 
-> 移动应用很少是由单个页面 (screen) 组成的。管理多个页面的展现和过渡通常由所谓的导航器 (navigator) 来处理。
+> 移动应用很少是由单个页面 (screen) 组成的，管理多个页面的展现和过渡通常由所谓的导航器 (navigator) 来处理。
 
 
 ## index.js or not ？
@@ -209,6 +209,7 @@ export default class ImageButton extends React.Component {
     )
   }
 }
+
 const styles = StyleSheet.create({
   view: {
     position: 'absolute',
@@ -262,9 +263,11 @@ import ImageButton from '../../../../library/components/ImageButton'
 
 这些点点点简直亮瞎了我的双眼。因为我们需要认为地去计算 `..` 执行的数量，所以是很容易出错的。另外，如果我们移动了该功能的位置，有需要重新进行计算。
 
+> 译者注：如果你是使用 VSCode + TypeScript 进行 RN 开发，你甚至可以完全不写 import 代码。你只管写逻辑，在看到 import 提示时点击 Enter 让 VSCode 去生成。
+
 由于我们是打算在很多个地方使用 `library` 的，所以讲其作为绝对路径进行引用是更好的实践。在 JavaScript 中，单个问题通常有着上千种解决方案，在 Google 上进行快速搜索就可以发现大量解决该问题的库。但是我们并不需要其它的依赖，因为当前这个问题非常容易解决。
 
-解决的方案是把 `library` 转好为 `module`，这样 `node` 就能找到它。添加 `package.json` 到任何文件夹使其成为节点 `module`。添加有以下内容的 `package.json` 文件到 `library` 目录：
+解决的方案是把 `library` 转好为 `module`，这样 `node` 就能找到它 (添加 `package.json` 到任何文件夹使其成为节点 `module`)。添加有以下内容的 `package.json` 文件到 `library` 目录：
 
 ```JSON
 {
@@ -514,10 +517,12 @@ for (NSString* family in [UIFont familyNames]) {
 
 对于要在 iOS 中注册的字体，我们需要在 `Info.plist` 中使用字体的文件名声明 `UIAppFonts` 。而对于 Android 来说，字体文件必须放置在 `app/src/main/assets/fonts`。
 
-将字体文件命名为全名是一个好的实践。据说 React Native 会动态加载自定义字体，但防止
+将字体文件命名为全名是一个好的实践。
 
 
-// TODO 
+## 总结
+
+这篇文章翻译自 Medium 上的一篇博文，对当时正准备启动一个新 RN 项目的我有着很大的帮助。
 
 
 
