@@ -1,4 +1,4 @@
-# Switch
+# React Native - Switch
 
 一个跨平台通用的可以在两个状态中切换的组件。
 

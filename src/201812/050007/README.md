@@ -1,4 +1,4 @@
-# Alert
+# React Native - Alert
 
 用于显示一个带有指定标题和内容的提示对话框。
 

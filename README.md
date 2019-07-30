@@ -407,7 +407,7 @@
 * [x] [React Native - 通过 TextInput 处理文本输入](./src/201812/042350/)
 * [x] [React Native - 完全理解事件处理](./src/201812/042351/)
 * [x] [React Native - 使用 ScrollView](./src/201812/042352/)
-* [ ] [React Native - 特定于平台的代码](./src/201812/042353/)
+* [x] [React Native - 特定于平台的代码](./src/201812/042353/)
 * [ ] [React Native - 页面间的导航跳转](./src/201812/042354/)
 * [ ] [React Native - 显示图片](./src/201812/042355/)
 * [ ] [React Native - 动画](./src/201812/042356/)

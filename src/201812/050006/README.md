@@ -1,4 +1,4 @@
-# Text
+# React Native - Text
 
 `Text` 是一个用来显示文本的组件，支持嵌套、样式和触摸事件处理。
 

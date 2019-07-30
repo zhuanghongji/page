@@ -1,4 +1,4 @@
-# Slide
+# React Native - Slide
 一个用于在一个范围值内选择单个值得组件。
 
 ## 示例一：属性参数

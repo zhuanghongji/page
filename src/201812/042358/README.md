@@ -1,4 +1,4 @@
-# ActivityIndicator
+# React Native - ActivityIndicator
 
 显示一个圆形的加载指示器。
 
