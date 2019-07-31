@@ -411,7 +411,7 @@
 * [x] [React Native - 页面间的导航跳转](./src/201812/042354/)
 * [x] [React Native - 显示图片](./src/201812/042355/)
 * [x] [React Native - 动画系统](./src/201812/042356/)
-* [ ] [React Native - 调试](./src/201812/042357/)
+* [x] [React Native - 如何调试](./src/201812/042357/)
 * [ ] [React Native - ActivityIndicator](./src/201812/042358/)
 * [ ] [React Native - Button](./src/201812/042359/)
 * [ ] [React Native - FlatList](./src/201812/050001/)
