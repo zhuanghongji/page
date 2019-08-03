@@ -412,7 +412,7 @@
 * [x] [React Native - 显示图片](./src/201812/042355/)
 * [x] [React Native - 动画系统](./src/201812/042356/)
 * [x] [React Native - 如何调试](./src/201812/042357/)
-* [ ] [React Native - ActivityIndicator](./src/201812/042358/)
+* [x] [React Native - ActivityIndicator](./src/201812/042358/)
 * [ ] [React Native - Button](./src/201812/042359/)
 * [ ] [React Native - FlatList](./src/201812/050001/)
 * [ ] [React Native - Image](./src/201812/050002/)
