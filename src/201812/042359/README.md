@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
 
 | iOS | Android
 | -- | --
-| ![](./res/ios.gif) | ![](./res/android.gif)
+| ![](./res/001.gif) | ![](./res/android.gif)
 
 
 ### 参数
@@ -79,13 +79,11 @@ const styles = StyleSheet.create({
 
 用点击按钮时所调用的处理函数。
 
-·
 
 **`title`**
 
 按钮内显示的文本。
 
-·
 
 **`color`**
 
@@ -93,7 +91,6 @@ const styles = StyleSheet.create({
 * 在 iOS 平台上，对应的是文本的颜色。
 * 在 Android 平台上，对应的是按钮背景的颜色。
 
-·
 
 **`disabled`**
 
@@ -192,4 +189,4 @@ const styles = StyleSheet.create({
 
 ## 总结
 
-这篇文章主要是简单点描述了 `Button` 和 Touchable 系列组件的使用。
+这篇文章主要是简单点描述了 `Button` 和 Touchable 系列组件的使用
