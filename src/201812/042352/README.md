@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
 
 也就是说，ScrollView 的所有子视图与 ScrollView 中间实际上还有一个 "内容容器视图"。在 Android 原生中，ScrollView 是只能有一个 "子视图" (假设是 A) 的，A 内部的子视图个数则不再受限制，可以将 A 理解上前面提到的 "内容容器视图"。
 
-·
+<br/>
 
 **`keyboardDismissMode`**
 
@@ -166,19 +166,19 @@ const styles = StyleSheet.create({
 * `on-drag`: 当拖拽开始的时候隐藏软键盘。
 * `interactive`: 仅 iOS 支持，软键盘伴随拖拽操作同步地消失，并且如果往上滑动会恢复键盘。
 
-·
+<br/>
 
 **`endFillColor`**
 
 有时候滚动视图会占据比实际内容更多的空间。这种情况下可以使用此属性，指定以某种颜色来填充多余的空间，以避免设置背景和创建不必要的绘制开销。
 
-·
+<br/>
 
 **`scrollEventThrottle`**
 
 单词 `throttle` 意为节流，这个属性控制在滚动过程中，`scroll` 事件被调用的频率（单位是每秒事件数量）。更大的数值能够更及时的跟踪滚动位置，不过可能会带来性能问题，因为更多的信息会通过 bridge 传递。默认值为0，意味着每次视图被滚动，`scroll` 事件只会被调用一次。
 
-·
+<br/>
 
 **`stickyHeaderIndices`**
 
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
 
 暂时显示滚动指示器。
 
-·
+<br/>
 
 **`scrollTo(([y]: number), object, ([x]: number), ([animated]: boolean), ([duration]: number));`**
 

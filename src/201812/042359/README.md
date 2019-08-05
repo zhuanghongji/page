@@ -79,11 +79,13 @@ const styles = StyleSheet.create({
 
 用点击按钮时所调用的处理函数。
 
+<br/>
 
 **`title`**
 
 按钮内显示的文本。
 
+<br/>
 
 **`color`**
 
@@ -91,6 +93,7 @@ const styles = StyleSheet.create({
 * 在 iOS 平台上，对应的是文本的颜色。
 * 在 Android 平台上，对应的是按钮背景的颜色。
 
+<br/>
 
 **`disabled`**
 

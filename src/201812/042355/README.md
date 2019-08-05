@@ -355,7 +355,7 @@ dependencies {
 
 <img src="./res/001.gif" width="240"/>
 
-·
+<br/>
 
 **`resizeMode`**
 
@@ -366,7 +366,7 @@ dependencies {
 * `repeat`: 重复平铺图片直到填满容器。图片会 "维持原始尺寸"，但是当尺寸超过容器时会在保持宽高比的前提下缩放到能被容器包裹。
 * `center`: 居中不拉伸。
 
-·
+<br/>
 
 **`resizeMethod`**
 
@@ -375,7 +375,7 @@ dependencies {
 * `resize`: 在图片解码之前，使用软件算法对其在内存中的数据进行修改。当图片尺寸比容器尺寸大得多时，应该优先使用此选项。
 * `scale`: 对图片进行缩放。和 `resize` 相比，`scale` 速度更快 (一般有硬件加速)，而且图片质量更优。在图片尺寸比容器尺寸小或者只是稍大一点时，应该优先使用此选项。
 
-·
+<br/>
 
 **`loadingIndicatorSource`**
 
@@ -403,13 +403,13 @@ loadingIndicatorSource: PropTypes.oneOfType([
 
 此方法不能用于静态图片资源。
 
-·
+<br/>
 
 **`Image.prefetch(url);`**
 
 预加载一个远程图片(将其下载到本地磁盘缓存)。
 
-·
+<br/>
 
 **`Image.queryCache(urls);`**
 

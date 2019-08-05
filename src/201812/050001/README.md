@@ -287,6 +287,7 @@ renderItem({
 />
 ```
 
+<br/>
 
 **`data`**
 
@@ -296,7 +297,7 @@ renderItem({
 | ----- | ---- |
 | array | 是   |
 
-
+<br/>
 
 **`ItemSeparatorComponent`**
 
@@ -308,7 +309,7 @@ renderItem({
 | --------- | ---- |
 | component | 否   |
 
-
+<br/>
 
 **`ListEmptyComponent`**
 
@@ -318,19 +319,19 @@ renderItem({
 | ---------------------------- | ---- |
 | component, function, element | 否   |
 
-
+<br/>
 
 **`ListFooterComponent`**
 
 尾部组件。类似 `ListEmptyComponent`，该属性对应的可以是 React.Component, 也可以是一个 render 函数，亦或者是渲染好的 Element。
 
-
+<br/>
 
 **`ListHeaderComponent`**
 
 头部组件。类似 `ListEmptyComponent`，该属性对应的可以是 React.Component, 也可以是一个 render 函数，亦或者是渲染好的 Element。
 
-
+<br/>
 
 **`columnWrapperStyle`**
 
@@ -340,7 +341,7 @@ renderItem({
 | ------------ | ---- |
 | style object | 否   |
 
-
+<br/>
 
 **`extraData`**
 
@@ -350,7 +351,7 @@ renderItem({
 | ---- | ---- |
 | any  | 否   |
 
-
+<br/>
 
 **`getItemLayout`**
 
@@ -372,7 +373,7 @@ getItemLayout={(data, index) => (
 | -------- | ---- |
 | function | 否   |
 
-
+<br/>
 
 **`horizontal`**
 
@@ -382,7 +383,7 @@ getItemLayout={(data, index) => (
 | ------- | ---- |
 | boolean | 否   |
 
-
+<br/>
 
 **`initialNumToRender`**
 
@@ -392,7 +393,7 @@ getItemLayout={(data, index) => (
 | ------ | ---- |
 | number | 否   |
 
-
+<br/>
 
 **`initialScrollIndex`**
 
@@ -402,7 +403,7 @@ getItemLayout={(data, index) => (
 | ------ | ---- |
 | number | 否   |
 
-
+<br/>
 
 **`inverted`**
 
@@ -412,7 +413,7 @@ getItemLayout={(data, index) => (
 | ------- | ---- |
 | boolean | 否   |
 
-
+<br/>
 
 **`keyExtractor`**
 
@@ -426,7 +427,7 @@ getItemLayout={(data, index) => (
 | -------- | ---- |
 | function | 否   |
 
-
+<br/>
 
 **`numColumns`**
 
@@ -436,7 +437,7 @@ getItemLayout={(data, index) => (
 | ------ | ---- |
 | number | 否   |
 
-
+<br/>
 
 **`onEndReached`**
 
@@ -450,7 +451,7 @@ getItemLayout={(data, index) => (
 | -------- | ---- |
 | function | 否   |
 
-
+<br/>
 
 **`onEndReachedThreshold`**
 
@@ -460,7 +461,7 @@ getItemLayout={(data, index) => (
 | ------ | ---- |
 | number | 否   |
 
-
+<br/>
 
 **`onRefresh`**
 
@@ -474,7 +475,7 @@ getItemLayout={(data, index) => (
 | -------- | ---- |
 | function | 否   |
 
-
+<br/>
 
 **`onViewableItemsChanged`**
 
@@ -488,7 +489,7 @@ getItemLayout={(data, index) => (
 | -------- | ---- |
 | function | 否   |
 
-
+<br/>
 
 **`progressViewOffset`**
 
@@ -498,7 +499,7 @@ getItemLayout={(data, index) => (
 | ------ | ---- | ------- |
 | number | 否   | Android |
 
-
+<br/>
 
 **`refreshing`**
 
@@ -508,7 +509,7 @@ getItemLayout={(data, index) => (
 | ------- | ---- |
 | boolean | 否   |
 
-
+<br/>
 
 **`removeClippedSubviews`**
 
@@ -539,7 +540,7 @@ scrollToEnd([params]);
 参数 `params` 的有效 keys 有：
 * `animated`：布尔类型，决定列表滚动时是否有个动画，默认值为 `true`。
 
-
+<br/>
 
 **`scrollToIndex()`**
 
@@ -566,7 +567,7 @@ scrollToIndex(params);
   * 为 1 时将它滚动到屏幕底部。
   * 为 0.5 时将它滚动到屏幕中央。
 
-
+<br/>
 
 **`scrollToItem()`**
 
@@ -589,7 +590,7 @@ scrollToItem(params);
 * `item`：object 类型，要滚动到的 "数据" 对应的列表项。
 * `viewPosition`：见 `scrollToIndex` 属性部分。
 
-
+<br/>
 
 **`recordInteraction()`**
 
@@ -599,7 +600,7 @@ recordInteraction();
 
 主动通知列表发生了一个事件，以使列表重新计算可视区域。比如说当 `waitForInteractions` 为 `true` 并且用户没有滚动列表时。一般会在用户点击了列表项或发生了导航动作时调用。
 
-
+<br/>
 
 **`flashScrollIndicators()`**
 

@@ -59,13 +59,13 @@ const styles = StyleSheet.create({
 * `true`: 显示 (默认值)。
 * `false`: 不显示。
 
-·
+<br/>
 
 **`color`**
 
 指示器的颜色 (默认灰色)。
 
-·
+<br/>
 
 **`size`**
 
@@ -256,7 +256,7 @@ const interfaceExample: InterfaceName = {
 
 ```ts
 
-// ···· using type and typeof
+// <br/><br/><br/><br/> using type and typeof
 type MyUniontype = number | string
 
 const myFunction = () => { console.log('hello type.') }
