@@ -419,8 +419,8 @@
 * [x] [React Native - RefreshControl](./src/201812/050003/)
 * [x] [React Native - Slider](./src/201812/050004/)
 * [x] [React Native - Switch](./src/201812/050005/)
-* [ ] [React Native - Text](./src/201812/050006/)
-* [ ] [React Native - Alert](./src/201812/050007/)
+* [x] [React Native - Text](./src/201812/050006/)
+* [x] [React Native - Alert](./src/201812/050007/)
 
 []()
 
