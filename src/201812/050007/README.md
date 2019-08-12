@@ -12,7 +12,7 @@
 
 | iOS | Android
 | -- | --
-| ![](./res/ios.gif) | ![](./res/android.gif)
+| <img src="./res/ios.gif" width="200"/> | <img src="./res/android.gif" width="200"/>
 
 ### iOS
 

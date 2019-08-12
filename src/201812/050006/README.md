@@ -390,11 +390,14 @@ Set text break strategy on Android API Level 23+, possible values are simple, hi
 
 如果将其设置为 `true` 值，那么文本被按下时没有任何视觉效果。默认情况下，文本被按下时会有一个灰色的、椭圆形的高光。
 
+<br/>
+
 
 ## 常用方法
 
 这个没有，这个真没有。
 
+<br/>
 
 
 ## 总结

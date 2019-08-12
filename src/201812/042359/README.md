@@ -81,11 +81,13 @@ const styles = StyleSheet.create({
 
 <br/>
 
+
 **`title`**
 
 按钮内显示的文本。
 
 <br/>
+
 
 **`color`**
 
@@ -95,9 +97,12 @@ const styles = StyleSheet.create({
 
 <br/>
 
+
 **`disabled`**
 
 如果为 `true`, 则会禁用该组件所有的所有交互。
+
+<br/>
 
 
 ## TouchableOpacity
@@ -182,6 +187,7 @@ const styles = StyleSheet.create({
 
 > 个人感觉 0.2 的时候透明度较高了，可以封装一个全局的 Touchable 组件出来并调整为 0.8，封装全局 Touchable 组件还可以通过 "节流/防抖" 来解决快速点击导致的多次响应 `onPress` 事件问题。
 
+<br/>
 
 ### 常用方法
 
@@ -189,6 +195,7 @@ const styles = StyleSheet.create({
 
 将本组件的不透明度设为指定值 (伴有过渡动画)。
 
+<br/>
 
 ## 总结
 

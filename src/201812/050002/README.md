@@ -382,7 +382,7 @@ Image.getSize(uri, success, [failure]);
 <br/>
 
 
-### `prefetch()`
+**`prefetch()`**
 
 ```js
 Image.prefetch(url);
@@ -508,6 +508,9 @@ export interface ImageURISource {
 export type ImageRequireSource = number;
 ```
 
+<br/>
+
+
 **`ImageProps`** 
 
 ```ts
@@ -626,6 +629,8 @@ export interface ImageProps extends ImagePropsBase {
     style?: StyleProp<ImageStyle>;
 }
 ```
+
+<br/>
 
 
 ## 总结

@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
 
 | iOS | Android
 | -- | --
-| ![](./res/ios.gif) | ![](./res/android.gif)
+| <img src="./res/ios.gif" width="200"/> | <img src="./res/android.gif" width="200"/> 
 
 
 ## 常用属性
@@ -133,10 +133,14 @@ const styles = StyleSheet.create({
 
 组件的开关状态值，如果为 `true` 组件将会显示为 "开" 状态样式，默认为 `false`。
 
+<br/>
+
 
 ## 常用方法
 
 呃.. 这个是真没有。
+
+<br/>
 
 
 ## 总结

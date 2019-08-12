@@ -6,9 +6,9 @@
 
 ## 示例
 
-话不多说，上两颗栗子。
+话不多说，先上两颗栗子。
 
-### 示例一：属性参数
+### 第一颗：属性参数
 
 ```js
 import React, {Component} from 'react';
@@ -105,8 +105,10 @@ const styles = StyleSheet.create({
 | -- | --
 | ![](./res/ios.png) | ![](./res/android.png)
 
+<br/>
 
-### 示例二：方法参数
+
+### 第二颗：方法参数
 
 ```js
 export default class App extends Component<Props> {
@@ -311,10 +313,14 @@ export interface ViewStyle extends FlexStyle, ShadowStyleIOS, TransformsStyle {
 
 为整个轨道设置一张静态背景图，图片最中央的像素会被平铺直至填满轨道，仅适用于 iOS 平台。
 
+<br/>
+
 
 ## 常用方法
 
 哈，这个真没有。
+
+<br/>
 
 
 ## 总结

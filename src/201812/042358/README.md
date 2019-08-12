@@ -67,12 +67,16 @@ const styles = StyleSheet.create({
 
 <br/>
 
+
 **`size`**
 
 指示器的大小。
 * `'small'`: 小 (默认值)。
 * `'large'`: 大。
 * `number`: 通过数字指定大小，仅支持 Android 平台。
+
+<br/>
+
 
 **`hidesWhenStopped`**
 
@@ -278,7 +282,7 @@ const InterfaceNameExample: InterfaceName = {
 
 上面两个代码片段中对 `InterfaceName` 接口的声明是完全等价的，主要区别在于后者使用了 `type` 和 `typeof` 定义了 "类型别名"。
 
-.
+<br/>
 
 **TypeScript 在 React Native 中的应用**
 

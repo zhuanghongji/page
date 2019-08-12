@@ -519,6 +519,7 @@ getItemLayout={(data, index) => (
 | ------- | ---- |
 | boolean | 否   |
 
+<br/>
 
 
 ## 常用方法
@@ -609,6 +610,8 @@ flashScrollIndicators();
 ```
 
 短暂地显示下滚动指示器。
+
+<br/>
 
 
 ## 总结
