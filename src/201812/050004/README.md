@@ -1,7 +1,15 @@
-# React Native - Slide
-一个用于在一个范围值内选择单个值得组件。
+# React Native - Slider
 
-## 示例一：属性参数
+`Slider` 是 React Native 中一个内置的、用于在一个范围值内选择单个值的组件，但现在官方已不推荐直接使用该组件，而是推荐使用社区维护的 [react-native-community/react-native-slider](https://github.com/react-native-community/react-native-slider) 依赖库中的 `Slider` 组件，两者相差不大，但使用社区版的话显然更好一点。社区版的独立于 React Native 框架本身，出现问题能够快速进行更新。
+
+因为本文是比较久前写的了，所以使用的是内置的 `Slider`。
+
+## 示例
+
+话不多说，上两颗栗子。
+
+### 示例一：属性参数
+
 ```js
 import React, {Component} from 'react';
 import {
@@ -91,11 +99,15 @@ const styles = StyleSheet.create({
 });
 ```
 
+两个平台的运行效果图分别如下：
+
 | ios | android
 | -- | --
 | ![](./res/ios.png) | ![](./res/android.png)
 
-## 示例二：方法参数
+
+### 示例二：方法参数
+
 ```js
 export default class App extends Component<Props> {
   constructor(props) {
@@ -144,66 +156,169 @@ export default class App extends Component<Props> {
 }
 ```
 
-iOS 和 Android 两个平台的效果是一致的：  
+iOS 和 Android 两个平台的效果是一致的，如下动态图：  
 
 ![](./res/function.gif)
 
 
-## 参数
+## 常用参数
 
-### `style`
+**`style`**
 
-### `disabled`
-如果为 `true` 则 `Slider` 不能滑动，默认为 `false`。
+如果你有用 TypeScript 写过 React Native 应用的话，可以将其理解为是 `ViewStyle`。如果没有用过的话，则可参考 `ViewStylePropTypes.js` 以获取更多信息。
 
-### `maximumValue`
+```ts
+/**
+ * @see https://facebook.github.io/react-native/docs/view.html#style
+ * @see https://github.com/facebook/react-native/blob/master/Libraries/Components/View/ViewStylePropTypes.js
+ */
+export interface ViewStyle extends FlexStyle, ShadowStyleIOS, TransformsStyle {
+    backfaceVisibility?: "visible" | "hidden";
+    backgroundColor?: string;
+    borderBottomColor?: string;
+    borderBottomEndRadius?: number;
+    borderBottomLeftRadius?: number;
+    borderBottomRightRadius?: number;
+    borderBottomStartRadius?: number;
+    borderBottomWidth?: number;
+    borderColor?: string;
+    borderEndColor?: string;
+    borderLeftColor?: string;
+    borderLeftWidth?: number;
+    borderRadius?: number;
+    borderRightColor?: string;
+    borderRightWidth?: number;
+    borderStartColor?: string;
+    borderStyle?: "solid" | "dotted" | "dashed";
+    borderTopColor?: string;
+    borderTopEndRadius?: number;
+    borderTopLeftRadius?: number;
+    borderTopRightRadius?: number;
+    borderTopStartRadius?: number;
+    borderTopWidth?: number;
+    borderWidth?: number;
+    opacity?: number;
+    testID?: string;
+    /**
+     * Sets the elevation of a view, using Android's underlying
+     * [elevation API](https://developer.android.com/training/material/shadows-clipping.html#Elevation).
+     * This adds a drop shadow to the item and affects z-order for overlapping views.
+     * Only supported on Android 5.0+, has no effect on earlier versions.
+     *
+     * @platform android
+     */
+    elevation?: number;
+}
+```
+
+<br/>
+
+
+**`disabled`**
+
+设为 `true` 时 `Slider` 不能滑动，默认为 `false`。
+
+<br/>
+
+
+**`maximumValue`**
+
 `Slider` 的最大值，默认为 `1`。
 
-### `minimumTrackTintColor`
-「滑块」左侧的滑条颜色值。
+<br/>
 
-### `minimumValue`
+
+**`minimumTrackTintColor`**
+
+"滑块" 左侧滑条的颜色值。
+
+<br/>
+
+
+**`minimumValue`**
+
 `Slider` 的最小值，默认为 `0`。
 
-### `onSlidingComplete`
-不管值是否发生了变化，当用户释放「滑块」时都会回调的方法。释放时当前的值会作为该方法的参数。
-> 用户结束滑动的时候调用此回调。
+<br/>
 
-### `onValueChange`
-当用户滑动「滑块」时持续回调的方法。
-> 在用户拖动滑块的过程中不断调用此回调。
 
-### `step`
-滑块的最小步长。这个值应该在 0 到 (maximumValue - minimumValue) 之间。  
-默认值为 `0`。
+**`onSlidingComplete`**
 
-### `maximumTrackTintColor`
-「滑块」右侧的滑条颜色值。
+不管值是否发生了变化，当用户释放 "滑块" (结束滑动) 时都会回调该方法，释放时当前的值会作为该方法的参数。
 
-### `testID`
+<br/>
 
-### `value`
-「滑块」的初始值。  
-这个值应该在最小值和最大值（默认 0 - 1）之间，默认值是 `0`。
-> 这不是一个受约束的组件。也就是说，在用户操作后即使你不更新值，这个组件也不会还原到初始值。
 
-### `thumbTintColor` - Android
-「滑块」的前景色。
+**`onValueChange`**
 
-### `maximumTrackImage` - iOS
-指定一个「滑块」右侧轨道背景图。  
-只支持静态图片。  
-图片最中央的像素会被平铺直至填满轨道。
+在用户滑动 "滑块" 过程中会持续回调该方法。
 
-### `minimumTrackImage` - iOS
-指定一个「滑块」左侧轨道背景图。  
-只支持静态图片。  
-图片最中央的像素会被平铺直至填满轨道。
+<br/>
 
-### `thumbImage` - iOS
-给「滑块」设置一张图片。只支持静态图片。
 
-### `trackImage` - iOS
-给轨道设置一张背景图。  
-只支持静态图片。  
-图片最中央的像素会被平铺直至填满轨道。
+**`step`**
+
+滑块的最小步长，这个值应该在 0 到 (maximumValue - minimumValue) 之间，默认值为 `0`。
+
+<br/>
+
+
+**`maximumTrackTintColor`**
+
+"滑块" 右侧的滑条颜色值。
+
+<br/>
+
+
+**`value`**
+
+"滑块" 的初始值，这个值应该在最小值和最大值（默认 0 - 1）之间，默认值是 `0`。
+
+> 注意：这不是一个受约束的组件，也就是说，在用户操作后即使你不更新该属性的值，对应组件也不会还原到初始值。
+
+<br/>
+
+
+**`thumbTintColor`**
+
+"滑块" 的前景色，仅适用于 Android 平台。
+
+<br/>
+
+
+**`maximumTrackImage`**
+
+可指定一张静态图片来作为 "滑块" 右侧轨道的背景图，图片最中央的像素会被平铺直至填满轨道，仅适用于 iOS 平台。
+
+<br/>
+
+
+**`minimumTrackImage`**
+
+同 `maximumTrackImage`，只不过指定的静态图片来作用于右侧轨道。
+
+<br/>
+
+
+**`thumbImage`**
+
+可指定一张静态图片来为 "滑块" 本身设置一张静态图片，仅适用于 iOS 平台。
+
+<br/>
+
+
+**`trackImage`**
+
+为整个轨道设置一张静态背景图，图片最中央的像素会被平铺直至填满轨道，仅适用于 iOS 平台。
+
+
+## 常用方法
+
+哈，这个真没有。
+
+
+## 总结
+
+这篇文章主要是介绍 `Slider` 组件的基本使用。
+
+>注：在看属性介绍时，结合示例效果图味道更佳噢。

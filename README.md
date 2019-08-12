@@ -417,7 +417,7 @@
 * [x] [React Native - FlatList](./src/201812/050001/)
 * [x] [React Native - Image](./src/201812/050002/)
 * [x] [React Native - RefreshControl](./src/201812/050003/)
-* [ ] [React Native - Slider](./src/201812/050004/)
+* [x] [React Native - Slider](./src/201812/050004/)
 * [ ] [React Native - Switch](./src/201812/050005/)
 * [ ] [React Native - Text](./src/201812/050006/)
 * [ ] [React Native - Alert](./src/201812/050007/)
