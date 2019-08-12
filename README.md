@@ -425,7 +425,7 @@
 []()
 
 * [x] [React Navigation - 开始](./src/201812/301541/)
-* [ ] [React Navigation - 通过路由传递参数](./src/201812/301543/)
+* [x] [React Navigation - 如何向页面传递参数](./src/201812/301543/)
 * [ ] [React Navigation - 配置标题栏](./src/201812/301544/)
 * [ ] [React Navigation - 标题栏按钮](./src/201812/301545/)
 * [ ] [React Navigation - 打开一个全屏模态](./src/201812/301546/)
