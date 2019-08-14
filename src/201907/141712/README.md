@@ -193,7 +193,60 @@ print(lineCount == null);   // true
 var a = 'Hello';
 
 final b = a;    // 不会报错
-const c = a;
+const c = a;    // Error: Not a constant expression.
 ```
 
-// TODO ...
+也就是说，实例变量可以是 `final` 但不可以是 `const` 的，因为声明为 `const` 的变量的值是需要在编译器就能确定的，显然上面 `const c = a;` 中的 `a` 的值是运行时才能确定的。
+
+**`final`**
+
+`final` 修饰的变量必须在构造函数体执行之前初始化，比如：
+* 在声明变量的同时就初始化其值；
+* 通过构造函数参数进行初始化；
+* 在构造函数的 "初始化列表" 中初始化。
+
+
+举个栗子：
+
+```dart
+// 声明变量并初始化值
+final name = 'Bob';
+final String nickname = 'Boddy';
+
+// 此时如果尝试修改 name 变量的值，会提示：The name 'name' is already defined.
+name = 'Alice';
+```
+
+**`const`**
+
+使用 `const` 关键字意味着你预期的一个编译时常量，在声明赋值时设置一个编译时能确定的值即可，比如数字、字符串或能直接计算出来的一个值。另外，如果想在 class 级别声明常量 (const variable)，需要使用 `static const` 进行修饰，否则编辑器会提示错误。
+
+举个栗子：
+
+```dart
+const bar = 1000000;
+const double atm = 1.01325 * bar;    // 编译时能计算出来的值
+
+class Foo {
+  static const a = 'aaaa';
+
+  // Error: Only static fields can be declared as const.
+  // Try using 'final' instead of 'const', or adding the keyword 'static'.
+  const b = 'aaaa';
+}
+```
+
+实际应用中，`const` 除了可以用来声明常量外，还可以用来创建常量值：
+
+```dart
+var foo = const [];
+final bar = const [];
+const baz = [];         // 等同于 `const [];`
+
+void main() {
+  foo = [1, 2, 3];
+  print(foo);           // [1, 2, 3]
+
+  baz = [42];           // Error: constant variable can't be assigned a value.
+}
+```
