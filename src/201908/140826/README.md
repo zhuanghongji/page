@@ -11,7 +11,35 @@
 
 **书籍列表**
 
-数据结构与算法分析：Java语言描述（第2版）
+* 数据结构与算法分析：Java 语言描述（第2版）
+* Effective Java 中文版（原书第3版）
+* Java 并发编程实战
+* Kotlin 从零到精通 Android 开发
+* Android 应用开发进阶
+* RxJava 2.x 实战
+* 音视频开发进阶指南：基于 Android 与 iOS 平台的实践
+* 新时期的 Node.js 入门
+* 深入浅出 Webpack
+* App 后台开发运维和架构实践
+* 深入理解 Android 自动化测试
+* Kotlin 核心编程
+* Java 并发编程的艺术
+* 漫画算法：小灰的算法之旅
+* FFmpeg 从入门到精通
+* Android 全埋点解决方案
+* Android 移动性能实战
+* Android Gradle 权威指南
+* JavaScript 忍者秘籍 第2版
+* Git 高手之路
+* Android 组件化架构
+* React 进阶之路
+* 深入探索 Android 热修复技术原理
+
+
+
+**书籍目录**
+
+数据结构与算法分析：Java 语言描述（第2版）
 <table>
   <tr>
     <td>引论</td>
@@ -19,8 +47,8 @@
       <ul>
         <li>数学知识复习</li>
         <li>递归简论</li>
-        <li>实现泛型特性构件pre-Java5</li>
-        <li>利用Java5泛性实现泛型特性成分</li>
+        <li>实现泛型特性构件 pre-Java5</li>
+        <li>利用 Java5 泛性实现泛型特性成分</li>
         <li>函数对象</li>
       </ul>
     </td>
@@ -171,9 +199,9 @@
         <li>自顶向下伸展树</li>
         <li>红黑树</li>
         <li>确定性跳跃表</li>
-        <li>AA树</li>
-        <li>treap树</li>
-        <li>kd树</li>
+        <li>AA 树</li>
+        <li>treap 树</li>
+        <li>kd 树</li>
         <li>配对堆</li>
       </ul>
     </td>
@@ -182,7 +210,7 @@
 
 <br/>
 
-Effective Java中文版（原书第3版）
+Effective Java 中文版（原书第3版）
 <table>
   <tr>
     <td>引言</td>
@@ -198,13 +226,13 @@ Effective Java中文版（原书第3版）
       <ul>
         <li>用静态工厂方法代替构造器</li>
         <li>遇到多个构造器参数时要考虑使用构建器</li>
-        <li>用私有构造器或者枚举类型强化Singleton属性</li>
+        <li>用私有构造器或者枚举类型强化 Singleton 属性</li>
         <li>通过私有构造器强化不可实例化的能力</li>
         <li>优先考虑依赖注入来引用资源</li>
         <li>避免创建不必要的对象</li>
         <li>消除过期的对象引用</li>
         <li>避免使用终结方法和清除方法</li>
-        <li>try-with-resources优先于try-f?inally</li>
+        <li>try-with-resources 优先于 try-f?inally</li>
       </ul>
     </td>
   </tr>
@@ -212,11 +240,11 @@ Effective Java中文版（原书第3版）
     <td>对于所有对象都通用的方法</td>
     <td>
       <ul>
-        <li>覆盖equals时请遵守通用约定</li>
-        <li>覆盖equals时总要覆盖hashCode</li>
-        <li>始终要覆盖toString</li>
-        <li>谨慎地覆盖clone</li>
-        <li>考虑实现Comparable接口</li>
+        <li>覆盖 equals 时请遵守通用约定</li>
+        <li>覆盖 equals 时总要覆盖hashCode</li>
+        <li>始终要覆盖 toString</li>
+        <li>谨慎地覆盖 clone</li>
+        <li>考虑实现 Comparable 接口</li>
       </ul>
     </td>
   </tr>
@@ -257,27 +285,27 @@ Effective Java中文版（原书第3版）
     <td>枚举和注解</td>
     <td>
       <ul>
-        <li>用enum代替int常量</li>
+        <li>用 enum 代替 int 常量</li>
         <li>用实例域代替序数</li>
-        <li>用EnumSet代替位域</li>
-        <li>用EnumMap代替序数索引</li>
+        <li>用 EnumSet 代替位域</li>
+        <li>用 EnumMap 代替序数索引</li>
         <li>用接口模拟可扩展的枚举</li>
         <li>注解优先于命名模式</li>
-        <li>坚持使用Override注解</li>
+        <li>坚持使用 Override 注解</li>
         <li>用标记接口定义类型</li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td>Lambda和Stream</td>
+    <td>Lambda 和 Stream</td>
     <td>
       <ul>
-        <li>Lambda优先于匿名类</li>
+        <li>Lambda 优先于匿名类</li>
         <li>坚持使用标准的函数接口</li>
-        <li>谨慎使用Stream</li>
-        <li>优先选择Stream中无副作用的函数</li>
-        <li>Stream要优先用Collection作为返回类型</li>
-        <li>谨慎使用Stream并行</li>
+        <li>谨慎使用 Stream</li>
+        <li>优先选择 Stream 中无副作用的函数</li>
+        <li>Stream 要优先用 Collection 作为返回类型</li>
+        <li>谨慎使用 Stream 并行</li>
       </ul>
     </td>
   </tr>
@@ -290,9 +318,9 @@ Effective Java中文版（原书第3版）
         <li>谨慎设计方法签名</li>
         <li>慎用重载</li>
         <li>慎用可变参数</li>
-        <li>返回零长度的数组或者集合，而不是null</li>
-        <li>谨慎返回optinal</li>
-        <li>为所有导出的API元素编写文档注释</li>
+        <li>返回零长度的数组或者集合，而不是 null</li>
+        <li>谨慎返回 optinal</li>
+        <li>为所有导出的 API 元素编写文档注释</li>
       </ul>
     </td>
   </tr>
@@ -301,9 +329,9 @@ Effective Java中文版（原书第3版）
     <td>
       <ul>
         <li>将局部变量的作用域最小化</li>
-        <li>for-each循环优先于传统的for循环</li>
+        <li>for-each 循环优先于传统的 for 循环</li>
         <li>了解和使用类库</li>
-        <li>如果需要精确的答案，请避免使用float和double</li>
+        <li>如果需要精确的答案，请避免使用 float 和 double</li>
         <li>基本类型优先于装箱基本类型</li>
         <li>如果其他类型更适合，则尽量避免使用字符串</li>
         <li>了解字符串连接的性能</li>
@@ -366,2151 +394,1295 @@ Effective Java中文版（原书第3版）
 Java并发编程实战
 <table>
   <tr>
-    <td></td>
+    <td>简介</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>并发简史 </li>
+        <li>线程的优势 </li>
+        <li>线程带来的风险</li>
+        <li>线程无处不在</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>线程安全性 </td>
+    <td>
+      <ul>
+        <li>什么是线程安全性</li>
+        <li>原子性</li>
+        <li>加锁机制</li>
+        <li>用锁来保护状态</li>
+        <li>活跃性与性能</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>对象的共享</td>
+    <td>
+      <ul>
+        <li>可见性</li>
+        <li>发布与逸出</li>
+        <li>线程封闭</li>
+        <li>不变性</li>
+        <li>安全发布</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>对象的组合</td>
+    <td>
+      <ul>
+        <li>设计线程安全的类</li>
+        <li>实例封闭</li>
+        <li>线程安全性的委托</li>
+        <li>在现有的线程安全类中添加功能</li>
+        <li>将同步策略文档化</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>基础构建模块</td>
+    <td>
+      <ul>
+        <li>同步容器类</li>
+        <li>并发容器</li>
+        <li>阻塞队列和生产者-消费者模式</li>
+        <li>阻塞方法与中断方法</li>
+        <li>同步工具类</li>
+        <li>构建高效且可伸缩的结果缓存</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>任务执行</td>
+    <td>
+      <ul>
+        <li>在线程中执行任务</li>
+        <li>Executor框架</li>
+        <li>找出可利用的并行性</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>取消与关闭</td>
+    <td>
+      <ul>
         <li></li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td></td>
+    <td>线程池的使用</td>
     <td>
       <ul>
         <li></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>图形用户界面应用程序</td>
+    <td>
+      <ul>
         <li></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>避免活跃性危险</td>
+    <td>
+      <ul>
         <li></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>性能与可伸缩性</td>
+    <td>
+      <ul>
         <li></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>并发程序的测试</td>
+    <td>
+      <ul>
+        <li></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>显式锁</td>
+    <td>
+      <ul>
+        <li></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>构建自定义的同步工具</td>
+    <td>
+      <ul>
+        <li></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>原子变量与非阻塞同步机制</td>
+    <td>
+      <ul>
+        <li></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Java内存模型</td>
+    <td>
+      <ul>
         <li></li>
       </ul>
     </td>
   </tr>
 </table>
-
-第1章　简介 
-1.1　并发简史 
-1.2　线程的优势 
-1.2.1　发挥多处理器的强大能力 
-1.2.2　建模的简单性 
-1.2.3　异步事件的简化处理 
-1.2.4　响应更灵敏的用户界面 
-1.3　线程带来的风险 
-1.3.1　安全性问题 
-1.3.2　活跃性问题 
-1.3.3　性能问题 
-1.4　线程无处不在 
-第一部分　基础知识 
-第2章　线程安全性 
-2.1　什么是线程安全性 
-2.2　原子性 
-2.2.1　竞态条件 
-2.2.2　示例：延迟初始化中的竞态条件 
-2.2.3　复合操作 
-2.3　加锁机制 
-2.3.1　内置锁 
-2.3.2　重入 
-2.4　用锁来保护状态 
-2.5　活跃性与性能 
-第3章　对象的共享 
-3.1　可见性 
-3.1.1　失效数据 
-3.1.2　非原子的64位操作 
-3.1.3　加锁与可见性 
-3.1.4　Volatile变量 
-3.2　发布与逸出 
-3.3　线程封闭 
-3.3.1　Ad-hoc线程封闭 
-3.3.2　栈封闭 
-3.3.3　ThreadLocal类 
-3.4　不变性 
-3.4.1　Final域 
-3.4.2　示例：使用Volatile类型来发布不可变对象 
-3.5　安全发布 
-3.5.1　不正确的发布：正确的对象被破坏 
-3.5.2 　不可变对象与初始化安全性 
-3.5.3　安全发布的常用模式 
-3.5.4　事实不可变对象 
-3.5.5　可变对象 
-3.5.6　安全地共享对象 
-第4章　对象的组合 
-4.1　设计线程安全的类 
-4.1.1　收集同步需求 
-4.1.2　依赖状态的操作 
-4.1.3　状态的所有权 
-4.2　实例封闭 
-4.2.1　Java监视器模式 
-4.2.2　示例：车辆追踪 
-4.3　线程安全性的委托 
-4.3.1　示例：基于委托的车辆追踪器 
-4.3.2　独立的状态变量 
-4.3.3　当委托失效时 
-4.3.4　发布底层的状态变量 
-4.3.5　示例：发布状态的车辆追踪器 
-4.4　在现有的线程安全类中添加功能 
-4.4.1　客户端加锁机制 
-4.4.2　组合 
-4.5　将同步策略文档化 
-第5章　基础构建模块 
-5.1　同步容器类 
-5.1.1　同步容器类的问题 
-5.1.2　迭代器与Concurrent-ModificationException 
-5.1.3　隐藏迭代器 
-5.2　并发容器 
-5.2.1　ConcurrentHashMap 
-5.2.2　额外的原子Map操作 
-5.2.3　CopyOnWriteArrayList 
-5.3　阻塞队列和生产者-消费者模式 
-5.3.1　示例：桌面搜索 
-5.3.2　串行线程封闭 
-5.3.3　双端队列与工作密取 
-5.4　阻塞方法与中断方法 
-5.5　同步工具类 
-5.5.1　闭锁 
-5.5.2　FutureTask 
-5.5.3　信号量 
-5.5.4　栅栏 
-5.6　构建高效且可伸缩的结果缓存 
-第二部分　结构化并发应用程序 
-第6章　任务执行 
-6.1　在线程中执行任务 
-6.1.1　串行地执行任务 
-6.1.2　显式地为任务创建线程 
-6.1.3　无限制创建线程的不足 
-6.2　Executor框架 
-6.2.1　示例：基于Executor的Web服务器 
-6.2.2　执行策略 
-6.2.3　线程池 
-6.2.4　Executor的生命周期 
-6.2.5　延迟任务与周期任务 
-6.3　找出可利用的并行性 
-6.3.1　示例：串行的页面渲染器 
-6.3.2　携带结果的任务Callable与Future 
-6.3.3　示例：使用Future实现页面渲染器 
-6.3.4　在异构任务并行化中存在的局限 
-6.3.5　CompletionService:Executor与BlockingQueue 
-6.3.6　示例：使用CompletionService实现页面渲染器 
-6.3.7　为任务设置时限 
-6.3.8　示例：旅行预定门户网站 
-第7章　取消与关闭 
-第8章　线程池的使用 
-第9章　图形用户界面应用程序 
-第三部分　活跃性、性能与测试 
-第10章　避免活跃性危险 
-第11章　性能与可伸缩性 
-第12章　并发程序的测试 
-第四部分　高级主题 
-第13章　显式锁 
-第14章　构建自定义的同步工具 
-第15章　原子变量与非阻塞同步机制 
-第16章　Java内存模型 
 
 <br/>
 
 Kotlin从零到精通Android开发
 <table>
   <tr>
-    <td></td>
+    <td>搭建Kotlin开发环境</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>Kotlin与Android开发的关系</li>
+        <li>Kotlin开发工具</li>
+        <li>SDK安装与插件升级</li>
+        <li>Kotlin简单配置</li>
+        <li>Kotlin相关技术</li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td></td>
+    <td>数据类型</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>基本数据类型</li>
+        <li>数组</li>
+        <li>字符串</li>
+        <li>容器</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>控制语句</td>
+    <td>
+      <ul>
+        <li>条件分支</li>
+        <li>循环处理</li>
+        <li>空安全</li>
+        <li>等式判断</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>函数运用</td>
+    <td>
+      <ul>
+        <li>函数的基本用法</li>
+        <li>输入参数的变化</li>
+        <li>几种特殊函数</li>
+        <li>增强系统函数</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>类和对象</td>
+    <td>
+      <ul>
+        <li>类的构造</li>
+        <li>类的成员</li>
+        <li>类的继承</li>
+        <li>几种特殊类</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Kotlin使用简单控件</td>
+    <td>
+      <ul>
+        <li>使用按钮控件</li>
+        <li>使用页面布局</li>
+        <li>使用图文控件</li>
+        <li>Activity活动跳转</li>
+        <li>实战项目：电商App的登录页面</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Kotlin操纵复杂控件</td>
+    <td>
+      <ul>
+        <li>使用视图排列</li>
+        <li>使用材质设计MaterialDesign</li>
+        <li>实现页面切换</li>
+        <li>广播收发Broadcast</li>
+        <li>实战项目：电商App的商品频道</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Kotlin进行数据存储</td>
+    <td>
+      <ul>
+        <li>使用共享参数SharedPreferences</li>
+        <li>使用数据库SQLite</li>
+        <li>文件I/O操作</li>
+        <li>Application全局变量</li>
+        <li>实战项目：电商App的购物车</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Kotlin自定义控件</td>
+    <td>
+      <ul>
+        <li>自定义普通视图</li>
+        <li>自定义简单动画</li>
+        <li>自定义通知栏</li>
+        <li>Service服务启停</li>
+        <li>实战项目：电商App的生鲜团购</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Kotlin实现网络通信</td>
+    <td>
+      <ul>
+        <li>多线程技术</li>
+        <li>访问HTTP接口</li>
+        <li>文件下载操作</li>
+        <li>ContentProvider内容提供</li>
+        <li>实战项目：电商App的自动升级</li>
       </ul>
     </td>
   </tr>
 </table>
-
-第1章 搭建Kotlin开发环境 1
-
-1.1 Kotlin与Android开发的关系 1
-
-1.1.1 Kotlin语言简介 1
-
-1.1.2 Android Studio的官方开发语言 2
-
-1.2 Kotlin开发工具 2
-
-1.2.1 安装Android Studio 2
-
-1.2.2 启动Android Studio 4
-
-1.2.3 创建Kotlin工程 5
-
-1.2.4 新建Kotlin文件 8
-
-1.3 SDK安装与插件升级 10
-
-1.3.1 安装最新版SDK 10
-
-1.3.2 升级Gradle插件 11
-
-1.3.3 升级Kotlin插件 12
-
-1.4 Kotlin简单配置 14
-
-1.4.1 调整Kotlin编译配置 14
-
-1.4.2 修改编译配置文件 15
-
-1.4.3 Java代码转Kotlin代码 16
-
-1.5 Kotlin相关技术 18
-
-1.5.1 Kotlin代码与Java代码PK 18
-
-1.5.2 Anko库 21
-
-1.5.3 Lambda表达式 22
-
-1.6 小结 23
-
-第2章 数据类型 24
-
-2.1 基本数据类型 24
-
-2.1.1 基本类型的变量声明 24
-
-2.1.2 简单变量之间的转换 25
-
-2.2 数组 26
-
-2.2.1 数组变量的声明 27
-
-2.2.2 数组元素的操作 28
-
-2.3 字符串 29
-
-2.3.1 字符串与基本类型的转换 29
-
-2.3.2 字符串的常用方法 29
-
-2.3.3 字符串模板及其拼接 30
-
-2.4 容器 31
-
-2.4.1 容器的基本操作 31
-
-2.4.2 集合Set/MutableSet 32
-
-2.4.3 队列List/MutableList 34
-
-2.4.4 映射Map/MutableMap 36
-
-2.5 小结 38
-
-第3章 控制语句 39
-
-3.1 条件分支 39
-
-3.1.1 简单分支 39
-
-3.1.2 多路分支 40
-
-3.1.3 类型判断 42
-
-3.2 循环处理 43
-
-3.2.1 遍历循环 44
-
-3.2.2 条件循环 45
-
-3.2.3 跳出多重循环 46
-
-3.3 空安全 48
-
-3.3.1 字符串的有效性判断 48
-
-3.3.2 声明可空变量 49
-
-3.3.3 校验空值的运算符 50
-
-3.4 等式判断 52
-
-3.4.1 结构相等 52
-
-3.4.2 引用相等 53
-
-3.4.3 s和in 55
-
-3.5 小结 57
-
-第4章 函数运用 58
-
-4.1 函数的基本用法 58
-
-4.1.1 与Java声明方式的区别 58
-
-4.1.2 输入参数的格式 59
-
-4.1.3 输出参数的格式 60
-
-4.2 输入参数的变化 62
-
-4.2.1 默认参数 62
-
-4.2.2 命名参数 63
-
-4.2.3 可变参数 64
-
-4.3 几种特殊函数 66
-
-4.3.1 泛型函数 66
-
-4.3.2 内联函数 67
-
-4.3.3 简化函数 68
-
-4.3.4 尾递归函数 69
-
-4.3.5 高阶函数 69
-
-4.4 增强系统函数 71
-
-4.4.1 扩展函数 71
-
-4.4.2 扩展高阶函数 72
-
-4.4.3 日期时间函数 73
-
-4.4.4 单例对象 75
-
-4.5 小结 77
-
-第5章 类和对象 78
-
-5.1 类的构造 78
-
-5.1.1 类的简单定义 78
-
-5.1.2 类的构造函数 79
-
-5.1.3 带默认参数的构造函数 81
-
-5.2 类的成员 83
-
-5.2.1 成员属性 83
-
-5.2.2 成员方法 86
-
-5.2.3 伴生对象 87
-
-5.2.4 静态属性 88
-
-5.3 类的继承 89
-
-5.3.1 开放性修饰符 89
-
-5.3.2 普通类继承 91
-
-5.3.3 抽象类 93
-
-5.3.4 接口 94
-
-5.3.5 接口代理 96
-
-5.4 几种特殊类 99
-
-5.4.1 嵌套类 100
-
-5.4.2 内部类 100
-
-5.4.3 枚举类 101
-
-5.4.4 密封类 103
-
-5.4.5 数据类 104
-
-5.4.6 模板类 105
-
-5.5 小结 107
-
-第6章 Kotlin使用简单控件 108
-
-6.1 使用按钮控件 108
-
-6.1.1 按钮Button 108
-
-6.1.2 复选框CheckBox 111
-
-6.1.3 单选按钮RadioButton 112
-
-6.2 使用页面布局 114
-
-6.2.1 线性布局LinearLayout 114
-
-6.2.2 相对布局RelativeLayout 118
-
-6.2.3 约束布局ConstraintLayout 119
-
-6.3 使用图文控件 124
-
-6.3.1 文本视图TextView 124
-
-6.3.2 图像视图ImageView 127
-
-6.3.3 文本编辑框EditText 128
-
-6.4 Activity活动跳转 130
-
-6.4.1 传送配对字段数据 130
-
-6.4.2 传送序列化数据 132
-
-6.4.3 跳转时指定启动模式 134
-
-6.4.4 处理返回数据 137
-
-6.5 实战项目：电商App的登录页面 138
-
-6.5.1 需求描述 138
-
-6.5.2 开始热身：提醒对话框AlertDialog 139
-
-6.5.3 控件设计 141
-
-6.5.4 关键代码 141
-
-6.6 小结 144
-
-第7章 Kotlin操纵复杂控件 145
-
-7.1 使用视图排列 145
-
-7.1.1 下拉框Spinner 145
-
-7.1.2 列表视图ListView 149
-
-7.1.3 网格视图GridView 154
-
-7.1.4 循环视图RecyclerView 156
-
-7.2 使用材质设计MaterialDesign 165
-
-7.2.1 协调布局CoordinatorLayout 165
-
-7.2.2 工具栏Toolbar 167
-
-7.2.3 应用栏布局AppBarLayout 169
-
-7.2.4 可折叠工具栏布局CollapsingToolbarLayout 173
-
-7.2.5 仿支付宝首页的头部伸缩特效 177
-
-7.3 实现页面切换 181
-
-7.3.1 翻页视图ViewPager 182
-
-7.3.2 碎片Fragment 184
-
-7.3.3 标签布局TabLayout 187
-
-7.4 广播收发Broadcast 190
-
-7.4.1 收发临时广播 191
-
-7.4.2 接收系统广播 194
-
-7.5 实战项目：电商App的商品频道 196
-
-7.5.1 需求描述 196
-
-7.5.2 开始热身：下拉刷新布局SwipeRefreshLayout 197
-
-7.5.3 控件设计 201
-
-7.5.4 关键代码 201
-
-7.6 小结 203
-
-第8章 Kotlin进行数据存储 205
-
-8.1 使用共享参数SharedPreferences 205
-
-8.1.1 共享参数读写模板Preference 205
-
-8.1.2 属性代理等黑科技 208
-
-8.1.3 实现记住密码功能 210
-
-8.2 使用数据库SQLite 211
-
-8.2.1 数据库帮助器SQLiteOpenHelper 211
-
-8.2.2 更安全的ManagedSQLiteOpenHelper 213
-
-8.2.3 优化记住密码功能 220
-
-8.3 文件I/O操作 222
-
-8.3.1 文件保存空间 222
-
-8.3.2 读写文本文件 224
-
-8.3.3 读写图片文件 225
-
-8.3.4 遍历文件目录 227
-
-8.4 Application全局变量 228
-
-8.4.1 Application单例化 228
-
-8.4.2 利用Application实现全局变量 231
-
-8.5 实战项目：电商App的购物车 232
-
-8.5.1 需求描述 232
-
-8.5.2 开始热身：选项菜单OptionsMenu 233
-
-8.5.3 控件设计 235
-
-8.5.4 关键代码 236
-
-8.6 小结 240
-
-第9章 Kotlin自定义控件 242
-
-9.1 自定义普通视图 242
-
-9.1.1 构造对象 242
-
-9.1.2 测量尺寸 245
-
-9.1.3 绘制部件 249
-
-9.2 自定义简单动画 252
-
-9.2.1 任务Runnable 252
-
-9.2.2 进度条ProgressBar 255
-
-9.2.3 自定义文本进度条 257
-
-9.2.4 实现进度条动画 258
-
-9.3 自定义通知栏 259
-
-9.3.1 通知推送Notification 260
-
-9.3.2 大视图通知 262
-
-9.3.3 三种特殊的通知类型 265
-
-9.3.4 远程视图RemoteViews 269
-
-9.3.5 自定义折叠式通知 272
-
-9.4 Service服务启停 274
-
-9.4.1 普通方式启动服务 274
-
-9.4.2 绑定方式启动服务 277
-
-9.4.3 推送服务到前台 279
-
-9.5 实战项目：电商App的生鲜团购 283
-
-9.5.1 需求描述 283
-
-9.5.2 开始热身：震动器Vibrator 284
-
-9.5.3 控件设计 287
-
-9.5.4 关键代码 287
-
-9.6 小结 289
-
-第10章 Kotlin实现网络通信 291
-
-10.1 多线程技术 291
-
-10.1.1 大线程Thread与消息传递 291
-
-10.1.2 进度对话框ProgressDialog 295
-
-10.1.3 异步任务doAsync和doAsyncResult 297
-
-10.2 访问HTTP接口 300
-
-10.2.1 移动数据格式JSON 301
-
-10.2.2 JSON串转数据类 303
-
-10.2.3 HTTP接口调用 304
-
-10.2.4 HTTP图片获取 306
-
-10.3 文件下载操作 308
-
-10.3.1 下载管理器DownloadManager 308
-
-10.3.2 自定义文本进度圈 313
-
-10.3.3 在页面上动态显示下载进度 316
-
-10.4 ContentProvider内容提供 319
-
-10.4.1 内容提供器ContentProvider 319
-
-10.4.2 内容解析器ContentResolver 322
-
-10.4.3 内容观察器ContentObserver 325
-
-10.5 实战项目：电商App的自动升级 329
-
-10.5.1 需求描述 329
-
-10.5.2 开始热身：可变字符串SpannableString 330
-
-10.5.3 控件设计 333
-
-10.5.4 关键代码 334
-
-10.6 小结 337
 
 <br/>
 
 Android应用开发进阶
 <table>
   <tr>
-    <td></td>
+    <td>自定义控件</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>View的绘制流程</li>
+        <li>View的触摸事件</li>
+        <li>自定义控件常用方法总结</li>
+        <li>自定义控件案例</li>
+        <li>自定义控件性能优化</li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td></td>
+    <td>轮子</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>AppBrain平台</li>
+        <li>Butter Knife</li>
+        <li>EventBus</li>
+        <li>Dagger2</li>
+        <li>OkHttp</li>
+        <li>Retrofit</li>
+        <li>Volley</li>
+        <li>RxJava</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Android应用架构</td>
+    <td>
+      <ul>
+        <li>todo-mvp</li>
+        <li>todo-mvp-clean</li>
+        <li>todo-mvp-dagger</li>
+        <li>todo-mvp-rxjava</li>
+        <li>todo-mvvm-databinding</li>
+        <li>todo-mvvm-live</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>AndroidPlus项目实战</td>
+    <td>
+      <ul>
+        <li>需求分析</li>
+        <li>产品设计</li>
+        <li>Java实现</li>
+        <li>Kotlin实现</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>开发实践</td>
+    <td>
+      <ul>
+        <li>Android Studio中的Git实践</li>
+        <li>Android屏幕适配</li>
+        <li>Android视频播放器</li>
+        <li>声网直播实践</li>
       </ul>
     </td>
   </tr>
 </table>
-
-第1章　自定义控件
-
-1.1　View的绘制流程
-
-1.1.1　View和ViewGroup
-
-1.1.2　View的绘制流程
-
-1.1.3　ViewGroup的绘制流程
-
-1.1.4　View绘制流程深入解析
-
-1.2　View的触摸事件
-
-1.2.1 触摸事件的类型
-
-1.2.2　触摸事件的传递过程
-
-1.2.3　事件传递细节
-
-1.3　自定义控件常用方法总结
-
-1.3.1　绘制流程相关
-
-1.3.2　事件处理相关
-
-1.3.3　其他
-
-1.4　自定义控件案例
-
-1.4.1　柱状图
-
-1.4.2　折线图
-
-1.4.3　曲线图
-
-1.4.4　渐变圆弧进度条
-
-1.4.5　卡片滑动切换
-
-1.4.6　ViewPager圆形指示器
-
-1.5　自定义控件性能优化
-
-第2章　轮子
-
-2.1　AppBrain平台
-
-2.2　Butter Knife
-
-2.2.1　编译时注解
-
-2.2.2　Element
-
-2.2.3　编译时注解案例
-
-2.2.4　Butter Knife源码分析
-
-2.2.5　Butter Knife Zelezny插件的实现
-
-2.3　EventBus
-
-2.3.1　EventBus的使用
-
-2.3.2　EventBus源码分析
-
-2.3.3　EventBus 3.0索引加速
-
-2.4　Dagger2
-
-2.4.1　Dagger2的使用
-
-2.4.2　Dagger2源码分析
-
-2.4.3　Dagger2进阶
-
-2.4.4　Component之间的关系
-
-2.4.5　Dagger.Android
-
-2.5　OkHttp
-
-2.5.1　OkHttp的使用
-
-2.5.2　OkHttp源码分析
-
-2.6　Retrofit
-
-2.6.1　Retrofit的使用
-
-2.6.2　Retrofit源码分析
-
-2.7　Volley
-
-2.7.1　Volley的工作流程
-
-2.7.2　Volley的使用
-
-2.7.3　Volley的封装
-
-2.7.4　Volley源码分析
-
-2.8　RxJava
-
-2.8.1　RxJava的使用
-
-2.8.2　RxJava的源码分析
-
-第3章　Android应用架构
-
-3.1　todo-mvp
-
-3.1.1　MVP
-
-3.1.2　todo-mvp的实现
-
-3.2　todo-mvp-clean
-
-3.2.1　Clean架构
-
-3.2.2　Clean架构的Android实现
-
-3.2.3　todo-mvp-clean的实现
-
-3.3　todo-mvp-dagger
-
-3.3.1　AppComponent
-
-3.3.2　依赖注入
-
-3.4　todo-mvp-rxjava
-
-3.5　todo-mvvm-databinding
-
-3.5.1　MVVM
-
-3.5.2　Data Binding Library
-
-3.5.3　todo-mvvm-databinding的实现
-
-3.6　todo-mvvm-live
-
-3.6.1　Architecture Components
-
-3.6.2　todo-mvvm-live的实现
-
-第4章　AndroidPlus项目实战
-
-4.1　需求分析
-
-4.2　产品设计
-
-4.2.1　Material Design
-
-4.2.2　思维导图
-
-4.2.3　架构设计
-
-4.3　Java实现
-
-4.3.1　项目准备
-
-4.3.2　Dagger集成
-
-4.3.3　欢迎界面
-
-4.3.4　登录注册
-
-4.3.5　主界面
-
-4.3.6　首页
-
-4.3.7　问题详情
-
-4.3.8　回答详情
-
-4.3.9　评论
-
-4.3.10　分享文章
-
-4.3.11　文章
-
-4.3.12　个人中心
-
-4.3.13　用户详情
-
-4.3.14　异常上报、运营统计和应用升级
-
-4.3.15　代码混淆
-
-4.4　Kotlin实现
-
-第5章　开发实践
-
-5.1　Android Studio中的Git实践
-
-5.1.1　创建远程仓库
-
-5.1.2　.gitignore
-
-5.1.3　提交和推送
-
-5.1.4　分支
-
-5.1.5　获取（Fetch）
-
-5.1.6　拉取（Pull）
-
-5.1.7　衍合（Rebase）
-
-5.1.8　Git Flow
-
-5.1.9　分支合并
-
-5.1.10　移动HEAD
-
-5.1.11　贮藏（Stash）
-
-5.1.12　重置（Reset）
-
-5.1.13　遴选（Cherry Pick）
-
-5.2　Android屏幕适配
-
-5.2.1　屏幕相关概念
-
-5.2.2　图片适配
-
-5.2.3　dimen
-
-5.2.4　weight
-
-5.2.5　百分比布局
-
-5.2.6　ConstraintLayout
-
-5.2.7　平板适配
-
-5.2.8　RTL布局
-
-5.3　Android视频播放器
-
-5.3.1　ijkPlayer
-
-5.3.2　Vitamio
-
-5.3.3　PLDroidPlayer
-
-5.3.4　测试开发
-
-5.4　声网直播实践
-
-5.4.1　频道列表
-
-5.4.2　视频群聊
 
 <br/>
 
 RxJava 2.x 实战
 <table>
   <tr>
-    <td></td>
+    <td>RxJava 简介</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>你需要了解的函数响应式编程</li>
+        <li>RxJava 简介</li>
+        <li>为何选择RxJava</li>
+        <li>RxJava 能做什么</li>
+        <li>RxJava 2 的 Hello World</li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td></td>
+    <td>RxJava 基础知识</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>Observable</li>
+        <li>Hot Observable 和Cold Observable</li>
+        <li>Flowable</li>
+        <li>Single、Completable 和 Maybe</li>
+        <li>Subject 和 Processor</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>创建操作符</td>
+    <td>
+      <ul>
+        <li>create、just 和 from</li>
+        <li>repeat</li>
+        <li>defer、interval 和 timer</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>RxJava 的线程操作</td>
+    <td>
+      <ul>
+        <li>调度器（Scheduler）种类</li>
+        <li>RxJava 线程模型</li>
+        <li>Scheduler 的测试</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>变换操作和过滤操作符</td>
+    <td>
+      <ul>
+        <li>map 和 flatMap</li>
+        <li>groupBy</li>
+        <li>buffer 和 window</li>
+        <li>first 和 last</li>
+        <li>take 和 takeLast</li>
+        <li>skip 和 skipLast</li>
+        <li>elementAt 和 ignoreElements</li>
+        <li>distinct 和 filter</li>
+        <li>debounce</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>条件操作符和布尔操作符</td>
+    <td>
+      <ul>
+        <li>all、contains 和 amb</li>
+        <li>defaultIfEmpty</li>
+        <li>sequenceEqual</li>
+        <li>skipUtil 和 skipWhile</li>
+        <li>takeUtil 和 takeWhile</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>合并操作符与连接操作符</td>
+    <td>
+      <ul>
+        <li>merge 和zip</li>
+        <li>combineLatest 和 join</li>
+        <li>startWith</li>
+        <li>connect、push 和 refCount</li>
+        <li>replay</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>RxJava 的背压</td>
+    <td>
+      <ul>
+        <li>背压</li>
+        <li>RxJava 2.x 的背压策略</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Disposble 和 Transformer 的使用</td>
+    <td>
+      <ul>
+        <li>Disposable</li>
+        <li>RxLifecycle 和 AutoDispose</li>
+        <li>Transformer 在 RxJava 中的使用</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>RxJava 的并行编程</td>
+    <td>
+      <ul>
+        <li>RxJava 并行操作</li>
+        <li>ParallelFlowable</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>RxBinding 的使用</td>
+    <td>
+      <ul>
+        <li>RxBinding 简介</li>
+        <li>RxBinding 使用场景</li>
+        <li>RxBinding 结合 RxPermissions 的使用</li>
+        <li>RxBinding 使用的注意点</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>RxAndroid 2.x 和 Retrofit 的使用</td>
+    <td>
+      <ul>
+        <li>RxAndroid 2.x 简介</li>
+        <li>Retrofit 简介</li>
+        <li>Retrofit 与 RxJava 的完美配合</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>开发EventBus</td>
+    <td>
+      <ul>
+        <li>传统的EventBus</li>
+        <li>开发一个新的EventBus（一）</li>
+        <li>开发一个新的EventBus（二）</li>
+        <li>开发一个新的EventBus（三）</li>
+        <li>开发一个新的EventBus（四）</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>使用 RxJava 封装 Httpclient</td>
+    <td>
+      <ul>
+        <li>HttpClient 的介绍</li>
+        <li>使用RxJava 进行重构</li>
+        <li>实现一个简单的图片爬虫</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Spring Boot 和RxJava 2</td>
+    <td>
+      <ul>
+        <li>模拟Task 任务</li>
+        <li>构建一个给爬虫使用的代理 IP 池</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Java 8 的函数式编程</td>
+    <td>
+      <ul>
+        <li>Java 8 的新变化</li>
+        <li>函数</li>
+        <li>Lambda 表达式</li>
+        <li>Java 8 新增的Stream</li>
+        <li>函数的柯里化</li>
+        <li>新的异步编程方式CompletableFuture</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Kotin 和RxJava</td>
+    <td>
+      <ul>
+        <li>Kotlin 简介</li>
+        <li>使用Kotlin 来封装图像框架</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>展望未来</td>
+    <td>
+      <ul>
+        <li>期待已久的Java 9</li>
+        <li>其他的Reactive Streams 项目</li>
       </ul>
     </td>
   </tr>
 </table>
-
-第1 章 RxJava 简介 1
-1.1 你需要了解的函数响应式编程 1
-1.2 RxJava 简介 4
-1.3 为何选择RxJava 6
-1.4 RxJava 能做什么 10
-1.5 RxJava 2 的Hello World 11
-1.6 小结 12
-第2 章 RxJava 基础知识 . 13
-2.1 Observable 13
-2.2 Hot Observable 和Cold Observable 20
-2.3 Flowable . 33
-2.4 Single、Completable 和Maybe . 34
-2.5 Subject 和Processor . 48
-2.6 小结 63
-第3 章 创建操作符 64
-3.1 create、just 和from . 65
-3.2 repeat 72
-3.3 defer、interval 和timer 75
-3.4 小结 80
-第4 章 RxJava 的线程操作 . 81
-4.1 调度器（Scheduler）种类 81
-4.2 RxJava 线程模型 83
-VI ∣ RxJava 2.x 实战
-4.3 Scheduler 的测试 . 99
-4.4 小结 106
-第5 章 变换操作和过滤操作符 107
-5.1 map 和flatMap . 108
-5.2 groupBy 112
-5.3 buffer 和window 114
-5.4 first 和last 121
-5.5 take 和takeLast 125
-5.6 skip 和skipLast 131
-5.7 elementAt 和ignoreElements . 135
-5.8 distinct 和filter . 139
-5.9 debounce . 142
-5.10 小结 144
-第6 章 条件操作符和布尔操作符 145
-6.1 all、contains 和amb 146
-6.2 defaultIfEmpty 150
-6.3 sequenceEqual 152
-6.4 skipUtil 和skipWhile . 154
-6.5 takeUtil 和takeWhile . 156
-6.6 小结 159
-第7 章 合并操作符与连接操作符 160
-7.1 merge 和zip . 161
-7.2 combineLatest 和join . 167
-7.3 startWith 171
-7.4 connect、push 和refCount 174
-7.5 replay 180
-7.6 小结 183
-第8 章 RxJava 的背压 184
-8.1 背压 184
-8.2 RxJava 2.x 的背压策略 188
-8.3 小结 193
-第9 章 Disposble 和Transformer 的使用 194
-9.1 Disposable 194
-9.2 RxLifecycle 和AutoDispose 196
-9.3 Transformer 在RxJava 中的使用 198
-9.4 小结 213
-第10 章 RxJava 的并行编程 . 214
-10.1 RxJava 并行操作 214
-10.2 ParallelFlowable . 221
-10.3 小结 225
-第11 章 RxBinding 的使用 226
-11.1 RxBinding 简介 226
-11.2 RxBinding 使用场景 229
-11.3 RxBinding 结合RxPermissions 的使用 243
-11.4 RxBinding 使用的注意点 249
-11.5 小结 251
-第12 章 RxAndroid 2.x 和Retrofit 的使用 . 252
-12.1 RxAndroid 2.x 简介 . 252
-12.2 Retrofit 简介 . 257
-12.3 Retrofit 与RxJava 的完美配合 . 258
-12.4 小结 272
-第13 章 开发EventBus 274
-13.1 传统的EventBus 274
-13.2 开发一个新的EventBus（一） 276
-13.3 开发一个新的EventBus（二） 285
-13.4 开发一个新的EventBus（三） 287
-13.5 开发一个新的EventBus（四） 294
-13.6 小结 302
-第14 章 使用RxJava 封装Httpclient 4.5 303
-14.1 HttpClient 的介绍 303
-14.2 使用RxJava 进行重构 . 309
-14.3 实现一个简单的图片爬虫 317
-14.4 小结 323
-第15 章 Spring Boot 和RxJava 2 . 325
-15.1 模拟Task 任务 . 325
-15.2 构建一个给爬虫使用的代理IP 池 . 335
-15.3 小结 347
-第16 章 Java 8 的函数式编程 348
-16.1 Java 8 的新变化 .348
-16.2 函数 349
-16.3 Lambda 表达式 352
-16.4 Java 8 新增的Stream .355
-16.5 函数的柯里化 364
-16.6 新的异步编程方式CompletableFuture .367
-16.7 小结 388
-第17 章 Kotin 和RxJava 389
-17.1 Kotlin 简介 .389
-17.2 使用Kotlin 来封装图像框架 393
-17.3 小结 405
-第18 章 展望未来 406
-18.1 期待已久的Java 9 406
-18.2 其他的Reactive Streams 项目 . 408
-18.3 小结 410
-附录A RxJava 常用的操作符列表 411
-附录B .RxJava 中常用的library 416
 
 <br/>
 
 音视频开发进阶指南：基于Android与iOS平台的实践
 <table>
   <tr>
-    <td></td>
+    <td>音视频基础概念</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>声音的物理性质</li>
+        <li>数字音频</li>
+        <li>音频编码</li>
+        <li>图像的物理现象</li>
+        <li>图像的数值表示</li>
+        <li>视频的编码方式</li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td></td>
+    <td>移动端环境搭建</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>在iOS上如何搭建一个基础项目</li>
+        <li>在Android上如何搭建一个基础项目</li>
+        <li>交叉编译的原理与实践</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>FFmpeg的介绍与使用</td>
+    <td>
+      <ul>
+        <li>FFmpeg的编译与命令行工具的使用</li>
+        <li>FFmpeg API的介绍与使用</li>
+        <li>FFmpeg源码结构</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>移动平台下的音视频渲染</td>
+    <td>
+      <ul>
+        <li>AudioUnit介绍与实践</li>
+        <li>Android平台的音频渲染</li>
+        <li>视频渲染</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>实现一款视频播放器</td>
+    <td>
+      <ul>
+        <li>架构设计</li>
+        <li>解码模块的实现</li>
+        <li>音频播放模块的实现</li>
+        <li>画面播放模块的实现</li>
+        <li>AVSync模块的实现</li>
+        <li>中控系统串联起各个模块</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>音视频的采集与编码</td>
+    <td>
+      <ul>
+        <li>音频的采集</li>
+        <li>视频画面的采集</li>
+        <li>音频的编码</li>
+        <li>视频画面的编码</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>实现一款视频录制应用</td>
+    <td>
+      <ul>
+        <li>视频录制的架构设计</li>
+        <li>音频模块的实现</li>
+        <li>音频编码模块的实现</li>
+        <li>画面采集与编码模块的实现</li>
+        <li>Mux模块</li>
+        <li>中控系统串联起各个模块</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>音频效果器的介绍与实践</td>
+    <td>
+      <ul>
+        <li>数字音频基础</li>
+        <li>数字音频处理：快速傅里叶变换</li>
+        <li>基本乐理知识</li>
+        <li>混音效果器</li>
+        <li>效果器实现</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>视频效果器的介绍与实践</td>
+    <td>
+      <ul>
+        <li>图像处理的基本原理</li>
+        <li>图像处理进阶</li>
+        <li>使用FFmpeg内部的视频滤镜</li>
+        <li>使用OpenGL ES实现视频滤镜</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>专业的视频录制应用实践</td>
+    <td>
+      <ul>
+        <li>视频硬件解码器的使用</li>
+        <li>音频效果器的集成</li>
+        <li>一套跨平台的视频效果器的设计与实现</li>
+        <li>将特效处理库集成到视频录制项目中</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>直播应用的构建</td>
+    <td>
+      <ul>
+        <li>直播场景分析</li>
+        <li>拉流播放器的构建</li>
+        <li>推流器的构建</li>
+        <li>第三方云服务介绍</li>
+        <li>礼物系统的实现</li>
+        <li>聊天系统的实现</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>直播应用中的关键处理</td>
+    <td>
+      <ul>
+        <li>直播应用的细节分析</li>
+        <li>推流端的关键处理</li>
+        <li>拉流端的关键处理</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>工欲善其事，必先利其器</td>
+    <td>
+      <ul>
+        <li>Android平台工具详解</li>
+        <li>iOS使用Instruments诊断应用</li>
       </ul>
     </td>
   </tr>
 </table>
-
-第1章　音视频基础概念
-1.1　声音的物理性质
-1.2　数字音频
-1.3　音频编码
-1.4　图像的物理现象
-1.5　图像的数值表示
-1.6　视频的编码方式
-1.7　本章小结
-第2章　移动端环境搭建
-2.1　在iOS上如何搭建一个基础项目
-2.2　在Android上如何搭建一个基础项目
-2.3　交叉编译的原理与实践
-2.4　本章小结
-第3章　FFmpeg的介绍与使用
-3.1　FFmpeg的编译与命令行工具的使用
-3.2　FFmpeg API的介绍与使用
-3.3　FFmpeg源码结构
-3.4　本章小结
-第4章　移动平台下的音视频渲染
-4.1　AudioUnit介绍与实践
-4.2　Android平台的音频渲染
-4.3　视频渲染
-4.4　本章小结
-第5章　实现一款视频播放器
-5.1　架构设计
-5.2　解码模块的实现
-5.3　音频播放模块的实现
-5.4　画面播放模块的实现
-5.5　AVSync模块的实现
-5.6　中控系统串联起各个模块
-5.7　本章小结
-第6章　音视频的采集与编码
-6.1　音频的采集
-6.2　视频画面的采集
-6.3　音频的编码
-6.4　视频画面的编码
-6.5　本章小结
-第7章　实现一款视频录制应用
-7.1　视频录制的架构设计
-7.2　音频模块的实现
-7.3　音频编码模块的实现
-7.4　画面采集与编码模块的实现
-7.5　Mux模块
-7.6　中控系统串联起各个模块
-7.7　本章小结
-第8章　音频效果器的介绍与实践
-8.1　数字音频基础
-8.2　数字音频处理：快速傅里叶变换
-8.3　基本乐理知识
-8.4　混音效果器
-8.5　效果器实现
-8.6　本章小结
-第9章　视频效果器的介绍与实践
-9.1　图像处理的基本原理
-9.2　图像处理进阶
-9.3　使用FFmpeg内部的视频滤镜
-9.4　使用OpenGL ES实现视频滤镜
-9.5　本章小结
-第10章　专业的视频录制应用实践
-10.1　视频硬件解码器的使用
-10.2　音频效果器的集成
-10.3　一套跨平台的视频效果器的设计与实现
-10.4　将特效处理库集成到视频录制项目中
-10.5　本章小结
-第11章　直播应用的构建
-11.1　直播场景分析
-11.2　拉流播放器的构建
-11.3　推流器的构建
-11.4　第三方云服务介绍
-11.5　礼物系统的实现
-11.6　聊天系统的实现
-11.7　本章小结
-第12章　直播应用中的关键处理
-12.1　直播应用的细节分析
-12.2　推流端的关键处理
-12.3　拉流端的关键处理
-12.4　本章小结
-第13章　工欲善其事，必先利其器
-13.1　Android平台工具详解
-13.2　iOS使用Instruments诊断应用
-13.3　本章小结
 
 <br/>
 
 新时期的Node.js入门
 <table>
   <tr>
-    <td></td>
+    <td>基础知识</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>Node是什么</li>
+        <li>Node的内部机制</li>
+        <li>事件循环(Event loop)</li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td></td>
+    <td>常用模块</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>Module</li>
+        <li>Buffer</li>
+        <li>File System</li>
+        <li>HTTP服务</li>
+        <li>TCP服务</li>
+        <li>更安全的传输方式——SSL</li>
+        <li>WebSocket</li>
+        <li>Stream</li>
+        <li>Events</li>
+        <li>多进程服务</li>
+        <li>Process对象</li>
+        <li>Timer</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>用ES6来书写Node</td>
+    <td>
+      <ul>
+        <li>新时代的EMCAScript</li>
+        <li>块级作用域</li>
+        <li>数组</li>
+        <li>函数</li>
+        <li>Set和Map</li>
+        <li>Iterator</li>
+        <li>对象</li>
+        <li>类</li>
+        <li>类的继承</li>
+        <li>ES6的模块化标准</li>
+        <li>使用babel来转换代码</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>书写异步代码</td>
+    <td>
+      <ul>
+        <li>异步操作的返回值</li>
+        <li>组织回调方法</li>
+        <li>使用Promise</li>
+        <li>Generator，一种过渡方案</li>
+        <li>回调的终点——async/await</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>使用Koa2构建Web站点</td>
+    <td>
+      <ul>
+        <li>Node Web框架的发展历程</li>
+        <li>内容规划</li>
+        <li>Koa入门</li>
+        <li>middleware</li>
+        <li>常用服务的实现</li>
+        <li>构建健壮的Web应用</li>
+        <li>使用Redis进行持久化</li>
+        <li>Koa源码剖析</li>
+        <li>网站部署</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>爬虫系统的开发</td>
+    <td>
+      <ul>
+        <li>爬虫技术概述</li>
+        <li>技术栈简介</li>
+        <li>构建脚手架</li>
+        <li>进行批量爬取</li>
+        <li>爬虫架构的改进</li>
+        <li>进程架构的改进</li>
+        <li>反爬虫处理</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>测试与调试</td>
+    <td>
+      <ul>
+        <li>单元测试</li>
+        <li>测试现有代码</li>
+        <li>更高维度的测试</li>
+        <li>调试Node应用</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Node中的错误处理</td>
+    <td>
+      <ul>
+        <li>Error模块</li>
+        <li>错误处理的几种方式</li>
+        <li>被抛弃的Domain</li>
+        <li>ES6中的错误处理</li>
+        <li>Web服务中的错误处理</li>
+        <li>防御式编程与Let it crash</li>
       </ul>
     </td>
   </tr>
 </table>
-
-第1章　基础知识
-1.1　Node是什么
-1.2　Node的内部机制
-1.3　事件循环(Event loop)
-1.4　总结
-1.5　参考资源
-第2章　常用模块
-2.1　Module
-2.2　Buffer
-2.3　File System
-2.4　HTTP服务
-2.5　TCP服务
-2.6　更安全的传输方式——SSL
-2.7　WebSocket
-2.8　Stream
-2.9　Events
-2.10　多进程服务
-2.11　Process对象
-2.12　Timer
-2.13　小结
-2.14　引用资源
-第3章　用ES6来书写Node
-3.1　新时代的EMCAScript
-3.2　块级作用域
-3.3　数组
-3.4　函数
-3.5　Set和Map
-3.6　Iterator
-3.7　对象
-3.8　类
-3.9　类的继承
-3.10　ES6的模块化标准
-3.11　使用babel来转换代码
-3.12　小结
-3.13　引用资源
-第4章　书写异步代码
-4.1　异步操作的返回值
-4.2　组织回调方法
-4.3　使用Promise
-4.4　Generator，一种过渡方案
-4.5　回调的终点——async/await
-4.6　总结
-4.7　引用资源
-第5章　使用Koa2构建Web站点
-5.1　Node Web框架的发展历程
-5.2　内容规划
-5.3　Koa入门
-5.4　middleware
-5.5　常用服务的实现
-5.6　构建健壮的Web应用
-5.7　使用Redis进行持久化
-5.8　Koa源码剖析
-5.9　网站部署
-5.10　总结
-5.11　引用资源
-第6章　爬虫系统的开发
-6.1　爬虫技术概述
-6.2　技术栈简介
-6.3　构建脚手架
-6.4　进行批量爬取
-6.5　爬虫架构的改进
-6.6　进程架构的改进
-6.7　反爬虫处理
-6.8　总结
-6.9　引用资源
-第7章　测试与调试
-7.1　单元测试
-7.2　测试现有代码
-7.3　更高维度的测试
-7.4　调试Node应用
-7.5　总结
-7.6　引用资源
-第8章　Node中的错误处理
-8.1　Error模块
-8.2　错误处理的几种方式
-8.3　被抛弃的Domain
-8.4　ES6中的错误处理
-8.5　Web服务中的错误处理
-8.6　防御式编程与Let it crash
-8.7　总结
-8.8　引用资源
 
 <br/>
 
 深入浅出Webpack
 <table>
   <tr>
-    <td></td>
+    <td>入门</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>前端的发展</li>
+        <li>常见的构建工具及对比</li>
+        <li>安装Webpack</li>
+        <li>使用Loader</li>
+        <li>使用Plugin</li>
+        <li>使用DevServer</li>
+        <li>核心概念</li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td></td>
+    <td>配置</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>Entry</li>
+        <li>Output</li>
+        <li>Module</li>
+        <li>Resolve</li>
+        <li>Plugin</li>
+        <li>DevServer</li>
+        <li>其他配置项</li>
+        <li>整体配置结构</li>
+        <li>多种配置类型</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>实战</td>
+    <td>
+      <ul>
+        <li>使用ES6语言</li>
+        <li>使用TypeScript语言</li>
+        <li>使用Flow检查器</li>
+        <li>使用SCSS语言</li>
+        <li>使用PostCSS</li>
+        <li>使用React框架</li>
+        <li>使用Vue框架</li>
+        <li>使用Angular2框架</li>
+        <li>为单页应用生成HTML</li>
+        <li>管理多个单页应用</li>
+        <li>构建同构应用</li>
+        <li>构建Electron应用</li>
+        <li>构建Npm模块</li>
+        <li>构建离线应用</li>
+        <li>搭配Npm Script</li>
+        <li>检查代码</li>
+        <li>通过Node.js API启动Webpack</li>
+        <li>使用Webpack Dev Middleware</li>
+        <li>加载图片</li>
+        <li>加载SVG</li>
+        <li>加载Source Map</li>
+        <li>实战总结</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>优化</td>
+    <td>
+      <ul>
+        <li>缩小文件的搜索范围</li>
+        <li>使用DllPlugin</li>
+        <li>使用HappyPack</li>
+        <li>使用ParallelUglifyPlugin</li>
+        <li>使用自动刷新</li>
+        <li>开启模块热替换</li>
+        <li>区分环境</li>
+        <li>压缩代码</li>
+        <li>CDN加速</li>
+        <li>使用Tree Shaking</li>
+        <li>提取公共代码</li>
+        <li>分割代码以按需加载</li>
+        <li>使用Prepack</li>
+        <li>开启Scope Hoisting</li>
+        <li>输出分析</li>
+        <li>优化总结</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>原理</td>
+    <td>
+      <ul>
+        <li>工作原理概括</li>
+        <li>输出文件分析</li>
+        <li>编写Loader</li>
+        <li>编写Plugin</li>
+        <li>调试Webpack</li>
+        <li>原理总结</li>
       </ul>
     </td>
   </tr>
 </table>
-
-第1章　入门
-1.1　前端的发展
-1.2　常见的构建工具及对比
-1.3　安装Webpack
-1.4　使用Loader
-1.5　使用Plugin
-1.6　使用DevServer
-1.7　核心概念
-第2章　配置
-2.1　Entry
-2.2　Output
-2.3　Module
-2.4　Resolve
-2.5　Plugin
-2.6　DevServer
-2.7　其他配置项
-2.8　整体配置结构
-2.9　多种配置类型
-2.10　总结
-第3章　实战
-3.1　使用ES6语言
-3.2　使用TypeScript语言
-3.3　使用Flow检查器
-3.4　使用SCSS语言
-3.5　使用PostCSS
-3.6　使用React框架
-3.7　使用Vue框架
-3.8　使用Angular2框架
-3.9　为单页应用生成HTML
-3.10　管理多个单页应用
-3.11　构建同构应用
-3.12　构建Electron应用
-3.13　构建Npm模块
-3.14　构建离线应用
-3.15　搭配Npm Script
-3.16　检查代码
-3.17　通过Node.js API启动Webpack
-3.18　使用Webpack Dev Middleware
-3.19　加载图片
-3.20　加载SVG
-3.21　加载Source Map
-3.22　实战总结
-第4章　优化
-4.1　缩小文件的搜索范围
-4.2　使用DllPlugin
-4.3　使用HappyPack
-4.4　使用ParallelUglifyPlugin
-4.5　使用自动刷新
-4.6　开启模块热替换
-4.7　区分环境
-4.8　压缩代码
-4.9　CDN加速
-4.10　使用Tree Shaking
-4.11　提取公共代码
-4.12　分割代码以按需加载
-4.13　使用Prepack
-4.14　开启Scope Hoisting
-4.15　输出分析
-4.16　优化总结
-第5章　原理
-5.1　工作原理概括
-5.2　输出文件分析
-5.3　编写Loader
-5.4　编写Plugin
-5.5　调试Webpack
-5.6　原理总结
-
-<br/>
-
-Axure RP8 实战手册 网站和APP原型制作案例精粹
-<table>
-  <tr>
-    <td></td>
-    <td>
-      <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>
-      <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
-    </td>
-  </tr>
-</table>
-
-基础操作篇 
-第1章使用元件 / 9 
-基础1 添加元件到画布 / 11 
-基础2 添加元件名称 / 11 
-基础3 设置元件位置/尺寸 / 11 
-基础4 设置元件默认角度 / 11 
-基础5 设置元件颜色与透明 / 11 
-基础6 设置形状或图片圆角 / 12 
-基础7 设置矩形仅显示部分边框 / 12 
-基础8 设置线段/箭头/边框样式 / 12 
-基础9 设置元件文字边距/行距 / 12 
-基础10 设置元件默认隐藏 / 12 
-基础11 设置文本框输入为密码 / 12 
-基础12 设置打开选择文件窗口 / 13 
-基础13 限制文本框输入字符位数 / 13 
-基础14 设置文本框提示文字 / 13 
-基础15 设置文本框回车触发事件 / 13 
-基础16 设置鼠标移入元件时的提示 / 13 
-基础17 设置矩形为其他形状 / 14 
-基础18 设置自定义形状 / 14 
-基础19 设置形状水平/垂直翻转 / 14 
-基础20 设置列表框的内容 / 14 
-基础21 设置元件默认选中/禁用 / 14 
-基础22 设置单选按钮唯一选中 / 14 
-基础23 设置元件不同状态的交互样式 / 15 
-基础24 设置图片文本 / 15 
-基础25 切割/裁剪图片 / 15 
-基础26 嵌入多媒体文件/页面 / 15 
-基础27 调整元件的层级 / 16 
-基础28 组合/取消组合元件 / 16 
-基础29 转换元件为图片 / 16 
-基础30 载入元件库 / 16 
-基础31 切换元件库 / 16 
-第2章页面设置 / 17 
-基础32 设置页面居中 / 18 
-基础33 设置页面背景（图片/颜色） / 18 
-基础34 设置页面颜色（草图/黑白） / 18 
-第3章设置条件 / 19 
-基础35 添加条件判断 / 20 
-基础36 设置条件逻辑关系 / 20 
-基础37 用例条件转换 / 20 
-第4章使用变量/公式 / 21 
-基础38 全局变量设置 / 22 
-基础39 局部变量设置 / 22 
-基础40 公式的格式及类型 / 22 
-第5章功能设置 / 23 
-基础41 设置形状并排显示细边框 / 24 
-基础42 设置画布中的遮罩阴影 / 24 
-基础43 显示/隐藏交互与说明编号 / 24 
-基础44 显示/隐藏两侧的功能面板 / 24 
-基础45 展开/收起/弹出/停靠/关闭功能面板 / 24 
-基础46 关闭/恢复功能面板 / 24 
-基础47 文件备份与恢复 / 25 
-基础48 设置自适应视图 / 25 
-第6章查看原型 / 26 
-基础49 快速预览查看原型 / 27 
-基础50 生成HTML 查看原型 / 27 
-基础51 生成部分原型页面 / 27 
-基础52 为原型添加标志 / 27 
-基础53 发布原型到AxShare / 28 
-基础54 重新生成当前页面 / 28 
-基础55 移动设备设置 / 28 
-基础56 Web 字体设置 / 29 
-实战案例篇 
-第7章元件案例 / 31 
-案例1 文本框：带图标文字提示 / 33 
-案例2 文本框：边框变色 / 34 
-案例3 图片：变换样式的按钮（1） / 35 
-案例4 图片：自定义复选框（1） / 36 
-案例5 形状：变换样式的按钮（2） / 37 
-案例6 形状：自定义复选框（2） / 38 
-案例7 形状：唯一选中项 / 39 
-案例8 形状：制作环形进度条 / 40 
-案例9 文本标签：添加文本链接 / 42 
-案例10 内联框架：嵌入百度地图 / 44 
-案例11 动态面板：登录面板切换 / 46 
-案例12 动态面板：自动图片切换 / 48 
-案例13 动态面板：保持固定位置 / 51 
-案例14 动态面板：拖动滑块解锁（1） / 52 
-案例15 动态面板：元件样式联动 / 55 
-案例16 中继器：制作商品列表 / 57 
-案例17 中继器：商品列表排序 / 60 
-案例18 形状：自定义复选框（3） / 62 
-案例19 中继器：商品类型筛选 / / 64 
-案例20 中继器：选择对比商品（1） / 66 
-案例21 中继器：选择对比商品（2） / 70 
-案例22 中继器：选择对比商品（3） / 72 
-第8章变量案例 / 76 
-案例23 全局变量：账号登录验证（1） / 77 
-案例24 全局变量：打开微博详情（1） / 80 
-案例25 局部变量：账号登录验证（2） / 83 
-案例26 局部变量：增减商品数量（1） / 84 
-案例27 局部变量：价格区间筛选 / 85 
-第9章特别案例 / 88 
-案例28 组合：弹出菜单效果 / 89 
-案例29 组合：菜单整体变色 / 90 
-案例30 遮罩：弹出登录界面 / 91 
-案例31 推拉：制作抽屉菜单 / 92 
-案例32 移动：横幅展开效果 / 94 
-案例33 尺寸：改变元件尺寸（1） / 97 
-案例34 翻转：图片翻转效果 / 99 
-案例35 旋转：唱片旋转效果 / 100 
-案例36 锚点：页面返回顶部 / 103 
-第10 章函数案例 / 106 
-案例37 元件函数：改变元件尺寸（2） / 107 
-案例38 元件函数：增减商品数量（2） / 108 
-案例39 元件函数：图片外框移动 / 109 
-案例40 元件函数：拖动滑块解锁（2） / 111 
-案例41 元件函数：商品图片切换 / 113 
-案例42 页面函数：导航指针移动 / 116 
-案例43 窗口函数：滚动吸附顶部 / 117 
-案例44 窗口函数：返回顶部按钮 / 119 
-案例45 指针函数：商品图片放大 / 121 
-案例46 数字与指针函数：开关侧边菜单 / 125 
-案例47 数学函数：随机数验证码 / 127 
-案例48 数学函数：不同方向滑入 / 132 
-案例49 字符串函数：模糊搜索列表 / 136 
-案例50 字符串函数：手机号码验证（1） / 138 
-案例51 字符串函数：手机号码验证（2） / 141 
-案例52 字符串函数：复选数量统计 / 141 
-案例53 字符串函数：打开微博详情（2） / 143 
-案例54 字符串函数：音乐播放计时 / 145 
-案例55 日期函数：获取系统时间 / 149 
-案例56 中继器函数：首个商品推荐 / 152 
-案例57 中继器函数：添加对比商品（4） / 156 
-案例58 中继器函数：游戏列表翻页（1） / 157 
-案例59 中继器函数：游戏列表翻页（2） / 160 
-案例60 中继器函数：列表筛选结果 / 164 
-第11章综合案例（Web） / 169 
-案例61 面板状态切换与移动 / 170 
-案例62 框架中镶嵌其他页面 / 172 
-案例63 间隔与连续旋转特效 / 173 
-案例64 锚点滚动与导航吸附 / 174 
-案例65 唯一选中与样式切换 / 177 
-案例66 页面内滚动条的实现 / 178 
-案例67 用滚轮控制横向滚动 / 181 
-案例68 剩余可输入文字提示 / 185 
-案例69 进度条与数字的联动 / 188 
-案例70 展开收起的推拉效果 / 189 
-案例71 展开收起与移动效果 / 193 
-案例72 图像旋转与镂空效果 / 193 
-案例73 全选与取消全选效果 / 196 
-案例74 带进度条的分页标签 / 199 
-案例75 循环选中与尺寸改变 / 202 
-案例76 二级菜单的内容切换 / 204 
-案例77 循环内容走马灯效果 / 206 
-案例78 页面安全键盘的实现 / 209 
-案例79 省市列表的选择联动 / 211 
-案例80 背景滑块与改变尺寸 / 213 
-案例81 可调节时间的倒计时 / 215 
-案例82 文本框中焦点的控制 / 217 
-案例83 随机数数字自增效果 / 220 
-案例84 文字输入的条件限制 / 221 
-案例85 鼠标移入的缩放效果 / 222 
-第12章综合案例（APP） / 227 
-案例86 启动画面的翻页效果 / 227 
-案例87 双方向拖动橱窗效果 / 229 
-案例88 输入文字与退格效果 / 232 
-案例89 中心点逐渐放大效果 / 233 
-案例90 菜单的拖动排序效果 / 234 
-案例91 半透明按钮悬浮效果 / 237 
-案例92 导航菜单单击时移动 / 238 
-案例93 展开与收起二级选项 / 241 
-案例94 拖动切换与移动效果 / 242 
-案例95 长按进度条前进效果 / 245 
-案例96 滑块的水平拖动效果 / 248 
-案例97 长按复选框切换样式 / 250 
-案例98 选中复选框计数效果 / 251 
-案例99 全选与取消全选效果 / 253 
-案例100 侧边菜单的视差效果 / 254 
-案例101 动态面板嵌套与切换 / 256 
-案例102 标签移动与内容切换 / 260 
-案例103 单击曲目时切换歌曲 / 262 
-案例104 遮罩与放大弹出内容 / 264 
-案例105 动态面板状态的联动 / 267 
-案例106 循环移动的波浪效果 / 268 
-案例107 二级菜单下滑与遮罩 / 270 
-案例108 下拉刷新的多个状态 / 272 
-案例109 字符串输入控制效果 / 276 
-案例110 图标旋转与放大缩小 / 278 
 
 <br/>
 
 App后台开发运维和架构实践
 <table>
   <tr>
-    <td></td>
+    <td>App后台入门</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>App后台的功能</li>
+        <li>App后台架构</li>
+        <li>App和App后台的通信</li>
+        <li>App后台和Web后端的区别</li>
+        <li>选择服务器</li>
+        <li>选择编程语言</li>
+        <li>快速入门新技术</li>
+        <li>App是怎样炼成的</li>
+        <li>最适合App的开发模式——敏捷开发</li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td></td>
+    <td>App后台基础技术</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>从App业务逻辑中提炼API接口</li>
+        <li>设计API的要点</li>
+        <li>如何选择合适的数据库产品</li>
+        <li>如何选择消息队列软件</li>
+        <li>使用分布式服务实现业务的复用</li>
+        <li>搜索技术入门</li>
+        <li>定时任务</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>App后台核心技术</td>
+    <td>
+      <ul>
+        <li>用户验证方案</li>
+        <li>App通信安全</li>
+        <li>短信服务</li>
+        <li>处理表情的一些技巧</li>
+        <li>高效更新数据</li>
+        <li>图片处理</li>
+        <li>视频处理</li>
+        <li>获取APK和IPA文件里的资源</li>
+        <li>文件系统</li>
+        <li>ELK日志分析平台</li>
+        <li>Docker构建一致的开发环境</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Linux——App后台应用最广泛的系统</td>
+    <td>
+      <ul>
+        <li>基本的系统优化</li>
+        <li>常用的命令</li>
+        <li>故障案例分析</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Nginx——App后台HTTP服务的利器</td>
+    <td>
+      <ul>
+        <li>简介</li>
+        <li>基本原理</li>
+        <li>常用配置</li>
+        <li>性能统计</li>
+        <li>实现负载均衡的方案</li>
+        <li>用Nginx处理业务逻辑</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>MySQL——App后台最常用的数据库</td>
+    <td>
+      <ul>
+        <li>基本架构</li>
+        <li>选择版本</li>
+        <li>配置文件详解</li>
+        <li>软件优化</li>
+        <li>硬件优化</li>
+        <li>架构优化</li>
+        <li>SQL慢查询分析</li>
+        <li>云数据库简介</li>
+        <li>灵活的存储结构</li>
+        <li>故障排除案例</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Redis——App后台高性能的缓存系统</td>
+    <td>
+      <ul>
+        <li>Redis简介</li>
+        <li>Redis的常用数据结构及应用场景</li>
+        <li>内存优化</li>
+        <li>集群</li>
+        <li>持久化</li>
+        <li>故障排除案例</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>MongoDB——App后台新兴的数据库</td>
+    <td>
+      <ul>
+        <li>简介</li>
+        <li>核心机制解析</li>
+        <li>入门</li>
+        <li>高可用集群</li>
+        <li>LBS——地理位置查询</li>
+        <li>MongoDB 3.0版本的改进</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>App后台架构剖析</td>
+    <td>
+      <ul>
+        <li>聊天App后台架构</li>
+        <li>社交App后台架构</li>
+        <li>LBS App后台架构</li>
+        <li>推送服务器后台架构</li>
+        <li>获得更多App后台架构资料</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>App后台架构的演进</td>
+    <td>
+      <ul>
+        <li>架构的核心要素</li>
+        <li>架构选型的要点</li>
+        <li>架构的演进</li>
+        <li>架构的特点</li>
       </ul>
     </td>
   </tr>
 </table>
-
-推荐序 十八般兵器入门.. 3
-
-第1章　App后台入门
-
-1.1　App后台的功能... 16
-
-1.2　App后台架构... 17
-
-1.3　App和App后台的通信... 19
-
-1.4　App后台和Web后端的区别... 22
-
-1.5　选择服务器... 23
-
-1.6　选择编程语言... 24
-
-1.7　快速入门新技术 1.7.1　思维模式 1.7.2　4种快速入门新技术的方法
-
-1.8　App是怎样炼成的... 26
-
-1.8.1　项目启动阶段 1.8.2　研发阶段 1.8.3　测试阶段 1.8.4　正式推出阶段
-
-1.9　最适合App的开发模式——敏捷开发... 30
-
-1.9.1　Sprint 计划会议 1.9.2　日常开发 1.9.3　每日例会 1.9.4　测试和修复Bug 1.9.5　评审会议 1.9.6　回顾会议 1.9.7　及时反馈 1.9.8　总结
-
-第2章　App后台基础技术.. 35
-
-2.1　从App业务逻辑中提炼API接口... 35
-
-2.1.1　业务逻辑思维导图 2.1.2　功能—业务逻辑思维导图 2.1.3　基本功能模块关系 2.1.4　功能模块接口UML（设计出API） 2.1.5　编写在线API测试文档 2.1.6　设计稿标注API
-
-2.2　设计API的要点... 46
-
-2.3　如何选择合适的数据库产品... 50
-
-2.3.1　Redis，MongoDB，MySQL读写数据的区别 2.3.2　Redis，MongoDB，MySQL查找数据的区别 2.3.3　Redis，MongoDB，MySQL适用场景
-
-2.4　如何选择消息队列软件
-
-2.4.1　为什么要用消息队列 2.4.2　消息队列的工作流程 2.4.3　常见的一些消息队列产品
-
-2.5　使用分布式服务实现业务的复用
-
-2.5.1　巨无霸系统的危害 2.5.2　远程服务的优点 2.5.3　远程服务的实现
-
-2.6　搜索技术入门... 59
-
-2.6.1　一个简单的搜索例子 2.6.2　搜索技术的基本原理 2.6.3　常见的开源搜索软件介绍
-
-2.7　定时任务... 65
-
-2.7.1　Linux定时任务Crontab 2.7.2　在后台轻松管理各种各样的定时任务
-
-第3章　App后台核心技术.. 68
-
-3.1　用户验证方案... 68
-
-3.1.1　使用HTTPS协议 3.1.2　基本的用户登录方案
-
-3.2　App通信安全... 72
-
-3.2.1　URL签名 3.2.2　AES对称加密 3.2.3　更进一步的通信安全
-
-3.3　短信服务... 78
-
-3.3.1　App后台发送短信简介 3.3.2　选择短信平台 3.3.3 建立可靠的短信服务
-
-3.4　处理表情的一些技巧... 80
-
-3.4.1　表情在MySQL的存储 3.4.2　当文字中夹带表情的处理 3.4.3　Openfire中发送表情引起连接断开的问题
-
-3.5　高效更新数据... 82
-
-3.5.1　内容的推拉 3.5.2　数据增量更新策略
-
-3.6　图片处理... 90
-
-3.7　视频处理... 91
-
-3.7.1　FFmpeg简介 3.7.2　后台调用FFmpeg的功能
-
-3.8　获取APK和IPA文件里的资源... 94
-
-3.8.1　Android的APK文件 3.8.2　iOS的IPA文件
-
-3.9　文件系统... 98
-
-3.9.1　文件云存储服务 3.9.2　架设文件系统
-
-3.10　ELK日志分析平台... 101
-
-3.10.1　基本模块 3.10.2　日志分析流程
-
-3.11　Docker构建一致的开发环境... 103
-
-3.11.1　Docker原理 3.11.2　搭建一致的开发环境
-
-第4章　Linux——App后台应用最广泛的系统.. 107
-
-4.1　基本的系统优化... 107
-
-4.1.1　开机自启动服务优化 4.1.2　增大文件描述符
-
-4.2　常用的命令... 110
-
-4.2.1　全面了解系统资源情况——top 4.2.2　显示进程状态——ps
-
-4.2.3　查看网络相关信息——netstat 4.2.4　查看某个进程打开的所有文件——lsof
-
-4.2.5　跟踪数据到达主机所经路由——traceroute 4.2.6　文件下载/上传工具——“ssh secure shell client”和“lrzsz”
-
-4.2.7　查看程序的依赖库——LD_DEBUG 4.2.8　进程管理利器——superivisor
-
-4.3　故障案例分析... 125
-
-第5章　Nginx——App后台HTTP服务的利器.. 126
-
-5.1　简介... 126
-
-5.2　基本原理... 127
-
-5.2.1　工作模型 5.2.2　进程解析
-
-5.3　常用配置... 129
-
-5.3.1　Nginx的全局配置 5.3.2　event配置 5.3.3　http配置 5.3.4　负载均衡配置 5.3.5　server虚拟主机配置
-
-5.3.6　location配置 5.3.7　HTTPS的配置 5.3.8　下载App的配置 5.3.9　生产环境中修改配置的良好习惯
-
-5.4　性能统计... 136
-
-5.5　实现负载均衡的方案... 137
-
-5.6　用Nginx处理业务逻辑... 139
-
-第6章　MySQL——App后台最常用的数据库.. 140
-
-6.1　基本架构... 140
-
-6.2　选择版本... 141
-
-6.3　配置文件详解... 142
-
-6.4　软件优化... 144
-
-6.4.1　正确使用MyISAM和InnoDB存储引擎 6.4.2　正确使用索引
-
-6.4.3　避免使用select * 6.4.4　字段尽可能地设置为NOT NULL
-
-6.5　硬件优化... 147
-
-6.5.1　增加物理内存 6.5.2　增加应用缓存
-
-6.5.3　用固态硬盘代替机械硬盘 6.5.4　SSD硬盘+SATA硬盘混合存储方案
-
-6.6　架构优化... 149
-
-6.6.1　分表 6.6.2　读写分离 6.6.3　分库
-
-6.7　SQL慢查询分析... 156
-
-6.8　云数据库简介... 157
-
-6.9　灵活的存储结构... 158
-
-6.10　故障排除案例... 159
-
-第7章　Redis——App后台高性能的缓存系统.. 160
-
-7.1　Redis简介... 160
-
-7.2　Redis的常用数据结构及应用场景... 161
-
-7.2.1　string——存储简单的数据 7.2.2　hash——存储对象的数据
-
-7.2.3　list——模拟队列操作 7.2.4　set——无序且不重复的元素集合
-
-7.2.5　sorted set——有序且不重复的元素集合... 168
-
-7.3　内存优化... 170
-
-7.3.1　监控内存使用的状况 7.3.2　优化存储结构
-
-7.3.3　限制使用的最大内存 7.3.4　设置过期时间
-
-7.4　集群... 174
-
-7.4.1　客户端分片 7.4.2　Twemproxy 7.4.3　Codis 7.4.4　Redis 3.0集群 7.4.5　云服务器上的集群服务
-
-7.5　持久化
-
-7.5.1　RDB 7.5.2　AOF
-
-7.6　故障排除案例... 184
-
-第8章　MongoDB——App后台新兴的数据库.. 185
-
-8.1　简介... 185
-
-8.2　核心机制解析... 186
-
-8.2.1　MMAP（内存文件映射） 8.2.2　Journal日志
-
-8.3　入门... 187
-
-8.3.1　基本操作 8.3.2　数组操作 8.3.3　实例演示MySQL和MongoDB设计数据库的区别
-
-8.4　高可用集群... 195
-
-8.4.1　主从 8.4.2　副本集 8.4.3　分片
-
-8.5　LBS——地理位置查询... 200
-
-8.6　MongoDB 3.0版本的改进... 205
-
-8.6.1　灵活的存储架构 8.6.2　性能提升7~10倍 8.6.3　存储空间最多减少80% 8.6.4　运维成本最多降低95%
-
-第9章　App后台架构剖析.. 208
-
-9.1　聊天App后台架构... 208
-
-9.1.1　移动互联网的网络特性 9.1.2　协议 9.1.3　整体架构
-
-9.2　社交App后台架构... 221
-
-9.2.1　基本表结构 9.2.2　推拉模式 9.2.3　数据库架构的演进 9.2.4　缓存架构的演进
-
-9.3　LBS App后台架构... 234
-
-9.3.1　地理坐标详解 9.3.2　查找附近的人 9.3.3　基于MongoDB的LBS后台架构演进
-
-9.4　推送服务器后台架构... 242
-
-9.4.1　Android推送 9.4.2　iOS推送
-
-9.5　获得更多App后台架构资料... 252
-
-第10章　App后台架构的演进.. 255
-
-10.1　架构的核心要素... 255
-
-10.1.1　高性能 10.1.2　高可用 10.1.3　可伸缩 10.1.4　可扩展 10.1.5　安全性
-
-10.2　架构选型的要点... 262
-
-10.2.1　用成熟稳定的开源软件 10.2.2　尽可能使用云服务
-
-10.3　架构的演进... 268
-
-10.3.1　单机部署 10.3.2　分布式部署 10.3.3　服务化
-
-10.4　架构的特点... 279
-
-10.4.1　每个App的后台架构不会完全一样 10.4.2　架构的演进是由业务驱动的 10.4.3　架构不是为了炫耀技术
 
 <br/>
 
 深入理解Android自动化测试
 <table>
   <tr>
-    <td></td>
+    <td>Android自动化测试基础</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>Android自动化分析</li>
+        <li>什么样的兵器称手</li>
+        <li>如何耍好你手上的兵器</li>
+        <li>你了解你的兵器吗</li>
+        <li>如何改造你的兵器</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>稳定性测试利器monkey使用详解</td>
+    <td>
+      <ul>
+        <li>monkey概述</li>
+        <li>第一个Impossible Mission</li>
+        <li>monkey的基本使用</li>
+        <li>monkey的命令及其使用</li>
+        <li>第二个Impossible Mission</li>
+        <li>monkey脚本编写</li>
+        <li>monkey工具总结</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>monkey之子monkeyrunner使用详解</td>
+    <td>
+      <ul>
+        <li>monkeyrunner概述</li>
+        <li>monkeyrunner API详解</li>
+        <li>monkeyrunner脚本编写</li>
+        <li>第三个Impossible Mission</li>
+        <li>monkeyrunner的录制回放</li>
+        <li>monkeyrunner工具总结</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>单元测试框架Instrumentation使用详解</td>
+    <td>
+      <ul>
+        <li>Instrumentation概述</li>
+        <li>Instrumentation基础</li>
+        <li>第四个Impossible Mission</li>
+        <li>Instrumentation的前世：单元测试基础框架JUnit</li>
+        <li>第五个Impossible Mission</li>
+        <li>Instrumentation的今生：对Android系统的高度控制</li>
+        <li>Instrumentation前世今生分析</li>
+        <li>第六个Impossible Mission</li>
+        <li>Instrumentation自动化脚本开发</li>
+        <li>Instrumentation工具总结</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>终极自动化框架UIAutomator使用详解</td>
+    <td>
+      <ul>
+        <li>UIAutomator概述</li>
+        <li>第七个Impossible Mission</li>
+        <li>更清晰的控件捕获</li>
+        <li>更直观的测试项目创建</li>
+        <li>UIAutomator API详解</li>
+        <li>更简洁的脚本撰写</li>
+        <li>更便捷地编译运行</li>
+        <li>UIAutomator工具总结</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>兼容性测试框架CTS使用详解</td>
+    <td>
+      <ul>
+        <li>CTS概述</li>
+        <li>CTS测试须知</li>
+        <li>CTS的命令及运行</li>
+        <li>CTS测试报告</li>
+        <li>CTS Verif?ier</li>
+        <li>CTS注意事项</li>
+        <li>CTS工具总结</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Android自动化工具使用总结</td>
+    <td>
+      <ul>
         <li></li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td></td>
+    <td>monkey原理分析</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>monkey源码结构</li>
+        <li>monkey架构分析</li>
+        <li>monkey的原理总结</li>
       </ul>
     </td>
   </tr>
-</table>
-
-第一部分　基础篇
-第1章　Android自动化测试基础 3
-1.1　Android自动化分析 3
-1.2　什么样的兵器*称手 4
-1.3　如何耍好你手上的兵器 6
-1.4　你了解你的兵器吗 8
-1.5　如何改造你的兵器 9
-第2章　稳定性测试利器monkey使用详解 10
-2.1　monkey概述 10
-2.2　第一个Impossible Mission 10
-2.3　monkey的基本使用 11
-2.4　monkey的命令及其使用 14
-2.4.1　monkey的常规类命令 14
-2.4.2　monkey的事件类命令 15
-2.4.3　monkey的约束类命令 19
-2.4.4　monkey的调试类命令 20
-2.4.5　monkey命令小结 22
-2.5　第二个Impossible Mission 23
-2.6　monkey脚本编写 24
-2.6.1　monkey API详解 24
-2.6.2　monkey脚本编写 27
-2.6.3　从getevent和input keyevent说起 33
-2.7　monkey工具总结 37
-第3章　monkey之子monkeyrunner使用详解 38
-3.1　monkeyrunner概述 38
-3.2　monkeyrunner API详解 38
-3.2.1　monkeyrunner基本API：手势、输入和点击 44
-3.2.2　monkeyrunner必备API：启动应用、等待 49
-3.2.3　monkeyrunner强大API：键值事件 58
-3.2.4　monkeyrunner与PC交互API：输入、选项列表框、警告框 61
-3.2.5　monkeyrunner应用操作API：等待设备连接、安装/卸载应用 65
-3.2.6　monkeyrunner设置控制API：重启、唤醒、获取设备属性 69
-3.2.7　monkeyrunner基本图像处理API：截屏、图像保存 75
-3.2.8　monkeyrunner必备图像处理API：图像截取、对比 78
-3.2.9　monkeyrunner强大图像处理API：转换格式、获取像素元组/像素值 82
-3.2.10　monkeyrunner超级API：广播、用例及命令 86
-3.2.11　monkeyrunner帮助文档 91
-3.3　monkeyrunner脚本编写 96
-3.3.1　bugben示例脚本剖析 96
-3.3.2　monkeyrunner脚本运行注意事项 98
-3.4　第三个Impossible Mission 99
-3.5　monkeyrunner的录制回放 99
-3.5.1　等待功能Wait 100
-3.5.2　按键功能Press a Button 102
-3.5.3　输入功能Type Something 103
-3.5.4　拖拽功能Fling 105
-3.5.5　录制脚本导出功能Export Actions 107
-3.5.6　录制bugben脚本示例 107
-3.5.7　回放bugben脚本 110
-3.6　monkeyrunner工具总结 112
-第4章　单元测试框架Instrumentation使用详解 114
-4.1　Instrumentation概述 114
-4.2　Instrumentation基础 115
-4.2.1　自动化测试基础 116
-4.2.2　Android测试框架 117
-4.3　第四个Impossible Mission 120
-4.4　Instrumentation的前世：单元测试基础框架JUnit 124
-4.5　第五个Impossible Mission 133
-4.6　Instrumentation的今生：对Android系统的高度控制 138
-4.7　Instrumentation前世今生分析 143
-4.8　第六个Impossible Mission 149
-4.9　Instrumentation自动化脚本开发 149
-4.9.1　Instrumentation自动化条件 150
-4.9.2　捕获*初项目控件 157
-4.9.3　对*初项目的自动化测试 161
-4.10　Instrumentation工具总结 167
-第5章　终极自动化框架UIAutomator使用详解 171
-5.1　UIAutomator概述 171
-5.2　第七个Impossible Mission 173
-5.3　更清晰的控件捕获 173
-5.4　更直观的测试项目创建 175
-5.5　UIAutomator API详解 177
-5.5.1　与monkeyrunner对照之：给力的手势 178
-5.5.2　与monkeyrunner对照之：输入、点击和长按 180
-5.5.3　与monkeyrunner对照之：等待和截屏 182
-5.5.4　与monkeyrunner对照之：锁屏/唤醒、获取设备属性 184
-5.5.5　与monkeyrunner对照之：键值事件 186
-5.5.6　人无我有之：屏幕旋转、布局文件 187
-5.5.7　人无我有之：获取包名、应用名和通知栏 189
-5.5.8　人无我有之：获取对象属性 189
-5.5.9　强大的控件筛选器：UiSelector 192
-5.5.10　“给力”的控件定位器：UiCollection 194
-5.5.11　无敌的滚动：UiScrollable 195
-5.5.12　疯狂的监听器：UiWatcher 200
-5.5.13　UIAutomator API综述 202
-5.6　更简洁的脚本撰写 202
-5.6.1　UIAutomator界面捕获 202
-5.6.2　UIAutomator应用启动 205
-5.6.3　UIAutomator控件捕获 206
-5.6.4　UIAutomator控件操作 211
-5.6.5　Bugben完整测试项目 213
-5.7　更便捷地编译运行 216
-5.8　UIAutomator工具总结 223
-第6章　兼容性测试框架CTS使用详解 226
-6.1　CTS概述 226
-6.2　CTS测试须知 228
-6.3　CTS的命令及运行 231
-6.4　CTS测试报告 237
-6.5　CTS Verif?ier 240
-6.6　CTS注意事项 243
-6.7　CTS工具总结 245
-第7章　Android自动化工具使用总结 247
-第二部分　原理篇
-第8章　monkey原理分析 252
-8.1　monkey源码结构 252
-8.2　monkey架构分析 254
-8.2.1　旅程开始 254
-8.2.2　从run()启程 254
-8.2.3　monkey参数详解 257
-8.2.4　如何细分参数？ 262
-8.2.5　导入package列表 264
-8.2.6　monkey的系统日志 266
-8.2.7　检查内部配置 268
-8.2.8　构建三大能力 268
-8.2.9　获取合法package列表 271
-8.2.10　monkey运行模式汇总 272
-8.2.11　monkey运行核心 281
-8.2.12　旅程结束 286
-8.3　monkey的原理总结 288
-第9章　monkeyrunner原理分析 289
-9.1　monkeyrunner源码结构 289
-9.2　monkeyrunner架构分析 289
-9.2.1　设备连接 291
-9.2.2　应用安装 311
-9.2.3　应用启动 319
-9.2.4　按键发送 321
-9.2.5　截屏 326
-9.2.6　文件存储 331
-9.3　monkeyrunner的原理总结 334
-第10章　Instrumentation原理分析 336
-10.1　Instrumentation源码结构 336
-10.2　Instrumentation架构分析 338
-10.2.1　从InstrumentationTestRunner说开来 339
-10.2.2　Instrumentation测试运行 342
-10.2.3　启动被测应用 345
-10.2.4　startActivity()方法 348
-10.2.5　startActivity()方法后遗症 351
-10.2.6　连接ViewServer 356
-10.2.7　获取设备应用信息 357
-10.2.8　获取应用控件树 359
-10.2.9　绘制控件树视图 362
-10.3　Instrumentation的原理总结 364
-第11章　UIAutomator原理分析 370
-11.1　UIAutomator源码结构 370
-11.2　UIAutomator架构分析 371
-11.2.1　控件捕获 371
-11.2.2　创建UiObject对象 372
-11.2.3　验证控件是否存在 374
-11.2.4　验证控件是否可用 381
-11.2.5　点击并等待界面跳转 381
-11.2.6　获取屏幕截图 386
-11.2.7　发送返回事件 388
-11.3　UIAutomator的原理总结 390
-第12章　CTS原理分析 392
-12.1　CTS源码结构 392
-12.2　CTS架构分析 392
-12.2.1　CTS案例MediaPlayer分析 393
-12.2.2　测试资源预置及环境清理 396
-12.2.3　空文件及音视频播放测试 398
-12.2.4　切换下一首歌测试 401
-12.2.5　频谱测试 406
-12.2.6　无缝播放测试 407
-12.2.7　视频界面重置测试 410
-12.2.8　录制视频播放角度测试 412
-12.2.9　不同格式视频文件测试 415
-12.2.10　字幕选择/取消选择测试 423
-12.2.11　字幕切换测试 427
-12.2.12　播放器回调测试 429
-12.2.13　视频录制播放测试 432
-12.3　CTS的原理总结 435
-第13章　Android自动化工具源码总结 436
-第三部分　实践篇
-第14章　从monkey到传参或录制工具开发 443
-14.1　从monkey原理说开来 443
-14.2　monkey传参小工具 444
-14.2.1　monkey传参小工具之常规类命令 444
-14.2.2　monkey传参小工具之事件类命令 445
-14.2.3　monkey传参小工具之约束类命令 447
-14.2.4　monkey传参小工具之调试类命令 448
-14.3　monkey脚本录制工具开发 449
-14.3.1　monkey脚本录制工具需求 450
-14.3.2　monkey脚本录制工具设计 450
-14.3.3　monkey脚本录制工具原理 453
-14.4　monkey工具总结 458
-第15章　从Instrumentation到稳定自动化工具开发 459
-15.1　为何要做二次封装？ 459
-15.2　如何做Instrumentation的二次封装 461
-15.2.1　场景1：源码问题 461
-15.2.2　场景2：控件问题 462
-15.2.3　场景3：用例结构问题 463
-15.2.4　场景4：运行日志问题 465
-15.2.5　场景5：窗口监测问题 465
-15.2.6　场景6：控件ID重复或缺失问题 466
-15.2.7　场景7：出错截屏问题 468
-15.3　二次封装改进项总结 469
-第16章　从UIAutomatorViewer到PC端脚本录制工具开发 470
-16.1　从UIAutomatorViewer原理说开来 470
-16.2　基于UIAutomatorViewer的PC端脚本录制工具 472
-16.2.1　PC端脚本录制工具：基本设计 472
-16.2.2　PC端脚本录制工具：详细设计 474
-16.2.3　PC端脚本录制工具：原理剖析 477
-16.2.4　PC端脚本录制工具：界面设计 483
-16.3　UIAutomatorViewer录制工具总结 487
-第17章　从CTS到定制化单元测试 489
-17.1　从CTS原理说开来 489
-17.2　用CTS运行定制单元测试脚本 491
-17.2.1　项目需求分析 491
-17.2.2　研究官方CTS用例集 492
-17.2.3　自定义CTS用例集 500
-17.2.4　运行自定义CTS用例集 504
-17.3　定制单元测试脚本总结 505
-第18章　Android自动化实践之路 507
-第四部分　反思篇
-第19章　关于工具的反思 512
-19.1　关于录制/回放工具的幻想 512
-19.2　要门槛还是要适配 513
-19.3　什么样的自动化框架才是强大的框架 515
-19.4　将第七个馒头扔出窗外 516
-第20章　关于测试的反思 519
-20.1　自动化是一种短线投资吗 519
-20.2　难道自动化是为了替代黑盒测试 520
-20.3　衡量自动化效果的标准是Bug数吗 521
-第21章　关于人的反思 522
-21.1　测试脚本编写者态度问题 522
-21.2　什么人适合做自动化 523
-21.3　自动化与组织架构有没有关系 525
-
-<br/>
-
-书名
-<table>
   <tr>
-    <td></td>
+    <td>monkeyrunner原理分析</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>monkeyrunner源码结构</li>
+        <li>monkeyrunner架构分析</li>
+        <li>monkeyrunner的原理总结</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Instrumentation原理分析</td>
+    <td>
+      <ul>
+        <li>Instrumentation源码结构</li>
+        <li>Instrumentation架构分析</li>
+        <li>Instrumentation的原理总结</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>UIAutomator原理分析</td>
+    <td>
+      <ul>
+        <li>UIAutomator源码结构</li>
+        <li>UIAutomator架构分析</li>
+        <li>UIAutomator的原理总结</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>CTS原理分析</td>
+    <td>
+      <ul>
+        <li>CTS源码结构</li>
+        <li>CTS架构分析</li>
+        <li>CTS的原理总结</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Android自动化工具源码总结</td>
+    <td>
+      <ul>
         <li></li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td></td>
+    <td>从monkey到传参或录制工具开发</td>
+    <td>
+      <ul>
+        <li>从monkey原理说开来</li>
+        <li>monkey传参小工具</li>
+        <li>monkey脚本录制工具开发</li>
+        <li>monkey工具总结</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>从Instrumentation到稳定自动化工具开发</td>
+    <td>
+      <ul>
+        <li>为何要做二次封装</li>
+        <li>如何做Instrumentation的二次封装</li>
+        <li>二次封装改进项总结</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>从UIAutomatorViewer到PC端脚本录制工具开发</td>
+    <td>
+      <ul>
+        <li>从UIAutomatorViewer原理说开来</li>
+        <li>基于UIAutomatorViewer的PC端脚本录制工具</li>
+        <li>UIAutomatorViewer录制工具总结</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>从CTS到定制化单元测试</td>
+    <td>
+      <ul>
+        <li>从CTS原理说开来</li>
+        <li>用CTS运行定制单元测试脚本</li>
+        <li>定制单元测试脚本总结</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Android自动化实践之路</td>
     <td>
       <ul>
         <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>关于工具的反思</td>
+    <td>
+      <ul>
+        <li>关于录制/回放工具的幻想</li>
+        <li>要门槛还是要适配</li>
+        <li>什么样的自动化框架才是强大的框架</li>
+        <li>将第七个馒头扔出窗外</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>关于测试的反思</td>
+    <td>
+      <ul>
+        <li>自动化是一种短线投资吗</li>
+        <li>难道自动化是为了替代黑盒测试</li>
+        <li>衡量自动化效果的标准是Bug数吗</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>关于人的反思</td>
+    <td>
+      <ul>
+        <li>测试脚本编写者态度问题</li>
+        <li>什么人适合做自动化</li>
+        <li>自动化与组织架构有没有关系</li>
       </ul>
     </td>
   </tr>
@@ -2518,29 +1690,63 @@ App后台开发运维和架构实践
 
 <br/>
 
-书名
+Kotlin核心编程
 <table>
   <tr>
-    <td></td>
+    <td>认识Kotlin</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>Java的发展</li>
+        <li>Scala的百宝箱</li>
+        <li>Kotlin—改良的Java</li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td></td>
+    <td>基础语法</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>不一样的类型声明</li>
+        <li>val和var的使用规则</li>
+        <li>高阶函数和Lambda</li>
+        <li>面向表达式编程</li>
+        <li>字符串的定义和操作</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>面向对象</td>
+    <td>
+      <ul>
+        <li>类和构造方法</li>
+        <li>不同的访问控制原则</li>
+        <li>解决多继承问题</li>
+        <li>真正的数据类</li>
+        <li>从static到object</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>代数数据类型和模式匹配</td>
+    <td>
+      <ul>
+        <li>代数数据类型</li>
+        <li>模式匹配</li>
+        <li>增强 Kotlin 的模式匹配</li>
+        <li>用代数数据类型来抽象业务</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>类型系统</td>
+    <td>
+      <ul>
+        <li>null引用：10亿美元的错误</li>
+        <li>可空类型</li>
+        <li>比Java更面向对象的设计</li>
+        <li>泛型：让类型更加安全</li>
+        <li>泛型的背后：类型擦除</li>
+        <li>打破泛型不变</li>
       </ul>
     </td>
   </tr>
@@ -2548,29 +1754,129 @@ App后台开发运维和架构实践
 
 <br/>
 
-书名
+Java并发编程的艺术
 <table>
   <tr>
-    <td></td>
+    <td>并发编程的挑战</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>上下文切换</li>
+        <li>死锁</li>
+        <li>资源限制的挑战</li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td></td>
+    <td>Java并发机制的底层实现原理</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>volatile的应用</li>
+        <li>synchronized的实现原理与应用</li>
+        <li>原子操作的实现原理</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Java内存模型</td>
+    <td>
+      <ul>
+        <li>Java内存模型的基础</li>
+        <li>重排序</li>
+        <li>顺序一致性</li>
+        <li>volatile的内存语义</li>
+        <li>锁的内存语义</li>
+        <li>final域的内存语义</li>
+        <li>happensbefore</li>
+        <li>双重检查锁定与延迟初始化</li>
+        <li>Java内存模型综述</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Java并发编程基础</td>
+    <td>
+      <ul>
+        <li>线程简介</li>
+        <li>启动和终止线程</li>
+        <li>线程间通信</li>
+        <li>线程应用实例</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Java中的锁</td>
+    <td>
+      <ul>
+        <li>Lock接口</li>
+        <li>队列同步器</li>
+        <li>重入锁</li>
+        <li>读写锁</li>
+        <li>LockSupport工具</li>
+        <li>Condition接口</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Java并发容器和框架</td>
+    <td>
+      <ul>
+        <li>ConcurrentHashMap的实现原理与使用</li>
+        <li>ConcurrentLinkedQueue</li>
+        <li>Java中的阻塞队列</li>
+        <li>Fork/Join框架</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Java中的13个原子操作类</td>
+    <td>
+      <ul>
+        <li>原子更新基本类型类</li>
+        <li>原子更新数组</li>
+        <li>原子更新引用类型</li>
+        <li>原子更新字段类</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Java中的并发工具类</td>
+    <td>
+      <ul>
+        <li>等待多线程完成的CountDownLatch</li>
+        <li>同步屏障CyclicBarrier</li>
+        <li>控制并发线程数的Semaphore</li>
+        <li>线程间交换数据的Exchanger</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Java中的线程池</td>
+    <td>
+      <ul>
+        <li>线程池的实现原理</li>
+        <li>线程池的使用</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Executor框架</td>
+    <td>
+      <ul>
+        <li>Executor框架简介</li>
+        <li>ThreadPoolExecutor详解</li>
+        <li>ScheduledThreadPoolExecutor详解</li>
+        <li>FutureTask详解</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Java并发编程实践</td>
+    <td>
+      <ul>
+        <li>生产者和消费者模式</li>
+        <li>线上问题定位</li>
+        <li>性能测试</li>
+        <li>异步任务池</li>
       </ul>
     </td>
   </tr>
@@ -2578,29 +1884,81 @@ App后台开发运维和架构实践
 
 <br/>
 
-书名
+漫画算法：小灰的算法之旅
 <table>
   <tr>
-    <td></td>
+    <td>算法概述</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>算法和数据结构</li>
+        <li>时间复杂度</li>
+        <li>空间复杂度</li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td></td>
+    <td>数据结构基础</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>什么是数组</li>
+        <li>什么是链表</li>
+        <li>栈和队列</li>
+        <li>神奇的散列表</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>树</td>
+    <td>
+      <ul>
+        <li>树和二叉树</li>
+        <li>二叉树的遍历</li>
+        <li>什么是二叉堆</li>
+        <li>什么是优先队列</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>排序算法</td>
+    <td>
+      <ul>
+        <li>引言</li>
+        <li>什么是冒泡排序</li>
+        <li>什么是快速排序</li>
+        <li>什么是堆排序</li>
+        <li>计数排序和桶排序</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>面试中的算法</td>
+    <td>
+      <ul>
+        <li>踌躇满志的小灰</li>
+        <li>如何判断链表有环</li>
+        <li>最小栈的实现</li>
+        <li>如何求出最大公约数</li>
+        <li>如何判断一个数是否为2的整数次幂</li>
+        <li>无序数组排序后的最大相邻差</li>
+        <li>如何用栈实现队列</li>
+        <li>寻找全排列的下一个数</li>
+        <li>删去k个数字后的最小值</li>
+        <li>如何实现大整数相加</li>
+        <li>如何求解金矿问题</li>
+        <li>寻找缺失的整数</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>算法的实际应用</td>
+    <td>
+      <ul>
+        <li>小灰上班的第1天</li>
+        <li>Bitmap的巧用</li>
+        <li>LRU算法的应用</li>
+        <li>什么是A星寻路算法</li>
+        <li>如何实现红包算法</li>
+        <li>算法之路无止境</li>
       </ul>
     </td>
   </tr>
@@ -2608,29 +1966,130 @@ App后台开发运维和架构实践
 
 <br/>
 
-书名
+FFmpeg从入门到精通
 <table>
   <tr>
-    <td></td>
+    <td>FFmpeg简介</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>FFmpeg的定义</li>
+        <li>FFmpeg的历史</li>
+        <li>FFmpeg的基本组成</li>
+        <li>FFmpeg的编解码工具ffmpeg</li>
+        <li>FFmpeg的播放器ffplay</li>
+        <li>FFmpeg的多媒体分析器ffprobe</li>
+        <li>FFmpeg编译</li>
+        <li>FFmpeg编码支持与定制</li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td></td>
+    <td>FFmpeg工具使用基础</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>ffmpeg常用命令</li>
+        <li>ffprobe常用命令</li>
+        <li>ffplay常用命令</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>FFmpeg 转封装</td>
+    <td>
+      <ul>
+        <li>音视频文件转MP4格式</li>
+        <li>视频文件转FLV</li>
+        <li>视频文件转M3U8</li>
+        <li>视频文件切片</li>
+        <li>音视频文件音视频流抽取</li>
+        <li>系统资源使用情况</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>FFmpeg转码</td>
+    <td>
+      <ul>
+        <li>FFmpeg软编码H.264与H.265</li>
+        <li>FFmpeg硬编解码</li>
+        <li>FFmpeg输出MP3</li>
+        <li>FFmpeg输出AAC</li>
+        <li>系统资源使用情况</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>FFmpeg流媒体</td>
+    <td>
+      <ul>
+        <li>FFmpeg发布与录制RTMP流</li>
+        <li>FFmpeg录制RTSP流</li>
+        <li>FFmpeg录制HTTP流</li>
+        <li>FFmpeg录制和发布UDP / TCP流</li>
+        <li>FFmpeg推多路流</li>
+        <li>FFmpeg生成HDS流</li>
+        <li>FFmpeg生成DASH流</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>FFmpeg滤镜使用</td>
+    <td>
+      <ul>
+        <li>FFmpeg滤镜Filter描述格式</li>
+        <li>FFmpeg为视频加水印</li>
+        <li>FFmpeg生成画中画</li>
+        <li>FFmpeg视频多宫格处理</li>
+        <li>FFmpeg音频流滤镜操作</li>
+        <li>FFmpeg音频音量探测</li>
+        <li>FFmpeg为视频加字幕</li>
+        <li>FFmpeg视频抠图合并</li>
+        <li>FFmpeg 3D视频处理</li>
+        <li>FFmpeg定时视频截图</li>
+        <li>FFmpeg生成测试元数据</li>
+        <li>FFmpeg对音视频倍速处理</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>FFmpeg采集设备</td>
+    <td>
+      <ul>
+        <li>FFmpeg中Linux设备操作</li>
+        <li>FFmpeg中OS X设备操作</li>
+        <li>FFmpeg中Windows设备操作</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>FFmpeg接口libavformat的使用</td>
+    <td>
+      <ul>
+        <li>音视频流封装</li>
+        <li>音视频文件解封装</li>
+        <li>音视频文件转封装</li>
+        <li>视频截取</li>
+        <li>avio内存数据操作</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>FFmpeg接口libavcodec的使用</td>
+    <td>
+      <ul>
+        <li>FFmpeg旧接口的使用</li>
+        <li>FFmpeg新接口的使用</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>FFmpeg接口libavfilter的使用</td>
+    <td>
+      <ul>
+        <li>filtergraph和filter简述</li>
+        <li>FFmpeg中预留的滤镜</li>
+        <li>avfilter流程图</li>
+        <li>使用滤镜加LOGO操作</li>
       </ul>
     </td>
   </tr>
@@ -2638,29 +2097,135 @@ App后台开发运维和架构实践
 
 <br/>
 
-书名
+Android全埋点解决方案
 <table>
   <tr>
-    <td></td>
+    <td>全埋点概述</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>Android View 类型</li>
+        <li>View 绑定listener 方式</li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td></td>
+    <td>$AppViewScreen全埋点</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>关键技术Application.ActivityLifecycleCallbacks</li>
+        <li>原理概述</li>
+        <li>案例</li>
+        <li>完善方案</li>
+        <li>扩展采集能力</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>$AppStart、$AppEnd 全埋点方案</td>
+    <td>
+      <ul>
+        <li>原理概述</li>
+        <li>案例</li>
+        <li>缺点</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>$AppClick全埋点方案1：代理 View.OnClickListener</td>
+    <td>
+      <ul>
+        <li>关键技术</li>
+        <li>原理概述</li>
+        <li>案例</li>
+        <li>引入DecorView</li>
+        <li>引入ViewTreeObserver.OnGlobalLayoutListener</li>
+        <li>扩展采集能力</li>
+        <li>缺点</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>$AppClick 全埋点方案2：代理 Window.Callback</td>
+    <td>
+      <ul>
+        <li>关键技术</li>
+        <li>原理概述</li>
+        <li>案例</li>
+        <li>扩展采集能力</li>
+        <li>缺点</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>$AppClick 全埋点方案3：代理 View.AccessibilityDelegate</td>
+    <td>
+      <ul>
+        <li>关键技术</li>
+        <li>原理概述</li>
+        <li>案例</li>
+        <li>扩展采集能力</li>
+        <li>缺点</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>$AppClick全埋点方案4：透明层</td>
+    <td>
+      <ul>
+        <li>原理概述</li>
+        <li>案例</li>
+        <li>扩展采集能力</li>
+        <li>缺点</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>$AppClick全埋点方案5: AspectJ</td>
+    <td>
+      <ul>
+        <li>关键技术</li>
+        <li>原理概述</li>
+        <li>案例</li>
+        <li>完善方案</li>
+        <li>扩展采集能力</li>
+        <li>缺点</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>$AppClick全埋点方案6：ASM</td>
+    <td>
+      <ul>
+        <li>关键技术</li>
+        <li>原理概述</li>
+        <li>案例</li>
+        <li>完善</li>
+        <li>扩展采集能力</li>
+        <li>缺点</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>$AppClick全埋点方案7：Javassist</td>
+    <td>
+      <ul>
+        <li>关键技术</li>
+        <li>原理概述</li>
+        <li>案例</li>
+        <li>扩展采集能力</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>$AppClick全埋点方案8： AST</td>
+    <td>
+      <ul>
+        <li>关键技术</li>
+        <li>原理概述</li>
+        <li>案例</li>
+        <li>完善方案</li>
+        <li>扩展采集能力</li>
+        <li>缺点</li>
       </ul>
     </td>
   </tr>
@@ -2668,29 +2233,86 @@ App后台开发运维和架构实践
 
 <br/>
 
-书名
+Android移动性能实战
 <table>
   <tr>
-    <td></td>
+    <td>最容易被忽略的性能洼地</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>原理</li>
+        <li>工具集</li>
+        <li>案例...</li>
+        <li>专项标准：磁盘</li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td></td>
+    <td>内存：性能优化的终结者</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>原理</li>
+        <li>工具集</li>
+        <li>案例...</li>
+        <li>专项标准：内存</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>网络：性能优化中的不可控因素</td>
+    <td>
+      <ul>
+        <li>原理</li>
+        <li>工具集</li>
+        <li>案例...</li>
+        <li>专项标准：网络</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>电池：它只是结果不是原因</td>
+    <td>
+      <ul>
+        <li>原理</li>
+        <li>工具集</li>
+        <li>案例...</li>
+        <li>专项标准：电池</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>原理与工具集</td>
+    <td>
+      <ul>
+        <li>原理</li>
+        <li>工具集</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>流畅度：没有最流畅，只有更流畅</td>
+    <td>
+      <ul>
+        <li>案例...</li>
+        <li>专项标准：流畅度</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>响应时延：别让用户等待</td>
+    <td>
+      <ul>
+        <li>案例...</li>
+        <li>专项标准：响应时延</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>还应该知道的一些事儿</td>
+    <td>
+      <ul>
+        <li>UI 自动化测试</li>
+        <li>专项竞品测试攻略</li>
+        <li>未来的未来</li>
       </ul>
     </td>
   </tr>
@@ -2698,29 +2320,192 @@ App后台开发运维和架构实践
 
 <br/>
 
-书名
+Android Gradle权威指南
 <table>
   <tr>
-    <td></td>
+    <td>Gradle入门</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>配置Gradle环境</li>
+        <li>Gradle版Hello World</li>
+        <li>Gradle Wrapper</li>
+        <li>Gradle日志</li>
+        <li>Gradle命令行</li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td></td>
+    <td>Groovy基础</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>字符串</li>
+        <li>集合</li>
+        <li>方法</li>
+        <li>JavaBean</li>
+        <li>闭包</li>
+        <li>DSL</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Gradle构建脚本基础</td>
+    <td>
+      <ul>
+        <li>Settings文件</li>
+        <li>Build文件</li>
+        <li>Projects以及tasks</li>
+        <li>创建一个任务</li>
+        <li>任务依赖</li>
+        <li>任务间通过API控制、交互</li>
+        <li>自定义属性</li>
+        <li>脚本即代码，代码也是脚本</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Gradle任务</td>
+    <td>
+      <ul>
+        <li>多种方式创建任务</li>
+        <li>多种方式访问任务</li>
+        <li>任务分组和描述</li>
+        <li>操作符</li>
+        <li>任务的执行分析</li>
+        <li>任务排序</li>
+        <li>任务的启用和禁用</li>
+        <li>任务的onlyIf断言</li>
+        <li>任务规则</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Gradle插件</td>
+    <td>
+      <ul>
+        <li>插件的作用</li>
+        <li>如何应用一个插件</li>
+        <li>自定义插件</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Java Gradle插件</td>
+    <td>
+      <ul>
+        <li>如何应用</li>
+        <li>Java插件约定的项目结构</li>
+        <li>如何配置第三方依赖</li>
+        <li>如何构建一个Java项目</li>
+        <li>源码集合(SourceSet)概念</li>
+        <li>Java插件添加的任务</li>
+        <li>Java插件添加的属性</li>
+        <li>多项目构建</li>
+        <li>如何发布构件</li>
+        <li>生成Idea和Eclipse配置</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Android Gradle插件</td>
+    <td>
+      <ul>
+        <li>Android Gradle插件简介</li>
+        <li>Android Gradle插件分类</li>
+        <li>应用Android Gradle插件</li>
+        <li>Android Gradle工程示例</li>
+        <li>Android Gradle任务</li>
+        <li>从Eclipse迁移到Android Gradle工程</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>自定义Android Gradle工程</td>
+    <td>
+      <ul>
+        <li>defaultConfig默认配置</li>
+        <li>配置签名信息</li>
+        <li>构建的应用类型</li>
+        <li>使用混淆</li>
+        <li>启用zipalign优化</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Android Gradle高级自定义</td>
+    <td>
+      <ul>
+        <li>使用共享库</li>
+        <li>批量修改生成的apk文件名</li>
+        <li>动态生成版本信息</li>
+        <li>隐藏签名文件信息</li>
+        <li>动态配置AndroidManifest文件</li>
+        <li>自定义你的BuildConfig</li>
+        <li>动态添加自定义的资源</li>
+        <li>Java编译选项</li>
+        <li>adb操作选项配置</li>
+        <li>DEX选项配置</li>
+        <li>突破65535方法限制</li>
+        <li>自动清理未使用的资源</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Android Gradle多项目构建</td>
+    <td>
+      <ul>
+        <li>Android项目区别</li>
+        <li>Android多项目设置</li>
+        <li>库项目引用和配置</li>
+        <li>库项目单独发布</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Android Gradle多渠道构建</td>
+    <td>
+      <ul>
+        <li>多渠道构建的基本原理</li>
+        <li>Flurry多渠道和友盟多渠道构建</li>
+        <li>多渠道构建定制</li>
+        <li>提高多渠道构建的效率</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Android Gradle测试</td>
+    <td>
+      <ul>
+        <li>基本概念</li>
+        <li>本地单元测试</li>
+        <li>Instrument测试</li>
+        <li>测试选项配置</li>
+        <li>代码覆盖率</li>
+        <li>Lint支持</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Android Gradle NDK支持</td>
+    <td>
+      <ul>
+        <li>环境配置</li>
+        <li>编译C/C 源代码</li>
+        <li>多平台编译</li>
+        <li>使用第三方的so库</li>
+        <li>使用NDK提供的库</li>
+        <li>C 库支持</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Android Gradle持续集成</td>
+    <td>
+      <ul>
+        <li>什么是持续集成</li>
+        <li>持续集成的价值</li>
+        <li>Android Gradle持续集成</li>
+        <li>怎样更好地做持续集成</li>
+        <li>人才是关键</li>
       </ul>
     </td>
   </tr>
@@ -2728,29 +2513,158 @@ App后台开发运维和架构实践
 
 <br/>
 
-书名
+JavaScript忍者秘籍 第2版
 <table>
   <tr>
-    <td></td>
+    <td>无处不在的 JavaScript</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>“理解”JavaScript语言</li>
+        <li>理解浏览器</li>
+        <li>使用当前的最佳实践</li>
+        <li>提高跨平台开发能力</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>运行时的页面构建过程</td>
+    <td>
+      <ul>
+        <li>生命周期概览</li>
+        <li>页面构建阶段</li>
+        <li>事件处理</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>新手的第一堂函数课：定义与参数</td>
+    <td>
+      <ul>
+        <li>函数式的不同点到底是什么</li>
+        <li>函数作为对象的乐趣</li>
+        <li>函数定义</li>
+        <li>函数的实参和形参</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>函数进阶：理解函数</td>
+    <td>
+      <ul>
+        <li>使用隐式函数参数</li>
+        <li>函数调用</li>
+        <li>解决函数上下文的问题</li>
         <li></li>
         <li></li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td></td>
+    <td>精通函数：闭包和作用域</td>
     <td>
       <ul>
+        <li>理解闭包</li>
+        <li>使用闭包</li>
+        <li>通过执行上下文来跟踪代码</li>
+        <li>使用词法环境跟踪变量的作用域</li>
+        <li>理解JavaScript的变量类型</li>
+        <li>研究闭包的工作原理</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>未来的函数：生成器和 Promise</td>
+    <td>
+      <ul>
+        <li>使用生成器和promise编写优雅的异步代码</li>
+        <li>使用生成器函数</li>
+        <li>使用promise</li>
+        <li>把生成器和promise相结合</li>
         <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>面向对象与原型</td>
+    <td>
+      <ul>
+        <li>理解原型</li>
+        <li>对象构造器与原型</li>
+        <li>实现继承</li>
+        <li>在ES6使用JavaScript的class</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>控制对象的访问</td>
+    <td>
+      <ul>
+        <li>使用getter与setter控制属性访问</li>
+        <li>使用代理控制访问</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>处理集合</td>
+    <td>
+      <ul>
+        <li>数组</li>
+        <li>Map</li>
+        <li>Set</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>正则表达式</td>
+    <td>
+      <ul>
+        <li>为什么需要正则表达式</li>
+        <li>正则表达式进阶</li>
+        <li>编译正则表达式</li>
+        <li>捕获匹配的片段</li>
+        <li>利用函数进行替换</li>
+        <li>使用正则表达式解决常见的问题</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>代码模块化</td>
+    <td>
+      <ul>
+        <li>在JavaScript ES6之前的版本中模块化代码</li>
+        <li>ES6模块</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>DOM操作</td>
+    <td>
+      <ul>
+        <li>向DOM中注入HTML</li>
+        <li>DOM的特性和属性</li>
+        <li>令人头疼的样式特性</li>
+        <li>避免布局抖动</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>历久弥新的事件</td>
+    <td>
+      <ul>
+        <li>深入事件循环</li>
+        <li>玩转计时器：延迟执行和间隔执行</li>
+        <li>处理事件</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>跨浏览器开发</td>
+    <td>
+      <ul>
+        <li>跨浏览器注意事项</li>
+        <li>五大开发问题</li>
+        <li>实现策略</li>
+        <li>减少假设</li>
       </ul>
     </td>
   </tr>
@@ -2758,29 +2672,134 @@ App后台开发运维和架构实践
 
 <br/>
 
-书名
+Git高手之路
 <table>
   <tr>
-    <td></td>
+    <td>Git应用入门</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>版本控制与Git</li>
+        <li>Git简易示例</li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td></td>
+    <td>项目历史管理</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>有向无环图</li>
+        <li>修订内部查询</li>
+        <li>修订区间查询</li>
+        <li>历史记录查询</li>
+        <li>单个文件历史记录</li>
+        <li>使用git bisect命令查找bug</li>
+        <li>日志的查询和格式化输出</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>使用Git进行程序开发</td>
+    <td>
+      <ul>
+        <li>新建提交</li>
+        <li>使用分支</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>工作区管理</td>
+    <td>
+      <ul>
+        <li>忽略文件</li>
+        <li>文件属性</li>
+        <li>使用reset命令修复错误</li>
+        <li>隐藏暂存变更</li>
+        <li>管理工作区和暂存区</li>
+        <li>多工作目录</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Git协作开发</td>
+    <td>
+      <ul>
+        <li>协作工作流</li>
+        <li>远程版本库管理</li>
+        <li>传输协议</li>
+        <li>发布变更到上游</li>
+        <li>信任链</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>分支应用进阶</td>
+    <td>
+      <ul>
+        <li>分支的类型和用途</li>
+        <li>分支工作流和发布工程</li>
+        <li>远程版本库上分支间的交互</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>集成变更</td>
+    <td>
+      <ul>
+        <li>集成变更的方法</li>
+        <li>解决合并冲突</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>历史记录管理</td>
+    <td>
+      <ul>
+        <li>Git内部机制简介</li>
+        <li>重写修订历史</li>
+        <li>历史记录的非重写式编辑</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>子项目管理—构建活动框架</td>
+    <td>
+      <ul>
+        <li>管理库和框架的依赖</li>
+        <li>大型Git版本库管理</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Git的定制和扩展</td>
+    <td>
+      <ul>
+        <li>Git与命令行</li>
+        <li>图形化接口</li>
+        <li>配置Git</li>
+        <li>Git自动化钩子</li>
+        <li>Git扩展</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Git日常管理</td>
+    <td>
+      <ul>
+        <li>版本库维护</li>
+        <li>数据恢复和故障诊断</li>
+        <li>Git服务端配置</li>
+        <li>改进开发工作流</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Git最佳实践</td>
+    <td>
+      <ul>
+        <li>启动项目</li>
+        <li>推进项目</li>
+        <li>集成变更</li>
+        <li>其他注意事项</li>
       </ul>
     </td>
   </tr>
@@ -2788,29 +2807,313 @@ App后台开发运维和架构实践
 
 <br/>
 
-书名
+Android组件化架构
 <table>
   <tr>
-    <td></td>
+    <td>组件化基础</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>你知道组件化吗</li>
+        <li>基础组件化架构介绍</li>
+        <li>重新认识AndroidManifest</li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td></td>
+    <td>组件化编程</td>
     <td>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>本地广播</li>
+        <li>组件间通信机制</li>
+        <li>组件间跳转</li>
+        <li>动态创建</li>
+        <li>数据存储</li>
+        <li>权限管理</li>
+        <li>静态常量</li>
+        <li>资源冲突</li>
+        <li>组件化混淆</li>
+        <li>多渠道模块</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>组件化优化</td>
+    <td>
+      <ul>
+        <li>Gradle优化</li>
+        <li>Git组件化部署</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>组件化编译</td>
+    <td>
+      <ul>
+        <li>Gradle编译</li>
+        <li>极速增量编译</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>组件化分发</td>
+    <td>
+      <ul>
+        <li>Activity分发</li>
+        <li>Fragment分发</li>
+        <li>View分发</li>
+        <li>依赖倒置</li>
+        <li>组件化列表配置</li>
+        <li>加载优化</li>
+        <li>层级限制</li>
+        <li>多模板设计</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>组件化流通</td>
+    <td>
+      <ul>
+        <li>内部流通</li>
+        <li>组件化SDK</li>
+        <li>JCenter共享</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>架构模板</td>
+    <td>
+      <ul>
+        <li>组件化模板</li>
+        <li>注解检测</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>架构演化</td>
+    <td>
+      <ul>
+        <li>基础架构</li>
+        <li>基础组件化</li>
+        <li>模块化</li>
+        <li>多模板化</li>
+        <li>插件化</li>
+        <li>进程化</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+<br/>
+
+React进阶之路
+<table>
+  <tr>
+    <td>初识React</td>
+    <td>
+      <ul>
+        <li>React简介</li>
+        <li>ES 6语法简介 </li>
+        <li>开发环境及工具介绍</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>React基础</td>
+    <td>
+      <ul>
+        <li>JSX</li>
+        <li>组件</li>
+        <li>组件的生命周期</li>
+        <li>列表和Keys</li>
+        <li>事件处理</li>
+        <li>表单</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>React 16新特性</td>
+    <td>
+      <ul>
+        <li>render新的返回类型</li>
+        <li>错误处理</li>
+        <li>Portals</li>
+        <li>自定义DOM属性</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>深入理解组件</td>
+    <td>
+      <ul>
+        <li>组件state</li>
+        <li>组件与服务器通信</li>
+        <li>组件通信</li>
+        <li>特殊的ref</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>虚拟DOM和性能优化</td>
+    <td>
+      <ul>
+        <li>虚拟DOM</li>
+        <li>Diff算法</li>
+        <li>性能优化</li>
+        <li>性能检测工具</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>高阶组件</td>
+    <td>
+      <ul>
+        <li>基本概念</li>
+        <li>使用场景</li>
+        <li>参数传递</li>
+        <li>继承方式实现高阶组件</li>
+        <li>注意事项</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>路由：用ReactRouter开发单页面应用</td>
+    <td>
+      <ul>
+        <li>基本用法</li>
+        <li>项目实战</li>
+        <li>代码分片</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Redux：可预测的状态管理机</td>
+    <td>
+      <ul>
+        <li>简介</li>
+        <li>主要组成</li>
+        <li>在React中使用Redux</li>
+        <li>中间件与异步操作</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Redux项目实战</td>
+    <td>
+      <ul>
+        <li>组织项目结构</li>
+        <li>设计state</li>
+        <li>设计模块</li>
+        <li>连接Redux</li>
+        <li>Redux调试工具</li>
+        <li>性能优化</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>MobX：简单可扩展的状态管理解决方案</td>
+    <td>
+      <ul>
+        <li>简介</li>
+        <li>主要组成</li>
+        <li>MobX响应的常见误区</li>
+        <li>在React中使用MobX</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>MobX项目实战</td>
+    <td>
+      <ul>
+        <li>组织项目结构</li>
+        <li>设计store</li>
+        <li>视图层重构</li>
+        <li>MobX调试工具</li>
+        <li>优化建议</li>
+        <li>Redux与MobX比较</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+<br/>
+
+深入探索Android热修复技术原理
+<table>
+  <tr>
+    <td>热修复技术介绍</td>
+    <td>
+      <ul>
+        <li>什么是热修复</li>
+        <li>基本概念</li>
+        <li>技术积淀</li>
+        <li>技术概览</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>热替换代码修复</td>
+    <td>
+      <ul>
+        <li>底层热替换原理</li>
+        <li>突破底层差异的方法</li>
+        <li>编译期与语言特性的影响</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>冷启动代码修复</td>
+    <td>
+      <ul>
+        <li>冷启动类加载原理</li>
+        <li>多态对冷启动类加载的影响</li>
+        <li>Dalvik 下完整dex 方案的新探索</li>
+        <li>入口类与初始化时机的选择</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>资源热修复技术</td>
+    <td>
+      <ul>
+        <li>普遍的实现方式</li>
+        <li>资源文件的格式</li>
+        <li>运行时资源的解析</li>
+        <li>另辟蹊径的资源修复方案</li>
+        <li>更优雅地替换AssetManager</li>
+        <li>一个意料之外的资源问题</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>so 库热修复技术</td>
+    <td>
+      <ul>
+        <li>so 库加载原理</li>
+        <li>so 库热部署实时生效的可行性分析</li>
+        <li>so 库冷部署重启生效实现方案</li>
+        <li>如何正确复制补丁so 库</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>其他优秀的热修复方案</td>
+    <td>
+      <ul>
+        <li>Dexposed 浅析</li>
+        <li>AndFix 探索历程</li>
+        <li>Amigo 核心解读</li>
+        <li>腾讯系热修复方案简介</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>热修复技术的未来展望</td>
+    <td>
+      <ul>
+        <li>热修复的专业性</li>
+        <li>对Android 生态的影响</li>
+        <li>Android 与iOS 热修复的不同</li>
+        <li>未来，无限可能</li>
       </ul>
     </td>
   </tr>
@@ -2839,6 +3142,24 @@ App后台开发运维和架构实践
     <td><img src="./res/010.png" width="200"/></td>
     <td><img src="./res/011.png" width="200"/></td>
     <td><img src="./res/012.png" width="200"/></td>
+  </tr>
+  <tr>
+    <td><img src="./res/013.png" width="200"/></td>
+    <td><img src="./res/014.png" width="200"/></td>
+    <td><img src="./res/015.png" width="200"/></td>
+    <td><img src="./res/016.png" width="200"/></td>
+  </tr>
+  <tr>
+    <td><img src="./res/017.png" width="200"/></td>
+    <td><img src="./res/018.png" width="200"/></td>
+    <td><img src="./res/019.png" width="200"/></td>
+    <td><img src="./res/020.png" width="200"/></td>
+  </tr>
+  <tr>
+    <td><img src="./res/021.png" width="200"/></td>
+    <td><img src="./res/022.png" width="200"/></td>
+    <td><img src="./res/023.png" width="200"/></td>
+    <td><img src="./res/024.png" width="200"/></td>
   </tr>
 </table>
 
