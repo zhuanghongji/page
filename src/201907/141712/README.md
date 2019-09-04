@@ -1,6 +1,9 @@
 # Dart 笔记：A tour of the Dart language
 
-> 序言：事实上，在 2018 年的时候就练习过一段时间 Flutter，转眼间现在已经是 2019 年下半年，而且 Flutter 的热度在这期间一直在蹭蹭蹭的往上涨。加上目前自己对 TypeScript 和 React Native 的熟练程度已经能满足大多数场景下的开发，所以想将主要精力往 Flutter 上倾斜一点。自然而然就有了 "Dart 笔记" 这一系列文章，以系统的学习 Dart 并记录这一过程。
+## 序言
+
+事实上，在 2018 年的时候就练习过一段时间 Flutter，转眼间现在已经是 2019 年下半年，而且 Flutter 的热度在这期间一直在蹭蹭蹭的往上涨。加上目前自己对 TypeScript 和 React Native 的熟练程度已经能满足大多数场景下的开发，所以想将主要精力往 Flutter 上倾斜一点。自然而然就有了 "Dart 笔记" 这一系列文章，以系统的学习 Dart 并记录这一过程。
+
 
 ## 搭建环境
 
@@ -11,7 +14,7 @@
 
 那么，我们怎么在 Mac 上基于 IntelliJ IDEA 来搭建 Dart 学习环境呢？
 
-**安装插件**
+### 安装插件
 
 假设你现在已经安装好了 IDEA：
 * 点击左上角的 "IntelliJ IEAD -> Preferences"。
@@ -29,7 +32,7 @@
 <img src="./res/003.png" width="640"/>
 
 
-**创建 Dart 项目**
+### 创建 Dart 项目
 
 安装好这两款插件后，我们就可以开始创建 Dart 项目了。
 
@@ -85,15 +88,12 @@ zhuanghongji-mbp:dart-note zhuanghongji$
 
 哈，现在相信我了吧。
 
-
-
-
-**注意事项**
+### 注意事项
 
 事实上，搭建 Dart 学习环境可能并没有这么轻松。因为在上述步骤中，我有意忽略了 "安装 Dart SDK" 这一步骤。按道理来说，安装 Dart SDK 的优雅姿势是这样的：
 
 ```shell
-# 安装
+# install
 $ brew tap dart-lang/dart
 $ brew install dart            // 安装稳定版
 $ brew install dart --devel    // 安装dev版
@@ -111,11 +111,10 @@ $ brew install dart --devel    // 安装dev版
 
 看完这篇文章还不知道怎么搭建 Dart 学习环境的话，请拨打 10086 找我的朋友进行咨询。毕竟，我每个月都给它钱 ...
 
-## 踏上 Dart 语言学习的征途 
-
 搭建好了 Dart 学习环境后，开始踏上 Dart 语言学习的征途。
 
-### 一个基本的 Dart 程序
+
+## 一个基本的 Dart 程序
 
 下面的代码片段使用到了一些 Dart 最基本的特性：
 
@@ -151,7 +150,7 @@ The number is 42.
 4. 呃.. 都省略了还让我怎么解析...
 
 
-### 变量
+## 变量
 
 在 Dart 中，变量的声明主要有以下几种形式：
 
@@ -172,7 +171,7 @@ print(name - 123 == 0);   // true
 ```
 
 
-#### 默认值
+### 默认值
 
 没有进行初始化的变量默认值都是 `null`，即使是显示声明了数值类型也是这样。因为在 Dart 中一切皆对象，数值也不例外。
 
@@ -181,7 +180,7 @@ int lineCount;
 print(lineCount == null);   // true
 ```
 
-#### final 和 const 
+### final 和 const 
 
 如果你从不想修改变量的值，可以使用 `final` 和 `const` 来代替 `var` 来修饰变量：
 * `final`: 表示该变量只可以被赋值一次。
@@ -204,7 +203,6 @@ const c = a;    // Error: Not a constant expression.
 * 在声明变量的同时就初始化其值；
 * 通过构造函数参数进行初始化；
 * 在构造函数的 "初始化列表" 中初始化。
-
 
 举个栗子：
 
@@ -252,9 +250,9 @@ void main() {
 ```
 
 
-### 内建类型
+## 内建类型
 
-#### Numbers
+### Numbers
 
 与 JavaScript 类似，Dart 中也有一个 number (`num`) 类型，可用来表示整数或浮点数。特别的是，Dart 对整数和浮点数做了细分，分别细分为 `int` 和 `double`，比如：
 
@@ -339,7 +337,7 @@ void main() {
 }
 ```
 
-#### Strings 
+### Strings 
 
 在 Dart 中，我们可以通过单引号或双引号来创建一个字符串，比如：
 
@@ -485,7 +483,7 @@ void main() {
 多行原始字符串，不会对 \n 进行转义。
 ```
 
-#### Lists
+### Lists
 
 Dart 并没有像 Java 那样将 Array 和 List 区分开，而是将两者视为同一个事物。一个简单的 Dart 集合 (List) 如下：
 
@@ -701,7 +699,7 @@ gifts.clear();                  // {}
 仔细看不会发现，`Map` 并没有 `add(key, value)` 这样的方法，新增单个 key/value 时只能使用 `map[] = value` 语法。 
 
 
-### 函数
+## 函数
 
 在 Dart 中，函数也是对象，其类型为 `Function`。这意味着函数对象可以赋值给某个变量，或作为参数传入到另一个函数中。我们先来看下如何声明一个函数：
 
@@ -857,7 +855,6 @@ void main() {
 }
 ```
 
-
 前面我们讲到了 `List` 和 `Map` 的用法，现在我们结合命名参数来实践下：
 
 ```dart
@@ -966,7 +963,8 @@ void main() {
 }
 ```
 
-### 操作符
+
+## 操作符
 
 加 (`+`)、减 (`-`)、乘 (`*`)、除 (`/`) 这些通用操作符没什么好说的，带好夜光手表躲被窝，我们来看点特别的。
 
@@ -1066,7 +1064,7 @@ print(b?.length);  // 7
 可以看出，如果 `?.` 左边的对象值不为 `null` 时才执行其右边的逻辑，否则直接返回 `null` 值。
 
 
-### 控制流
+## 控制流
 
 `if` 和 `for` 哪些没什么特别的就不讲了。
 
@@ -1110,8 +1108,7 @@ It is A or B.
 ```
 
 
-
-### 异常处理
+## 异常处理
 
 Dart 中的 `catch` 语法比较特别，比如：
 
@@ -1130,7 +1127,9 @@ try {
 ```
 
 
-### 类
+## 类
+
+### Object
 
 Dart 中所有的类都继承自 `Object`，`Object` 类的源代码比较简单，就几十行：
 
@@ -1156,7 +1155,7 @@ class Object {
 }
 ```
 
-**实例变量**
+### 实例变量
 
 声明实例变量的姿势如下：
 
@@ -1200,7 +1199,7 @@ left = 3, right = 23, width = 20
 left = -8, right = 12, width = 20
 ```
 
-**抽象函数**
+### 抽象函数
 
 与 Java 类似，Dart 中的抽象函数也是只能存在于抽象类中。Dart 中的实例方法、getter 方法、setter 方法都可以是抽象的：
 
@@ -1222,7 +1221,8 @@ void main() {
 }
 ```
 
-**构造函数**
+
+### 构造函数
 
 Dart 中的构造函数相比 Java 等其它语言的构造函数都有特别一点，它支持命名构造函数、初始化列表等语言特性。先来看个最简单的构造函数：
 
@@ -1544,19 +1544,477 @@ WARN: MainPage - this is warn log.
 ERROR: HomePage - this is error log.
 ```
 
-**方法**
+### 隐式接口
+
+在 Dart 中，每个类都隐式定义了一个接口，该接口包含其所有的实例变量、实例方法及其实现其它接口的所有东西。Dart 中的类是单继承的，但一个类可以实现一个或多个接口，这一点跟 Java 类似。
+
+接口的一个典型使用场景：想创建一个 A 类，并让 A 类具有 B 类 的 API，但又不想让 A 类直接继承自 B 类。
+
+下面是一段接口实现相关的示例代码：
+
+```dart
+class Person {
+  final _name;                            // 1
+  Person(this._name);                     // 2
+  String greet(String who) => 'Hello, $who, I am $_name';   // 3
+}
+
+// 没有实现 Person 具体逻辑时，IDEA 会提示错误
+// 把鼠标放在 Imposter 上，弹窗提示中有 'create 2 missing override(s)' 快捷方式
+class Imposter implements Person {
+  @override
+  get _name => 'Imposter';               // 4
+
+  @override
+  String greet(String who) {
+    return 'Hi, $who. Do you know who i am ?';
+  }
+}
+
+// 声明一个专门向 Bob 打招呼的方法
+// 参数 person 是向 Bob 打招呼的人
+String greetBob(Person person) => person.greet('Bob');
+
+void main() {
+  print(greetBob(Person('Kathy')));
+  print(greetBob(Imposter()));           // 5
+}
+```
+
+运行后，输出结果如下：
+
+```dart
+Hello, Bob, I am Kathy
+Hi, Bob. Do you know who i am ?
+```
+
+对上述代码序号做相关说明：
+1. 在接口中，但仅在当前 library 可见。
+2. 不在接口中，因为它是构造函数。
+3. 在接口中。
+4. 注意，覆写后是 getter 方法。
+5. `greetBob` 方法接收的参数是 `Person` 类型，传入其接口实现类也是可以的。
+
+
+一个实现多个接口的示例代码大概是酱紫的：
+
+```dart
+class Point implements Comparable, Location {...}
+```
+
+呃.. 好像我们还没讲过继承，那先看段类继承的示 (mao) 例 (gou) 代 (da) 码 (zhan) ：
+
+<img src="./res/007.jpeg" width="240"/>
+
+```dart
+abstract class Animal {
+  void say();
+}
+
+class Cat extends Animal {
+  @override
+  void say() {
+    print('喵..');
+  }
+}
+
+class Dog extends Animal {
+  @override
+  void say() {
+    print('汪..');
+  }
+}
+
+void main() {
+  Animal cat = Cat();
+  cat.say();              // 喵..
+
+  Animal dog = Dog();
+  dog.say();              // 汪..
+}
+```
+
+好玩的是，在 Dart 中我们是可以覆写操作符的：
+
+```dart
+class Vector {
+  final x, y;
+  Vector(this.x, this.y);
+
+  // 注：不需要 @override，因为 Method doesn't override an inherited method.
+  Vector operator +(Vector v) => Vector(x + v.x, y + v.y);
+  Vector operator -(Vector v) => Vector(x - v.x, y - v.y);
+}
+
+void main() {
+  final v1 = Vector(2, 3);
+  final v2 = Vector(4, 5);
+  final v3 = v1 + v2;
+  final v4 = v1 - v2;
+  print(v3.x == 6 && v3.y == 8);      // true
+  print(v4.x == -2 && v4.y == -2);    // true
+}
+```
+
+覆写加减乘除这些操作符比较简单，但覆写 `==` 就麻烦点，因为还要同时覆写父类的 `hashCode` 方法。不用怕，万能 IDEA 的 `Command + N` 的生成代码功能分分叫你做人：
+
+<img src="./res/008.png" width="240"/>
+
+不信你看：
+
+```dart
+class Vector {
+  final x, y;
+  Vector(this.x, this.y);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Vector &&
+          runtimeType == other.runtimeType &&
+          x == other.x &&
+          y == other.y;
+
+  @override
+  int get hashCode => x.hashCode ^ y.hashCode;
+}
+
+void main() {
+  final v1 = Vector(6, 6);
+  final v2 = Vector(6, 6);
+  final v3 = Vector(7, 7);
+  print(v1 == v2);              // true
+  print(v1 == v3);              // false
+}
+```
+
+## 枚举类型
+
+没啥好说的，直接看示例代码：
+
+```dart
+enum Color { red, green, blue }
+
+void main() {
+  // 通过枚举的常量 `values` 能获取到一个含有所有枚举值的列表
+  List<Color> colors = Color.values;
+
+  print(colors.length);               // 3
+  print(colors[0]);                   // Color.red
+  print(colors[1]);                   // Color.green
+  print(colors[2]);                   // Color.blue
+
+  print(colors[0] == Color.red);      // true
+  print(colors[1] == Color.green);    // true
+  print(colors[2] == Color.blue);     // true
+
+  print(Color.red.index);             // 0
+  print(Color.green.index);           // 1
+  print(Color.blue.index);            // 2
+
+  // -----
+
+  var c = Color.blue;
+  // IDEA 会提示你补全所有的 case，或者加个 defaultCase 
+  switch (c) {
+    case Color.red:
+      print("It's red.");
+      break;
+    case Color.green:
+      print("It's green.");
+      break;
+    default:
+      print("It's Else.");            // It's Else.
+      break;
+  }
+}
+```
+
+
+## 混入 (mixins)
+
+铛铛铛... 
+
+相对其他语言来说，"mixins" 是 Dart 显得特立独行的一个概念，它使得在多个类层次结构中重用代码变得简单、直接。
+
+
+```dart
+// ----- 备菜
+class Person {}
+
+mixin Guitar {
+  bool g = false;
+  void playGuitar(String name) {
+    g = !g;
+    print('$name can play guitar. $g');
+  }
+}
+
+mixin Piano {
+  num p = 0;
+  void playPiano(String name) {
+    p++;
+    print('$name can play guitar. $p');
+  }
+}
+
+// ----- 热锅
+
+class Musician extends Person with Guitar, Piano {}
+
+class Somebody with Guitar, Piano {
+  void greet() {
+    print('Hello, I am somebody.');
+  }
+}
+
+// ----- 炒菜，然后试下味道
+
+void main() {
+  var mu1 = Musician();
+  mu1.playGuitar('mu1');    // mu1 can play guitar. true
+  mu1.playPiano('mu1');     // mu1 can play guitar. 1
+  var mu2 = Musician();
+  mu2.playGuitar('mu2');    // mu2 can play guitar. true
+  mu2.playPiano('mu2');     // mu2 can play guitar. 1
+
+  mu1.playGuitar('mu1');    // mu1 can play guitar. false
+  mu1.playPiano('mu1');     // mu1 can play guitar. 2
+  mu2.playGuitar('mu2');    // mu2 can play guitar. false
+  mu2.playPiano('mu2');     // mu2 can play guitar. 2
+
+  var sb = Somebody();
+  sb.greet();             // Hello, I am somebody.
+  sb.playGuitar('sb');    // sb can play guitar. true
+  sb.playPiano('sb');     // sb can play guitar. 1
+  sb.playGuitar('sb');    // sb can play guitar. false
+  sb.playPiano('sb');     // sb can play guitar. 2
+}
+```
+
+
+看，两个不想相关的类 `Musician` 和 `Somebody` 可以完美复用 `Guitar` 和 `Piano` 的代码。从日志输出来看，不管是 `mu1` 和 `mu2` 比，还是 `mu1` 或 `mu2` 和 `sb` 相比，代码复用时 mixin 的成员变量是完全独立的，是互不影响的。
+
+
+吃完饭回到座位想想，mixin 牛逼过头了，能不能给它加个脚铐？当然可以，在声明 mixin 时我们可以通过 `on` 来指定它能用于哪些类。
+
+比如说，我们将 `Piano` 改成酱紫：
+
+```dart
+mixin Piano on Person {
+  // ...
+}
+```
+
+这时编译代码的话就见红了：`Error: '_Somebody&Object&Guitar' doesn't implement 'Person' so it can't be used with 'Piano'.`
+
+另外，`on` 的后面是可以指定多个类型的，比如：
+
+```dart
+class Apple1 {}
+class Apple2 {}
+class Apple3 {}
+
+mixin Piano on Person, Apple1, Apple2, Apple3 {
+  // ....
+}
+```
+
+但是，如果该类型已经 `with` 了这个 minxin，就不能再 `on` 它了，比如：
+
+```dart
+class Banana with Piano {}
+
+mixin Piano on Person, Piano {
+  // ...
+}
+```
+
+不好意思，又见红：`Error: 'Object with Piano' is a supertype of itself.`
+
+
+## 静态方法
+
+静态方法是类相关的，因此在调用时不用获取类的实例，因此也就没有所谓的 `this` 了。
+
+```dart
+import 'dart:math';
+
+class Point {
+  num x, y;
+  Point(this.x, this.y);
+
+  static num distanceBetween(Point a, Point b) {
+    // Invalid reference to 'this' expression.
+    // this.y;
+
+    var dx = a.x - b.x;
+    var dy = a.y - b.y;
+    return sqrt(dx * dx + dy * dy);
+  }
+}
+
+void main() {
+  var a = Point(2, 4);
+  var b = Point(4, 4);
+  var distanceAB = Point.distanceBetween(a, b);
+  print(distanceAB);      // 2.0
+}
+```
+
+另外，实例是不能调用静态方法的，比如编译下面这段代码时会报错：
+
+```dart
+var c = Point(7, 8);
+c.distanceBetween(a, b);
+```
+
+报错信息如下：
+
+```
+Error: The method 'distanceBetween' isn't defined for the class 'Point'.
+ - 'Point' is from 'bin/main.dart'.
+Try correcting the name to the name of an existing method, or defining a method named 'distanceBetween'.
+  c.distanceBetween(a, b);
+    ^^^^^^^^^^^^^^^
+```
+
+注：实现通用的工具或功能逻辑时，建议使用 "顶层函数" 而是 "静态方法"。 
+
+
+## 泛型
+
+Dart 中的泛型语法跟 Java 相似，都是使用尖括号 `<>` 进行声明。通常来说，我们会使用单个字母来表示泛型类型，比如 `E`、`T`、`S`、`K`、`V` 。
+
+一般来说，编码过程中应用泛型最多的就是 `List` 集合了，比如：
+
+```dart
+var names = List<String>();
+names.add('张三');
+names.addAll(['李四', '王五']);
+print(names);                   // [张三, 李四, 王五]
+
+// Error: The argument type 'int' can't be assigned to the parameter type 'String'.
+// names.add(666);
+```
+
+那 `List` 是怎样声明泛型的呢？我们一起来看下它的源码：
+
+```dart
+abstract class List<E> implements EfficientLengthIterable<E> {
+  void add(E value);
+
+  void addAll(Iterable<E> iterable);
+
+  Iterable<E> get reversed;
+
+  void sort([int compare(E a, E b)]);
+
+  // ...
+}
+
+abstract class EfficientLengthIterable<T> extends Iterable<T> {
+  // ...
+}
+
+abstract class Iterable<E> {
+  // ...
+}
+```
+
+`List`、`Set` 和 `Map` 这三种集合在通过 `literal (逐个的)` 形式创建或声明时，可以指定具体的泛型类型：
+
+```dart
+var names1 = [];
+var names2 = ['Seth', 1, false];
+var names3 = <String>[];
+var names4 = <String>['Seth', 'Seth', 'Kathy'];
+print(names4);    // [Seth, Seth, Kathy]
+
+var uniqueNames1 = {};
+var uniqueNames2 = {'a', 1, false};
+var uniqueNames3 = <String>{};
+var uniqueNames4 = <String>{'Seth', 'Seth', 'Kathy'};
+print(uniqueNames4);    // {Seth, Kathy}
+
+var pages = <String, String>{
+  'index.html': 'HomePage',
+  'robots.txt': 'Hints for web robots',
+  'humans.txt': 'We are people, not machines',
+};
+```
+
+* `names1` 的推导类型是 `List<dynamic>`；
+* `names2` 的推导类型是 `List<Object>`；
+* `names3` 的推导类型是 `List<String>`；
+* `names4` 的推导类型是 `List<String>`；
+
+[]()
+
+* `uniqueNames1` 的推导类型是 `Map<dynamic, dynamic>`；
+* `uniqueNames2` 的推导类型是 `Set<Object>`；
+* `uniqueNames3` 的推导类型是 `Set<String>`；
+* `uniqueNames4` 的推导类型是 `Set<String>`；
+
+[]()
+
+* `pages` 的推导类型是 `Map<String, String>`；
+
+
+另外，我们也可以与构造函数一起使用 "参数化类型"：
+
+```dart
+var names = ['Seth', 'Seth', 'Kathy'];
+var nameSet = Set<String>.from(names);
+print(nameSet);                           // {Seth, Kathy}
+
+var nameMap = Map<int, String>();
+nameMap[6] = 'Lars';
+print(nameMap);                           // {6: Lars}
+```
+
+Dart 的泛型类型是具体化 (reified) 的，在运行时依然保留有其类型，不会进行擦除。下面是一个在运行时判断泛型类型的实例：
+
+```dart
+var numbers = [1, 2];
+var names = {'Seth', 'Kathy'};
+var numberNames = <int, String>{
+  0: 'Seth',
+  1: 'Kathy',
+};
+
+print(numbers is List);                       // true
+print(names is Set);                          // true
+print(numberNames is Map);                    // true
+
+print(numbers is List<Object>);               // true
+print(names is Set<Object>);                  // true
+print(numberNames is Map<Object, Object>);    // true
+
+print(numbers is List<int>);                  // true
+print(names is Set<String>);                  // true
+print(numberNames is Map<int, String>);       // true
+
+print(numbers is List<bool>);                 // false
+print(names is Set<bool>);                    // false
+print(numberNames is Map<bool, bool>);        // false
+```
+
+### 限定泛型参数的类型
 
 // TODO
 
 
-### 泛型
+
+## 异步
 
 
 
 
-### 异步
+## 注释
 
 
 
 
-### 注释
+
+
