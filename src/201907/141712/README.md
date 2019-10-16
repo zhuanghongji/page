@@ -2002,7 +2002,106 @@ print(numberNames is Map<bool, bool>);        // false
 
 ### 限定泛型参数的类型
 
-// TODO
+在使用泛型时，我们可能想要限定泛型参数类型的范围，这时候我们就需要用到 `extends` 关键字了：
+
+```dart
+class Person {}
+class Teacher extends Person {}
+class Student extends Person {}
+
+class Foo<T extends Person> {
+  T t;
+  Foo(this.t);
+
+  void test() {
+    if (t is Teacher) {
+      print("It's a teacher.");
+      return;
+    }
+    if (t is Student) {
+      print("It's a student.");
+      return;
+    }
+    print("Maybe it's a normal person.");
+  }
+}
+
+void main() {
+  Foo(Teacher()).test();    // It's a teacher.
+  Foo(Student()).test();    // It's a student.
+  Foo(Person()).test();     // Maybe it's a normal person.
+}
+```
+
+在上面的例子中，如果你在创建 `Foo` 实例时传入类非 `Person` 且非其子类的实例时，编辑器会提示错误。比如：
+
+```dart
+Foo("Hello").test(); 
+```
+
+```
+Error: Inferred type argument 'String' doesn't conform to the bound 'Person' of the type variable 'T' on 'Foo'.
+ - 'Person' is from 'bin/main.dart'.
+Try specifying type arguments explicitly so that they conform to the bounds.
+  Foo("").test();
+  ^
+
+Context: This is the type variable whose bound isn't conformed to.
+class Foo<T extends Person> {
+          ^
+```
+
+
+### 泛型函数
+
+从一开始，Dart 的泛型就不仅限于在 Class 中使用。下面是新的语法 "泛型函数"，允许我们在方法和函数中使用类型参数：
+
+```dart
+T first<T>(List<T> ts) {
+  if (ts == null || ts.isEmpty) {                                // 1
+    print("Warning, the param should not null or empty :");
+    return null;
+  }
+
+  T tmp = ts[0];
+
+  if (tmp is String) {                                           // 2
+    print("The type of tmp is 'String' :");
+  }
+  if (tmp is num) {
+    print("The type of tmp is 'num' :");
+  }
+
+  return tmp;
+}
+
+void main() {
+  var data1 = ['a', 'b', 'c'];
+  var data2 = [1, 2, 3];
+  var data3 = [];
+
+  print(first(data1));
+  print(first(data2));
+  print(first(data3));
+}
+```
+
+```dart
+The type of tmp is 'String' :
+a
+The type of tmp is 'num' :
+1
+Warning, the param should not null or empty :
+null
+```
+
+1. 进行错误检查，然后...
+2. 做一些额外的类型检查，然后...
+
+
+> 如何理解方法和函数之间的区别？
+> * 方法：通过对象调用的一段逻辑，可以理解为是特殊的函数。
+> * 函数：可以直接定义、可以直接储存在变量之中、可在任何位置进行调用等。
 
 
 
