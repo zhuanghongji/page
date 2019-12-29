@@ -119,19 +119,90 @@ void main() async {
 }
 ```
 
+执行后日志如下：
+
+```
+before getName..
+hello, pandora
+after getName..
+```
+
 * 我们给 `main` 函数加上 `async` 关键字，表示这是一个异步函数。
 * 在其函数体中，我们在调用每一个返回值为 `Future<T>` 的函数时都使用了 `await` 关键字修饰，表示我们要等待这个在将来 (future) 的操作完成，才执行后续逻辑。
 
-这样一来，代码看起来就像是同步执行一样。实际上，单单从 `main` 函数中的逻辑来看确实也是同步执行的，但准确来说应该是按顺序执行的。因为在 `await` 过程中，会转而执行 `main` 之外的逻辑先。
-
+这样一来，代码看起来就像是同步执行一样。实际上，单单从 `main` 函数中的逻辑来看确实也是同步执行的，但准确来说应该是按顺序执行的。因为在 `await` 过程中，会转而执行 `main` 之外的逻辑先。不信？您再瞅瞅上面输出日志中 `hello, pandora` 的位置！手动狗头.. 
 
 如果你没写过 Dart 异步代码，可能看到这还是有点懵。别担心，下面我们从从零开始，对 Dart 异步做进一步的了解和探索。
 
 
 ## Future
 
-...
+官方文档是这样描述 `Future` 的：An object representing a delayed computation.
 
+`Future` 用于表示一个潜在的 "值" 或 "错误"，它在未来的某个时刻才可用。既然未来才可用，那是不是需要设置接受者来接收这个未来可用的 "值" 或 "错误" ？是的，`Future` 允许可以注册回调来接收这个潜在变化，比如：
+
+```dart
+Future<String> futureSuccess =
+      Future.delayed(Duration(seconds: 1), () => "Hello");
+  futureSuccess
+      .then((value) => print(value))
+      .catchError((error) => print(error));       // Hello
+
+Future<String> futureFail =
+    Future.delayed(Duration(seconds: 1), () => throw ("Error"));
+futureFail
+    .then((value) => print(value))
+    .catchError((error) => print(error));         // Error
+```
+
+在上述代码中，我们通过 `Future` 的实例方法 `then` 来注册接收 "值" 的回调，通过另外一个实例方法 `catchError` 来注册接收 "错误" 的回调。
+
+
+### then 和 catchError 方法原型
+
+这两个方法的原型如下：
+
+```dart
+abstract class Future<T> {
+  ...
+
+  /// Register callbacks to be called when this future completes.
+  Future<R> then<R>(FutureOr<R> onValue(T value), {Function onError});
+
+  /// Handles errors emitted by this [Future].
+  Future<T> catchError(Function onError, {bool test(Object error)});
+}
+```
+
+**then**
+
+仔细看，发现 `then` 方法有个 `onError` 命名参数，这个是怎么用的呢？看下面两个代码片段：
+
+```dart
+// 1
+futureFail.then((value) => print(value), onError: (error) {
+    print('onError: $error');                                 // onError: Error
+}).catchError((error) => print('catchError: $error'));        // ... will not be excuted ...
+
+// 2
+futureFail.then((value) => print(value), onError: (error) {
+    print('onError: $error');                                 // onError: Error
+    throw 'The error throw by onError function.';
+}).catchError((error) => print('catchError: $error'));        // catchError: The error throw by onError function.
+```
+
+从运行结果分析，我们可以得出两个结论：
+* `then` 方法的 `onError` 函数参数也可以接收 "错误"，而且会 "消耗" 掉这个 "错误"，不再往后传。
+* 如果 `then` 方法的 `onError` 函数参数内部抛出异常，则这个异常可以被后面的 `catchError` 接收到。
+
+
+**catchError** 
+
+在仔细看，发现 `catchError` 也有一个类型是函数的 `test` 命名参数，那这个又是干啥用的呢？我们再通过两个代码片段来对比下：
+
+```dart
+
+```
 
 
 
