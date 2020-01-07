@@ -86,8 +86,8 @@ LinkedList<Entry<int>> addTwoNumbers(
     LinkedList<Entry<int>> list2,
 ) {
   var head = Entry.toList([0]).first;
-  var p = list1.first;                              // 1
-  var q = list2.first;
+  var p = list1.length > 0 ? list1.first : null;    // 1
+  var q = list2.length > 0 ? list2.first : null;
   var current = head;                               // 2
   int carry = 0;                                    // 3
   while (p != null || q != null) {                  // 4
@@ -109,7 +109,7 @@ LinkedList<Entry<int>> addTwoNumbers(
 }
 ```
 
-1. 将 `p` 和 `q` 分别初始化为列表 `list1` 和 `list2` 的头部。
+1. 将 `p` 和 `q` 分别初始化为列表 `list1` 和 `list2` 的头部，注意 `first` 不存在的情况。
 2. 将当前节点初始化为返回列表的哑节点 (dummy-node)。
 3. 将进位 `carry` 初始化为 `0`。
 4. 遍历列表 `list1` 和 `list2` 直至到达它们的尾端。
@@ -124,20 +124,13 @@ LinkedList<Entry<int>> addTwoNumbers(
 > 提示：
 > * 在 Dart 中，`/` 表示除法，比如 `15 / 10 = 1.5`。
 > * 而 `~/` 表示取整，比如 `15 ~/ 10 = 1`。
-
+> 
 > 注意：
 > * 这里我们使用了哑节点来简化代码。
 > * 如果没有哑节点，则必须编写额外的条件语句来初始化表头的值。
 
 
 ### 验证代码
-
-测试用例:
-* (2 → 4 → 3) + ( 5 → 6 → 4) = 7 → 0 → 8
-* (5 → 6 → 2) + ( 6 → 7 → 3) = 1 → 4 → 6
-* (5 → 6    ) + ( 6 → 7 → 3) = 1 → 4 → 4
-* (5 → 6    ) + ( 6 → 7    ) = 1 → 4 → 1
-* (         ) + ( 6 → 7    ) = 6 → 7
 
 ```dart
 /*
